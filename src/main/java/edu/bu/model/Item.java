@@ -1,10 +1,12 @@
 package edu.bu.model;
 
 public abstract class Item {
+    private String name;
     private String description;
     private double weight;
 
-    public Item(String description, double weight) {
+    public Item(String name, String description, double weight) {
+        this.name = name;
         this.description = description;
         this.weight = weight;
     }
@@ -23,5 +25,13 @@ public abstract class Item {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
