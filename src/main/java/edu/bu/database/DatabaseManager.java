@@ -1,5 +1,7 @@
 package edu.bu.database;
 
+import edu.bu.model.Player;
+
 import java.sql.*;
 
 public class DatabaseManager {
@@ -27,5 +29,4 @@ public class DatabaseManager {
         // Implement saving logic
     }
 
-    // Add methods to update, delete, or query the database as needed
 }

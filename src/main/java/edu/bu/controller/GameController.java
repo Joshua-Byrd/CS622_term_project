@@ -1,11 +1,13 @@
 package edu.bu.controller;
 
+import edu.bu.model.Player;
+import edu.bu.model.Room;
 import edu.bu.view.TextView;
 
 import java.util.Scanner;
 
 public class GameController {
-    private TextView view;
+    private final TextView view;
     private Player player;
     private Room currentRoom;
 
