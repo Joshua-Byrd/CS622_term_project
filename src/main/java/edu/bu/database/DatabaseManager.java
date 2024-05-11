@@ -4,6 +4,9 @@ import edu.bu.model.entitities.Player;
 
 import java.sql.*;
 
+/**
+ * Connects to the database and provides methods to insert player stats
+ */
 public class DatabaseManager {
     private Connection conn;
 

@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 import java.util.ArrayList;
 
+/**
+ * The abstract class for any living creature in the game.
+ */
 public abstract class Entity {
     private String name;
     private String description;

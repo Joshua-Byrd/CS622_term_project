@@ -12,6 +12,9 @@ import java.util.ArrayList;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the player character
+ */
 public class Player extends Entity implements Combatant {
     private int health;
     private Room currentRoom;
@@ -34,6 +37,14 @@ public class Player extends Entity implements Combatant {
         this.currentWeight = updateCurrentWeight(anInventory);
     }
 
+    /**
+     * INTENT: To allow the player to engage in combat with a monster, potentially dealing damage based on a successful hit check.
+     * PRECONDITION: The target must not be null and must be an instance of Monster.
+     * POSTCONDITION 1: If the attack hits, the target's health is reduced by the damage dealt.
+     * POSTCONDITION 2: If the attack hits, Messages about the attack outcome are sent to the view.
+     *
+     * @param aTarget The entity that is the target of the attack.
+     */
     @Override
     public void attack(Entity aTarget) {
         if (aTarget instanceof Monster) {
@@ -51,6 +62,39 @@ public class Player extends Entity implements Combatant {
         }
     }
 
+    /**
+     * INTENT: To simulate the effect of taking damage during combat, reducing the player's health accordingly.
+     * PRECONDITION: The damage amount must be a non-negative integer.
+     * POSTCONDITION: The player's health is decreased by the amount of damage taken.
+     *
+     * @param aDamage The amount of damage to be applied to the player's health.
+     */
+    @Override
+    public void takeDamage(int aDamage) {
+        this.health -= aDamage;
+    }
+
+    /**
+     * INTENT: Updates the players current weight by iterating through their inventory and summing the weights of their Items
+     * PRECONDITION: anInventory must not be null.
+     * POSTCONDITION: return value == sum of the weights of all items in anInventory
+     *
+     * @param anInventory an arraylist of items to sum
+     * @return the sum of the item weights in the given arraylist
+     */
+    public double updateCurrentWeight(ArrayList<Item> anInventory) {
+        if (anInventory.isEmpty()) {
+            return 0;
+        }
+
+        double weight = 0;
+        for (Item item : anInventory) {
+            weight += item.getWeight();
+        }
+        return weight;
+    }
+
+    //Getter and Setter methods
     @Override
     public int getHealth() {
         return health;
@@ -58,11 +102,6 @@ public class Player extends Entity implements Combatant {
 
     public void setHealth(int aHealth) {
         this.health = aHealth;
-    }
-
-    @Override
-    public void takeDamage(int aDamage) {
-        this.health -= aDamage;
     }
 
     public Room getCurrentRoom() {
@@ -73,13 +112,7 @@ public class Player extends Entity implements Combatant {
         this.currentRoom = aNewRoom;
     }
 
-    public double updateCurrentWeight(ArrayList<Item> anInventory) {
-        double weight = 0;
-        for (Item item : anInventory) {
-            weight += item.getWeight();
-        }
-        return weight;
-    }
+
 
     public int getAttackRating() {
         return attackRating;

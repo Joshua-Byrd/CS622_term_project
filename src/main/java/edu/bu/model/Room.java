@@ -1,9 +1,13 @@
 package edu.bu.model;
 
+/**
+ * Represents a location that a player can occupy and can contain items
+ */
 public class Room {
 
     private String name;
     private String description;
+    //direction variables represent the Rooms lying in those directions
     private Room north;
     private Room south;
     private Room east;
@@ -14,7 +18,7 @@ public class Room {
         this.description = aDescription;
     }
 
-
+    //Getters and Setter methods
     public String getName() {
         return name;
     }
@@ -30,7 +34,6 @@ public class Room {
     public void setDescription(String aDescription) {
         this.description = aDescription;
     }
-
 
     public Room getNorth() {
         return north;

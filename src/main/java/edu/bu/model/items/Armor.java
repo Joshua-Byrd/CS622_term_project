@@ -1,5 +1,8 @@
 package edu.bu.model.items;
 
+/**
+ * Represents an armor item that can be held or equipped by a character or monster
+ */
 public class Armor extends Item {
 
     // Attacking character's attack roll is compared to defender's defense rating to
@@ -11,6 +14,7 @@ public class Armor extends Item {
         this.defenseRating = aDefenseRating;
     }
 
+    //Getter and Setter Methods
     public int getDefenseRating() {
         return defenseRating;
     }

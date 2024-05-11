@@ -11,6 +11,10 @@ import java.util.ArrayList;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a Monster entity capable of combat within the game.
+ * Monsters can engage in attacks against players and take damage.
+ */
 public class Monster extends Entity implements Combatant {
     private int health;
     private Weapon equippedWeapon;
@@ -27,6 +31,14 @@ public class Monster extends Entity implements Combatant {
         this.defenseRating = aArmor.getDefenseRating();
     }
 
+    /**
+     * INTENT: To perform an attack using the Monster's equipped weapon, potentially dealing damage.
+     * PRECONDITION: The target must be an instance of Player and not null.
+     * POSTCONDITION 1: If the attack hits, the target's health is reduced by the damage amount.
+     * POSTCONDITION 2: If the attack hits, feedback to the player is sent to the View
+     *
+     * @param aTarget The entity that is the target of the attack.
+     */
     @Override
     public void attack(Entity aTarget) {
         if (aTarget instanceof Player) {
@@ -43,6 +55,20 @@ public class Monster extends Entity implements Combatant {
         }
     }
 
+    /**
+     * INTENT: To decrease the Monster's health by a specified damage amount following an attack.
+     * PRECONDITION: The damage amount must be a non-negative integer.
+     * POSTCONDITION: The Monster's health is decreased by the specified amount, possibly resulting in the Monster's death if health reaches zero.
+     *
+     * @param aDamage The amount of damage to be applied to the Monster's health.
+     */
+    @Override
+    public void takeDamage(int aDamage) {
+        this.health -= aDamage;
+    }
+
+
+    //Getter and Setter methods
     @Override
     public int getHealth() {
         return health;
@@ -50,11 +76,6 @@ public class Monster extends Entity implements Combatant {
 
     public void setHealth(int aHealth) {
         this.health = aHealth;
-    }
-
-    @Override
-    public void takeDamage(int aDamage) {
-        this.health -= aDamage;
     }
 
     public Weapon getEquippedWeapon() {

@@ -1,5 +1,9 @@
 package edu.bu.model.items;
 
+/**
+ * Abstract class representing a general item within the game.
+ * This class provides the foundation for all items that can be held, worn, or used by entities.
+ */
 public abstract class Item {
     private String name;
     private String description;
@@ -11,6 +15,7 @@ public abstract class Item {
         this.weight = aWeight;
     }
 
+    //Getter and Setter Methods
     public String getDescription() {
         return description;
     }
