@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        Room startingRoom = new Room("Starting Room", "This is a test room to start the game");
+        Room startingRoom = new Room("Starting Room", "You are standing in the test room.");
         TextView view = new TextView();
         Player player = new Player(
                 "Test Player",

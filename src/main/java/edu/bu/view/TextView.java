@@ -2,7 +2,7 @@ package edu.bu.view;
 
 public class TextView {
     public void displayMessage(String message) {
-        System.out.println(message);
+        System.out.print(message);
     }
 
     public void printGreeting() {
@@ -15,7 +15,7 @@ public class TextView {
                 "a network of rooms and tunnels carved by unknown hands through the heart of the earth. Each step forward\n" +
                 "is a step away from the light and into the storied past of the Desolate Depths. Many have entered, few\n" +
                 "have returned, and none have claimed the Orb. Will you uncover its secrets, or will you too be swallowed\n" +
-                "by the cavern's gaping maw? The choice is yours, adventurer.");
+                "by the cavern's gaping maw? The choice is yours, adventurer.\n");
 
     }
 }

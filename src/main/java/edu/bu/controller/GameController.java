@@ -32,7 +32,8 @@ public class GameController {
         view.printGreeting();
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
-                view.displayMessage(currentRoom.getDescription());
+                view.displayMessage(currentRoom.getDescription() + "\n");
+                view.displayMessage("Type a command or 'Exit' to leave the game.\n>");
                 String command = scanner.nextLine();
                 processCommand(command);
             }
