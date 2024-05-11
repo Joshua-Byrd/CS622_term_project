@@ -1,6 +1,6 @@
 package edu.bu.database;
 
-import edu.bu.model.Player;
+import edu.bu.model.entitities.Player;
 
 import java.sql.*;
 
