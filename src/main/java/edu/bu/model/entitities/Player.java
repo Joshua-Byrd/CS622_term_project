@@ -7,7 +7,6 @@ import edu.bu.model.Room;
 import edu.bu.model.items.Weapon;
 import edu.bu.util.Die;
 import edu.bu.util.MessageService;
-
 import java.util.ArrayList;
 
 import java.util.ArrayList;
@@ -24,6 +23,8 @@ public class Player extends Entity implements Combatant {
     private Armor equippedArmor;
     private int attackRating;
     private int defenseRating;
+    private final Die attackDie;
+    private ArrayList<Item> inventory;
 
     public Player(String aName, String aDescription, int aHealth, Room aCurrentRoom,
                   Weapon aWeapon, Armor aArmor, ArrayList<Item> anInventory) {
@@ -35,13 +36,15 @@ public class Player extends Entity implements Combatant {
         this.attackRating = aWeapon.getAttackRating();
         this.defenseRating = aArmor.getDefenseRating();
         this.currentWeight = updateCurrentWeight(anInventory);
+        attackDie = new Die(this.getAttackRating());
+        this.inventory = anInventory;
     }
 
     /**
      * INTENT: To allow the player to engage in combat with a monster, potentially dealing damage based on a successful hit check.
      * PRECONDITION: The target must not be null and must be an instance of Monster.
-     * POSTCONDITION 1: If the attack hits, the target's health is reduced by the damage dealt.
-     * POSTCONDITION 2: If the attack hits, Messages about the attack outcome are sent to the view.
+     * POSTCONDITION 1: If attack is successful, target health -= damageTaken
+     * POSTCONDITION 2: Feedback message is displayed to the screen
      *
      * @param aTarget The entity that is the target of the attack.
      */
@@ -52,10 +55,12 @@ public class Player extends Entity implements Combatant {
             Monster monster = (Monster) aTarget;
 
             if (isHit(monster)) {
-                Die die = new Die(this.getAttackRating());
-                int damageTaken = die.rollDie();
+                int damageTaken = attackDie.rollDie();
                 monster.takeDamage(damageTaken);
                 MessageService.sendMessage("You hit for " + damageTaken + " damage!");
+                if (!monster.isAlive()) {
+                    MessageService.sendMessage("You have defeated the monster!");
+                }
             } else {
                 MessageService.sendMessage("You miss!");
             }
@@ -65,7 +70,7 @@ public class Player extends Entity implements Combatant {
     /**
      * INTENT: To simulate the effect of taking damage during combat, reducing the player's health accordingly.
      * PRECONDITION: The damage amount must be a non-negative integer.
-     * POSTCONDITION: The player's health is decreased by the amount of damage taken.
+     * POSTCONDITION: health -= aDamage
      *
      * @param aDamage The amount of damage to be applied to the player's health.
      */
@@ -77,7 +82,7 @@ public class Player extends Entity implements Combatant {
     /**
      * INTENT: Updates the players current weight by iterating through their inventory and summing the weights of their Items
      * PRECONDITION: anInventory must not be null.
-     * POSTCONDITION: return value == sum of the weights of all items in anInventory
+     * POSTCONDITION: return value == sum of weights of items in inventory
      *
      * @param anInventory an arraylist of items to sum
      * @return the sum of the item weights in the given arraylist
@@ -111,8 +116,6 @@ public class Player extends Entity implements Combatant {
     public void setCurrentRoom(Room aNewRoom) {
         this.currentRoom = aNewRoom;
     }
-
-
 
     public int getAttackRating() {
         return attackRating;
@@ -160,6 +163,16 @@ public class Player extends Entity implements Combatant {
 
     public void setEquippedArmor(Armor anEquippedArmor) {
         this.equippedArmor = anEquippedArmor;
+    }
+
+    @Override
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
+    @Override
+    public void setInventory(ArrayList<Item> inventory) {
+        this.inventory = inventory;
     }
 }
 

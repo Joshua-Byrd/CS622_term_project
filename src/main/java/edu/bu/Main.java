@@ -9,6 +9,7 @@ import edu.bu.model.items.Weapon;
 import edu.bu.view.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Main is the entry point to the application. It instantiates the Player character, the Room in which the player
@@ -17,8 +18,8 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) {
-
-        Room startingRoom = new Room("Starting Room", "You are standing in the test room.");
+        Room startingRoom = new Room("Starting Room", "You are standing in the test room.",
+                new ArrayList<Item>());
         TextView view = new TextView();
         Player player = new Player(
                 "Test Player",

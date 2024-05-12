@@ -14,7 +14,9 @@ public class Merchant extends Entity {
         super(aName, aDescription, anInventory);
     }
 
-
+    /**
+     * to be implemented later
+     */
     public void trade() {
         // Implement trading functionality
     }

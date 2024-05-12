@@ -3,10 +3,8 @@ package edu.bu.model.entitities;
 import edu.bu.controller.GameController;
 import edu.bu.model.items.Item;
 import edu.bu.util.MessageService;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
 import java.util.ArrayList;
 
 /**

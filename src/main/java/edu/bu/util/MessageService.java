@@ -15,8 +15,9 @@ public class MessageService {
     }
 
     /**
-     * INTENT: Utilizes the GameController to send a message to the TextView to maintain MVC
-     * PRECONDITION: GameController must be instantiated and registered with the MessageService
+     * INTENT: To maintain MVC architecture, utilizes the GameController to send a message to the
+     * TextView to be displayed by the View
+     * PRECONDITION: GameController must be instantiated and registered with the MessageService.
      * POSTCONDITION: The given message is displayed to the console using the current View
      *
      * @param message a message to be displayed to the console

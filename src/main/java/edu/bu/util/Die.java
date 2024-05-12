@@ -9,6 +9,7 @@ import java.util.Random;
  */
 public class Die {
     private final int faces;
+    static Random random = new Random();
 
     public Die(int faces) {
         this.faces = faces;
@@ -17,12 +18,11 @@ public class Die {
     /**
      * INTENT: To simulate the roll of a die with this number of faces.
      * PRECONDITION: The Die must have been initialized.
-     * POSTCONDITION: Returns a random integer between 1 and the number of faces on the die.
+     * POSTCONDITION: 1 <= return value <= number of faces
      *
      * @return An integer result of the die roll, within the range of 1 to the number of faces.
      */
     public int rollDie() {
-        Random random = new Random();
         return random.nextInt(faces) + 1;
     }
 }

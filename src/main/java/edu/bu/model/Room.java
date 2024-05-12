@@ -1,21 +1,27 @@
 package edu.bu.model;
 
+import edu.bu.model.items.Item;
+
+import java.util.ArrayList;
+
 /**
- * Represents a location that a player can occupy and can contain items
+ * Represents a location that a player can travel to and occupy, possibly containing items
  */
 public class Room {
 
     private String name;
     private String description;
-    //direction variables represent the Rooms lying in those directions
+    private ArrayList<Item> items;
     private Room north;
     private Room south;
     private Room east;
     private Room west;
 
-    public Room(String aName, String aDescription) {
+    public Room(String aName, String aDescription, ArrayList<Item> someItems) {
         this.name = aName;
         this.description = aDescription;
+        this.items = someItems;
+
     }
 
     //Getters and Setter methods
@@ -65,5 +71,13 @@ public class Room {
 
     public void setWest(Room west) {
         this.west = west;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
     }
 }

@@ -21,6 +21,8 @@ public class Monster extends Entity implements Combatant {
     private Armor equippedArmor;
     private int attackRating;
     private int defenseRating;
+    private boolean isAlive;
+    Die attackDie = new Die(this.getAttackRating());
 
     public Monster(String aName, String aDescription, int aHealth, Weapon aWeapon, Armor aArmor, ArrayList<Item> anInventory) {
         super(aName, aDescription, anInventory);
@@ -29,13 +31,14 @@ public class Monster extends Entity implements Combatant {
         this.equippedArmor = aArmor;
         this.attackRating = aWeapon.getAttackRating();
         this.defenseRating = aArmor.getDefenseRating();
+        this.isAlive = true;
     }
 
     /**
      * INTENT: To perform an attack using the Monster's equipped weapon, potentially dealing damage.
      * PRECONDITION: The target must be an instance of Player and not null.
-     * POSTCONDITION 1: If the attack hits, the target's health is reduced by the damage amount.
-     * POSTCONDITION 2: If the attack hits, feedback to the player is sent to the View
+     * POSTCONDITION 1: If attack is successful, target health -= damageTaken
+     * POSTCONDITION 2: Feedback message is displayed to the screen
      *
      * @param aTarget The entity that is the target of the attack.
      */
@@ -45,8 +48,7 @@ public class Monster extends Entity implements Combatant {
             MessageService.sendMessage("The monster attacks with its " + getEquippedWeapon().getName() + "!");
             Player player = (Player)aTarget;
             if (isHit(player)) {
-                Die die = new Die(this.getAttackRating());
-                int damageTaken = die.rollDie();
+                int damageTaken = attackDie.rollDie();
                 player.takeDamage(damageTaken);
                 MessageService.sendMessage("You are hit for " + damageTaken + " damage!");
             } else {
@@ -58,13 +60,17 @@ public class Monster extends Entity implements Combatant {
     /**
      * INTENT: To decrease the Monster's health by a specified damage amount following an attack.
      * PRECONDITION: The damage amount must be a non-negative integer.
-     * POSTCONDITION: The Monster's health is decreased by the specified amount, possibly resulting in the Monster's death if health reaches zero.
+     * POSTCONDITION 1: health -= aDamage
+     * POSTCONDITION 2: If health <= 0, isAlive = false
      *
      * @param aDamage The amount of damage to be applied to the Monster's health.
      */
     @Override
     public void takeDamage(int aDamage) {
         this.health -= aDamage;
+        if (health <= 0) {
+            isAlive = false;
+        }
     }
 
 
@@ -110,4 +116,11 @@ public class Monster extends Entity implements Combatant {
         this.defenseRating = aDefenseRating;
     }
 
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
+    }
 }

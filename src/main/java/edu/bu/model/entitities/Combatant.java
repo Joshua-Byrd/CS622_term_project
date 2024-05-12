@@ -13,8 +13,9 @@ import java.util.Random;
 public interface Combatant {
     /**
      * INTENT: To simulate combat by allowing one entity to attack another.
+     * EXAMPLE: A player chooses to attack a monster, this method runs and if the attack is successful, the monster takes damage
      * PRECONDITION: The target must not be null and must be an instance of Combatant.
-     * POSTCONDITION: If the attack succeeds, the target's health is reduced by the calculated amount
+     * POSTCONDITION: If attack is successful, takeDamage is called with some damage
      *
      * @param aTarget The entity to be attacked.
      */
@@ -31,8 +32,10 @@ public interface Combatant {
 
     /**
      * INTENT: Determines if an attack hits the defender based on a simulated D20 roll plus attack modifiers.
+     * EXAMPLE: Given an entity with an attack rating of 15 and a defender with a defense rating of 10, the attacking
+     * entity must roll a 5 to score a hit (15 + 5 = 20) >= (10 + 10 = 20)
      * PRECONDITION: The defender must not be null and must be an instance of Combatant.
-     * POSTCONDITION: Returns true if the attack value meets or exceeds the defender's defense value, false otherwise.
+     * POSTCONDITION: if attack value >= defender value, return value == true. else return value == false
      *
      * @param aDefender The defender against whom the attack roll is made.
      * @return true if the attack is successful, false otherwise.
