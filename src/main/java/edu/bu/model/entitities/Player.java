@@ -25,9 +25,13 @@ public class Player extends Entity implements Combatant {
     private int defenseRating;
     private final Die attackDie;
     private ArrayList<Item> inventory;
+    private double goldHeld;
+    private int roomsVisited;
+    private int monstersDefeated;
 
     public Player(String aName, String aDescription, int aHealth, Room aCurrentRoom,
-                  Weapon aWeapon, Armor aArmor, ArrayList<Item> anInventory) {
+                  Weapon aWeapon, Armor aArmor, ArrayList<Item> anInventory, double someGold, int someRooms,
+                  int someMonsters) {
         super(aName, aDescription, anInventory);
         this.health = aHealth;
         this.currentRoom = aCurrentRoom;
@@ -36,8 +40,11 @@ public class Player extends Entity implements Combatant {
         this.attackRating = aWeapon.getAttackRating();
         this.defenseRating = aArmor.getDefenseRating();
         this.currentWeight = updateCurrentWeight(anInventory);
-        attackDie = new Die(this.getAttackRating());
+        this.attackDie = new Die(this.getAttackRating());
         this.inventory = anInventory;
+        this.goldHeld = someGold;
+        this.roomsVisited = someRooms;
+        this.monstersDefeated = someMonsters;
     }
 
     /**
@@ -173,6 +180,30 @@ public class Player extends Entity implements Combatant {
     @Override
     public void setInventory(ArrayList<Item> inventory) {
         this.inventory = inventory;
+    }
+
+    public double getGoldHeld() {
+        return goldHeld;
+    }
+
+    public void setGoldHeld(double goldHeld) {
+        this.goldHeld = goldHeld;
+    }
+
+    public int getRoomsVisited() {
+        return roomsVisited;
+    }
+
+    public void setRoomsVisited(int roomsVisited) {
+        this.roomsVisited = roomsVisited;
+    }
+
+    public int getMonstersDefeated() {
+        return monstersDefeated;
+    }
+
+    public void setMonstersDefeated(int monstersDefeated) {
+        this.monstersDefeated = monstersDefeated;
     }
 }
 

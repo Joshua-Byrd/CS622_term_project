@@ -6,6 +6,7 @@ import edu.bu.model.entitities.Player;
 import edu.bu.model.items.Armor;
 import edu.bu.model.items.Item;
 import edu.bu.model.items.Weapon;
+import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.view.TextView;
 
 import java.util.ArrayList;
@@ -28,9 +29,13 @@ public class Main {
                 startingRoom,
                 new Weapon("dagger", "A small dagger", 1.2, 4),
                 new Armor("Leather armor", "a cuirass made of leather", 4.5, 4),
-                new ArrayList<Item>());
+                new ArrayList<Item>(),
+                0.0,
+                0,
+                0);
+        PlayerSaveService playerSaveService = new PlayerSaveService();
 
-        GameController gameController = new GameController(view, player, startingRoom);
+        GameController gameController = new GameController(view, player, startingRoom, playerSaveService);
 
         gameController.startGame();
     }

@@ -2,6 +2,7 @@ package edu.bu.controller;
 
 import edu.bu.model.entitities.Player;
 import edu.bu.model.Room;
+import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.util.MessageService;
 import edu.bu.view.TextView;
 import java.util.Scanner;
@@ -14,10 +15,13 @@ public class GameController {
     private final TextView view;
     private final Player player;
     private final Room currentRoom;
-    public GameController(TextView view, Player player, Room startingRoom) {
-        this.view = view;
-        this.player = player;
-        this.currentRoom = startingRoom;
+    private final PlayerSaveService playerSaveService;
+
+    public GameController(TextView aView, Player aPlayer, Room aStartingRoom, PlayerSaveService aPlayerSaveService) {
+        this.view = aView;
+        this.player = aPlayer;
+        this.currentRoom = aStartingRoom;
+        this.playerSaveService = aPlayerSaveService;
         MessageService.registerController(this);
     }
 
@@ -53,6 +57,7 @@ public class GameController {
      */
     private void processCommand(String command) {
         if ("exit".equals(command.toLowerCase())) {
+            playerSaveService.save(player);
             System.exit(1);
         }
     }
