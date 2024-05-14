@@ -1,5 +1,6 @@
 package edu.bu.model.persistence;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +15,11 @@ public class GameLogger {
 
     // Private constructor to prevent instantiation
     private GameLogger(String aPlayerName) {
-        this.LOG_FILE_PATH = "logs/" + aPlayerName + "_log.txt";
+        File directory = new File("logs");
+        if (!directory.exists()) {
+            directory.mkdirs();  // Create the directory if it doesn't exist
+        }
+        this.LOG_FILE_PATH = directory.getPath() + File.separator + sanitizeFileName(aPlayerName) + "_log.txt";
         try {
             // Set up PrintWriter to append to the log file.
             this.printWriter = new PrintWriter(new FileWriter(LOG_FILE_PATH, true), true);
@@ -59,6 +64,18 @@ public class GameLogger {
         if (printWriter != null) {
             printWriter.close();
         }
+    }
+
+    /**
+     * INTENT: Ensures that the file name consists only of alphanumeric characters to prevent malicious
+     * code injection
+     * PRECONDITION: fileName is not null
+     * POSTCONDITION: return value = fileName with all non-alphnumeric characters removed
+     * @param fileName the name of the file to sanitize
+     * @return
+     */
+    private String sanitizeFileName(String fileName) {
+        return fileName.replaceAll("[^a-zA-Z0-9.-]", "_");
     }
 
 }

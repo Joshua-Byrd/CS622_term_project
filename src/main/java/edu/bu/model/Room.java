@@ -17,6 +17,13 @@ public class Room {
     private Room east;
     private Room west;
 
+    //default constructor required by Jackson
+    public Room(){
+        this.name = "";
+        this.description = "";
+        this.items = new ArrayList<>();
+    }
+
     public Room(String aName, String aDescription, ArrayList<Item> someItems) {
         this.name = aName;
         this.description = aDescription;

@@ -23,11 +23,15 @@ public class Player extends Entity implements Combatant {
     private Armor equippedArmor;
     private int attackRating;
     private int defenseRating;
-    private final Die attackDie;
     private ArrayList<Item> inventory;
     private double goldHeld;
     private int roomsVisited;
     private int monstersDefeated;
+
+    // Default constructor required by Jackson
+    public Player() {
+        super("", "", new ArrayList<>());
+    }
 
     public Player(String aName, String aDescription, int aHealth, Room aCurrentRoom,
                   Weapon aWeapon, Armor aArmor, ArrayList<Item> anInventory, double someGold, int someRooms,
@@ -40,7 +44,6 @@ public class Player extends Entity implements Combatant {
         this.attackRating = aWeapon.getAttackRating();
         this.defenseRating = aArmor.getDefenseRating();
         this.currentWeight = updateCurrentWeight(anInventory);
-        this.attackDie = new Die(this.getAttackRating());
         this.inventory = anInventory;
         this.goldHeld = someGold;
         this.roomsVisited = someRooms;
@@ -62,7 +65,7 @@ public class Player extends Entity implements Combatant {
             Monster monster = (Monster) aTarget;
 
             if (isHit(monster)) {
-                int damageTaken = attackDie.rollDie();
+                int damageTaken = new Die(attackRating).rollDie();
                 monster.takeDamage(damageTaken);
                 MessageService.sendMessage("You hit for " + damageTaken + " damage!");
                 if (!monster.isAlive()) {

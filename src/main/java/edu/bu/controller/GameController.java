@@ -42,6 +42,7 @@ public class GameController {
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 view.displayMessage(currentRoom.getDescription() + "\n");
+                view.displayMessage("Game has been started by: " + player.getName() + "\n");
                 view.displayMessage("Type 'Exit' to leave the game (No other commands are implemented at this time).\n>");
                 String command = scanner.nextLine();
                 processCommand(command);
@@ -62,7 +63,7 @@ public class GameController {
             playerSaveService.save(player);
             logger.log(player.getName() + " quit the game.");
             logger.close();
-            System.exit(1);
+            System.exit(0);
 
         }
     }

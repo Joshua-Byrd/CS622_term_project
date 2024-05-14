@@ -44,5 +44,7 @@ public abstract class Entity {
     public void setInventory(ArrayList<Item> anInventory) {
         this.inventory = anInventory;
     }
+
+
 }
 
