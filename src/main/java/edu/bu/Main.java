@@ -6,6 +6,7 @@ import edu.bu.model.entitities.Player;
 import edu.bu.model.items.Armor;
 import edu.bu.model.items.Item;
 import edu.bu.model.items.Weapon;
+import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.view.TextView;
 
@@ -34,8 +35,10 @@ public class Main {
                 0,
                 0);
         PlayerSaveService playerSaveService = new PlayerSaveService();
+        GameLogger logger = GameLogger.getInstance();
 
-        GameController gameController = new GameController(view, player, startingRoom, playerSaveService);
+        GameController gameController = new GameController(
+                view, player, startingRoom, playerSaveService, logger);
 
         gameController.startGame();
     }

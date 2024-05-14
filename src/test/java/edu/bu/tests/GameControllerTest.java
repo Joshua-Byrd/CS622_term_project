@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 import edu.bu.controller.GameController;
 import edu.bu.model.Room;
 import edu.bu.model.entitities.Player;
+import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.view.TextView;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,7 @@ public class GameControllerTest {
     private Player playerMock;
     private Room roomMock;
     private PlayerSaveService pssMock;
+    private GameLogger logMock;
 
     @BeforeEach
     void setUp() {
@@ -23,7 +25,8 @@ public class GameControllerTest {
         playerMock = mock(Player.class);
         roomMock = mock(Room.class);
         pssMock = mock(PlayerSaveService.class);
-        gameController = new GameController(viewMock, playerMock, roomMock, pssMock);
+        logMock = mock(GameLogger.class);
+        gameController = new GameController(viewMock, playerMock, roomMock, pssMock, logMock);
     }
 
     @Test

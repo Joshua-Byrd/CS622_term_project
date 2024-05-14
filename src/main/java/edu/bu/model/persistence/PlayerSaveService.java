@@ -5,11 +5,17 @@ import edu.bu.model.entitities.Player;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Provides a way for the player to save their game and resume later.
+ */
 public class PlayerSaveService {
     private static final String SAVE_FILE_PATH = "player_save.json";
 
     /**
-     * Saves the current state of the player to a JSON file.
+     * INTENT: Saves the current state of the player to a JSON file, giving the player a way to save and
+     * later resume their game.
+     * PRECONDITION: player must not be null.
+     * POSTCONDITION: player_save.json contains the entire data hierarchy of player in JSON format
      * @param player The player object to save.
      */
     public void save(Player player) {
@@ -23,7 +29,9 @@ public class PlayerSaveService {
     }
 
     /**
-     * Loads the player state from a JSON file.
+     * INTENT: Loads the player data from the saved JSON file and returns a player object.
+     * PRECONDITON: player_save.json must exist and must contain player data
+     * POSTCONDITION: Return value = a player object containing all saved data
      * @return The loaded player object or null if an error occurs.
      */
     public Player load() {

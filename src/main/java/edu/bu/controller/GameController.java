@@ -2,6 +2,7 @@ package edu.bu.controller;
 
 import edu.bu.model.entitities.Player;
 import edu.bu.model.Room;
+import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.util.MessageService;
 import edu.bu.view.TextView;
@@ -16,12 +17,16 @@ public class GameController {
     private final Player player;
     private final Room currentRoom;
     private final PlayerSaveService playerSaveService;
+    private final GameLogger logger;
 
-    public GameController(TextView aView, Player aPlayer, Room aStartingRoom, PlayerSaveService aPlayerSaveService) {
+    public GameController(TextView aView, Player aPlayer, Room aStartingRoom,
+                          PlayerSaveService aPlayerSaveService,
+                          GameLogger aLogger) {
         this.view = aView;
         this.player = aPlayer;
         this.currentRoom = aStartingRoom;
         this.playerSaveService = aPlayerSaveService;
+        this.logger = aLogger;
         MessageService.registerController(this);
     }
 
@@ -56,9 +61,12 @@ public class GameController {
      * @param command The command string input by the user.
      */
     private void processCommand(String command) {
-        if ("exit".equals(command.toLowerCase())) {
+        if ("exit".equalsIgnoreCase(command)) {
             playerSaveService.save(player);
+            logger.log(player.getName() + " quit the game.");
+            logger.close();
             System.exit(1);
+
         }
     }
 

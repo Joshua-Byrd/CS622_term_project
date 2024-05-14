@@ -23,7 +23,14 @@ public class GameLogger {
         }
     }
 
-    // Public method to get the instance of the logger
+    /**
+     * INTENT: To allow access to the single instance of a GameLogger. If GameLogger instance does not yet
+     * exist, it is instantiated. Otherwise, the instance is returned.
+     * PRECONDITION: None.
+     * POSTCONDITION: Return value is the single instance of GameLogger.
+     *
+     * @return the instance of the GameLogger
+     */
     public static synchronized GameLogger getInstance() {
         if (instance == null) {
             instance = new GameLogger();
@@ -31,22 +38,26 @@ public class GameLogger {
         return instance;
     }
 
-    // Method to log messages
+    /**
+     * INTENT: Writes the given message to the game log with a timestamp.
+     * PRECONDITION: The given message must not be null.
+     * POSTCONDITION: The given message has been written to the log.
+     * @param message the information to be written to the log
+     */
     public void log(String message) {
         LocalDateTime now = LocalDateTime.now();
         printWriter.println("[" + dtf.format(now) + "] " + message);
     }
 
-    // Cleanup method to close the PrintWriter
+    /**
+     * INTENT: To close the PrintWriter stream.
+     * PRECONDITIONS: printWriter must not be null
+     * POSTCONDITIONS: The PrintWriter stream is closed.
+     */
     public void close() {
         if (printWriter != null) {
             printWriter.close();
         }
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-        close();
-    }
 }
