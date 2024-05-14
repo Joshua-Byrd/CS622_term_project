@@ -65,6 +65,8 @@ public class GameController {
             logger.close();
             System.exit(0);
 
+        } else if ("save".equalsIgnoreCase(command)) {
+            playerSaveService.save(player);
         }
     }
 
