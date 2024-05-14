@@ -1,5 +1,6 @@
 package edu.bu.controller;
 
+import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.Room;
 import edu.bu.model.persistence.GameLogger;
@@ -60,13 +61,21 @@ public class GameController {
      */
     private void processCommand(String command) {
         if ("exit".equalsIgnoreCase(command)) {
-            playerSaveService.save(player);
-            logger.log(player.getName() + " quit the game.");
-            logger.close();
-            System.exit(0);
+            try {
+                playerSaveService.save(player);
+                logger.log(player.getName() + " quit the game.");
+                logger.close();
+                System.exit(0);
+            } catch (PlayerDataException e) {
+                System.out.println("Error saving character: " + e.getMessage());
 
+            }
         } else if ("save".equalsIgnoreCase(command)) {
-            playerSaveService.save(player);
+            try {
+                playerSaveService.save(player);
+            } catch (PlayerDataException e){
+                System.out.println("Error saving character: " + e.getMessage());
+            }
         }
     }
 

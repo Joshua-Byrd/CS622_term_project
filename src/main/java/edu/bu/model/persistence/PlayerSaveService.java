@@ -1,5 +1,6 @@
 package edu.bu.model.persistence;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.entitities.Player;
 
 import java.io.File;
@@ -18,13 +19,13 @@ public class PlayerSaveService {
      * POSTCONDITION: player_save.json contains the entire data hierarchy of player in JSON format
      * @param player The player object to save.
      */
-    public void save(Player player) {
+    public void save(Player player) throws PlayerDataException{
         ObjectMapper mapper = new ObjectMapper();
         try {
             // Writing to a file
             mapper.writeValue(new File(SAVE_FILE_PATH), player);
         } catch (IOException e) {
-            System.err.println("Error saving player data: " + e.getMessage());
+            throw new PlayerDataException(e.getMessage());
         }
     }
 
@@ -34,14 +35,14 @@ public class PlayerSaveService {
      * POSTCONDITION: Return value = a player object containing all saved data
      * @return The loaded player object or null if an error occurs.
      */
-    public Player load() {
+    public Player load() throws PlayerDataException {
         ObjectMapper mapper = new ObjectMapper();
         try {
             // Reading from a file
             return mapper.readValue(new File(SAVE_FILE_PATH), Player.class);
         } catch (IOException e) {
-            System.err.println("Error loading player data: " + e.getMessage());
-            return null;
+            //exception handled in main
+            throw new PlayerDataException(e.getMessage());
         }
     }
 }

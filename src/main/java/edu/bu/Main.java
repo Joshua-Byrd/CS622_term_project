@@ -1,6 +1,8 @@
 package edu.bu;
 
 import edu.bu.controller.GameController;
+import edu.bu.exceptions.LoggerException;
+import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.Room;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.items.Armor;
@@ -22,6 +24,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         TextView view = new TextView();
         PlayerSaveService playerSaveService = new PlayerSaveService();
+        GameLogger logger = null;
         Player player = null;
         String input;
         int choice = 1;
@@ -55,14 +58,16 @@ public class Main {
                         new Armor("Leather armor", "a cuirass made of leather", 4.5, 4),
                         new ArrayList<Item>(),
                         0.0,
-                        0,
+                        1,
                         0
                 );
                 break;
             case 2:
-                player = playerSaveService.load();
-                if (player == null) {
-                    System.out.println("No saved game found. Starting a new game instead.");
+                try {
+                    player = playerSaveService.load();
+                } catch (PlayerDataException e) {
+                    System.out.println("Error loading save file: " + e.getMessage());
+                    System.out.println("Starting a new game...");
                     System.out.print("Enter your name: ");
                     playerName = scanner.nextLine();
                     player = new Player(
@@ -74,7 +79,7 @@ public class Main {
                             new Armor("Leather armor", "a cuirass made of leather", 4.5, 4),
                             new ArrayList<Item>(),
                             0.0,
-                            0,
+                            1,
                             0
                     );
                 }
@@ -83,15 +88,17 @@ public class Main {
                 System.out.println("Exiting the game. Goodbye!");
                 System.exit(0);
                 break;
-            default:
-                System.out.println("Invalid choice. Exiting the game.");
-                System.exit(0);
         }
 
         if (player != null) {
-            GameLogger logger = GameLogger.getInstance(player.getName());
-            GameController gameController = new GameController(view, player, player.getCurrentRoom(), playerSaveService, logger);
+            try {
+                logger = GameLogger.getInstance(player.getName());
+            } catch (LoggerException e) {
+                System.out.println("Error instantiating logger: " +  e.getMessage());
+            }
 
+            GameController gameController = new GameController(view, player, player.getCurrentRoom(),
+                    playerSaveService, logger);
             gameController.startGame();
         }
     }

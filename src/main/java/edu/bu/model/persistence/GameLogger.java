@@ -1,5 +1,7 @@
 package edu.bu.model.persistence;
 
+import edu.bu.exceptions.LoggerException;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,7 +16,7 @@ public class GameLogger {
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
     // Private constructor to prevent instantiation
-    private GameLogger(String aPlayerName) {
+    private GameLogger(String aPlayerName) throws LoggerException{
         File directory = new File("logs");
         if (!directory.exists()) {
             directory.mkdirs();  // Create the directory if it doesn't exist
@@ -24,8 +26,7 @@ public class GameLogger {
             // Set up PrintWriter to append to the log file.
             this.printWriter = new PrintWriter(new FileWriter(LOG_FILE_PATH, true), true);
         } catch (IOException e) {
-            System.err.println("Error setting up logger: " + e.getMessage());
-            e.printStackTrace();
+            throw new LoggerException(e.getMessage());
         }
     }
 
@@ -37,7 +38,7 @@ public class GameLogger {
      *
      * @return the instance of the GameLogger
      */
-    public static synchronized GameLogger getInstance(String aPlayerName) {
+    public static synchronized GameLogger getInstance(String aPlayerName) throws LoggerException {
         if (instance == null) {
             instance = new GameLogger(aPlayerName);
         }
