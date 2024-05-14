@@ -36,11 +36,8 @@ public class GameController {
      * POSTCONDITION: The game ends.
      */
     public void startGame() {
+        logger.log(player.getName() + " has begun their journey.");
         view.printGreeting();
-
-        if (player != null) {
-            view.displayMessage("Player has been instantiated with the name: " + player.getName() + "\n\n");
-        }
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {

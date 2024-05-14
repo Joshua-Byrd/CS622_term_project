@@ -1,0 +1,2 @@
+[2024/05/14 04:52:20] Test_Player has begun their journey.
+[2024/05/14 04:52:24] Test_Player quit the game.

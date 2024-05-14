@@ -8,12 +8,13 @@ import java.time.format.DateTimeFormatter;
 
 public class GameLogger {
     private static GameLogger instance;
-    private static final String LOG_FILE_PATH = "game_log.txt";
+    private final String LOG_FILE_PATH;
     private PrintWriter printWriter;
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
     // Private constructor to prevent instantiation
-    private GameLogger() {
+    private GameLogger(String aPlayerName) {
+        this.LOG_FILE_PATH = "logs/" + aPlayerName + "_log.txt";
         try {
             // Set up PrintWriter to append to the log file.
             this.printWriter = new PrintWriter(new FileWriter(LOG_FILE_PATH, true), true);
@@ -31,9 +32,9 @@ public class GameLogger {
      *
      * @return the instance of the GameLogger
      */
-    public static synchronized GameLogger getInstance() {
+    public static synchronized GameLogger getInstance(String aPlayerName) {
         if (instance == null) {
-            instance = new GameLogger();
+            instance = new GameLogger(aPlayerName);
         }
         return instance;
     }

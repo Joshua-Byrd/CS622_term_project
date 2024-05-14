@@ -24,7 +24,7 @@ public class Main {
                 new ArrayList<Item>());
         TextView view = new TextView();
         Player player = new Player(
-                "Test Player",
+                "Test_Player",
                 "A test player",
                 10,
                 startingRoom,
@@ -35,7 +35,7 @@ public class Main {
                 0,
                 0);
         PlayerSaveService playerSaveService = new PlayerSaveService();
-        GameLogger logger = GameLogger.getInstance();
+        GameLogger logger = GameLogger.getInstance(player.getName());
 
         GameController gameController = new GameController(
                 view, player, startingRoom, playerSaveService, logger);
