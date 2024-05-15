@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class GameLogger {
     private static GameLogger instance;
@@ -57,6 +58,25 @@ public class GameLogger {
     }
 
     /**
+     * INTENT: Allows a player to view their logfile.
+     * PRECONDITION: A player must be instantiated.
+     * POSTCONDITION: The contents of the current user's logfile are printed to the screen.
+     * @throws LoggerException
+     */
+    private void printLog() throws LoggerException {
+        try {
+            Scanner logFile = new Scanner(new File(LOG_FILE_PATH));
+
+            while(logFile.hasNext()) {
+                System.out.println(logFile.next());
+            }
+            logFile.close();
+        } catch(IOException e) {
+            throw new LoggerException("Could not read from log file.");
+        }
+    }
+
+    /**
      * INTENT: To close the PrintWriter stream.
      * PRECONDITIONS: printWriter must not be null
      * POSTCONDITIONS: The PrintWriter stream is closed.
@@ -78,5 +98,7 @@ public class GameLogger {
     private String sanitizeFileName(String fileName) {
         return fileName.replaceAll("[^a-zA-Z0-9.-]", "_");
     }
+
+
 
 }

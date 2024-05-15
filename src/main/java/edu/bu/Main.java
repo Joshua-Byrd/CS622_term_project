@@ -94,7 +94,7 @@ public class Main {
             try {
                 logger = GameLogger.getInstance(player.getName());
             } catch (LoggerException e) {
-                System.out.println("Error instantiating logger: " +  e.getMessage());
+                view.displayMessage("Error instantiating logger: " +  e.getMessage());
             }
 
             GameController gameController = new GameController(view, player, player.getCurrentRoom(),

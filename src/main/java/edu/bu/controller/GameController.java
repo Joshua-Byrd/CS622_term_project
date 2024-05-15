@@ -1,5 +1,6 @@
 package edu.bu.controller;
 
+import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.Room;
@@ -37,6 +38,7 @@ public class GameController {
      * POSTCONDITION: The game ends.
      */
     public void startGame() {
+
         logger.log(player.getName() + " has begun their journey.");
         view.printGreeting();
 
@@ -67,14 +69,14 @@ public class GameController {
                 logger.close();
                 System.exit(0);
             } catch (PlayerDataException e) {
-                System.out.println("Error saving character: " + e.getMessage());
+                view.displayMessage("Error saving character: " + e.getMessage());
 
             }
         } else if ("save".equalsIgnoreCase(command)) {
             try {
                 playerSaveService.save(player);
             } catch (PlayerDataException e){
-                System.out.println("Error saving character: " + e.getMessage());
+                view.displayMessage("Error saving character: " + e.getMessage());
             }
         }
     }
