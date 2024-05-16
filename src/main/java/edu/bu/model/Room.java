@@ -31,7 +31,7 @@ public class Room {
 
     }
 
-    //Getters and Setter methods
+    //Getter and Setter methods
     public String getName() {
         return name;
     }

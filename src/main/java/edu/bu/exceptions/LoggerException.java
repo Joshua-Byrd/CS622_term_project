@@ -1,6 +1,8 @@
 package edu.bu.exceptions;
 
-public class LoggerException extends Exception{
+import java.io.IOException;
+
+public class LoggerException extends IOException{
     public LoggerException(String message) {
         super(message);
     }

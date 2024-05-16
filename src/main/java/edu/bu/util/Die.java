@@ -12,6 +12,9 @@ public class Die {
     static Random random = new Random();
 
     public Die(int faces) {
+        if (faces < 1) {
+            throw new IllegalArgumentException("Die faces must be a positive number.");
+        }
         this.faces = faces;
     }
 
