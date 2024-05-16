@@ -63,7 +63,7 @@ public class GameLogger {
      * POSTCONDITION: The contents of the current user's logfile are printed to the screen.
      * @throws LoggerException
      */
-    private void printLog() throws LoggerException {
+    public void printLog() throws LoggerException {
         try {
             Scanner logFile = new Scanner(new File(LOG_FILE_PATH));
 
@@ -95,10 +95,11 @@ public class GameLogger {
      * @param fileName the name of the file to sanitize
      * @return
      */
-    private String sanitizeFileName(String fileName) {
+    public String sanitizeFileName(String fileName) {
         return fileName.replaceAll("[^a-zA-Z0-9.-]", "_");
     }
 
-
-
+    public void setPrintWriter(PrintWriter printWriter) {
+        this.printWriter = printWriter;
+    }
 }
