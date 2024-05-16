@@ -1,14 +1,10 @@
 package edu.bu.model.entitities;
 
-import edu.bu.controller.GameController;
 import edu.bu.model.items.Armor;
 import edu.bu.model.items.Item;
 import edu.bu.model.items.Weapon;
 import edu.bu.util.Die;
 import edu.bu.util.MessageService;
-
-import java.util.ArrayList;
-
 import java.util.ArrayList;
 
 /**
@@ -22,7 +18,7 @@ public class Monster extends Entity implements Combatant {
     private int attackRating;
     private int defenseRating;
     private boolean isAlive;
-    Die attackDie = new Die(this.getAttackRating());
+    public Die attackDie;
 
     public Monster(String aName, String aDescription, int aHealth, Weapon aWeapon, Armor aArmor, ArrayList<Item> anInventory) {
         super(aName, aDescription, anInventory);
@@ -32,6 +28,7 @@ public class Monster extends Entity implements Combatant {
         this.attackRating = aWeapon.getAttackRating();
         this.defenseRating = aArmor.getDefenseRating();
         this.isAlive = true;
+        this.attackDie = new Die(20); // Default to a 20-sided die
     }
 
     /**
@@ -73,8 +70,7 @@ public class Monster extends Entity implements Combatant {
         }
     }
 
-
-    //Getter and Setter methods
+    // Getter and Setter methods
     @Override
     public int getHealth() {
         return health;
@@ -124,3 +120,4 @@ public class Monster extends Entity implements Combatant {
         isAlive = alive;
     }
 }
+
