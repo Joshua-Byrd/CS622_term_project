@@ -77,6 +77,7 @@ public class Main {
             case 2:
                 try {
                     player = playerSaveService.load();
+                    view.displayMessage("Character " + player.getName() + " loaded.\n");
                 } catch (PlayerDataException e) {
                     System.out.println("Error loading save file: " + e.getMessage());
                     System.out.println("Starting a new game...");

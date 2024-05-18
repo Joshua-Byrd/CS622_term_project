@@ -13,4 +13,9 @@ public class PlayerDataException extends IOException {
     public PlayerDataException(String message, Throwable cause) {
         super(message, cause);
     }
+
+    @Override
+    public String toString() {
+        return "PlayerDataException";
+    }
 }

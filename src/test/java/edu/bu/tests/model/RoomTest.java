@@ -1,4 +1,4 @@
-package edu.bu.tests;
+package edu.bu.tests.model;
 
 import edu.bu.model.Room;
 import edu.bu.model.items.Item;

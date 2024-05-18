@@ -45,7 +45,7 @@ public class GameController {
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
                 view.displayMessage(currentRoom.getDescription() + "\n");
-                view.displayMessage("Game has been started by: " + player.getName() + "\n");
+                view.displayMessage("Game running with character: " + player.getName() + "\n");
                 view.displayMessage("Type 'Exit' to leave the game (No other commands are implemented at this time).\n>");
                 String command = scanner.nextLine();
                 processCommand(command);
@@ -69,14 +69,22 @@ public class GameController {
                 logger.close();
                 System.exit(0);
             } catch (PlayerDataException e) {
-                view.displayMessage("Error saving character: " + e.getMessage());
+                view.displayMessage(e.getMessage());
 
             }
         } else if ("save".equalsIgnoreCase(command)) {
             try {
                 playerSaveService.save(player);
+                view.displayMessage("Character saved!\n");
             } catch (PlayerDataException e){
-                view.displayMessage("Error saving character: " + e.getMessage());
+                view.displayMessage(e.getMessage());
+            }
+        } else if ("print log".equalsIgnoreCase(command)) {
+            try {
+                view.displayMessage("Here are the important moments in your journey:\n");
+                logger.printLog();
+            } catch (LoggerException e) {
+                view.displayMessage(e.getMessage());
             }
         }
     }

@@ -1,4 +1,4 @@
-package edu.bu.tests;
+package edu.bu.tests.view;
 
 import edu.bu.view.TextView;
 import org.junit.jupiter.api.BeforeEach;

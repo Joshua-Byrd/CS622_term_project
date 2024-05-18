@@ -10,4 +10,9 @@ public class LoggerException extends IOException{
     public LoggerException(String message, Throwable cause) {
         super(message, cause);
     }
+
+    @Override
+    public String toString() {
+        return "LoggerException";
+    }
 }

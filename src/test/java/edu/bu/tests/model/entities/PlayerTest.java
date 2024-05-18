@@ -1,4 +1,4 @@
-package edu.bu.tests;
+package edu.bu.tests.model.entities;
 
 import edu.bu.model.entitities.*;
 import edu.bu.model.Room;

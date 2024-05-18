@@ -1,4 +1,4 @@
-package edu.bu.tests;
+package edu.bu.tests.util;
 
 import edu.bu.controller.GameController;
 import edu.bu.util.MessageService;

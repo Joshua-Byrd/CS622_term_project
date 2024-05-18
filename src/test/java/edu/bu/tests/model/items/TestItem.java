@@ -1,4 +1,4 @@
-package edu.bu.tests;
+package edu.bu.tests.model.items;
 
 import edu.bu.model.items.Item;
 

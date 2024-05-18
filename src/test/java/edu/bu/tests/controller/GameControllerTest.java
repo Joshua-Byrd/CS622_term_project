@@ -1,4 +1,4 @@
-package edu.bu.tests;
+package edu.bu.tests.controller;
 
 import edu.bu.controller.GameController;
 import edu.bu.model.Room;
