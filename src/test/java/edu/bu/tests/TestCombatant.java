@@ -5,8 +5,6 @@ import edu.bu.model.entitities.Entity;
 import edu.bu.model.items.Armor;
 import edu.bu.model.items.Weapon;
 
-import java.util.ArrayList;
-
 public class TestCombatant implements Combatant {
     private int health;
     private Weapon equippedWeapon;

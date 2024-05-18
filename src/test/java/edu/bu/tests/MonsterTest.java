@@ -2,15 +2,15 @@ package edu.bu.tests;
 import edu.bu.model.entitities.Monster;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.items.*;
-import edu.bu.model.persistence.*;
 import edu.bu.util.Die;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 public class MonsterTest {
 
@@ -21,12 +21,12 @@ public class MonsterTest {
 
     @BeforeEach
     public void setUp() {
-        mockWeapon = mock(Weapon.class);
-        mockArmor = mock(Armor.class);
-        mockPlayer = mock(Player.class);
+        mockWeapon = Mockito.mock(Weapon.class);
+        mockArmor = Mockito.mock(Armor.class);
+        mockPlayer = Mockito.mock(Player.class);
 
-        when(mockWeapon.getAttackRating()).thenReturn(5);
-        when(mockArmor.getDefenseRating()).thenReturn(5);
+        Mockito.when(mockWeapon.getAttackRating()).thenReturn(5);
+        Mockito.when(mockArmor.getDefenseRating()).thenReturn(5);
 
         monster = new Monster(
                 "TestMonster",
@@ -43,7 +43,7 @@ public class MonsterTest {
 
     @Test
     public void testAttackSuccess() {
-        when(mockPlayer.getDefenseRating()).thenReturn(3);
+        Mockito.when(mockPlayer.getDefenseRating()).thenReturn(3);
 
         // Ensure the Die roll will be high enough to hit the player
         monster.attackDie = new Die(20) {
@@ -55,12 +55,12 @@ public class MonsterTest {
 
         monster.attack(mockPlayer);
 
-        verify(mockPlayer, times(1)).takeDamage(anyInt());
+        Mockito.verify(mockPlayer, Mockito.times(1)).takeDamage(ArgumentMatchers.anyInt());
     }
 
     @Test
     public void testAttackFailure() {
-        when(mockPlayer.getDefenseRating()).thenReturn(10);
+        Mockito.when(mockPlayer.getDefenseRating()).thenReturn(10);
 
         // Ensure the Die roll will be low enough to miss the player
         monster.attackDie = new Die(20) {
@@ -72,7 +72,7 @@ public class MonsterTest {
 
         monster.attack(mockPlayer);
 
-        verify(mockPlayer, never()).takeDamage(anyInt());
+        Mockito.verify(mockPlayer, Mockito.never()).takeDamage(ArgumentMatchers.anyInt());
     }
 
     @Test

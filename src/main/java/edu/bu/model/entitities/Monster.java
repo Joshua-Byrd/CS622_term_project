@@ -4,6 +4,7 @@ import edu.bu.model.items.Armor;
 import edu.bu.model.items.Item;
 import edu.bu.model.items.Weapon;
 import edu.bu.util.Die;
+import edu.bu.util.FacadeUtil;
 import edu.bu.util.MessageService;
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class Monster extends Entity implements Combatant {
     private int defenseRating;
     private boolean isAlive;
     public Die attackDie;
+    private final FacadeUtil facadeUtil = FacadeUtil.getTheInstance();
 
     public Monster(String aName, String aDescription, int aHealth, Weapon aWeapon, Armor aArmor, ArrayList<Item> anInventory) {
         super(aName, aDescription, anInventory);
@@ -28,7 +30,7 @@ public class Monster extends Entity implements Combatant {
         this.attackRating = aWeapon.getAttackRating();
         this.defenseRating = aArmor.getDefenseRating();
         this.isAlive = true;
-        this.attackDie = new Die(20); // Default to a 20-sided die
+        this.attackDie = FacadeUtil.getTheInstance().createDie(20); // Default to a 20-sided die
     }
 
     /**
@@ -42,14 +44,14 @@ public class Monster extends Entity implements Combatant {
     @Override
     public void attack(Entity aTarget) {
         if (aTarget instanceof Player) {
-            MessageService.sendMessage("The monster attacks with its " + getEquippedWeapon().getName() + "!");
+            facadeUtil.sendMessage("The monster attacks with its " + getEquippedWeapon().getName() + "!");
             Player player = (Player)aTarget;
             if (isHit(player)) {
                 int damageTaken = attackDie.rollDie();
                 player.takeDamage(damageTaken);
-                MessageService.sendMessage("You are hit for " + damageTaken + " damage!");
+                facadeUtil.sendMessage("You are hit for " + damageTaken + " damage!");
             } else {
-                MessageService.sendMessage("It misses!");
+                facadeUtil.sendMessage("It misses!");
             }
         }
     }

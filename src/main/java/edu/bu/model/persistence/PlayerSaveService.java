@@ -25,7 +25,7 @@ public class PlayerSaveService {
             // Writing to a file
             mapper.writeValue(new File(SAVE_FILE_PATH), player);
         } catch (IOException e) {
-            throw new PlayerDataException(e.getMessage());
+            throw new PlayerDataException("Error creating save file in PlayerSaveService.save().");
         }
     }
 
@@ -42,7 +42,7 @@ public class PlayerSaveService {
             return mapper.readValue(new File(SAVE_FILE_PATH), Player.class);
         } catch (IOException e) {
             //exception handled in main
-            throw new PlayerDataException(e.getMessage());
+            throw new PlayerDataException("Error loading save file in PlayerSaveService.load().");
         }
     }
 }

@@ -6,6 +6,7 @@ import edu.bu.model.items.Item;
 import edu.bu.model.Room;
 import edu.bu.model.items.Weapon;
 import edu.bu.util.Die;
+import edu.bu.util.FacadeUtil;
 import edu.bu.util.MessageService;
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class Player extends Entity implements Combatant {
     private double goldHeld;
     private int roomsVisited;
     private int monstersDefeated;
+    private final FacadeUtil facadeUtil = FacadeUtil.getTheInstance();
 
     // Default constructor required by Jackson
     public Player() {
@@ -67,12 +69,12 @@ public class Player extends Entity implements Combatant {
             if (isHit(monster)) {
                 int damageTaken = new Die(attackRating).rollDie();
                 monster.takeDamage(damageTaken);
-                MessageService.sendMessage("You hit for " + damageTaken + " damage!");
+                facadeUtil.sendMessage("You hit for " + damageTaken + " damage!");
                 if (!monster.isAlive()) {
-                    MessageService.sendMessage("You have defeated the monster!");
+                    facadeUtil.sendMessage("You have defeated the monster!");
                 }
             } else {
-                MessageService.sendMessage("You miss!");
+                facadeUtil.sendMessage("You miss!");
             }
         }
     }

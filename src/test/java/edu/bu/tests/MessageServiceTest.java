@@ -4,7 +4,6 @@ import edu.bu.controller.GameController;
 import edu.bu.util.MessageService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -18,7 +17,7 @@ public class MessageServiceTest {
 
     @BeforeEach
     public void setUp() {
-        mockGameController = Mockito.mock(GameController.class);
+        mockGameController = mock(GameController.class);
         MessageService.registerController(mockGameController);
     }
 

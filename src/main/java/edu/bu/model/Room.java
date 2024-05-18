@@ -28,7 +28,6 @@ public class Room {
         this.name = aName;
         this.description = aDescription;
         this.items = someItems;
-
     }
 
     //Getter and Setter methods

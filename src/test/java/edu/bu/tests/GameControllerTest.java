@@ -1,7 +1,5 @@
 package edu.bu.tests;
 
-import static org.mockito.Mockito.*;
-
 import edu.bu.controller.GameController;
 import edu.bu.model.Room;
 import edu.bu.model.entitities.Player;
@@ -10,6 +8,7 @@ import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.view.TextView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 public class GameControllerTest {
     private GameController gameController;
@@ -21,11 +20,11 @@ public class GameControllerTest {
 
     @BeforeEach
     void setUp() {
-        viewMock = mock(TextView.class);
-        playerMock = mock(Player.class);
-        roomMock = mock(Room.class);
-        pssMock = mock(PlayerSaveService.class);
-        logMock = mock(GameLogger.class);
+        viewMock = Mockito.mock(TextView.class);
+        playerMock = Mockito.mock(Player.class);
+        roomMock = Mockito.mock(Room.class);
+        pssMock = Mockito.mock(PlayerSaveService.class);
+        logMock = Mockito.mock(GameLogger.class);
         gameController = new GameController(viewMock, playerMock, roomMock, pssMock, logMock);
     }
 
@@ -33,7 +32,7 @@ public class GameControllerTest {
     void testDisplayMessage() {
         String testMessage = "Test message";
         gameController.displayMessage(testMessage);
-        verify(viewMock).displayMessage(testMessage);
+        Mockito.verify(viewMock).displayMessage(testMessage);
     }
 
 }

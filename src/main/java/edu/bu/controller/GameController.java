@@ -61,7 +61,7 @@ public class GameController {
      *
      * @param command The command string input by the user.
      */
-    private void processCommand(String command) {
+    void processCommand(String command) {
         if ("exit".equalsIgnoreCase(command)) {
             try {
                 playerSaveService.save(player);

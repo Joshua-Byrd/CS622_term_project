@@ -3,6 +3,7 @@ package edu.bu.model.entitities;
 import edu.bu.model.items.Armor;
 import edu.bu.model.items.Weapon;
 import edu.bu.util.Die;
+import edu.bu.util.FacadeUtil;
 
 import java.util.Random;
 
@@ -41,7 +42,7 @@ public interface Combatant {
      * @return true if the attack is successful, false otherwise.
      */
     default boolean isHit(Combatant aDefender) {
-        Die d20 = new Die(20);
+        Die d20 = FacadeUtil.getTheInstance().createDie(20);
         Random rand = new Random();
         int attackRoll = d20.rollDie(); // Simulates a D20 roll
         int attackValue = attackRoll + this.getAttackRating();

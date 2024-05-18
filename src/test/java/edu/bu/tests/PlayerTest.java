@@ -3,10 +3,9 @@ package edu.bu.tests;
 import edu.bu.model.entitities.*;
 import edu.bu.model.Room;
 import edu.bu.model.items.*;
-import edu.bu.model.persistence.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.mockito.ArgumentMatchers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +52,7 @@ public class PlayerTest {
 
         player.attack(mockMonster);
 
-        verify(mockMonster, atLeastOnce()).takeDamage(anyInt());
+        verify(mockMonster, atLeastOnce()).takeDamage(ArgumentMatchers.anyInt());
     }
 
     @Test
@@ -62,7 +61,7 @@ public class PlayerTest {
 
         player.attack(mockMonster);
 
-        verify(mockMonster, never()).takeDamage(anyInt());
+        verify(mockMonster, never()).takeDamage(ArgumentMatchers.anyInt());
     }
 
     @Test

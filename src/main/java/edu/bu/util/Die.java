@@ -15,6 +15,7 @@ public class Die {
         if (faces < 1) {
             throw new IllegalArgumentException("Die faces must be a positive number.");
         }
+
         this.faces = faces;
     }
 

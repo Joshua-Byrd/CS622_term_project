@@ -1,29 +1,41 @@
 package edu.bu;
 
+import edu.bu.controller.FacadeController;
 import edu.bu.controller.GameController;
 import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
-import edu.bu.model.Room;
+import edu.bu.model.FacadeModel;
+import edu.bu.model.entitities.FacadeEntities;
 import edu.bu.model.entitities.Player;
-import edu.bu.model.items.Armor;
+import edu.bu.model.items.FacadeItems;
 import edu.bu.model.items.Item;
-import edu.bu.model.items.Weapon;
+import edu.bu.model.persistence.FacadePersistence;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
+import edu.bu.view.FacadeView;
 import edu.bu.view.TextView;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Main is the entry point to the application. It instantiates the Player character, the Room in which the player
- * begins, and the TextView (eventually the DatabaseManager, as well). Then instantiates the GameController with
- * these objects.
+ * Main is the entry point to the application.
  */
 public class Main {
+    /**
+     * The main method instantiates all necessary objects, prints a main menu and starts the GameController
+     * appropriately based on the user choice.
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
+        //Get instances of facade objects
+        TextView view = FacadeView.getTheInstance().createTextView();
+        PlayerSaveService playerSaveService = FacadePersistence.getTheInstance().createPlayerSaveService();
+        FacadeModel facadeModel = FacadeModel.getTheInstance();
+        FacadeItems facadeItems = FacadeItems.getTheInstance();
+        FacadeEntities facadeEntities = FacadeEntities.getTheInstance();
+        FacadeController facadeController = FacadeController.getTheInstance();
+
         Scanner scanner = new Scanner(System.in);
-        TextView view = new TextView();
-        PlayerSaveService playerSaveService = new PlayerSaveService();
         GameLogger logger = null;
         Player player = null;
         String input;
@@ -49,13 +61,13 @@ public class Main {
             case 1:
                 System.out.print("Enter your name: ");
                 String playerName = scanner.nextLine();
-                player = new Player(
+                player = FacadeEntities.getTheInstance().createPlayer(
                         playerName,
                         "A brave adventurer",
                         10,
-                        new Room("Starting Room", "You are standing in the test room.", new ArrayList<Item>()),
-                        new Weapon("dagger", "A small dagger", 1.2, 4),
-                        new Armor("Leather armor", "a cuirass made of leather", 4.5, 4),
+                        facadeModel.createRoom("Starting Room", "You are standing in the test room.", new ArrayList<Item>()),
+                        facadeItems.createWeapon("dagger", "A small dagger", 1.2, 4),
+                        facadeItems.createArmor("Leather armor", "a cuirass made of leather", 4.5, 4),
                         new ArrayList<Item>(),
                         0.0,
                         1,
@@ -70,13 +82,13 @@ public class Main {
                     System.out.println("Starting a new game...");
                     System.out.print("Enter your name: ");
                     playerName = scanner.nextLine();
-                    player = new Player(
+                    player =  facadeEntities.createPlayer(
                             playerName,
                             "A brave adventurer",
                             10,
-                            new Room("Starting Room", "You are standing in the test room.", new ArrayList<Item>()),
-                            new Weapon("dagger", "A small dagger", 1.2, 4),
-                            new Armor("Leather armor", "a cuirass made of leather", 4.5, 4),
+                            facadeModel.createRoom("Starting Room", "You are standing in the test room.", new ArrayList<Item>()),
+                            facadeItems.createWeapon("dagger", "A small dagger", 1.2, 4),
+                            facadeItems.createArmor("Leather armor", "a cuirass made of leather", 4.5, 4),
                             new ArrayList<Item>(),
                             0.0,
                             1,
@@ -92,14 +104,15 @@ public class Main {
 
         if (player != null) {
             try {
-                logger = GameLogger.getInstance(player.getName());
+                logger = FacadePersistence.getTheInstance().createGameLogger(player.getName());
             } catch (LoggerException e) {
                 view.displayMessage("Error instantiating logger: " +  e.getMessage());
             }
 
-            GameController gameController = new GameController(view, player, player.getCurrentRoom(),
-                    playerSaveService, logger);
+            GameController gameController = facadeController.createGameController(view, player,
+                    player.getCurrentRoom(), playerSaveService, logger);
             gameController.startGame();
         }
     }
 }
+

@@ -27,7 +27,7 @@ public class GameLogger {
             // Set up PrintWriter to append to the log file.
             this.printWriter = new PrintWriter(new FileWriter(LOG_FILE_PATH, true), true);
         } catch (IOException e) {
-            throw new LoggerException(e.getMessage());
+            throw new LoggerException("Error creating PrintWriter or File in GameLogger.");
         }
     }
 
@@ -59,7 +59,8 @@ public class GameLogger {
 
     /**
      * INTENT: Allows a player to view their logfile.
-     * PRECONDITION: A player must be instantiated.
+     * PRECONDITION 1: A GameLogger must be instantiated
+     * PRECONDITION 2: A log file for the current player must exist.
      * POSTCONDITION: The contents of the current user's logfile are printed to the screen.
      * @throws LoggerException
      */
@@ -70,9 +71,10 @@ public class GameLogger {
             while(logFile.hasNext()) {
                 System.out.println(logFile.next());
             }
+
             logFile.close();
         } catch(IOException e) {
-            throw new LoggerException("Could not read from log file.");
+            throw new LoggerException("Error reading from log file in GameLogger.printLog().");
         }
     }
 
