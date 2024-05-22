@@ -3,7 +3,6 @@ package edu.bu.model;
 import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 
-import java.util.ArrayList;
 
 /**
  * Represents a location that a player can travel to and occupy, possibly containing items
