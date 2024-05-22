@@ -7,7 +7,10 @@ import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import edu.bu.model.items.Weapon;
 
-
+/**
+ * RoomManager is responsible for initializing and managing the rooms in the game.
+ * It sets up the initial room configurations and links rooms together.
+ */
 public class RoomManager {
     private Room startingRoom;
 
@@ -15,6 +18,11 @@ public class RoomManager {
         initializeRooms();
     }
 
+    /**
+     * INTENT: Initializes the rooms and their respective inventories, linking them together.
+     * PRECONDITION: None.
+     * POSTCONDITION: Rooms are created, items are added to their inventories, and rooms are linked.
+     */
     private void initializeRooms() {
         // Create items
         Weapon dagger = new Weapon("dagger", "A small dagger", 1.2, 4, 10.0);
@@ -37,6 +45,13 @@ public class RoomManager {
         anotherRoom.setWest(startingRoom);
     }
 
+    /**
+     * INTENT: Returns the starting room of the game.
+     * PRECONDITION: The starting room must have been initialized.
+     * POSTCONDITION: The starting room is returned.
+     *
+     * @return The starting room.
+     */
     public Room getStartingRoom() {
         return startingRoom;
     }
