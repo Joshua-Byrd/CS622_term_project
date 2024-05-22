@@ -16,6 +16,6 @@ public class PlayerDataException extends IOException {
 
     @Override
     public String toString() {
-        return "PlayerDataException";
+        return "PlayerDataException: " + getMessage() + (getCause() != null ? ", caused by " + getCause().toString() : "");
     }
 }

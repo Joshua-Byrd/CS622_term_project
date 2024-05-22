@@ -102,4 +102,25 @@ public class FacadeItems {
         inventory.setMaximumWeight(maximumWeight);
     }
 
+    // Container Methods
+    public Container createContainer(String name, String description, double weight, boolean isOpen, Inventory<Item> items) {
+        return new Container(name, description, weight, isOpen, items);
+    }
+
+    public boolean isContainerOpen(Container container) {
+        return container.isOpen();
+    }
+
+    public void setContainerOpen(Container container, boolean isOpen) {
+        container.setOpen(isOpen);
+    }
+
+    public Inventory<Item> getContainerItems(Container container) {
+        return container.getItems();
+    }
+
+    public void setContainerItems(Container container, Inventory<Item> items) {
+        container.setItems(items);
+    }
+
 }

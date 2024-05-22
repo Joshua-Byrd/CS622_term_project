@@ -1,2 +1,0 @@
-[2024/05/21 12:15:47] test2 has begun their journey.
-[2024/05/21 12:16:22] test2 quit the game.

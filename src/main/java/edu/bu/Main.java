@@ -2,6 +2,7 @@ package edu.bu;
 
 import edu.bu.controller.FacadeController;
 import edu.bu.controller.GameController;
+import edu.bu.controller.RoomManager;
 import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.FacadeModel;
@@ -35,6 +36,7 @@ public class Main {
         FacadeItems facadeItems = FacadeItems.getTheInstance();
         FacadeEntities facadeEntities = FacadeEntities.getTheInstance();
         FacadeController facadeController = FacadeController.getTheInstance();
+        RoomManager roomManager = FacadeController.getTheInstance().createRoomManager();
 
         Scanner scanner = new Scanner(System.in);
         GameLogger logger = null;

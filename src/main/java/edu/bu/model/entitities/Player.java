@@ -29,6 +29,11 @@ public class Player extends Entity implements Combatant {
     private int monstersDefeated;
     private final FacadeUtil facadeUtil = FacadeUtil.getTheInstance();
 
+    // Default constructor required by Jackson
+    public Player() {
+        super("", "", new Inventory<>(50));
+    }
+
     @JsonCreator
     public Player(@JsonProperty("name") String aName,
                   @JsonProperty("description") String aDescription,
@@ -109,6 +114,48 @@ public class Player extends Entity implements Combatant {
         } else {
             throw new IllegalArgumentException("Only Tradeable items can be added to the player's inventory");
         }
+    }
+
+    /**
+     * INTENT: To pick up an item from the specified room's inventory and add it to the player's inventory.
+     * PRECONDITION: The item must be present in the room's inventory, and the player must have enough carrying capacity.
+     * POSTCONDITION: The item is removed from the room's inventory and added to the player's inventory.
+     *
+     * @param itemName The name of the item to pick up.
+     * @throws IllegalArgumentException if the item is not found in the room's inventory or if the player cannot carry it.
+     */
+    public void pickUpItem(String itemName) throws IllegalArgumentException {
+        Item item = currentRoom.getItems().findItemByName(itemName);
+
+        if (item == null) {
+            throw new IllegalArgumentException("Item not found in the room's inventory.");
+        }
+
+        if (!this.getInventory().canAddItem(item)) {
+            throw new IllegalArgumentException("Cannot carry this item. Exceeds carrying capacity.");
+        }
+
+        currentRoom.getItems().removeItem(item);
+        this.getInventory().addItem(item);
+    }
+
+    /**
+     * INTENT: To drop an item from the player's inventory into the current room's inventory.
+     * PRECONDITION: The item must be present in the player's inventory.
+     * POSTCONDITION: The item is removed from the player's inventory and added to the room's inventory.
+     *
+     * @param itemName The name of the item to drop.
+     * @throws IllegalArgumentException if the item is not found in the player's inventory.
+     */
+    public void dropItem(String itemName) throws IllegalArgumentException {
+        Item item = this.getInventory().findItemByName(itemName);
+
+        if (item == null) {
+            throw new IllegalArgumentException("Item not found in the player's inventory.");
+        }
+
+        this.getInventory().removeItem(item);
+        currentRoom.getItems().addItem(item);
     }
 
     //Getter and Setter methods

@@ -71,7 +71,7 @@ public class GameController {
                 System.exit(0);
             } catch (PlayerDataException e) {
                 view.displayMessage(e.getMessage());
-
+                e.printStackTrace();
             }
         } else if ("save".equalsIgnoreCase(command)) {
             try {
@@ -79,6 +79,7 @@ public class GameController {
                 view.displayMessage("Character saved!\n");
             } catch (PlayerDataException e){
                 view.displayMessage(e.getMessage());
+                e.printStackTrace();
             }
         } else if ("print log".equalsIgnoreCase(command)) {
             try {
@@ -86,6 +87,7 @@ public class GameController {
                 logger.printLog();
             } catch (LoggerException e) {
                 view.displayMessage(e.getMessage());
+                e.printStackTrace();
             }
         }
     }

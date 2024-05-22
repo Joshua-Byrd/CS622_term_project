@@ -26,7 +26,7 @@ public class PlayerSaveService {
             // Writing to a file
             mapper.writeValue(new File(SAVE_FILE_PATH), aPlayer);
         } catch (IOException e) {
-            throw new PlayerDataException("PlayerDataException: Error creating save file in PlayerSaveService.save().");
+            throw new PlayerDataException("PlayerDataException: Error creating save file in PlayerSaveService.save().", e);
         }
     }
 

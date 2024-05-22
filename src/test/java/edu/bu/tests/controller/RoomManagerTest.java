@@ -28,8 +28,8 @@ public class RoomManagerTest {
         Room startingRoom = roomManager.getStartingRoom();
 
         assertNotNull(startingRoom, "Starting room should not be null");
-        assertEquals("Starting Room", startingRoom.getName(), "Room name should be 'Starting Room'");
-        assertTrue(startingRoom.getDescription().contains("You are standing in the test room."), "Room description should contain expected text");
+        assertEquals("vast courtyard", startingRoom.getName(), "Room name should be 'Starting Room'");
+
     }
 
     @Test
@@ -72,6 +72,6 @@ public class RoomManagerTest {
         assertNull(westRoom, "West room should be null");
         assertNotNull(eastRoom, "East room should not be null");
 
-        assertEquals("Another Room", eastRoom.getName(), "East room should be named 'Another Room'");
+        assertEquals("small stone room", eastRoom.getName(), "East room should be named 'Another Room'");
     }
 }

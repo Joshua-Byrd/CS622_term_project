@@ -102,4 +102,28 @@ public class PlayerSaveServiceTest {
             playerSaveService.load();
         }, "Loading without a save file should throw PlayerDataException.");
     }
+
+
+    @Test
+    public void testSerializationDeserialization() {
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            Player player = new Player("Test", "Test Description", 10, new Room(), new Weapon(), new Armor(), new Inventory<>(50), 0.0, 1, 0);
+
+            // Serialize to JSON
+            String json = mapper.writeValueAsString(player);
+            System.out.println("Serialized JSON: " + json);
+
+            // Deserialize from JSON
+            Player deserializedPlayer = mapper.readValue(json, Player.class);
+            System.out.println("Deserialized Player: " + deserializedPlayer.getName());
+
+            assertEquals(player.getName(), deserializedPlayer.getName());
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("Exception during serialization/deserialization: " + e.getMessage());
+        }
+    }
+
 }

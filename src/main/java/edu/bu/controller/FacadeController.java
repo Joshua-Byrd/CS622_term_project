@@ -99,8 +99,9 @@ public class FacadeController {
      * PRECONDITION: None.
      * POSTCONDITION: The RoomManager is initialized within the facade.
      */
-    public void createRoomManager() {
+    public RoomManager createRoomManager() {
         this.roomManager = new RoomManager();
+        return roomManager;
     }
 
     /**

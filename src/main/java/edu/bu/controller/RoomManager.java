@@ -1,18 +1,20 @@
 package edu.bu.controller;
 
 
+import edu.bu.model.FacadeModel;
 import edu.bu.model.Room;
-import edu.bu.model.items.Container;
-import edu.bu.model.items.Inventory;
-import edu.bu.model.items.Item;
-import edu.bu.model.items.Weapon;
+import edu.bu.model.items.*;
+
 
 /**
  * RoomManager is responsible for initializing and managing the rooms in the game.
  * It sets up the initial room configurations and links rooms together.
  */
 public class RoomManager {
-    private Room startingRoom;
+
+    private Room courtyard;
+    private final FacadeItems facadeItems = FacadeItems.getTheInstance();
+    private final FacadeModel facadeModel = FacadeModel.getTheInstance();
 
     public RoomManager() {
         initializeRooms();
@@ -24,25 +26,29 @@ public class RoomManager {
      * POSTCONDITION: Rooms are created, items are added to their inventories, and rooms are linked.
      */
     private void initializeRooms() {
-        // Create items
-        Weapon dagger = new Weapon("dagger", "A small dagger", 1.2, 4, 10.0);
-        Container chest = new Container("Wooden Chest", "An old wooden chest", 5.0, false, new Inventory<>(100));
+        // Create items using FacadeItems
+        Weapon dagger = facadeItems.createWeapon("dagger", "a small dagger", 1.2, 4, 10.0);
+        Container chest = facadeItems.createContainer("wooden chest", "an old wooden chest", 5.0, false, facadeItems.createInventory(100));
 
         // Create an inventory for the starting room and add items to it
-        Inventory<Item> startingRoomInventory = new Inventory<>(50);
-        startingRoomInventory.addItem(dagger);
-        startingRoomInventory.addItem(chest);
+        Inventory<Item> startingRoomInventory = facadeItems.createInventory(1000);
+        facadeItems.addItem(startingRoomInventory, dagger);
+        facadeItems.addItem(startingRoomInventory, chest);
 
-        // Create the starting room
-        startingRoom = new Room("Starting Room", "You are standing in the test room.", startingRoomInventory);
+        // Create the starting room using FacadeModel
+        courtyard = facadeModel.createRoom("vast courtyard",
+                "To the west you see the winding road that" +
+                        " led you here. To the north and south, impenetrable forest stretches into the distance. To the east lies" +
+                        " the entrance to the labyrinth known as the Desolate Depths.",
+                startingRoomInventory);
 
-        // Create another room with its own inventory
-        Inventory<Item> anotherRoomInventory = new Inventory<>(50);
-        Room anotherRoom = new Room("Another Room", "You are in another room.", anotherRoomInventory);
+        // Create another room with its own inventory using FacadeModel
+        Inventory<Item> anotherRoomInventory = facadeItems.createInventory(1000);
+        Room smallStoneRoom = facadeModel.createRoom("small stone room", "The walls are moss-covered and slick with " +
+                "moisture. To the west is the door you came through. You can see no other openings.", anotherRoomInventory);
 
-        // Link rooms
-        startingRoom.setEast(anotherRoom);
-        anotherRoom.setWest(startingRoom);
+        courtyard.setEast(smallStoneRoom);
+        smallStoneRoom.setWest(courtyard);
     }
 
     /**
@@ -53,7 +59,9 @@ public class RoomManager {
      * @return The starting room.
      */
     public Room getStartingRoom() {
-        return startingRoom;
+        return courtyard;
     }
 }
+
+
 

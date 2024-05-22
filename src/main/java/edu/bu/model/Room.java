@@ -1,5 +1,6 @@
 package edu.bu.model;
 
+import com.fasterxml.jackson.annotation.*;
 import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 
@@ -8,23 +9,38 @@ import edu.bu.model.items.Item;
  * Represents a location that a player can travel to and occupy, possibly containing items
  */
 public class Room {
-
+    /*
+    name should be a singular noun (possibly with adjectives) such as "courtyard" or "large cave", so
+    that it works with the introduction when the player enters. Example: "You are in a courtyard | large cave"
+     */
     private String name;
+    /*
+    description should be a grammatically correct description of the surroundings beginning and ending
+    with a full sentence so that it can be printed immediately after the name or when a player examines
+    the room. Example: "(name:)You are in a large cave. (description:) The cave is brightly lit by numerous candles."
+     */
     private String description;
     private Inventory<Item> items;
+    @JsonIgnore
     private Room north;
+    @JsonIgnore
     private Room south;
+    @JsonIgnore
     private Room east;
+    @JsonIgnore
     private Room west;
 
-    //default constructor required by Jackson
+    // Default constructor required by Jackson
     public Room(){
         this.name = "";
         this.description = "";
         this.items = new Inventory<>(50);
     }
 
-    public Room(String aName, String aDescription, Inventory<Item> someItems) {
+    @JsonCreator
+    public Room(@JsonProperty("name") String aName,
+                @JsonProperty("description") String aDescription,
+                @JsonProperty("items") Inventory<Item> someItems) {
         this.name = aName;
         this.description = aDescription;
         this.items = someItems;
@@ -47,6 +63,7 @@ public class Room {
         this.description = aDescription;
     }
 
+
     public Room getNorth() {
         return north;
     }
@@ -54,6 +71,7 @@ public class Room {
     public void setNorth(Room north) {
         this.north = north;
     }
+
 
     public Room getSouth() {
         return south;
@@ -63,6 +81,7 @@ public class Room {
         this.south = south;
     }
 
+
     public Room getEast() {
         return east;
     }
@@ -70,6 +89,7 @@ public class Room {
     public void setEast(Room east) {
         this.east = east;
     }
+
 
     public Room getWest() {
         return west;
