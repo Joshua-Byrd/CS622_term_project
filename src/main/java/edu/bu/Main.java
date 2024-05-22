@@ -66,10 +66,7 @@ public class Main {
                         playerName,
                         "A brave adventurer",
                         10,
-                        facadeModel.createRoom(
-                                "Starting Room",
-                                "You are standing in the test room.",
-                                facadeItems.createInventory(50)),
+                        facadeController.getStartingRoom(),
                         facadeItems.createWeapon(
                                 "dagger",
                                 "A small dagger",
@@ -101,10 +98,7 @@ public class Main {
                             playerName,
                             "A brave adventurer",
                             10,
-                            facadeModel.createRoom(
-                                    "Starting Room",
-                                    "You are standing in the test room.",
-                                    facadeItems.createInventory(50)),
+                            facadeController.getStartingRoom(),
                             facadeItems.createWeapon(
                                     "dagger",
                                     "A small dagger",
