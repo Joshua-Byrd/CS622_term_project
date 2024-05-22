@@ -1,5 +1,6 @@
 package edu.bu.model;
 
+import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ public class Room {
 
     private String name;
     private String description;
-    private ArrayList<Item> items;
+    private Inventory<Item> items;
     private Room north;
     private Room south;
     private Room east;
@@ -21,10 +22,10 @@ public class Room {
     public Room(){
         this.name = "";
         this.description = "";
-        this.items = new ArrayList<>();
+        this.items = new Inventory<>(50);
     }
 
-    public Room(String aName, String aDescription, ArrayList<Item> someItems) {
+    public Room(String aName, String aDescription, Inventory<Item> someItems) {
         this.name = aName;
         this.description = aDescription;
         this.items = someItems;
@@ -79,11 +80,11 @@ public class Room {
         this.west = west;
     }
 
-    public ArrayList<Item> getItems() {
+    public Inventory<Item> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<Item> items) {
+    public void setItems(Inventory<Item> items) {
         this.items = items;
     }
 }

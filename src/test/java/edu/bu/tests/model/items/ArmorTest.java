@@ -12,7 +12,7 @@ public class ArmorTest {
 
     @BeforeEach
     public void setUp() {
-        armor = new Armor("Shield", "A sturdy shield", 5.0, 10);
+        armor = new Armor("Shield", "A sturdy shield", 5.0, 10, 25.0);
     }
 
     @Test

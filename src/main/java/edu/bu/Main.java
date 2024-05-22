@@ -8,6 +8,7 @@ import edu.bu.model.FacadeModel;
 import edu.bu.model.entitities.FacadeEntities;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.items.FacadeItems;
+import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import edu.bu.model.persistence.FacadePersistence;
 import edu.bu.model.persistence.GameLogger;
@@ -65,10 +66,23 @@ public class Main {
                         playerName,
                         "A brave adventurer",
                         10,
-                        facadeModel.createRoom("Starting Room", "You are standing in the test room.", new ArrayList<Item>()),
-                        facadeItems.createWeapon("dagger", "A small dagger", 1.2, 4),
-                        facadeItems.createArmor("Leather armor", "a cuirass made of leather", 4.5, 4),
-                        new ArrayList<Item>(),
+                        facadeModel.createRoom(
+                                "Starting Room",
+                                "You are standing in the test room.",
+                                facadeItems.createInventory(50)),
+                        facadeItems.createWeapon(
+                                "dagger",
+                                "A small dagger",
+                                1.2,
+                                4,
+                                15.0),
+                        facadeItems.createArmor(
+                                "leather armor",
+                                "a cuirass made of leather",
+                                4.5,
+                                4,
+                                20.0),
+                        facadeItems.createInventory(50),
                         0.0,
                         1,
                         0
@@ -87,10 +101,23 @@ public class Main {
                             playerName,
                             "A brave adventurer",
                             10,
-                            facadeModel.createRoom("Starting Room", "You are standing in the test room.", new ArrayList<Item>()),
-                            facadeItems.createWeapon("dagger", "A small dagger", 1.2, 4),
-                            facadeItems.createArmor("Leather armor", "a cuirass made of leather", 4.5, 4),
-                            new ArrayList<Item>(),
+                            facadeModel.createRoom(
+                                    "Starting Room",
+                                    "You are standing in the test room.",
+                                    facadeItems.createInventory(50)),
+                            facadeItems.createWeapon(
+                                    "dagger",
+                                    "A small dagger",
+                                    1.2,
+                                    4,
+                                    15.0),
+                            facadeItems.createArmor(
+                                    "Leather armor",
+                                    "a cuirass made of leather",
+                                    4.5,
+                                    4,
+                                    20.0),
+                            facadeItems.createInventory(50),
                             0.0,
                             1,
                             0

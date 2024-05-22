@@ -2,6 +2,7 @@ package edu.bu.model.entitities;
 
 import edu.bu.model.Room;
 import edu.bu.model.items.Armor;
+import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import edu.bu.model.items.Weapon;
 
@@ -35,7 +36,7 @@ public class FacadeEntities {
 
     // Player Methods
     public Player createPlayer(String name, String description, int health, Room currentRoom,
-                               Weapon weapon, Armor armor, ArrayList<Item> inventory,
+                               Weapon weapon, Armor armor, Inventory<Item> inventory,
                                double goldHeld, int roomsVisited, int monstersDefeated) {
         return new Player(name, description, health, currentRoom, weapon, armor, inventory, goldHeld, roomsVisited, monstersDefeated);
     }
@@ -60,9 +61,6 @@ public class FacadeEntities {
         return player.getCurrentWeight();
     }
 
-    public void setPlayerCurrentWeight(Player player, double weight) {
-        player.setCurrentWeight(weight);
-    }
 
     public Weapon getPlayerEquippedWeapon(Player player) {
         return player.getEquippedWeapon();
@@ -129,7 +127,8 @@ public class FacadeEntities {
     }
 
     // Monster Methods
-    public Monster createMonster(String name, String description, int health, Weapon weapon, Armor armor, ArrayList<Item> inventory) {
+    public Monster createMonster(String name, String description, int health, Weapon weapon, Armor armor,
+                                 Inventory<Item> inventory) {
         return new Monster(name, description, health, weapon, armor, inventory);
     }
 
@@ -190,7 +189,7 @@ public class FacadeEntities {
     }
 
     // Merchant Methods
-    public Merchant createMerchant(String name, String description, ArrayList<Item> inventory) {
+    public Merchant createMerchant(String name, String description, Inventory<Item> inventory) {
         return new Merchant(name, description, inventory);
     }
 

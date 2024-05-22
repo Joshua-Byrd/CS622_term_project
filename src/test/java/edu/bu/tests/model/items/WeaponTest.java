@@ -12,7 +12,7 @@ public class WeaponTest {
 
     @BeforeEach
     public void setUp() {
-        weapon = new Weapon("Sword", "A sharp sword", 3.0, 10);
+        weapon = new Weapon("Sword", "A sharp sword", 3.0, 10, 25.0);
     }
 
     @Test

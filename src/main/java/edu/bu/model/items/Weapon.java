@@ -3,9 +3,10 @@ package edu.bu.model.items;
 /**
  * Represents a weapon that can be held or equipped.
  */
-public class Weapon extends Item {
+public class Weapon extends Item implements Tradeable{
 
     private int attackRating;
+    private double price;
 
     //default constructor required by Jackson
     public Weapon(){
@@ -13,9 +14,10 @@ public class Weapon extends Item {
         attackRating = 0;
     }
 
-    public Weapon(String aName, String aDescription, double aWeight, int anAttackRating) {
+    public Weapon(String aName, String aDescription, double aWeight, int anAttackRating, double price) {
         super(aName, aDescription, aWeight);
         this.attackRating = anAttackRating;
+        this.price = price;
     }
 
     //Getter and Setter Methods
@@ -25,5 +27,14 @@ public class Weapon extends Item {
 
     public void setAttackRating(int anAttackRating) {
         this.attackRating = anAttackRating;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

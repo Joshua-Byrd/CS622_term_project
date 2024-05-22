@@ -1,6 +1,7 @@
 package edu.bu.model.entitities;
 
 import edu.bu.controller.GameController;
+import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import edu.bu.util.MessageService;
 import java.lang.reflect.Array;
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 public abstract class Entity {
     private String name;
     private String description;
-    private ArrayList<Item> inventory;
+    private Inventory<Item> inventory;
 
-    public Entity(String aName, String aDescription, ArrayList<Item> anInventory) {
+    public Entity(String aName, String aDescription, Inventory<Item> anInventory) {
         this.name = aName;
         this.description = aDescription;
         this.inventory = anInventory;
@@ -37,11 +38,11 @@ public abstract class Entity {
         this.description = aDescription;
     }
 
-    public ArrayList<Item> getInventory() {
+    public Inventory<Item> getInventory() {
         return inventory;
     }
 
-    public void setInventory(ArrayList<Item> anInventory) {
+    public void setInventory(Inventory<Item> anInventory) {
         this.inventory = anInventory;
     }
 

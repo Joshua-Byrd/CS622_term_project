@@ -1,6 +1,7 @@
 package edu.bu.model.entitities;
 
 import edu.bu.model.items.Armor;
+import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import edu.bu.model.items.Weapon;
 import edu.bu.util.Die;
@@ -22,7 +23,7 @@ public class Monster extends Entity implements Combatant {
     public Die attackDie;
     private final FacadeUtil facadeUtil = FacadeUtil.getTheInstance();
 
-    public Monster(String aName, String aDescription, int aHealth, Weapon aWeapon, Armor aArmor, ArrayList<Item> anInventory) {
+    public Monster(String aName, String aDescription, int aHealth, Weapon aWeapon, Armor aArmor, Inventory<Item> anInventory) {
         super(aName, aDescription, anInventory);
         this.health = aHealth;
         this.equippedWeapon = aWeapon;

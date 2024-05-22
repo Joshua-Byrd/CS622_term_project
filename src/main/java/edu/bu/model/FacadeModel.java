@@ -2,6 +2,7 @@ package edu.bu.model;
 
 
 
+import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class FacadeModel {
      * @param items       The items in the room.
      * @return A new instance of Room.
      */
-    public Room createRoom(String name, String description, ArrayList<Item> items) {
+    public Room createRoom(String name, String description, Inventory<Item> items) {
         return new Room(name, description, items);
     }
 
@@ -106,11 +107,11 @@ public class FacadeModel {
         room.setWest(west);
     }
 
-    public ArrayList<Item> getRoomItems(Room room) {
+    public Inventory<Item> getRoomItems(Room room) {
         return room.getItems();
     }
 
-    public void setRoomItems(Room room, ArrayList<Item> items) {
+    public void setRoomItems(Room room, Inventory<Item> items) {
         room.setItems(items);
     }
 }

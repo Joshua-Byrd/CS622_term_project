@@ -1,5 +1,6 @@
 package edu.bu.model.entitities;
 
+import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Merchant extends Entity {
 
-    public Merchant(String aName, String aDescription, ArrayList<Item> anInventory) {
+    public Merchant(String aName, String aDescription, Inventory<Item> anInventory) {
         super(aName, aDescription, anInventory);
     }
 

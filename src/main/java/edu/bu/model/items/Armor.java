@@ -3,8 +3,9 @@ package edu.bu.model.items;
 /**
  * Represents an armor item that can be held or equipped by a character or monster
  */
-public class Armor extends Item {
+public class Armor extends Item implements Tradeable{
 
+    private double price;
     private int defenseRating;
 
     //default constructor required by Jackson
@@ -13,9 +14,10 @@ public class Armor extends Item {
         defenseRating = 0;
     }
 
-    public Armor(String aName, String aDescription, double aWeight, int aDefenseRating) {
+    public Armor(String aName, String aDescription, double aWeight, int aDefenseRating, double price) {
         super(aName, aDescription, aWeight);
         this.defenseRating = aDefenseRating;
+        this.price = price;
     }
 
     //Getter and Setter Methods
@@ -25,6 +27,15 @@ public class Armor extends Item {
 
     public void setDefenseRating(int aDefenseRating) {
         this.defenseRating = aDefenseRating;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
 

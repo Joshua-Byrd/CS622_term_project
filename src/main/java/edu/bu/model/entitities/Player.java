@@ -1,10 +1,11 @@
 package edu.bu.model.entitities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.bu.controller.GameController;
-import edu.bu.model.items.Armor;
-import edu.bu.model.items.Item;
+import edu.bu.model.items.*;
 import edu.bu.model.Room;
-import edu.bu.model.items.Weapon;
 import edu.bu.util.Die;
 import edu.bu.util.FacadeUtil;
 import edu.bu.util.MessageService;
@@ -18,26 +19,27 @@ import java.util.ArrayList;
 public class Player extends Entity implements Combatant {
     private int health;
     private Room currentRoom;
-    private double carryingCapacity = 50; // Arbitrary number to be tweaked later
-    private double currentWeight;
     private Weapon equippedWeapon;
     private Armor equippedArmor;
     private int attackRating;
     private int defenseRating;
-    private ArrayList<Item> inventory;
+    private Inventory<Item> inventory;
     private double goldHeld;
     private int roomsVisited;
     private int monstersDefeated;
     private final FacadeUtil facadeUtil = FacadeUtil.getTheInstance();
 
-    // Default constructor required by Jackson
-    public Player() {
-        super("", "", new ArrayList<>());
-    }
-
-    public Player(String aName, String aDescription, int aHealth, Room aCurrentRoom,
-                  Weapon aWeapon, Armor aArmor, ArrayList<Item> anInventory, double someGold, int someRooms,
-                  int someMonsters) {
+    @JsonCreator
+    public Player(@JsonProperty("name") String aName,
+                  @JsonProperty("description") String aDescription,
+                  @JsonProperty("health") int aHealth,
+                  @JsonProperty("currentRoom") Room aCurrentRoom,
+                  @JsonProperty("equippedWeapon") Weapon aWeapon,
+                  @JsonProperty("equippedArmor") Armor aArmor,
+                  @JsonProperty("inventory") Inventory<Item> anInventory,
+                  @JsonProperty("goldHeld") double someGold,
+                  @JsonProperty("roomsVisited") int someRooms,
+                  @JsonProperty("monstersDefeated") int someMonsters) {
         super(aName, aDescription, anInventory);
         this.health = aHealth;
         this.currentRoom = aCurrentRoom;
@@ -45,7 +47,6 @@ public class Player extends Entity implements Combatant {
         this.equippedArmor = aArmor;
         this.attackRating = aWeapon.getAttackRating();
         this.defenseRating = aArmor.getDefenseRating();
-        this.currentWeight = updateCurrentWeight(anInventory);
         this.inventory = anInventory;
         this.goldHeld = someGold;
         this.roomsVisited = someRooms;
@@ -92,23 +93,22 @@ public class Player extends Entity implements Combatant {
     }
 
     /**
-     * INTENT: Updates the players current weight by iterating through their inventory and summing the weights of their Items
-     * PRECONDITION: anInventory must not be null.
-     * POSTCONDITION: return value == sum of weights of items in inventory
-     *
-     * @param anInventory an arraylist of items to sum
-     * @return the sum of the item weights in the given arraylist
+     * INTENT: To add an item to a player's inventory. First checks to see if the given item is a Tradeable
+     * item (non-tradeable items include chests and other items that a player cannot carry), then adds it to the
+     * player's inventory.
+     * PRECONDITION: The given item must implement the Tradeable interface, and there must be room in the
+     * inventory.
+     * POSTCONDITION 1: The given item is added to the inventory
+     * POSTCONDITION 2: An IllegalArgumentException is thrown.
+     * @param anItem an item to be added.
+     * @throws IllegalArgumentException if item is not Tradeable
      */
-    public double updateCurrentWeight(ArrayList<Item> anInventory) {
-        if (anInventory.isEmpty()) {
-            return 0;
+    public void addItemToInventory(Item anItem) throws IllegalArgumentException{
+        if (anItem instanceof Tradeable && inventory.canAddItem(anItem)) {
+            inventory.addItem(anItem);
+        } else {
+            throw new IllegalArgumentException("Only Tradeable items can be added to the player's inventory");
         }
-
-        double weight = 0;
-        for (Item item : anInventory) {
-            weight += item.getWeight();
-        }
-        return weight;
     }
 
     //Getter and Setter methods
@@ -145,20 +145,9 @@ public class Player extends Entity implements Combatant {
         this.defenseRating = aDefenseRating;
     }
 
+    @JsonIgnore
     public double getCurrentWeight() {
-        return currentWeight;
-    }
-
-    public void setCurrentWeight(double aCurrentWeight) {
-        this.currentWeight = aCurrentWeight;
-    }
-
-    public double getCarryingCapacity() {
-        return carryingCapacity;
-    }
-
-    public void setCarryingCapacity(double aCarryingCapacity) {
-        this.carryingCapacity = aCarryingCapacity;
+        return inventory.getTotalWeight();
     }
 
     public Weapon getEquippedWeapon() {
@@ -178,12 +167,12 @@ public class Player extends Entity implements Combatant {
     }
 
     @Override
-    public ArrayList<Item> getInventory() {
+    public Inventory<Item> getInventory() {
         return inventory;
     }
 
     @Override
-    public void setInventory(ArrayList<Item> inventory) {
+    public void setInventory(Inventory<Item> inventory) {
         this.inventory = inventory;
     }
 

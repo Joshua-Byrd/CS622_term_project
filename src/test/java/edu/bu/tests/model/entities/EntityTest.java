@@ -1,5 +1,6 @@
 package edu.bu.tests.model.entities;
 
+import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,7 @@ public class EntityTest {
 
     @BeforeEach
     public void setUp() {
-        entity = new TestEntity("TestEntity", "A test entity", new ArrayList<>());
+        entity = new TestEntity("TestEntity", "A test entity", new Inventory<Item>(50));
     }
 
     @Test
@@ -45,7 +46,7 @@ public class EntityTest {
 
     @Test
     public void testSetInventory() {
-        ArrayList<Item> newInventory = new ArrayList<>();
+        Inventory<Item> newInventory = new Inventory<Item>(50);
         entity.setInventory(newInventory);
         assertEquals(newInventory, entity.getInventory());
     }

@@ -46,7 +46,8 @@ public class GameController {
             while (true) {
                 view.displayMessage(currentRoom.getDescription() + "\n");
                 view.displayMessage("Game running with character: " + player.getName() + "\n");
-                view.displayMessage("Type 'Exit' to leave the game (No other commands are implemented at this time).\n>");
+                view.displayMessage("Type 'Exit' to leave the game, 'save' to save your character, or 'print log' to " +
+                        "view the log file of the current character (No other commands are implemented at this time).\n>");
                 String command = scanner.nextLine();
                 processCommand(command);
             }

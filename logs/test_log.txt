@@ -1,0 +1,2 @@
+[2024/05/21 12:07:26] test has begun their journey.
+[2024/05/21 12:07:28] test quit the game.

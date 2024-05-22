@@ -14,8 +14,8 @@ public class CombatantTest {
 
     @BeforeEach
     public void setUp() {
-        mockWeapon = new Weapon("Sword", "A sharp sword", 3.0, 10);
-        mockArmor = new Armor("Shield", "A sturdy shield", 5.0, 5);
+        mockWeapon = new Weapon("Sword", "A sharp sword", 3.0, 10, 25.0);
+        mockArmor = new Armor("Shield", "A sturdy shield", 5.0, 5, 25.0);
         combatant = new TestCombatant(100, mockWeapon, mockArmor);
     }
 
@@ -43,7 +43,7 @@ public class CombatantTest {
 
     @Test
     public void testSetEquippedWeapon() {
-        Weapon newWeapon = new Weapon("Axe", "A heavy axe", 5.0, 15);
+        Weapon newWeapon = new Weapon("Axe", "A heavy axe", 5.0, 15, 25.0);
         combatant.setEquippedWeapon(newWeapon);
         assertEquals(newWeapon, combatant.getEquippedWeapon());
     }
@@ -55,7 +55,7 @@ public class CombatantTest {
 
     @Test
     public void testSetEquippedArmor() {
-        Armor newArmor = new Armor("Helmet", "A strong helmet", 2.0, 8);
+        Armor newArmor = new Armor("Helmet", "A strong helmet", 2.0, 8, 25.0);
         combatant.setEquippedArmor(newArmor);
         assertEquals(newArmor, combatant.getEquippedArmor());
     }
@@ -84,7 +84,7 @@ public class CombatantTest {
 
     @Test
     public void testIsHit() {
-        TestCombatant defender = new TestCombatant(100, new Weapon("Dagger", "A small dagger", 1.0, 5), new Armor("Leather", "A leather armor", 2.0, 2));
+        TestCombatant defender = new TestCombatant(100, new Weapon("Dagger", "A small dagger", 1.0, 5, 25.0), new Armor("Leather", "A leather armor", 2.0, 2, 25.0));
         boolean result = combatant.isHit(defender);
         assertTrue(result); // Assuming combatant's attackRating + die roll will be greater than defender's defenseRating + 10
     }

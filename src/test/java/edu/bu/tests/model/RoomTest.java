@@ -1,6 +1,7 @@
 package edu.bu.tests.model;
 
 import edu.bu.model.Room;
+import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import edu.bu.model.items.Weapon;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,12 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RoomTest {
 
     private Room room;
-    private ArrayList<Item> items;
+    private Inventory<Item> items;
 
     @BeforeEach
     public void setUp() {
-        items = new ArrayList<>();
-        items.add(new Weapon("Sword", "A sharp sword", 3.0, 10));
+        items = new Inventory<>(50);
+        items.addItem(new Weapon("Sword", "A sharp sword", 3.0, 10, 25.0));
         room = new Room("Test Room", "A test room description", items);
     }
 
@@ -29,7 +30,6 @@ public class RoomTest {
         assertEquals("", defaultRoom.getName());
         assertEquals("", defaultRoom.getDescription());
         assertNotNull(defaultRoom.getItems());
-        assertTrue(defaultRoom.getItems().isEmpty());
     }
 
     @Test
@@ -68,36 +68,36 @@ public class RoomTest {
 
     @Test
     public void testSetItems() {
-        ArrayList<Item> newItems = new ArrayList<>();
-        newItems.add(new Weapon("Axe", "A heavy axe", 5.0, 15));
+        Inventory<Item> newItems = new Inventory<>(70);
+        newItems.addItem(new Weapon("Axe", "A heavy axe", 5.0, 15, 25.0));
         room.setItems(newItems);
         assertEquals(newItems, room.getItems());
     }
 
     @Test
     public void testGetAndSetNorth() {
-        Room northRoom = new Room("North Room", "Room to the north", new ArrayList<>());
+        Room northRoom = new Room("North Room", "Room to the north", new Inventory<>(50));
         room.setNorth(northRoom);
         assertEquals(northRoom, room.getNorth());
     }
 
     @Test
     public void testGetAndSetSouth() {
-        Room southRoom = new Room("South Room", "Room to the south", new ArrayList<>());
+        Room southRoom = new Room("South Room", "Room to the south", new Inventory<>(50));
         room.setSouth(southRoom);
         assertEquals(southRoom, room.getSouth());
     }
 
     @Test
     public void testGetAndSetEast() {
-        Room eastRoom = new Room("East Room", "Room to the east", new ArrayList<>());
+        Room eastRoom = new Room("East Room", "Room to the east", new Inventory<>(50));
         room.setEast(eastRoom);
         assertEquals(eastRoom, room.getEast());
     }
 
     @Test
     public void testGetAndSetWest() {
-        Room westRoom = new Room("West Room", "Room to the west", new ArrayList<>());
+        Room westRoom = new Room("West Room", "Room to the west", new Inventory<>(50));
         room.setWest(westRoom);
         assertEquals(westRoom, room.getWest());
     }

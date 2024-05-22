@@ -1,9 +1,11 @@
 package edu.bu.tests.model.persistence;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.bu.model.entitities.Player;
 import edu.bu.exceptions.PlayerDataException;
+import edu.bu.model.items.Inventory;
 import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.model.Room;
 import edu.bu.model.items.Armor;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PlayerSaveServiceTest {
 
     private static final String SAVE_FILE_PATH = "player_save.json";
@@ -41,10 +44,10 @@ public class PlayerSaveServiceTest {
                 "TestPlayer",
                 "A brave adventurer",
                 10,
-                new Room("Starting Room", "You are standing in the test room.", new ArrayList<Item>()),
-                new Weapon("dagger", "A small dagger", 1.2, 4),
-                new Armor("Leather armor", "a cuirass made of leather", 4.5, 4),
-                new ArrayList<Item>(),
+                new Room("Starting Room", "You are standing in the test room.", new Inventory<Item>(50)),
+                new Weapon("dagger", "A small dagger", 1.2, 4, 25.0),
+                new Armor("Leather armor", "a cuirass made of leather", 4.5, 4, 25.0),
+                new Inventory<Item>(50),
                 0.0,
                 1,
                 0

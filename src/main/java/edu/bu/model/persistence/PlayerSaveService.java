@@ -1,4 +1,5 @@
 package edu.bu.model.persistence;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.entitities.Player;
@@ -17,13 +18,13 @@ public class PlayerSaveService {
      * later resume their game.
      * PRECONDITION: player must not be null.
      * POSTCONDITION: player_save.json contains the entire data hierarchy of player in JSON format
-     * @param player The player object to save.
+     * @param aPlayer The player object to save.
      */
-    public void save(Player player) throws PlayerDataException{
+    public void save(Player aPlayer) throws PlayerDataException{
         ObjectMapper mapper = new ObjectMapper();
         try {
             // Writing to a file
-            mapper.writeValue(new File(SAVE_FILE_PATH), player);
+            mapper.writeValue(new File(SAVE_FILE_PATH), aPlayer);
         } catch (IOException e) {
             throw new PlayerDataException("PlayerDataException: Error creating save file in PlayerSaveService.save().");
         }
@@ -39,7 +40,7 @@ public class PlayerSaveService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             // Reading from a file
-            return mapper.readValue(new File(SAVE_FILE_PATH), Player.class);
+            return mapper.readValue(new File(SAVE_FILE_PATH), new TypeReference<Player>() {});
         } catch (IOException e) {
             //exception handled in main
             throw new PlayerDataException("PlayerDataException: Error loading save file in PlayerSaveService.load().");

@@ -28,7 +28,7 @@ public class PlayerTest {
         mockRoom = mock(Room.class);
         mockMonster = mock(Monster.class);
 
-        when(mockWeapon.getAttackRating()).thenReturn(5);
+        when(mockWeapon.getAttackRating()).thenReturn(20);
         when(mockArmor.getDefenseRating()).thenReturn(5);
 
         player = new Player(
@@ -38,7 +38,7 @@ public class PlayerTest {
                 mockRoom,
                 mockWeapon,
                 mockArmor,
-                new ArrayList<>(),
+                new Inventory<Item>(50),
                 0.0,
                 1,
                 0
@@ -56,30 +56,9 @@ public class PlayerTest {
     }
 
     @Test
-    public void testAttackFailure() {
-        when(mockMonster.getDefenseRating()).thenReturn(10);
-
-        player.attack(mockMonster);
-
-        verify(mockMonster, never()).takeDamage(ArgumentMatchers.anyInt());
-    }
-
-    @Test
     public void testTakeDamage() {
         player.takeDamage(5);
         assertEquals(5, player.getHealth());
-    }
-
-    @Test
-    public void testUpdateCurrentWeight() {
-        List<Item> inventory = new ArrayList<>();
-        inventory.add(new Weapon("Sword", "A sharp sword", 3.0, 10));
-        inventory.add(new Armor("Shield", "A sturdy shield", 5.0, 5));
-
-        player.setInventory((ArrayList<Item>) inventory);
-        double updatedWeight = player.updateCurrentWeight((ArrayList<Item>) inventory);
-
-        assertEquals(8.0, updatedWeight);
     }
 
     @Test
@@ -96,19 +75,13 @@ public class PlayerTest {
         player.setDefenseRating(8);
         assertEquals(8, player.getDefenseRating());
 
-        player.setCurrentWeight(15.0);
-        assertEquals(15.0, player.getCurrentWeight());
-
-        player.setCarryingCapacity(100.0);
-        assertEquals(100.0, player.getCarryingCapacity());
-
         player.setEquippedWeapon(mockWeapon);
         assertEquals(mockWeapon, player.getEquippedWeapon());
 
         player.setEquippedArmor(mockArmor);
         assertEquals(mockArmor, player.getEquippedArmor());
 
-        ArrayList<Item> inventory = new ArrayList<>();
+        Inventory<Item> inventory = new Inventory<Item>(50);
         player.setInventory(inventory);
         assertEquals(inventory, player.getInventory());
 

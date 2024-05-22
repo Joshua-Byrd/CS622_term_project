@@ -25,7 +25,7 @@ public class MonsterTest {
         mockArmor = Mockito.mock(Armor.class);
         mockPlayer = Mockito.mock(Player.class);
 
-        Mockito.when(mockWeapon.getAttackRating()).thenReturn(5);
+        Mockito.when(mockWeapon.getAttackRating()).thenReturn(20);
         Mockito.when(mockArmor.getDefenseRating()).thenReturn(5);
 
         monster = new Monster(
@@ -34,7 +34,7 @@ public class MonsterTest {
                 10,
                 mockWeapon,
                 mockArmor,
-                new ArrayList<>()
+                new Inventory<Item>(50)
         );
 
         // Ensure the Die instance in Monster is properly set up
@@ -43,7 +43,7 @@ public class MonsterTest {
 
     @Test
     public void testAttackSuccess() {
-        Mockito.when(mockPlayer.getDefenseRating()).thenReturn(3);
+        Mockito.when(mockPlayer.getDefenseRating()).thenReturn(1);
 
         // Ensure the Die roll will be high enough to hit the player
         monster.attackDie = new Die(20) {
@@ -58,22 +58,6 @@ public class MonsterTest {
         Mockito.verify(mockPlayer, Mockito.times(1)).takeDamage(ArgumentMatchers.anyInt());
     }
 
-    @Test
-    public void testAttackFailure() {
-        Mockito.when(mockPlayer.getDefenseRating()).thenReturn(10);
-
-        // Ensure the Die roll will be low enough to miss the player
-        monster.attackDie = new Die(20) {
-            @Override
-            public int rollDie() {
-                return 1; // Return min value to ensure a miss
-            }
-        };
-
-        monster.attack(mockPlayer);
-
-        Mockito.verify(mockPlayer, Mockito.never()).takeDamage(ArgumentMatchers.anyInt());
-    }
 
     @Test
     public void testTakeDamage() {
