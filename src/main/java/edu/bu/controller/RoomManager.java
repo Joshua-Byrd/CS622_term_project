@@ -27,13 +27,15 @@ public class RoomManager {
      */
     private void initializeRooms() {
         // Create items using FacadeItems
-        Weapon dagger = facadeItems.createWeapon("dagger", "a small dagger", 1.2, 4, 10.0);
-        Container chest = facadeItems.createContainer("wooden chest", "an old wooden chest", 5.0, false, facadeItems.createInventory(100));
+        Weapon dagger = facadeItems.createWeapon("dagger",
+                "a small dagger", 1.2, 4, 10.0);
+        Weapon shortsword = facadeItems.createWeapon("shortsword","a small one-handed sword",
+                3.0, 6, 20.0);
 
         // Create an inventory for the starting room and add items to it
         Inventory<Item> startingRoomInventory = facadeItems.createInventory(1000);
         facadeItems.addItem(startingRoomInventory, dagger);
-        facadeItems.addItem(startingRoomInventory, chest);
+        facadeItems.addItem(startingRoomInventory, shortsword);
 
         // Create the starting room using FacadeModel
         courtyard = facadeModel.createRoom("vast courtyard",

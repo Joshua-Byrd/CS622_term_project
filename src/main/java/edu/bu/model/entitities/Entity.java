@@ -22,6 +22,7 @@ public abstract class Entity {
         this.inventory = anInventory;
     }
 
+
     public String getName() {
         return name;
     }

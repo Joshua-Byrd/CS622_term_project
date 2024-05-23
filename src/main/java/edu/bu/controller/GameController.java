@@ -4,11 +4,14 @@ import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.Room;
+import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.util.MessageService;
 import edu.bu.view.TextView;
+
+import java.util.List;
 import java.util.Scanner;
 //
 ///**
@@ -247,7 +250,7 @@ public class GameController {
             player.pickUpItem(itemName);
             view.displayMessage("You picked up the " + itemName + ".\n");
         } catch (IllegalArgumentException e) {
-            view.displayMessage(e.getMessage() + "\n");
+            view.displayMessage("There is no " + itemName + " here.\n");
         }
     }
 
@@ -264,7 +267,7 @@ public class GameController {
             player.dropItem(itemName);
             view.displayMessage("You dropped the " + itemName + ".\n");
         } catch (IllegalArgumentException e) {
-            view.displayMessage(e.getMessage() + "\n");
+            view.displayMessage("You aren't carrying a " + itemName + ".\n");
         }
     }
 
@@ -338,15 +341,34 @@ public class GameController {
     }
 
     /**
-     * INTENT: Display the room name and description in a formatted way
-     * PRECONDITION: room cannot be null
-     * POSTCONDITION: The formatted room description is displayed to the screen.
-     * EXAMPLE: "You are standing in a (room.name)small stone room. (room.description) The walls are...
-     * @param room the room to display the description
+     * INTENT: Display the room name, description, and inventory contents in a formatted way.
+     * PRECONDITION: room cannot be null.
+     * POSTCONDITION: The formatted room description and inventory contents are displayed to the screen.
+     * EXAMPLE: "You are standing in a (room.name) small stone room. (room.description) The walls are...
+     * If the room has items, the message will include: "You see here: item1, item2..."
+     * @param room the room to display the description.
      */
     public void displayFormattedRoomDescription(Room room) {
-        view.displayMessage("You are standing in a " + room.getName() + ".\n" + room.getDescription() + "\n");
+        StringBuilder roomDescription = new StringBuilder();
+        roomDescription.append("You are standing in a ").append(room.getName()).append(".\n")
+                .append(room.getDescription()).append("\n");
+
+        Inventory<Item> roomInventory = room.getItems();
+        if (roomInventory.getSize() > 0) {
+            roomDescription.append("You see here: ");
+            List<Item> items = roomInventory.getAllItems();
+            for (int i = 0; i < items.size(); i++) {
+                roomDescription.append(items.get(i).getName());
+                if (i < items.size() - 1) {
+                    roomDescription.append(", ");
+                }
+            }
+            roomDescription.append(".\n");
+        }
+
+        view.displayMessage(roomDescription.toString());
     }
+
 
     /**
      * INTENT: To provide a centralized method for sending output messages to the TextView, ensuring all user-facing messages go through one point.
@@ -358,5 +380,6 @@ public class GameController {
     public void displayMessage(String aMessage) {
         view.displayMessage(aMessage);
     }
+
 }
 

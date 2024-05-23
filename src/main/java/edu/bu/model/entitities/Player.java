@@ -23,7 +23,7 @@ public class Player extends Entity implements Combatant {
     private Armor equippedArmor;
     private int attackRating;
     private int defenseRating;
-    private Inventory<Item> inventory;
+//    private Inventory<Item> inventory;
     private double goldHeld;
     private int roomsVisited;
     private int monstersDefeated;
@@ -52,7 +52,7 @@ public class Player extends Entity implements Combatant {
         this.equippedArmor = aArmor;
         this.attackRating = aWeapon.getAttackRating();
         this.defenseRating = aArmor.getDefenseRating();
-        this.inventory = anInventory;
+//        this.inventory = anInventory;
         this.goldHeld = someGold;
         this.roomsVisited = someRooms;
         this.monstersDefeated = someMonsters;
@@ -109,8 +109,8 @@ public class Player extends Entity implements Combatant {
      * @throws IllegalArgumentException if item is not Tradeable
      */
     public void addItemToInventory(Item anItem) throws IllegalArgumentException{
-        if (anItem instanceof Tradeable && inventory.canAddItem(anItem)) {
-            inventory.addItem(anItem);
+        if (anItem instanceof Tradeable && this.getInventory().canAddItem(anItem)) {
+            this.getInventory().addItem(anItem);
         } else {
             throw new IllegalArgumentException("Only Tradeable items can be added to the player's inventory");
         }
@@ -194,7 +194,7 @@ public class Player extends Entity implements Combatant {
 
     @JsonIgnore
     public double getCurrentWeight() {
-        return inventory.getTotalWeight();
+        return this.getInventory().getTotalWeight();
     }
 
     public Weapon getEquippedWeapon() {
@@ -211,16 +211,6 @@ public class Player extends Entity implements Combatant {
 
     public void setEquippedArmor(Armor anEquippedArmor) {
         this.equippedArmor = anEquippedArmor;
-    }
-
-    @Override
-    public Inventory<Item> getInventory() {
-        return inventory;
-    }
-
-    @Override
-    public void setInventory(Inventory<Item> inventory) {
-        this.inventory = inventory;
     }
 
     public double getGoldHeld() {
