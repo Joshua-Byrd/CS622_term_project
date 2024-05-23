@@ -38,8 +38,8 @@ public class RoomManager {
         // Create the starting room using FacadeModel
         courtyard = facadeModel.createRoom("vast courtyard",
                 "To the west you see the winding road that" +
-                        " led you here. To the north and south, impenetrable forest stretches into the distance. To the east lies" +
-                        " the entrance to the labyrinth known as the Desolate Depths.",
+                        " led you here. To the north and south, impenetrable forest stretches into the distance.\n" +
+                        "To the east lies the entrance to the labyrinth known as the Desolate Depths.",
                 startingRoomInventory);
 
         // Create another room with its own inventory using FacadeModel
@@ -47,8 +47,8 @@ public class RoomManager {
         Room smallStoneRoom = facadeModel.createRoom("small stone room", "The walls are moss-covered and slick with " +
                 "moisture. To the west is the door you came through. You can see no other openings.", anotherRoomInventory);
 
-        courtyard.setEast(smallStoneRoom);
-        smallStoneRoom.setWest(courtyard);
+        courtyard.setConnection("east", smallStoneRoom);
+        smallStoneRoom.setConnection("west", courtyard);
     }
 
     /**

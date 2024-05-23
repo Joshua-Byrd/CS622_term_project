@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.*;
 import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * Represents a location that a player can travel to and occupy, possibly containing items
@@ -21,14 +24,21 @@ public class Room {
      */
     private String description;
     private Inventory<Item> items;
+//    @JsonIgnore
+//    private Room north;
+//    @JsonIgnore
+//    private Room south;
+//    @JsonIgnore
+//    private Room east;
+//    @JsonIgnore
+//    private Room west;
+
+    /*
+    Contains room connections where the key is one of the cardinal directions, and the value is the
+    Room in that direction. Example: "east" : largeCave
+     */
     @JsonIgnore
-    private Room north;
-    @JsonIgnore
-    private Room south;
-    @JsonIgnore
-    private Room east;
-    @JsonIgnore
-    private Room west;
+    private final Map<String, Room> connections = new HashMap<>();
 
     // Default constructor required by Jackson
     public Room(){
@@ -63,42 +73,6 @@ public class Room {
         this.description = aDescription;
     }
 
-
-    public Room getNorth() {
-        return north;
-    }
-
-    public void setNorth(Room north) {
-        this.north = north;
-    }
-
-
-    public Room getSouth() {
-        return south;
-    }
-
-    public void setSouth(Room south) {
-        this.south = south;
-    }
-
-
-    public Room getEast() {
-        return east;
-    }
-
-    public void setEast(Room east) {
-        this.east = east;
-    }
-
-
-    public Room getWest() {
-        return west;
-    }
-
-    public void setWest(Room west) {
-        this.west = west;
-    }
-
     public Inventory<Item> getItems() {
         return items;
     }
@@ -106,4 +80,54 @@ public class Room {
     public void setItems(Inventory<Item> items) {
         this.items = items;
     }
+
+    public void setConnection(String direction, Room room) {
+        connections.put(direction, room);
+    }
+
+    public Room getConnection(String direction) {
+        return connections.get(direction);
+    }
+
+    public Map<String,Room> getConnections() {
+        return connections;
+    }
+
+
+//    public Room getNorth() {
+//        return north;
+//    }
+//
+//    public void setNorth(Room north) {
+//        this.north = north;
+//    }
+//
+//
+//    public Room getSouth() {
+//        return south;
+//    }
+//
+//    public void setSouth(Room south) {
+//        this.south = south;
+//    }
+//
+//
+//    public Room getEast() {
+//        return east;
+//    }
+//
+//    public void setEast(Room east) {
+//        this.east = east;
+//    }
+//
+//
+//    public Room getWest() {
+//        return west;
+//    }
+//
+//    public void setWest(Room west) {
+//        this.west = west;
+//    }
+
+
 }

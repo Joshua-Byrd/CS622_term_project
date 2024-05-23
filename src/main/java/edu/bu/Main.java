@@ -49,10 +49,11 @@ public class Main {
         while (true) {
             System.out.println("1. New Game");
             System.out.println("2. Continue");
-            System.out.println("3. Exit");
+            System.out.println("3. Instructions");
+            System.out.println("4. Exit");
             System.out.print("Please choose an option: ");
             input = scanner.nextLine();
-            if (!"1".equals(input) && !"2".equals(input) && !"3".equals(input)) {
+            if (!"1".equals(input) && !"2".equals(input) && !"3".equals(input) && !"4".equals(input)) {
                 System.out.println("That's not a valid option. Please select an option from the menu.");
             } else {
                 choice = Integer.parseInt(input);
@@ -121,6 +122,9 @@ public class Main {
                 }
                 break;
             case 3:
+                displayInstructions();
+                break;
+            case 4:
                 System.out.println("Exiting the game. Goodbye!");
                 System.exit(0);
                 break;
@@ -137,6 +141,24 @@ public class Main {
                     player.getCurrentRoom(), playerSaveService, logger);
             gameController.startGame();
         }
+    }
+
+    /**
+     * INTENT: To display game instructions to the player.
+     * PRECONDITION: None.
+     * POSTCONDITION: The game instructions are displayed to the console.
+     */
+    private static void displayInstructions() {
+        System.out.println("Instructions for Desolate Depths:\n");
+        System.out.println("Available Commands:");
+        System.out.println("1. go [direction] - Move in the specified direction (north, south, east, west).");
+        System.out.println("2. get [item] - Pick up an item from the current room and add it to your inventory.");
+        System.out.println("3. drop [item] - Remove an item from your inventory and leave it in the current room.");
+        System.out.println("4. examine [target] - Examine a room, your inventory, or a specific item.");
+        System.out.println("5. save - Save your current game state.");
+        System.out.println("6. exit - Save your game and exit.");
+        System.out.println("7. print - Print your game log.");
+        System.out.println("\nType your commands in the format shown above to interact with the game world.");
     }
 }
 

@@ -77,28 +77,28 @@ public class RoomTest {
     @Test
     public void testGetAndSetNorth() {
         Room northRoom = new Room("North Room", "Room to the north", new Inventory<>(50));
-        room.setNorth(northRoom);
-        assertEquals(northRoom, room.getNorth());
+        room.setConnection("north", northRoom);
+        assertEquals(northRoom, room.getConnection("north"));
     }
 
     @Test
     public void testGetAndSetSouth() {
         Room southRoom = new Room("South Room", "Room to the south", new Inventory<>(50));
-        room.setSouth(southRoom);
-        assertEquals(southRoom, room.getSouth());
+        room.setConnection("south",southRoom);
+        assertEquals(southRoom, room.getConnection("south"));
     }
 
     @Test
     public void testGetAndSetEast() {
         Room eastRoom = new Room("East Room", "Room to the east", new Inventory<>(50));
-        room.setEast(eastRoom);
-        assertEquals(eastRoom, room.getEast());
+        room.setConnection("east", eastRoom);
+        assertEquals(eastRoom, room.getConnection("east"));
     }
 
     @Test
     public void testGetAndSetWest() {
         Room westRoom = new Room("West Room", "Room to the west", new Inventory<>(50));
-        room.setWest(westRoom);
-        assertEquals(westRoom, room.getWest());
+        room.setConnection("west", westRoom);
+        assertEquals(westRoom, room.getConnection("west"));
     }
 }

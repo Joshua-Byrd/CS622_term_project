@@ -61,7 +61,6 @@ public class FacadeEntities {
         return player.getCurrentWeight();
     }
 
-
     public Weapon getPlayerEquippedWeapon(Player player) {
         return player.getEquippedWeapon();
     }

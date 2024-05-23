@@ -6,6 +6,7 @@ import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Facade for the model package, providing a singleton access point to the Room functionality.
@@ -75,36 +76,16 @@ public class FacadeModel {
         room.setDescription(description);
     }
 
-    public Room getRoomNorth(Room room) {
-        return room.getNorth();
+    public void setRoomConnection(Room room, String direction, Room connectedRoom) {
+        room.setConnection(direction, connectedRoom);
     }
 
-    public void setRoomNorth(Room room, Room north) {
-        room.setNorth(north);
+    public Room getRoomConnection(Room room, String direction) {
+        return room.getConnection(direction);
     }
 
-    public Room getRoomSouth(Room room) {
-        return room.getSouth();
-    }
-
-    public void setRoomSouth(Room room, Room south) {
-        room.setSouth(south);
-    }
-
-    public Room getRoomEast(Room room) {
-        return room.getEast();
-    }
-
-    public void setRoomEast(Room room, Room east) {
-        room.setEast(east);
-    }
-
-    public Room getRoomWest(Room room) {
-        return room.getWest();
-    }
-
-    public void setRoomWest(Room room, Room west) {
-        room.setWest(west);
+    public Map<String, Room> getAllRoomConnections(Room room) {
+        return room.getConnections();
     }
 
     public Inventory<Item> getRoomItems(Room room) {

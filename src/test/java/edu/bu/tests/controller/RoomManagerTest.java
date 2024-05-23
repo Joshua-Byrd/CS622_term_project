@@ -62,10 +62,10 @@ public class RoomManagerTest {
     @Test
     public void testRoomConnections() {
         Room startingRoom = roomManager.getStartingRoom();
-        Room eastRoom = startingRoom.getEast();
-        Room northRoom = startingRoom.getNorth();
-        Room southRoom = startingRoom.getSouth();
-        Room westRoom = startingRoom.getWest();
+        Room eastRoom = startingRoom.getConnection("east");
+        Room northRoom = startingRoom.getConnection("north");
+        Room southRoom = startingRoom.getConnection("south");
+        Room westRoom = startingRoom.getConnection("west");
 
         assertNull(northRoom, "North room should be null");
         assertNull(southRoom, "South room should be null");
