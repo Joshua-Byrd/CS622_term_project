@@ -311,15 +311,19 @@ public class Main {
      * POSTCONDITION: The game instructions are displayed to the console.
      */
     private static void displayInstructions() {
-        System.out.println("Instructions for Desolate Depths:\n");
-        System.out.println("Available Commands:");
-        System.out.println("1. go [direction] - Move in the specified direction (north, south, east, west).");
-        System.out.println("2. get [item] - Pick up an item from the current room and add it to your inventory.");
-        System.out.println("3. drop [item] - Remove an item from your inventory and leave it in the current room.");
-        System.out.println("4. examine [target] - Examine a room, your inventory, or a specific item.");
-        System.out.println("5. save - Save your current game state.");
-        System.out.println("6. exit - Save your game and exit.");
-        System.out.println("7. print - Print your game log.");
+        System.out.println("Desolate Depths is a text adventure game where you take on the role of a brave explorer\n" +
+                "questing after the legendary Luminescent Orb. At each location, you will be given a description\n" +
+                "of your surroundings and any items present, and you will interact with the game through typed commands\n" +
+                "The list of available commands appears below. Good luck!\n\n");
+        System.out.println("*  go [direction] - Move in the specified direction (north, south, east, west).");
+        System.out.println("*  get [item] - Pick up an item from the current room and add it to your inventory.");
+        System.out.println("*  drop [item] - Remove an item from your inventory and leave it in the current room.");
+        System.out.println("*  examine [target] - Examine a room, your inventory, or a specific item.");
+        System.out.println("*  wear [armor] - Wear a piece of armor from your inventory.");
+        System.out.println("*  wield [weapon] - Wield a weapon from your inventory.");
+        System.out.println("*  save - Save your current game state.");
+        System.out.println("*  exit - Save your game and exit.");
+        System.out.println("*  print - Print your game log.");
         System.out.println("\nType your commands in the format shown above to interact with the game world.\n\n");
     }
 }

@@ -46,6 +46,8 @@ public class RoomManager {
 
         // Create another room with its own inventory using FacadeModel
         Inventory<Item> anotherRoomInventory = facadeItems.createInventory(1000);
+        anotherRoomInventory.addItem(new Armor("iron armor", "a suit of iron armor", 10.0, 8, 50.0));
+
         Room smallStoneRoom = facadeModel.createRoom("small stone room", "The walls are moss-covered and slick with " +
                 "moisture. To the west is the door you came through. You can see no other openings.", anotherRoomInventory);
 

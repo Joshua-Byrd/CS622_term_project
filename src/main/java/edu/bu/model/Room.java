@@ -24,14 +24,6 @@ public class Room {
      */
     private String description;
     private Inventory<Item> items;
-//    @JsonIgnore
-//    private Room north;
-//    @JsonIgnore
-//    private Room south;
-//    @JsonIgnore
-//    private Room east;
-//    @JsonIgnore
-//    private Room west;
 
     /*
     Contains room connections where the key is one of the cardinal directions, and the value is the
@@ -77,57 +69,19 @@ public class Room {
         return items;
     }
 
-    public void setItems(Inventory<Item> items) {
-        this.items = items;
+    public void setItems(Inventory<Item> someItems) {
+        this.items = someItems;
     }
 
-    public void setConnection(String direction, Room room) {
-        connections.put(direction, room);
+    public void setConnection(String aDirection, Room aRoom) {
+        connections.put(aDirection, aRoom);
     }
 
-    public Room getConnection(String direction) {
-        return connections.get(direction);
+    public Room getConnection(String aDirection) {
+        return connections.get(aDirection);
     }
 
     public Map<String,Room> getConnections() {
         return connections;
     }
-
-
-//    public Room getNorth() {
-//        return north;
-//    }
-//
-//    public void setNorth(Room north) {
-//        this.north = north;
-//    }
-//
-//
-//    public Room getSouth() {
-//        return south;
-//    }
-//
-//    public void setSouth(Room south) {
-//        this.south = south;
-//    }
-//
-//
-//    public Room getEast() {
-//        return east;
-//    }
-//
-//    public void setEast(Room east) {
-//        this.east = east;
-//    }
-//
-//
-//    public Room getWest() {
-//        return west;
-//    }
-//
-//    public void setWest(Room west) {
-//        this.west = west;
-//    }
-
-
 }

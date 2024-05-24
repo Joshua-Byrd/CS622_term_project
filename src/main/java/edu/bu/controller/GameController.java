@@ -4,8 +4,10 @@ import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.Room;
+import edu.bu.model.items.Armor;
 import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
+import edu.bu.model.items.Weapon;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.util.MessageService;
@@ -150,6 +152,46 @@ public class GameController {
         }
     }
 
+//    /**
+//     * INTENT: To parse and handle the command input by the player.
+//     * PRECONDITION: The command string should not be null.
+//     * POSTCONDITION: The command is processed and appropriate actions are taken.
+//     *
+//     * @param command The command string input by the user.
+//     */
+//    public void processCommand(String command) {
+//        String[] parsedCommand = parseCommand(command);
+//        String action = parsedCommand[0];
+//        String target = parsedCommand.length > 1 ? parsedCommand[1] : "";
+//
+//        switch (action.toLowerCase()) {
+//            case "go":
+//                handleGoCommand(target);
+//                break;
+//            case "get":
+//                handleGetCommand(target);
+//                break;
+//            case "drop":
+//                handleDropCommand(target);
+//                break;
+//            case "examine":
+//                handleExamineCommand(target);
+//                break;
+//            case "save":
+//                handleSaveCommand();
+//                break;
+//            case "exit":
+//                handleExitCommand();
+//                break;
+//            case "print":
+//                handlePrintCommand();
+//                break;
+//            default:
+//                view.displayMessage("Unknown command.\n");
+//                break;
+//        }
+//    }
+
     /**
      * INTENT: To parse and handle the command input by the player.
      * PRECONDITION: The command string should not be null.
@@ -174,6 +216,12 @@ public class GameController {
                 break;
             case "examine":
                 handleExamineCommand(target);
+                break;
+            case "wear":
+                handleWearCommand(target);
+                break;
+            case "wield":
+                handleWieldCommand(target);
                 break;
             case "save":
                 handleSaveCommand();
@@ -337,6 +385,42 @@ public class GameController {
             logger.printLog();
         } catch (LoggerException e) {
             view.displayMessage(e.getMessage() + "\n");
+        }
+    }
+
+    /**
+     * INTENT: To handle the "wear" command, equipping the specified armor from the player's inventory.
+     * PRECONDITION: The armor must be present in the player's inventory.
+     * POSTCONDITION: The armor is equipped by the player.
+     *
+     * @param anArmorName The name of the armor to wear.
+     */
+    private void handleWearCommand(String anArmorName) {
+         Item item = player.getInventory().findItemByName(anArmorName);
+        if (item != null) {
+            player.setEquippedArmor((Armor) item);
+            player.setDefenseRating(((Armor) item).getDefenseRating());
+            view.displayMessage("You are now wearing the " + anArmorName + ".\n");
+        } else {
+            view.displayMessage("You don't have any " + anArmorName + " to wear.\n");
+        }
+    }
+
+    /**
+     * INTENT: To handle the "wield" command, equipping the specified weapon from the player's inventory.
+     * PRECONDITION: The weapon must be present in the player's inventory.
+     * POSTCONDITION: The weapon is equipped by the player.
+     *
+     * @param aWeaponName The name of the weapon to wield.
+     */
+    private void handleWieldCommand(String aWeaponName) {
+        Item item = player.getInventory().findItemByName(aWeaponName);
+        if (item != null) {
+            player.setEquippedWeapon((Weapon) item);
+            player.setAttackRating(((Weapon) item).getAttackRating());
+            view.displayMessage("You are now wielding the " + aWeaponName + ".\n");
+        } else {
+            view.displayMessage("You don't have any " + aWeaponName + " to wield.\n");
         }
     }
 
