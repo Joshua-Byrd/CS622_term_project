@@ -1,8 +1,11 @@
 package edu.bu.model.items;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 /**
  * Represents an armor item that can be held or equipped by a character or monster
  */
+@JsonTypeName("armor")
 public class Armor extends Item implements Tradeable{
 
     private double price;

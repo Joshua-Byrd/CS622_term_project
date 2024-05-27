@@ -1,10 +1,12 @@
 package edu.bu.model.items;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Represents a container item (e.g., chest, box) that can hold other items.
  */
+@JsonTypeName("container")
 public class Container <T extends Item> extends Item {
     private boolean isOpen;
     private Inventory<T> items;
@@ -52,7 +54,6 @@ public class Container <T extends Item> extends Item {
         T tempItem = items.findItemByName(anItem.getName());
         items.removeItem(anItem);
         return tempItem;
-
     }
 
     // Getter and setter methods

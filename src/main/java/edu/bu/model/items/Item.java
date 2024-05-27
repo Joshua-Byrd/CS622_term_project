@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Weapon.class, name = "weapon"),
-        @JsonSubTypes.Type(value = Armor.class, name = "armor")
+        @JsonSubTypes.Type(value = Armor.class, name = "armor"),
+        @JsonSubTypes.Type(value = Container.class, name = "container")
 })
 /**
  * Abstract class representing a general item within the game.

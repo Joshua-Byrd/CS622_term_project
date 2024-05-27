@@ -23,7 +23,6 @@ public class Player extends Entity implements Combatant {
     private Armor equippedArmor;
     private int attackRating;
     private int defenseRating;
-//    private Inventory<Item> inventory;
     private double goldHeld;
     private int roomsVisited;
     private int monstersDefeated;
@@ -52,7 +51,6 @@ public class Player extends Entity implements Combatant {
         this.equippedArmor = aArmor;
         this.attackRating = aWeapon.getAttackRating();
         this.defenseRating = aArmor.getDefenseRating();
-//        this.inventory = anInventory;
         this.goldHeld = someGold;
         this.roomsVisited = someRooms;
         this.monstersDefeated = someMonsters;
@@ -280,6 +278,16 @@ public class Player extends Entity implements Combatant {
 
     public void setMonstersDefeated(int monstersDefeated) {
         this.monstersDefeated = monstersDefeated;
+    }
+
+    @Override
+    public Inventory<Item> getInventory() {
+        return (Inventory<Item>) super.getInventory();
+    }
+
+    @Override
+    public void setInventory(Inventory<Item> inventory) {
+        super.setInventory(inventory);
     }
 }
 

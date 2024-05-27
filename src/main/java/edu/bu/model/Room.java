@@ -11,6 +11,11 @@ import java.util.Map;
 /**
  * Represents a location that a player can travel to and occupy, possibly containing items
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Room.class, name = "room")
+})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
 public class Room {
     /*
     name should be a singular noun (possibly with adjectives) such as "courtyard" or "large cave", so
@@ -29,14 +34,14 @@ public class Room {
     Contains room connections where the key is one of the cardinal directions, and the value is the
     Room in that direction. Example: "east" : largeCave
      */
-    @JsonIgnore
-    private final Map<String, Room> connections = new HashMap<>();
+    private Map<String, Room> connections = new HashMap<>();
 
     // Default constructor required by Jackson
-    public Room(){
+    public Room() {
         this.name = "";
         this.description = "";
         this.items = new Inventory<>(1000);
+        this.connections = new HashMap<>();
     }
 
     @JsonCreator
@@ -46,6 +51,7 @@ public class Room {
         this.name = aName;
         this.description = aDescription;
         this.items = someItems;
+        this.connections = new HashMap<>();
     }
 
     //Getter and Setter methods
@@ -81,7 +87,13 @@ public class Room {
         return connections.get(aDirection);
     }
 
+    @JsonProperty("connections")
     public Map<String,Room> getConnections() {
         return connections;
+    }
+
+    @JsonProperty("connections")
+    public void setConnections(Map<String, Room> someConnections) {
+        this.connections = someConnections;
     }
 }

@@ -1,14 +1,23 @@
 package edu.bu.model.items;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A collection of T's extending Item, representing the contents of a container, room, or player's inventory
+ * @param <T>
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Weapon.class, name = "weapon"),
+        @JsonSubTypes.Type(value = Armor.class, name = "armor"),
+        @JsonSubTypes.Type(value = Container.class, name = "container")
+})
 public class Inventory<T extends Item> {
-    private final List<T> items;
+    private List<T> items;
     private double maximumWeight;
 
     @JsonCreator
@@ -127,4 +136,14 @@ public class Inventory<T extends Item> {
     public List<T> getAllItems() {
         return new ArrayList<>(items);
     }
+
+    // Add getter for items to ensure it is serialized
+    public List<T> getItems() {
+        return items;
+    }
+
+    public void setItems (ArrayList<T> someItems) {
+        this.items = someItems;
+    }
+
 }

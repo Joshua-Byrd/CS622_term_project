@@ -43,7 +43,8 @@ public class PlayerSaveService {
             return mapper.readValue(new File(SAVE_FILE_PATH), new TypeReference<Player>() {});
         } catch (IOException e) {
             //exception handled in main
-            throw new PlayerDataException("PlayerDataException: Error loading save file in PlayerSaveService.load().");
+            e.printStackTrace();
+            throw new PlayerDataException("PlayerDataException: Error loading save file in PlayerSaveService.load().", e);
         }
     }
 }

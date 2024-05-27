@@ -1,5 +1,6 @@
 package edu.bu;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.bu.controller.FacadeController;
 import edu.bu.controller.GameController;
 import edu.bu.controller.RoomManager;
@@ -27,6 +28,7 @@ public class Main {
      * @param args command-line arguments
      */
     public static void main(String[] args) {
+
         //Get instances of facade objects
         TextView view = FacadeView.getTheInstance().createTextView();
         PlayerSaveService playerSaveService = FacadePersistence.getTheInstance().createPlayerSaveService();
@@ -111,6 +113,7 @@ public class Main {
                         view.displayMessage("Character " + player.getName() + " loaded.\n");
                     } catch (PlayerDataException e) {
                         System.out.println("Error loading save file: " + e.getMessage());
+                        e.printStackTrace();
                         System.out.println("Starting a new game...");
                         System.out.print("Enter your name: ");
                         playerName = scanner.nextLine();

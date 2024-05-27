@@ -109,6 +109,10 @@ import java.util.Scanner;
 
 import java.util.Scanner;
 
+/**
+ * Acts as the main controller in the MVC pattern. Provides methods for model and view classes to
+ * interact, runs the main game loop, and provides methods to handle user input.
+ */
 public class GameController {
     private final TextView view;
     private final Player player;
@@ -150,13 +154,15 @@ public class GameController {
     }
 
     /**
-     * INTENT: To parse and handle the command input by the player.
+     * INTENT: To process and handle the command input by the player.
+     * EXAMPLE: The player enters 'go east' and handleGoCommand is called with the parameter 'east'.
      * PRECONDITION: The command string should not be null.
-     * POSTCONDITION: The command is processed and appropriate actions are taken.
+     * POSTCONDITION: The command is processed and the correct handler method called.
      *
      * @param command The command string input by the user.
      */
     public void processCommand(String command) {
+        //input is split into the command itself (i.e. 'go') and the target of the command (i.e. 'east')
         String[] parsedCommand = parseCommand(command);
         String action = parsedCommand[0];
         String target = parsedCommand.length > 1 ? parsedCommand[1] : "";
@@ -204,7 +210,8 @@ public class GameController {
     /**
      * INTENT: To parse the command into an action and target.
      * PRECONDITION: The command string should not be null.
-     * POSTCONDITION: The command is parsed into an action and target.
+     * POSTCONDITION: Return value is a string array where the first element is the command and the
+     * second element is the target
      *
      * @param command The command string input by the user.
      * @return A string array containing the action and target.
@@ -217,7 +224,9 @@ public class GameController {
     /**
      * INTENT: To handle the "go" command, changing the player's current room based on the specified direction.
      * PRECONDITION: The direction must be a valid direction (north, south, east, west).
-     * POSTCONDITION: The player's current room is updated if the direction is valid, otherwise an error message is displayed.
+     * POSTCONDITION 1: player.currentRoom == the room in the given direction
+     * POSTCONDITION 2: this.currentRoom == the room in the given direction
+     * POSTCONDITION 3: if the direction is valid, an error message is printed
      *
      * @param direction The direction in which to move (north, south, east, west).
      */
@@ -250,13 +259,17 @@ public class GameController {
     }
 
     /**
-     * INTENT: To handle the "get" command, picking up an item from the current room's inventory or from a container and adding it to the player's inventory.
-     * PRECONDITION: The item must be present in the current room's inventory or in the specified container, and the player must have enough carrying capacity.
+     * INTENT: To handle the "get" command, picking up an item from the current room's inventory or from a
+     * container and adding it to the player's inventory.
+     * PRECONDITION: The item must be present in the current room's inventory or in the specified container,
+     * and the player must have enough carrying capacity.
      * POSTCONDITION: The item is removed from the current room's inventory or container and added to the player's inventory.
      *
      * @param target The target of the get command, which can be an item or an item from a container (e.g., "sword from chest").
      */
     private void handleGetCommand(String target) {
+        //if the word "from" is present, the player is trying to get something from a container
+        //so the command must be parsed further to get the container
         if (target.contains(" from ")) {
             String[] parts = target.split(" from ");
             if (parts.length == 2) {
@@ -272,6 +285,7 @@ public class GameController {
                 view.displayMessage("Invalid command format. Use 'get [item] from [container]'.\n");
             }
         } else {
+            //if "from" is not present, just try to get the item directly
             try {
                 player.pickUpItem(target);
                 view.displayMessage("You picked up the " + target + ".\n");
@@ -284,7 +298,8 @@ public class GameController {
     /**
      * INTENT: To handle the "open" command, opening the specified container if present in the room or player's inventory.
      * PRECONDITION: The container must be present in the current room or player's inventory.
-     * POSTCONDITION: The container is opened and its contents are displayed.
+     * POSTCONDITION 1: If the container is closed, it is opened and its contents are displayed.
+     * POSTCONDITION 2: If the container is open, a message saying this is printed to the screen.
      *
      * @param containerName The name of the container to open.
      */
@@ -469,7 +484,7 @@ public class GameController {
     /**
      * INTENT: To handle the "wear" command, equipping the specified armor from the player's inventory.
      * PRECONDITION: The armor must be present in the player's inventory.
-     * POSTCONDITION: The armor is equipped by the player.
+     * POSTCONDITION: player.equippedArmor == the given armor
      *
      * @param anArmorName The name of the armor to wear.
      */
@@ -487,7 +502,7 @@ public class GameController {
     /**
      * INTENT: To handle the "wield" command, equipping the specified weapon from the player's inventory.
      * PRECONDITION: The weapon must be present in the player's inventory.
-     * POSTCONDITION: The weapon is equipped by the player.
+     * POSTCONDITION: player.equippedWeapon = the given weapon
      *
      * @param aWeaponName The name of the weapon to wield.
      */
@@ -515,6 +530,7 @@ public class GameController {
         roomDescription.append("You are standing in a ").append(room.getName()).append(".\n")
                 .append(room.getDescription()).append("\n");
 
+        //show the contents of the room
         Inventory<Item> roomInventory = room.getItems();
         if (roomInventory.getSize() > 0) {
             roomDescription.append("You see here: ");
