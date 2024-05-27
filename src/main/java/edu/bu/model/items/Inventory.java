@@ -94,12 +94,12 @@ public class Inventory<T extends Item> {
      * PRECONDITION: name must not be null.
      * POSTCONDITION: Returns the item with the given name, or null if no such item exists.
      *
-     * @param name The name of the item to find.
+     * @param aName The name of the item to find.
      * @return The item with the given name, or null if no such item exists.
      */
-    public T findItemByName(String name) {
+    public T findItemByName(String aName) {
         for (T item : items) {
-            if (item.getName().equalsIgnoreCase(name)) {
+            if (item.getName().equalsIgnoreCase(aName)) {
                 return item;
             }
         }
@@ -111,8 +111,8 @@ public class Inventory<T extends Item> {
         return maximumWeight;
     }
 
-    public void setMaximumWeight(double maximumWeight) {
-        this.maximumWeight = maximumWeight;
+    public void setMaximumWeight(double aMaximumWeight) {
+        this.maximumWeight = aMaximumWeight;
     }
     @JsonIgnore
     public int getSize() {

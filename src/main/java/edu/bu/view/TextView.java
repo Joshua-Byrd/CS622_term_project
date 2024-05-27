@@ -30,7 +30,8 @@ public class TextView {
                 "*  Welcome to Desolate Depths, a place where shadows whisper and only the brave or foolish tread.                    *\n" +
                 "*  You are an intrepid explorer, drawn to the depths by tales of a priceless artifact, the Luminescent Orb,          *\n" +
                 "*  said to rest in the deepest chamber of these forsaken caverns. Legend holds that the Orb grants immense           *\n" +
-                "*  power to its bearer, a temptation too great to ignore.                                                            *\n\n" +
+                "*  power to its bearer, a temptation too great to ignore.                                                            *\n" +
+                "*                                                                                                                    *\n" +
                 "*  Carrying nothing but your trusty dagger and leather shirt, you stand poised to begin your journey.                *\n" +
                 "*  Each step forward is a step away from the light and into the storied past of the Depths. Many have entered, few   *\n" +
                 "*  have returned, and none have claimed the Orb. Will you uncover its secrets, or will you too be swallowed          *\n" +

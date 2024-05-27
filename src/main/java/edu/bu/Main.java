@@ -17,147 +17,6 @@ import edu.bu.view.FacadeView;
 import edu.bu.view.TextView;
 import java.util.Scanner;
 
-///**
-// * Main is the entry point to the application.
-// */
-//public class Main {
-//    /**
-//     * The main method instantiates all necessary objects, prints a main menu and starts the GameController
-//     * appropriately based on the user choice.
-//     * @param args command-line arguments
-//     */
-//    public static void main(String[] args) {
-//        //Get instances of facade objects
-//        TextView view = FacadeView.getTheInstance().createTextView();
-//        PlayerSaveService playerSaveService = FacadePersistence.getTheInstance().createPlayerSaveService();
-//        FacadeModel facadeModel = FacadeModel.getTheInstance();
-//        FacadeItems facadeItems = FacadeItems.getTheInstance();
-//        FacadeEntities facadeEntities = FacadeEntities.getTheInstance();
-//        FacadeController facadeController = FacadeController.getTheInstance();
-//        RoomManager roomManager = FacadeController.getTheInstance().createRoomManager();
-//
-//        Scanner scanner = new Scanner(System.in);
-//        GameLogger logger = null;
-//        Player player = null;
-//        String input;
-//        int choice = 1;
-//        //starting equipment
-//        Weapon startingWeapon = facadeItems.createWeapon(
-//                "dagger",
-//                "A small dagger",
-//                1.2,
-//                4,
-//                15.0);
-//        Armor startingArmor = facadeItems.createArmor(
-//                "leather armor",
-//                "a cuirass made of leather",
-//                4.5,
-//                4,
-//                20.0);
-//        Room startingRoom = facadeController.getStartingRoom();
-//
-//        System.out.println("Welcome to Desolate Depths!");
-//
-//        while (true) {
-//            System.out.println("1. New Game");
-//            System.out.println("2. Continue");
-//            System.out.println("3. Instructions");
-//            System.out.println("4. Exit");
-//            System.out.print("Please choose an option: ");
-//            input = scanner.nextLine();
-//            if (!"1".equals(input) && !"2".equals(input) && !"3".equals(input) && !"4".equals(input)) {
-//                System.out.println("That's not a valid option. Please select an option from the menu.");
-//            } else {
-//                choice = Integer.parseInt(input);
-//                break;
-//            }
-//        }
-//
-//        switch (choice) {
-//            case 1:
-//                System.out.print("Enter your name: ");
-//                String playerName = scanner.nextLine();
-//
-//                player = FacadeEntities.getTheInstance().createPlayer(
-//                        playerName,
-//                        "A brave adventurer",
-//                        10,
-//                        startingRoom,
-//                        startingWeapon,
-//                        startingArmor,
-//                        facadeItems.createInventory(50),
-//                        0.0,
-//                        1,
-//                        0
-//                );
-//                player.addItemToInventory(startingWeapon);
-//                player.addItemToInventory(startingArmor);
-//                break;
-//            case 2:
-//                try {
-//                    player = playerSaveService.load();
-//                    view.displayMessage("Character " + player.getName() + " loaded.\n");
-//                } catch (PlayerDataException e) {
-//                    System.out.println("Error loading save file: " + e.getMessage());
-//                    System.out.println("Starting a new game...");
-//                    System.out.print("Enter your name: ");
-//                    playerName = scanner.nextLine();
-//                    player = FacadeEntities.getTheInstance().createPlayer(
-//                            playerName,
-//                            "A brave adventurer",
-//                            10,
-//                            startingRoom,
-//                            startingWeapon,
-//                            startingArmor,
-//                            facadeItems.createInventory(50),
-//                            0.0,
-//                            1,
-//                            0
-//                    );
-//                    player.addItemToInventory(startingWeapon);
-//                    player.addItemToInventory(startingArmor);
-//                    break;
-//                }
-//            case 3:
-//                displayInstructions();
-//                break;
-//            case 4:
-//                System.out.println("Exiting the game. Goodbye!");
-//                System.exit(0);
-//                break;
-//        }
-//
-//        if (player != null) {
-//            try {
-//                logger = FacadePersistence.getTheInstance().createGameLogger(player.getName());
-//            } catch (LoggerException e) {
-//                view.displayMessage("Error instantiating logger: " +  e.getMessage());
-//            }
-//
-//            GameController gameController = facadeController.createGameController(view, player,
-//                    player.getCurrentRoom(), playerSaveService, logger);
-//            gameController.startGame();
-//        }
-//    }
-//
-//    /**
-//     * INTENT: To display game instructions to the player.
-//     * PRECONDITION: None.
-//     * POSTCONDITION: The game instructions are displayed to the console.
-//     */
-//    private static void displayInstructions() {
-//        System.out.println("Instructions for Desolate Depths:\n");
-//        System.out.println("Available Commands:");
-//        System.out.println("1. go [direction] - Move in the specified direction (north, south, east, west).");
-//        System.out.println("2. get [item] - Pick up an item from the current room and add it to your inventory.");
-//        System.out.println("3. drop [item] - Remove an item from your inventory and leave it in the current room.");
-//        System.out.println("4. examine [target] - Examine a room, your inventory, or a specific item.");
-//        System.out.println("5. save - Save your current game state.");
-//        System.out.println("6. exit - Save your game and exit.");
-//        System.out.println("7. print - Print your game log.");
-//        System.out.println("\nType your commands in the format shown above to interact with the game world.");
-//    }
-//}
 /**
  * Main is the entry point to the application.
  */
@@ -311,16 +170,19 @@ public class Main {
      * POSTCONDITION: The game instructions are displayed to the console.
      */
     private static void displayInstructions() {
-        System.out.println("Desolate Depths is a text adventure game where you take on the role of a brave explorer\n" +
+        System.out.println("\n\nDesolate Depths is a text adventure game where you take on the role of a brave explorer\n" +
                 "questing after the legendary Luminescent Orb. At each location, you will be given a description\n" +
                 "of your surroundings and any items present, and you will interact with the game through typed commands\n" +
                 "The list of available commands appears below. Good luck!\n\n");
         System.out.println("*  go [direction] - Move in the specified direction (north, south, east, west).");
         System.out.println("*  get [item] - Pick up an item from the current room and add it to your inventory.");
+        System.out.println("*  get [item] from [container] - Retrieve an item from an open container.");
         System.out.println("*  drop [item] - Remove an item from your inventory and leave it in the current room.");
         System.out.println("*  examine [target] - Examine a room, your inventory, or a specific item.");
         System.out.println("*  wear [armor] - Wear a piece of armor from your inventory.");
         System.out.println("*  wield [weapon] - Wield a weapon from your inventory.");
+        System.out.println("*  open [container] - Open a container to see its contents.");
+        System.out.println("*  close [container] - Close a container.");
         System.out.println("*  save - Save your current game state.");
         System.out.println("*  exit - Save your game and exit.");
         System.out.println("*  print - Print your game log.");

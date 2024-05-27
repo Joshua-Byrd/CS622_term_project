@@ -158,6 +158,51 @@ public class Player extends Entity implements Combatant {
         currentRoom.getItems().addItem(item);
     }
 
+    /**
+     * INTENT: To get an item from a container in the player's inventory or the current room.
+     * PRECONDITION: The container must be present in the player's inventory or the current room.
+     * POSTCONDITION: The item is removed from the container and added to the player's inventory.
+     *
+     * @param containerName The name of the container to get the item from.
+     * @param itemName The name of the item to get from the container.
+     * @throws IllegalArgumentException if the container or item is not found.
+     */
+    public void getItemFromContainer(String containerName, String itemName) throws IllegalArgumentException {
+        Container<Item> container = findContainer(containerName);
+        if (container == null) {
+            throw new IllegalArgumentException("There is no " + containerName + " here.");
+        }
+
+        Item item = container.getItems().findItemByName(itemName);
+        if (item == null) {
+            throw new IllegalArgumentException("The " + containerName + " does not contain " + itemName + ".");
+        }
+
+        if (!this.getInventory().canAddItem(item)) {
+            throw new IllegalArgumentException("Cannot carry this item. Exceeds carrying capacity.");
+        }
+
+        container.removeItem(item);
+        this.getInventory().addItem(item);
+    }
+
+    // Helper method to find a container in the player's inventory or the current room
+    private Container<Item> findContainer(String containerName) {
+        // Check player's inventory
+        Item item = this.getInventory().findItemByName(containerName);
+        if (item instanceof Container) {
+            return (Container<Item>) item;
+        }
+
+        // Check current room's inventory
+        item = this.getCurrentRoom().getItems().findItemByName(containerName);
+        if (item instanceof Container) {
+            return (Container<Item>) item;
+        }
+
+        return null;
+    }
+
     //Getter and Setter methods
     @Override
     public int getHealth() {

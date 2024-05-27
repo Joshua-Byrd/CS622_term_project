@@ -46,11 +46,11 @@ public class Container <T extends Item> extends Item {
      * PRECONDITION: The item must not be null and must exist in the container.
      * POSTCONDITION: The item is removed from the container's inventory && return value == item
      *
-     * @param item The item to be removed.
+     * @param anItem The item to be removed.
      */
-    public T removeItem(T item) {
-        T tempItem = items.findItemByName(item.getName());
-        items.removeItem(item);
+    public T removeItem(T anItem) {
+        T tempItem = items.findItemByName(anItem.getName());
+        items.removeItem(anItem);
         return tempItem;
 
     }
@@ -68,7 +68,7 @@ public class Container <T extends Item> extends Item {
         return items;
     }
 
-    public void setItems(Inventory<T> items) {
-        this.items = items;
+    public void setItems(Inventory<T> someItems) {
+        this.items = someItems;
     }
 }

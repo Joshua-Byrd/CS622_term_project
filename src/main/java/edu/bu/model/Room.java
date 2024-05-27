@@ -36,7 +36,7 @@ public class Room {
     public Room(){
         this.name = "";
         this.description = "";
-        this.items = new Inventory<>(50);
+        this.items = new Inventory<>(1000);
     }
 
     @JsonCreator

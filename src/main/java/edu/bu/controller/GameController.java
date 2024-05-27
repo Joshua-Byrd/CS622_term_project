@@ -4,10 +4,7 @@ import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.Room;
-import edu.bu.model.items.Armor;
-import edu.bu.model.items.Inventory;
-import edu.bu.model.items.Item;
-import edu.bu.model.items.Weapon;
+import edu.bu.model.items.*;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.util.MessageService;
@@ -152,46 +149,6 @@ public class GameController {
         }
     }
 
-//    /**
-//     * INTENT: To parse and handle the command input by the player.
-//     * PRECONDITION: The command string should not be null.
-//     * POSTCONDITION: The command is processed and appropriate actions are taken.
-//     *
-//     * @param command The command string input by the user.
-//     */
-//    public void processCommand(String command) {
-//        String[] parsedCommand = parseCommand(command);
-//        String action = parsedCommand[0];
-//        String target = parsedCommand.length > 1 ? parsedCommand[1] : "";
-//
-//        switch (action.toLowerCase()) {
-//            case "go":
-//                handleGoCommand(target);
-//                break;
-//            case "get":
-//                handleGetCommand(target);
-//                break;
-//            case "drop":
-//                handleDropCommand(target);
-//                break;
-//            case "examine":
-//                handleExamineCommand(target);
-//                break;
-//            case "save":
-//                handleSaveCommand();
-//                break;
-//            case "exit":
-//                handleExitCommand();
-//                break;
-//            case "print":
-//                handlePrintCommand();
-//                break;
-//            default:
-//                view.displayMessage("Unknown command.\n");
-//                break;
-//        }
-//    }
-
     /**
      * INTENT: To parse and handle the command input by the player.
      * PRECONDITION: The command string should not be null.
@@ -222,6 +179,12 @@ public class GameController {
                 break;
             case "wield":
                 handleWieldCommand(target);
+                break;
+            case "open":
+                handleOpenCommand(target);
+                break;
+            case "close":
+                handleCloseCommand(target);
                 break;
             case "save":
                 handleSaveCommand();
@@ -287,19 +250,112 @@ public class GameController {
     }
 
     /**
-     * INTENT: To handle the "get" command, picking up an item from the current room's inventory and adding it to the player's inventory.
-     * PRECONDITION: The item must be present in the current room's inventory, and the player must have enough carrying capacity.
-     * POSTCONDITION: The item is removed from the current room's inventory and added to the player's inventory.
+     * INTENT: To handle the "get" command, picking up an item from the current room's inventory or from a container and adding it to the player's inventory.
+     * PRECONDITION: The item must be present in the current room's inventory or in the specified container, and the player must have enough carrying capacity.
+     * POSTCONDITION: The item is removed from the current room's inventory or container and added to the player's inventory.
      *
-     * @param itemName The name of the item to pick up.
+     * @param target The target of the get command, which can be an item or an item from a container (e.g., "sword from chest").
      */
-    private void handleGetCommand(String itemName) {
-        try {
-            player.pickUpItem(itemName);
-            view.displayMessage("You picked up the " + itemName + ".\n");
-        } catch (IllegalArgumentException e) {
-            view.displayMessage("There is no " + itemName + " here.\n");
+    private void handleGetCommand(String target) {
+        if (target.contains(" from ")) {
+            String[] parts = target.split(" from ");
+            if (parts.length == 2) {
+                String itemName = parts[0].trim();
+                String containerName = parts[1].trim();
+                try {
+                    player.getItemFromContainer(containerName, itemName);
+                    view.displayMessage("You took the " + itemName + " from the " + containerName + ".\n");
+                } catch (IllegalArgumentException e) {
+                    view.displayMessage(e.getMessage() + "\n");
+                }
+            } else {
+                view.displayMessage("Invalid command format. Use 'get [item] from [container]'.\n");
+            }
+        } else {
+            try {
+                player.pickUpItem(target);
+                view.displayMessage("You picked up the " + target + ".\n");
+            } catch (IllegalArgumentException e) {
+                view.displayMessage("There is no " + target + " here.\n");
+            }
         }
+    }
+
+    /**
+     * INTENT: To handle the "open" command, opening the specified container if present in the room or player's inventory.
+     * PRECONDITION: The container must be present in the current room or player's inventory.
+     * POSTCONDITION: The container is opened and its contents are displayed.
+     *
+     * @param containerName The name of the container to open.
+     */
+    private void handleOpenCommand(String containerName) {
+        Container<Item> container = findContainer(containerName);
+        if (container != null) {
+            if (container.isOpen()) {
+                view.displayMessage("That is already open\n");
+            } else {
+                container.open();
+                view.displayMessage("You open the " + containerName + ".\n");
+            }
+            if (container.getItems().getSize() > 0) {
+                view.displayMessage("It contains:\n");
+                for (Item item : container.getItems().getAllItems()) {
+                    view.displayMessage("- " + item.getName() + ": " + item.getDescription() + "\n");
+                }
+            } else {
+                view.displayMessage("It is empty.\n");
+            }
+        } else {
+            view.displayMessage("There is no " + containerName + " to open.\n");
+        }
+    }
+
+    /**
+     * INTENT: To handle the "close" command, closing the specified container if it is open.
+     * PRECONDITION: The container must be present in the current room's inventory and must be open.
+     * POSTCONDITION: The container is closed if it is open, otherwise a message is displayed indicating it is already closed.
+     *
+     * @param containerName The name of the container to close.
+     */
+    private void handleCloseCommand(String containerName) {
+        Container<Item> container = findContainer(containerName);
+
+        if (container == null) {
+            view.displayMessage("There is no " + containerName + " here.\n");
+            return;
+        }
+
+        if (!container.isOpen()) {
+            view.displayMessage("The " + containerName + " is already closed.\n");
+        } else {
+            container.setOpen(false);
+            view.displayMessage("You closed the " + containerName + ".\n");
+        }
+    }
+
+
+    /**
+     * INTENT: To find a container by name in the player's inventory or the current room.
+     * PRECONDITION: None.
+     * POSTCONDITION: Returns the container if found, otherwise null.
+     *
+     * @param containerName The name of the container to find.
+     * @return The found container or null.
+     */
+    private Container findContainer(String containerName) {
+        // Check player's inventory
+        Container container = (Container)player.getInventory().findItemByName(containerName);
+        if (container != null) {
+            return container;
+        }
+
+        // Check current room's inventory
+        container = (Container)currentRoom.getItems().findItemByName(containerName);
+        if (container != null) {
+            return container;
+        }
+
+        return null;
     }
 
     /**
@@ -320,11 +376,11 @@ public class GameController {
     }
 
     /**
-     * INTENT: To handle the "examine" command, providing a description of the specified target (room, inventory, or item).
-     * PRECONDITION: The target must be a valid target (room, inventory, or an item present in the player's inventory).
+     * INTENT: To handle the "examine" command, providing a description of the specified target (room, inventory, container, or item).
+     * PRECONDITION: The target must be a valid target (room, inventory, container, or an item present in the player's inventory).
      * POSTCONDITION: The description of the target is displayed.
      *
-     * @param target The target to examine (room, inventory, or item).
+     * @param target The target to examine (room, inventory, container, or item).
      */
     private void handleExamineCommand(String target) {
         if (target.equalsIgnoreCase("room")) {
@@ -335,14 +391,36 @@ public class GameController {
                 view.displayMessage("- " + item.getName() + ": " + item.getDescription() + "\n");
             }
         } else {
+            // Try to find the item in the player's inventory first
             Item item = player.getInventory().findItemByName(target);
+            if (item == null) {
+                // Then try to find the item in the room
+                item = currentRoom.getItems().findItemByName(target);
+            }
             if (item != null) {
                 view.displayMessage(item.getName() + ": " + item.getDescription() + "\n");
+                if (item instanceof Container) {
+                    Container<Item> container = (Container<Item>) item;
+                    if (!container.isOpen()) {
+                        view.displayMessage("It is closed.\n");
+                        return;
+                    } else {
+                        if (container.getItems().getSize() > 0) {
+                            view.displayMessage("It contains:\n");
+                            for (Item i : container.getItems().getAllItems()) {
+                                view.displayMessage("- " + i.getName() + ": " + i.getDescription() + "\n");
+                            }
+                        } else {
+                            view.displayMessage("It is empty.\n");
+                        }
+                    }
+                }
             } else {
                 view.displayMessage("There is no " + target + " to examine.\n");
             }
         }
     }
+
 
     /**
      * INTENT: To handle the "save" command, saving the player's current state to a file.

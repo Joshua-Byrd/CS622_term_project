@@ -100,12 +100,5 @@ public class InventoryTest {
         inventory.setMaximumWeight(100.0);
         assertEquals(100.0, inventory.getMaximumWeight(), 0.01);
     }
-
-//    @Test
-//    public void testGetSize() {
-//        assertEquals(0, inventory.getSize());
-//        inventory.addItem(armor);
-//        assertEquals(1, inventory.getSize());
-//    }
 }
 
