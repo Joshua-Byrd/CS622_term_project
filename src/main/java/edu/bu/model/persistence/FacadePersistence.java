@@ -40,9 +40,9 @@ public class FacadePersistence {
         logger.log(message);
     }
 
-    public void printLog(GameLogger logger) throws LoggerException {
-        logger.printLog();
-    }
+//    public void printLog(GameLogger logger) throws LoggerException {
+//        logger.printLog();
+//    }
 
     public void closeLogger(GameLogger logger) {
         logger.close();

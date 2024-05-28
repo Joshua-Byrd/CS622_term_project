@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A collection of T's extending Item, representing the contents of a container, room, or player's inventory
@@ -91,12 +92,11 @@ public class Inventory<T extends Item> {
      */
     @JsonIgnore
     public double getTotalWeight() {
-        double totalWeight = 0;
-        for (T item : items) {
-            totalWeight += item.getWeight();
-        }
-        return totalWeight;
+        return items.stream()
+                .mapToDouble(Item::getWeight)
+                .sum();
     }
+
 
     /**
      * INTENT: Finds an item in the inventory by its name.
@@ -107,12 +107,16 @@ public class Inventory<T extends Item> {
      * @return The item with the given name, or null if no such item exists.
      */
     public T findItemByName(String aName) {
-        for (T item : items) {
-            if (item.getName().equalsIgnoreCase(aName)) {
-                return item;
-            }
-        }
-        return null;
+        return items.stream()
+                .filter(item -> item.getName().equalsIgnoreCase(aName))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public List<T> getTradeableItems() {
+        return items.stream()
+                .filter(item -> item instanceof Tradeable)
+                .collect(Collectors.toList());
     }
 
     //getter and setter methods

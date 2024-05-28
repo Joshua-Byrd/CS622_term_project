@@ -180,6 +180,7 @@ public class Main {
         System.out.println("*  go [direction] - Move in the specified direction (north, south, east, west).");
         System.out.println("*  get [item] - Pick up an item from the current room and add it to your inventory.");
         System.out.println("*  get [item] from [container] - Retrieve an item from an open container.");
+        System.out.println("*  get all - Retrieves all items that can fit in your inventory.");
         System.out.println("*  drop [item] - Remove an item from your inventory and leave it in the current room.");
         System.out.println("*  examine [target] - Examine a room, your inventory, or a specific item.");
         System.out.println("*  wear [armor] - Wear a piece of armor from your inventory.");

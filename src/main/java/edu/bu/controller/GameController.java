@@ -267,10 +267,44 @@ public class GameController {
      *
      * @param target The target of the get command, which can be an item or an item from a container (e.g., "sword from chest").
      */
+//    private void handleGetCommand(String target) {
+//        //if the word "from" is present, the player is trying to get something from a container
+//        //so the command must be parsed further to get the container
+//        if (target.contains(" from ")) {
+//            String[] parts = target.split(" from ");
+//            if (parts.length == 2) {
+//                String itemName = parts[0].trim();
+//                String containerName = parts[1].trim();
+//                try {
+//                    player.getItemFromContainer(containerName, itemName);
+//                    view.displayMessage("You took the " + itemName + " from the " + containerName + ".\n");
+//                } catch (IllegalArgumentException e) {
+//                    view.displayMessage(e.getMessage() + "\n");
+//                }
+//            } else {
+//                view.displayMessage("Invalid command format. Use 'get [item] from [container]'.\n");
+//            }
+//        } else {
+//            //if "from" is not present, just try to get the item directly
+//            try {
+//                player.pickUpItem(target);
+//                view.displayMessage("You picked up the " + target + ".\n");
+//            } catch (IllegalArgumentException e) {
+//                view.displayMessage("There is no " + target + " here.\n");
+//            }
+//        }
+//    }
+    /**
+     * INTENT: To handle the "get" command, picking up an item from the current room's inventory or from a container and adding it to the player's inventory.
+     * PRECONDITION: The item must be present in the current room's inventory or in the specified container, and the player must have enough carrying capacity.
+     * POSTCONDITION: The item is removed from the current room's inventory or container and added to the player's inventory.
+     *
+     * @param target The target of the get command, which can be an item or an item from a container (e.g., "sword from chest").
+     */
     private void handleGetCommand(String target) {
-        //if the word "from" is present, the player is trying to get something from a container
-        //so the command must be parsed further to get the container
-        if (target.contains(" from ")) {
+        if (target.equalsIgnoreCase("all")) {
+            getAllTradeableItems();
+        } else if (target.contains(" from ")) {
             String[] parts = target.split(" from ");
             if (parts.length == 2) {
                 String itemName = parts[0].trim();
@@ -285,7 +319,6 @@ public class GameController {
                 view.displayMessage("Invalid command format. Use 'get [item] from [container]'.\n");
             }
         } else {
-            //if "from" is not present, just try to get the item directly
             try {
                 player.pickUpItem(target);
                 view.displayMessage("You picked up the " + target + ".\n");
@@ -294,6 +327,26 @@ public class GameController {
             }
         }
     }
+
+    /**
+     * INTENT: To pick up all tradeable items from the current room's inventory and add them to the player's inventory.
+     * PRECONDITION: The player must have enough carrying capacity for each item.
+     * POSTCONDITION: All tradeable items are removed from the room's inventory and added to the player's inventory, if possible.
+     */
+    private void getAllTradeableItems() {
+        List<Item> tradeableItems = player.getCurrentRoom().getItems().getTradeableItems();
+        for (Item item : tradeableItems) {
+            try {
+                player.pickUpItem(item.getName());
+                view.displayMessage("You picked up the " + item.getName() + ".\n");
+            } catch (IllegalArgumentException e) {
+                view.displayMessage("Could not pick up the " + item.getName() + ": " + e.getMessage() + "\n");
+            }
+        }
+    }
+
+
+
 
     /**
      * INTENT: To handle the "open" command, opening the specified container if present in the room or player's inventory.
@@ -402,14 +455,12 @@ public class GameController {
             displayFormattedRoomDescription(player.getCurrentRoom());
         } else if (target.equalsIgnoreCase("inventory")) {
             view.displayMessage("Your inventory contains:\n");
-            for (Item item : player.getInventory().getAllItems()) {
-                view.displayMessage("- " + item.getName() + ": " + item.getDescription() + "\n");
-            }
+            player.getInventory().getAllItems().stream()
+                    .map(item -> "- " + item.getName() + ": " + item.getDescription() + "\n")
+                    .forEach(view::displayMessage);
         } else {
-            // Try to find the item in the player's inventory first
             Item item = player.getInventory().findItemByName(target);
             if (item == null) {
-                // Then try to find the item in the room
                 item = currentRoom.getItems().findItemByName(target);
             }
             if (item != null) {
@@ -418,13 +469,12 @@ public class GameController {
                     Container<Item> container = (Container<Item>) item;
                     if (!container.isOpen()) {
                         view.displayMessage("It is closed.\n");
-                        return;
                     } else {
                         if (container.getItems().getSize() > 0) {
                             view.displayMessage("It contains:\n");
-                            for (Item i : container.getItems().getAllItems()) {
-                                view.displayMessage("- " + i.getName() + ": " + i.getDescription() + "\n");
-                            }
+                            container.getItems().getAllItems().stream()
+                                    .map(i -> "- " + i.getName() + ": " + i.getDescription() + "\n")
+                                    .forEach(view::displayMessage);
                         } else {
                             view.displayMessage("It is empty.\n");
                         }
@@ -435,6 +485,7 @@ public class GameController {
             }
         }
     }
+
 
 
     /**
@@ -475,7 +526,8 @@ public class GameController {
     private void handlePrintCommand() {
         try {
             view.displayMessage("Here are the important moments in your journey:\n");
-            logger.printLog();
+            logger.getLogEntries().stream()
+                    .forEach(entry -> view.displayMessage(entry + "\n"));
         } catch (LoggerException e) {
             view.displayMessage(e.getMessage() + "\n");
         }

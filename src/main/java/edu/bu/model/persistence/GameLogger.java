@@ -2,12 +2,11 @@ package edu.bu.model.persistence;
 
 import edu.bu.exceptions.LoggerException;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -64,22 +63,24 @@ public class GameLogger {
     }
 
     /**
-     * INTENT: Allows a player to view their logfile.
-     * PRECONDITION 1: A GameLogger must be instantiated
-     * PRECONDITION 2: A log file for the current player must exist.
-     * POSTCONDITION: The contents of the current user's logfile are printed to the screen.
-     * @throws LoggerException
+     * INTENT: Retrieves all log entries from the log file.
+     * PRECONDITION: The log file must be readable and not empty.
+     * POSTCONDITION: A list of log entries is returned.
+     *
+     * @return A list of log entries.
+     * @throws LoggerException If an I/O error occurs.
      */
-    public void printLog() throws LoggerException {
-        try {
-            Scanner logFile = new Scanner(new File(LOG_FILE_PATH));
-            while(logFile.hasNextLine()) {
-                System.out.println(logFile.nextLine());
+    public List<String> getLogEntries() throws LoggerException {
+        List<String> logEntries = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(LOG_FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                logEntries.add(line);
             }
-            logFile.close();
-        } catch(IOException e) {
-            throw new LoggerException("LoggerException: Error reading from log file in GameLogger.printLog().");
+        } catch (IOException e) {
+            throw new LoggerException("Error reading log file: " + e.getMessage(), e);
         }
+        return logEntries;
     }
 
     /**
