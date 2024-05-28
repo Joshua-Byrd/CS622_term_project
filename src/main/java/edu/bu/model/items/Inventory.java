@@ -113,6 +113,13 @@ public class Inventory<T extends Item> {
                 .orElse(null);
     }
 
+    /**
+     * INTENT: returns a list of items in the current inventory that implement Tradeable for use in the
+     * "get all" command.
+     * PRECONDITION: None.
+     * POSTCONDITION: Return value = list of items or null if none exist
+     * @return list of Tradeable items
+     */
     public List<T> getTradeableItems() {
         return items.stream()
                 .filter(item -> item instanceof Tradeable)

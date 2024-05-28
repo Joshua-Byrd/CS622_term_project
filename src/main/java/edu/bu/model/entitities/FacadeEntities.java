@@ -126,9 +126,8 @@ public class FacadeEntities {
     }
 
     // Monster Methods
-    public Monster createMonster(String name, String description, int health, Weapon weapon, Armor armor,
-                                 Inventory<Item> inventory) {
-        return new Monster(name, description, health, weapon, armor, inventory);
+    public Monster createMonster(String name, String description, int health, Weapon weapon, Armor armor) {
+        return new Monster(name, description, health, weapon, armor);
     }
 
     public int getMonsterHealth(Monster monster) {

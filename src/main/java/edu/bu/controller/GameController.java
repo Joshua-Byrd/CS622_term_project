@@ -2,12 +2,14 @@ package edu.bu.controller;
 
 import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
+import edu.bu.model.entitities.Monster;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.Room;
 import edu.bu.model.items.*;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.util.MessageService;
+import edu.bu.util.MonsterFactory;
 import edu.bu.view.TextView;
 
 import java.util.List;
@@ -108,6 +110,7 @@ import java.util.Scanner;
 //}
 
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * Acts as the main controller in the MVC pattern. Provides methods for model and view classes to
@@ -192,6 +195,12 @@ public class GameController {
             case "close":
                 handleCloseCommand(target);
                 break;
+            case "attack":
+                handleAttackCommand(target);
+                break;
+            case "flee":
+                handleFleeCommand(target);
+                break;
             case "save":
                 handleSaveCommand();
                 break;
@@ -250,50 +259,13 @@ public class GameController {
                 return;
         }
         if (nextRoom != null) {
-            player.setCurrentRoom(nextRoom);
-            currentRoom = nextRoom;
-            displayFormattedRoomDescription(player.getCurrentRoom());
+            enterRoom(nextRoom);
         } else {
             view.displayMessage("You can't go in that direction.\n");
         }
     }
 
-    /**
-     * INTENT: To handle the "get" command, picking up an item from the current room's inventory or from a
-     * container and adding it to the player's inventory.
-     * PRECONDITION: The item must be present in the current room's inventory or in the specified container,
-     * and the player must have enough carrying capacity.
-     * POSTCONDITION: The item is removed from the current room's inventory or container and added to the player's inventory.
-     *
-     * @param target The target of the get command, which can be an item or an item from a container (e.g., "sword from chest").
-     */
-//    private void handleGetCommand(String target) {
-//        //if the word "from" is present, the player is trying to get something from a container
-//        //so the command must be parsed further to get the container
-//        if (target.contains(" from ")) {
-//            String[] parts = target.split(" from ");
-//            if (parts.length == 2) {
-//                String itemName = parts[0].trim();
-//                String containerName = parts[1].trim();
-//                try {
-//                    player.getItemFromContainer(containerName, itemName);
-//                    view.displayMessage("You took the " + itemName + " from the " + containerName + ".\n");
-//                } catch (IllegalArgumentException e) {
-//                    view.displayMessage(e.getMessage() + "\n");
-//                }
-//            } else {
-//                view.displayMessage("Invalid command format. Use 'get [item] from [container]'.\n");
-//            }
-//        } else {
-//            //if "from" is not present, just try to get the item directly
-//            try {
-//                player.pickUpItem(target);
-//                view.displayMessage("You picked up the " + target + ".\n");
-//            } catch (IllegalArgumentException e) {
-//                view.displayMessage("There is no " + target + " here.\n");
-//            }
-//        }
-//    }
+
     /**
      * INTENT: To handle the "get" command, picking up an item from the current room's inventory or from a container and adding it to the player's inventory.
      * PRECONDITION: The item must be present in the current room's inventory or in the specified container, and the player must have enough carrying capacity.
@@ -344,8 +316,6 @@ public class GameController {
             }
         }
     }
-
-
 
 
     /**
@@ -569,6 +539,102 @@ public class GameController {
         }
     }
 
+    private void enterRoom(Room room) {
+        this.currentRoom = room;
+        player.setCurrentRoom(room);
+        MonsterFactory.trySpawnMonster(room);
+        displayFormattedRoomDescription(room);
+        if (!room.getMonsters().isEmpty()) {
+            view.displayMessage("Monsters present: " + room.getMonsters().stream().map(Monster::getName).collect(Collectors.joining(", ")) + "\n");
+            initiateCombat(room.getMonsters().get(0)); // Simple case: fight the first monster
+        }
+    }
+
+    private void initiateCombat(Monster monster) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            while (monster.isAlive() && player.getHealth() > 0) {
+                view.displayMessage("You are in combat with " + monster.getName() + ".\nChoose an action: attack, flee\n");
+                String action = scanner.nextLine();
+                if (action.equalsIgnoreCase("attack")) {
+                    player.attack(monster);
+                    if (monster.isAlive()) {
+                        monster.attack(player);
+                    }
+                } else if (action.equalsIgnoreCase("flee")) {
+                    view.displayMessage("You fled from the battle.\n");
+                    return;
+                } else {
+                    view.displayMessage("Invalid action. Choose 'attack' or 'flee'.\n");
+                }
+            }
+
+            if (!monster.isAlive()) {
+                view.displayMessage("You have defeated the " + monster.getName() + ".\n");
+                currentRoom.removeMonster(monster);
+            } else if (player.getHealth() <= 0) {
+                view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
+                System.exit(0);
+            }
+        }
+    }
+
+    /**
+     * INTENT: To handle the "attack" command, allowing the player to attack a specified monster.
+     * PRECONDITION: The target must be present in the current room.
+     * POSTCONDITION: The player attacks the target if present, otherwise an error message is displayed.
+     *
+     * @param target The name of the monster to attack.
+     */
+    private void handleAttackCommand(String target) {
+        Monster monster = currentRoom.getMonsterByName(target);
+        if (monster == null || !monster.isAlive()) {
+            view.displayMessage("There is no " + target + " here.\n");
+            return;
+        }
+        player.attack(monster);
+        if (monster.isAlive()) {
+            monster.attack(player);
+        } else {
+            view.displayMessage("You have defeated the " + target + ".\n");
+        }
+    }
+
+
+    /**
+     * INTENT: To handle the "flee" command, allowing the player to flee to an adjacent room.
+     * PRECONDITION: The direction must be valid (north, south, east, west) and lead to an existing room.
+     * POSTCONDITION: The player flees to the specified direction if valid, otherwise an error message is displayed.
+     *
+     * @param direction The direction to flee to (north, south, east, west).
+     */
+    private void handleFleeCommand(String direction) {
+        Room nextRoom = null;
+        switch (direction.toLowerCase()) {
+            case "north":
+                nextRoom = currentRoom.getConnection("north");
+                break;
+            case "south":
+                nextRoom = currentRoom.getConnection("south");
+                break;
+            case "east":
+                nextRoom = currentRoom.getConnection("east");
+                break;
+            case "west":
+                nextRoom = currentRoom.getConnection("west");
+                break;
+            default:
+                view.displayMessage("You can't flee in that direction.\n");
+                return;
+        }
+        if (nextRoom != null) {
+            player.setCurrentRoom(nextRoom);
+            currentRoom = nextRoom;
+            displayFormattedRoomDescription(player.getCurrentRoom());
+        } else {
+            view.displayMessage("You can't flee in that direction.\n");
+        }
+    }
+
     /**
      * INTENT: Display the room name, description, and inventory contents in a formatted way.
      * PRECONDITION: room cannot be null.
@@ -582,7 +648,6 @@ public class GameController {
         roomDescription.append("You are standing in a ").append(room.getName()).append(".\n")
                 .append(room.getDescription()).append("\n");
 
-        //show the contents of the room
         Inventory<Item> roomInventory = room.getItems();
         if (roomInventory.getSize() > 0) {
             roomDescription.append("You see here: ");
@@ -593,6 +658,22 @@ public class GameController {
                     roomDescription.append(", ");
                 }
             }
+            roomDescription.append(".\n");
+        }
+
+        // Display monsters in the room
+        List<Monster> monsters = room.getMonsters();
+        if (!monsters.isEmpty()) {
+            roomDescription.append("You see monsters here: ");
+            for (Monster monster : monsters) {
+                roomDescription.append(monster.getName());
+                if (!monster.isAlive()) {
+                    roomDescription.append(" (dead)");
+                }
+                roomDescription.append(", ");
+            }
+            // Remove the trailing comma and space
+            roomDescription.setLength(roomDescription.length() - 2);
             roomDescription.append(".\n");
         }
 

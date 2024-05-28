@@ -1,10 +1,13 @@
 package edu.bu.model;
 
 import com.fasterxml.jackson.annotation.*;
+import edu.bu.model.entitities.Monster;
 import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -36,12 +39,16 @@ public class Room {
      */
     private Map<String, Room> connections = new HashMap<>();
 
+    //List of monsters currently in the room
+    private List<Monster> monsters = new ArrayList<>();
+
     // Default constructor required by Jackson
     public Room() {
         this.name = "";
         this.description = "";
         this.items = new Inventory<>(1000);
         this.connections = new HashMap<>();
+
     }
 
     @JsonCreator
@@ -52,6 +59,23 @@ public class Room {
         this.description = aDescription;
         this.items = someItems;
         this.connections = new HashMap<>();
+    }
+
+    /**
+     * INTENT: To get a monster from the room by name.
+     * PRECONDITION: The name must not be null.
+     * POSTCONDITION: Returns the monster with the given name, or null if no such monster exists.
+     *
+     * @param name The name of the monster to find.
+     * @return The monster with the given name, or null if no such monster exists.
+     */
+    public Monster getMonsterByName(String name) {
+        for (Monster monster : monsters) {
+            if (monster.getName().equalsIgnoreCase(name) && monster.isAlive()) {
+                return monster;
+            }
+        }
+        return null;
     }
 
     //Getter and Setter methods
@@ -86,6 +110,20 @@ public class Room {
     public Room getConnection(String aDirection) {
         return connections.get(aDirection);
     }
+
+    public List<Monster> getMonsters() {
+        return monsters;
+    }
+
+    public void addMonster(Monster monster) {
+        monsters.add(monster);
+    }
+
+    public void removeMonster(Monster monster) {
+        monsters.remove(monster);
+    }
+
+
 
     @JsonProperty("connections")
     public Map<String,Room> getConnections() {

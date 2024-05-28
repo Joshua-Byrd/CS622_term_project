@@ -33,8 +33,7 @@ public class MonsterTest {
                 "A scary monster",
                 10,
                 mockWeapon,
-                mockArmor,
-                new Inventory<Item>(50)
+                mockArmor
         );
 
         // Ensure the Die instance in Monster is properly set up

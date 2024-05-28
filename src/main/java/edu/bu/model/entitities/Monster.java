@@ -23,8 +23,8 @@ public class Monster extends Entity implements Combatant {
     public Die attackDie;
     private final FacadeUtil facadeUtil = FacadeUtil.getTheInstance();
 
-    public Monster(String aName, String aDescription, int aHealth, Weapon aWeapon, Armor aArmor, Inventory<Item> anInventory) {
-        super(aName, aDescription, anInventory);
+    public Monster(String aName, String aDescription, int aHealth, Weapon aWeapon, Armor aArmor) {
+        super(aName, aDescription, new Inventory<Item>(0));
         this.health = aHealth;
         this.equippedWeapon = aWeapon;
         this.equippedArmor = aArmor;
