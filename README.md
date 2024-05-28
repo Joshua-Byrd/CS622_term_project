@@ -7,6 +7,15 @@ At this time, there are no rooms implemented, so upon initialization you should 
 ## Current Commands
 At this time, the following command are functional:
 
-- *'exit'*  - quits the game 
-- *'save'* saves your character without exiting 
-- *'print log'* prints the contents of the current character's log file to the screen.
+*  go [direction] - Move in the specified direction (north, south, east, west).
+*  get [item] - Pick up an item from the current room and add it to your inventory.");
+*  get [item] from [container] - Retrieve an item from an open container.
+*  drop [item] - Remove an item from your inventory and leave it in the current room.
+*  examine [target] - Examine a room, your inventory, or a specific item.
+*  wear [armor] - Wear a piece of armor from your inventory.
+*  wield [weapon] - Wield a weapon from your inventory.
+*  open [container] - Open a container to see its contents.
+*  close [container] - Close a container.
+*  save - Save your current game state.
+*  exit - Save your game and exit.
+*  print - Print your game log.
