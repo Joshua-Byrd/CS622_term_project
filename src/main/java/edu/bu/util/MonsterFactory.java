@@ -23,7 +23,7 @@ public class MonsterFactory {
         if (random.nextDouble() < SPAWN_PROBABILITY) {
             Weapon claw = new Weapon("Claw", "Sharp claws", 1.0, 3, 0);
             Armor hide = new Armor("Hide", "Thick hide", 2.0, 1, 0);
-            Monster monster = FacadeEntities.getTheInstance().createMonster("Goblin", "A small, green creature", 10, claw, hide);
+            Monster monster = FacadeEntities.getTheInstance().createMonster("Goblin", "A small, green creature", 3, claw, hide);
             room.addMonster(monster);
         }
     }

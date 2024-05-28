@@ -1,4 +1,0 @@
-[2024/05/28 11:49:47] test2 has begun their journey.
-[2024/05/28 11:50:33] test2 quit the game.
-[2024/05/28 12:09:47] test2 has begun their journey.
-[2024/05/28 12:09:52] test2 quit the game.

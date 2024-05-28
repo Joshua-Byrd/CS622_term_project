@@ -114,7 +114,7 @@ import java.util.stream.Collectors;
 
 /**
  * Acts as the main controller in the MVC pattern. Provides methods for model and view classes to
- * interact, runs the main game loop, and provides methods to handle user input.
+ * interact, runs the main game loop, and provides methods to handle user input and combat.
  */
 public class GameController {
     private final TextView view;
@@ -539,6 +539,13 @@ public class GameController {
         }
     }
 
+    /**
+     * INTENT: Moves the character to the intended room and attempts to spawn a monster in that room
+     * PRECONDITION: room must not be null
+     * POSTCONDITION: Player.currentRoom == the given room and this.currentRoom == the given room. If
+     * trySpawnmonster adds a monster to the room, combat is initiated
+     * @param room
+     */
     private void enterRoom(Room room) {
         this.currentRoom = room;
         player.setCurrentRoom(room);
@@ -550,33 +557,40 @@ public class GameController {
         }
     }
 
+    /**
+     * INTENT: Handles the combat loop, offering players the ability to attack or flee from the battle
+     * PRECONDITION: monster must not be null
+     * POSTCONDITION: If player health reaches 0, defeat message is printed and the game is ended; if monster
+     * health reaches 0, a victory message is printed and the game returns to the main loop
+     * @param monster the monster to be defeated
+     */
     private void initiateCombat(Monster monster) {
-        try (Scanner scanner = new Scanner(System.in)) {
-            while (monster.isAlive() && player.getHealth() > 0) {
-                view.displayMessage("You are in combat with " + monster.getName() + ".\nChoose an action: attack, flee\n");
-                String action = scanner.nextLine();
-                if (action.equalsIgnoreCase("attack")) {
-                    player.attack(monster);
-                    if (monster.isAlive()) {
-                        monster.attack(player);
-                    }
-                } else if (action.equalsIgnoreCase("flee")) {
-                    view.displayMessage("You fled from the battle.\n");
-                    return;
-                } else {
-                    view.displayMessage("Invalid action. Choose 'attack' or 'flee'.\n");
+        Scanner scanner = new Scanner(System.in); // Remove the try-with-resources block to prevent closing the scanner
+        while (monster.isAlive() && player.getHealth() > 0) {
+            view.displayMessage("You are in combat with " + monster.getName() + ".\nChoose an action: attack, flee\n");
+            String action = scanner.nextLine();
+            if (action.equalsIgnoreCase("attack")) {
+                player.attack(monster);
+                if (monster.isAlive()) {
+                    monster.attack(player);
                 }
-            }
-
-            if (!monster.isAlive()) {
-                view.displayMessage("You have defeated the " + monster.getName() + ".\n");
-                currentRoom.removeMonster(monster);
-            } else if (player.getHealth() <= 0) {
-                view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
-                System.exit(0);
+            } else if (action.equalsIgnoreCase("flee")) {
+                view.displayMessage("You fled from the battle.\n");
+                return;
+            } else {
+                view.displayMessage("Invalid action. Choose 'attack' or 'flee'.\n");
             }
         }
+
+        if (!monster.isAlive()) {
+            view.displayMessage("You have defeated the " + monster.getName() + ".\n");
+            currentRoom.removeMonster(monster);
+        } else if (player.getHealth() <= 0) {
+            view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
+            System.exit(0);
+        }
     }
+
 
     /**
      * INTENT: To handle the "attack" command, allowing the player to attack a specified monster.

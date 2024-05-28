@@ -67,18 +67,18 @@ public class Player extends Entity implements Combatant {
     @Override
     public void attack(Entity aTarget) {
         if (aTarget instanceof Monster) {
-            MessageService.sendMessage("You attack with your " + getEquippedWeapon().getName() + "!");
+            MessageService.sendMessage("You attack with your " + getEquippedWeapon().getName() + "!\n");
             Monster monster = (Monster) aTarget;
 
             if (isHit(monster)) {
                 int damageTaken = new Die(attackRating).rollDie();
                 monster.takeDamage(damageTaken);
-                facadeUtil.sendMessage("You hit for " + damageTaken + " damage!");
+                facadeUtil.sendMessage("You hit for " + damageTaken + " damage!\n");
                 if (!monster.isAlive()) {
-                    facadeUtil.sendMessage("You have defeated the monster!");
+                    facadeUtil.sendMessage("You have defeated the monster!\n");
                 }
             } else {
-                facadeUtil.sendMessage("You miss!");
+                facadeUtil.sendMessage("You miss!\n");
             }
         }
     }
