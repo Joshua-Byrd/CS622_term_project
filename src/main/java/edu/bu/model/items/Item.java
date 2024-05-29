@@ -3,6 +3,8 @@ package edu.bu.model.items;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
+import java.io.Serializable;
+
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Weapon.class, name = "weapon"),
@@ -13,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * Abstract class representing a general item within the game.
  * This class provides the foundation for all items that can be held, worn, or used by entities.
  */
-public abstract class Item {
+public abstract class Item implements Serializable {
     private String name;
     private String description;
     private double weight;

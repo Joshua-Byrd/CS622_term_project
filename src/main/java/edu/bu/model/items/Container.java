@@ -3,11 +3,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 /**
  * Represents a container item (e.g., chest, box) that can hold other items.
  */
 @JsonTypeName("container")
-public class Container <T extends Item> extends Item {
+public class Container <T extends Item> extends Item implements Serializable {
     private boolean isOpen;
     private Inventory<T> items;
 

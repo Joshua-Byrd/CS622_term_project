@@ -1,5 +1,6 @@
 package edu.bu.util;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Random;
  * 1 and the number of faces.This class is used in the game to simulate random outcomes in various scenarios,
  * such as combat.
  */
-public class Die {
+public class Die implements Serializable {
     private final int faces;
     static Random random = new Random();
 

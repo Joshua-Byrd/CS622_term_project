@@ -1,5 +1,7 @@
 package edu.bu.model.entitities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.bu.model.items.Armor;
 import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
@@ -25,8 +27,18 @@ public class Monster extends Entity implements Combatant, Serializable {
     public Die attackDie;
     private final FacadeUtil facadeUtil = FacadeUtil.getTheInstance();
 
-    public Monster(String aName, String aDescription, int aHealth, Weapon aWeapon, Armor aArmor) {
-        super(aName, aDescription, new Inventory<Item>(0));
+    // Default constructor required for serialization/deserialization
+    public Monster() {
+        super("", "", new Inventory<>(0));
+    }
+
+    @JsonCreator
+    public Monster(@JsonProperty("name") String aName,
+                   @JsonProperty("description") String aDescription,
+                   @JsonProperty("health") int aHealth,
+                   @JsonProperty("equippedWeapon") Weapon aWeapon,
+                   @JsonProperty("equippedArmor") Armor aArmor) {
+        super(aName, aDescription, new Inventory<>(0));
         this.health = aHealth;
         this.equippedWeapon = aWeapon;
         this.equippedArmor = aArmor;

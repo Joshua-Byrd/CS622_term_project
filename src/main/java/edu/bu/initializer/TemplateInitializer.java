@@ -26,14 +26,14 @@ public class TemplateInitializer {
 
     public void createAndSaveTemplates() {
         // Define weapons and armors using FacadeItems
-        Weapon claw = facadeItems.createWeapon("Claw", "Sharp claws", 2.0, 5, 0.0);
+        Weapon claw = facadeItems.createWeapon("Claw", "Sharp claws", 2.0, 4, 0.0);
         Armor hide = facadeItems.createArmor("Hide", "Thick hide", 10.0, 3, 0.0);
-        Weapon fang = facadeItems.createWeapon("Fang", "Sharp fangs", 1.5, 4, 0.0);
-        Armor scales = facadeItems.createArmor("Scales", "Thick scales", 8.0, 4, 0.0);
+        Weapon fang = facadeItems.createWeapon("Fang", "Sharp fangs", 1.5, 3, 0.0);
+        Armor scales = facadeItems.createArmor("Scales", "Thick scales", 8.0, 1, 0.0);
 
         // Define some monster templates
-        Monster goblin = new Monster("Goblin", "A sneaky goblin", 30, claw, hide);
-        Monster snake = new Monster("Snake", "A venomous snake", 25, fang, scales);
+        Monster goblin = new Monster("Goblin", "A sneaky goblin", 7, claw, hide);
+        Monster snake = new Monster("Snake", "A venomous snake", 3, fang, scales);
 
         List<Monster> monsters = Arrays.asList(goblin, snake);
 
@@ -83,8 +83,4 @@ public class TemplateInitializer {
             e.printStackTrace();
         }
     }
-//    public static void main(String[] args) {
-//        TemplateInitializer initializer = new TemplateInitializer();
-//        initializer.createAndSaveTemplates();
-//    }
 }

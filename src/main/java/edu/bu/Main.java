@@ -1,21 +1,24 @@
 package edu.bu;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.bu.controller.FacadeController;
 import edu.bu.controller.GameController;
-import edu.bu.controller.RoomManager;
 import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
+import edu.bu.initializer.FacadeInitializer;
 import edu.bu.model.FacadeModel;
 import edu.bu.model.Room;
 import edu.bu.model.entitities.FacadeEntities;
+import edu.bu.model.entitities.Monster;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.items.*;
 import edu.bu.model.persistence.FacadePersistence;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
+import edu.bu.util.MonsterFactory;
 import edu.bu.view.FacadeView;
 import edu.bu.view.TextView;
+
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -28,21 +31,29 @@ public class Main {
      * @param args command-line arguments
      */
     public static void main(String[] args) {
+        // Initialize templates if needed
+        FacadeInitializer.getTheInstance().initializeTemplatesIfNeeded();
 
-        //Get instances of facade objects
+        // Load game data from templates now instead of RoomManager
+        List<Room> rooms = FacadeInitializer.getTheInstance().loadRooms();
+        List<Monster> monsters = FacadeInitializer.getTheInstance().loadMonsters();
+
+        // Initialize the MonsterFactory with the loaded monster templates
+        MonsterFactory.initialize(monsters);
+
+        // Get instances of facade objects
         TextView view = FacadeView.getTheInstance().createTextView();
         PlayerSaveService playerSaveService = FacadePersistence.getTheInstance().createPlayerSaveService();
         FacadeModel facadeModel = FacadeModel.getTheInstance();
         FacadeItems facadeItems = FacadeItems.getTheInstance();
         FacadeEntities facadeEntities = FacadeEntities.getTheInstance();
         FacadeController facadeController = FacadeController.getTheInstance();
-        RoomManager roomManager = FacadeController.getTheInstance().createRoomManager();
 
         Scanner scanner = new Scanner(System.in);
         GameLogger logger = null;
         Player player = null;
 
-        displayMainMenu(view, playerSaveService, facadeModel, facadeItems, facadeEntities, facadeController, roomManager, scanner, logger, player);
+        displayMainMenu(view, playerSaveService, facadeModel, facadeItems, facadeEntities, facadeController, rooms, scanner, logger, player);
     }
 
     /**
@@ -55,12 +66,12 @@ public class Main {
      * @param facadeItems the FacadeItems instance
      * @param facadeEntities the FacadeEntities instance
      * @param facadeController the FacadeController instance
-     * @param roomManager the RoomManager instance
+     * @param rooms the list of loaded rooms
      * @param scanner the Scanner instance for reading user input
      * @param logger the GameLogger instance
      * @param player the Player instance
      */
-    private static void displayMainMenu(TextView view, PlayerSaveService playerSaveService, FacadeModel facadeModel, FacadeItems facadeItems, FacadeEntities facadeEntities, FacadeController facadeController, RoomManager roomManager, Scanner scanner, GameLogger logger, Player player) {
+    private static void displayMainMenu(TextView view, PlayerSaveService playerSaveService, FacadeModel facadeModel, FacadeItems facadeItems, FacadeEntities facadeEntities, FacadeController facadeController, List<Room> rooms, Scanner scanner, GameLogger logger, Player player) {
         while (true) {
             System.out.println("1. New Game");
             System.out.println("2. Continue");
@@ -91,7 +102,7 @@ public class Main {
                             4.5,
                             4,
                             20.0);
-                    Room startingRoom = facadeController.getStartingRoom();
+                    Room startingRoom = rooms.get(0); // Use the first room as the starting room
                     player = FacadeEntities.getTheInstance().createPlayer(
                             playerName,
                             "A brave adventurer",
@@ -129,12 +140,12 @@ public class Main {
                                 4.5,
                                 4,
                                 20.0);
-                        startingRoom = facadeController.getStartingRoom();
+                        startingRoom = rooms.get(0); // Use the first room as the starting room
                         player = FacadeEntities.getTheInstance().createPlayer(
                                 playerName,
                                 "A brave adventurer",
                                 10,
-                                facadeController.getStartingRoom(),
+                                startingRoom,
                                 startingWeapon,
                                 startingArmor,
                                 facadeItems.createInventory(50),
@@ -187,11 +198,16 @@ public class Main {
         System.out.println("*  wield [weapon] - Wield a weapon from your inventory.");
         System.out.println("*  open [container] - Open a container to see its contents.");
         System.out.println("*  close [container] - Close a container.");
+        System.out.println("*  attack [monster] - Attack a specified monster.");
+        System.out.println("*  flee [direction] - Flee to an adjacent room.");
         System.out.println("*  save - Save your current game state.");
         System.out.println("*  exit - Save your game and exit.");
         System.out.println("*  print - Print your game log.");
         System.out.println("\nType your commands in the format shown above to interact with the game world.\n\n");
     }
 }
+
+
+
 
 

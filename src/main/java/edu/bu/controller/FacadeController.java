@@ -13,7 +13,6 @@ public class FacadeController {
 
     private static FacadeController instance;
     private GameController gameController;
-    private RoomManager roomManager;
 
     // Private constructor to prevent instantiation
     private FacadeController() {
@@ -94,29 +93,5 @@ public class FacadeController {
         }
     }
 
-    /**
-     * INTENT: To initialize the RoomManager within the facade.
-     * PRECONDITION: None.
-     * POSTCONDITION: The RoomManager is initialized within the facade.
-     */
-    public RoomManager createRoomManager() {
-        this.roomManager = new RoomManager();
-        return roomManager;
-    }
-
-    /**
-     * INTENT: To get the starting room using the RoomManager.
-     * PRECONDITION: The RoomManager must be initialized.
-     * POSTCONDITION: The starting room is returned.
-     *
-     * @return The starting room.
-     */
-    public Room getStartingRoom() {
-        if (roomManager != null) {
-            return roomManager.getStartingRoom();
-        } else {
-            throw new IllegalStateException("RoomManager is not initialized.");
-        }
-    }
 }
 

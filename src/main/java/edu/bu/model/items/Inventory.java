@@ -3,6 +3,7 @@ package edu.bu.model.items;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
         @JsonSubTypes.Type(value = Armor.class, name = "armor"),
         @JsonSubTypes.Type(value = Container.class, name = "container")
 })
-public class Inventory<T extends Item> {
+public class Inventory<T extends Item> implements Serializable {
     private List<T> items;
     private double maximumWeight;
 

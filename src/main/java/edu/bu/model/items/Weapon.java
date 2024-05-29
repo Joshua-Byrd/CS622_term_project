@@ -2,11 +2,13 @@ package edu.bu.model.items;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
+import java.io.Serializable;
+
 /**
  * Represents a weapon that can be held or equipped.
  */
 @JsonTypeName("weapon")
-public class Weapon extends Item implements Tradeable{
+public class Weapon extends Item implements Tradeable, Serializable {
 
     private int attackRating;
     private double price;

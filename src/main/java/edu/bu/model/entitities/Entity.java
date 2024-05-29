@@ -4,6 +4,8 @@ import edu.bu.controller.GameController;
 import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import edu.bu.util.MessageService;
+
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 /**
  * The abstract class for any living creature in the game.
  */
-public abstract class Entity {
+public abstract class Entity implements Serializable {
     private String name;
     private String description;
     private Inventory<Item> inventory;
