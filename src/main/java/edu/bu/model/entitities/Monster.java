@@ -7,13 +7,15 @@ import edu.bu.model.items.Weapon;
 import edu.bu.util.Die;
 import edu.bu.util.FacadeUtil;
 import edu.bu.util.MessageService;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Represents a Monster entity capable of combat within the game.
  * Monsters can engage in attacks against players and take damage.
  */
-public class Monster extends Entity implements Combatant {
+public class Monster extends Entity implements Combatant, Serializable {
     private int health;
     private Weapon equippedWeapon;
     private Armor equippedArmor;

@@ -5,6 +5,7 @@ import edu.bu.model.entitities.Monster;
 import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.Map;
         @JsonSubTypes.Type(value = Room.class, name = "room")
 })
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name")
-public class Room {
+public class Room implements Serializable {
     /*
     name should be a singular noun (possibly with adjectives) such as "courtyard" or "large cave", so
     that it works with the introduction when the player enters. Example: "You are in a courtyard | large cave"
