@@ -1,8 +1,10 @@
 package edu.bu.model.persistence;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.entitities.Player;
+import edu.bu.util.FacadeUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +22,7 @@ public class PlayerSaveService {
      * POSTCONDITION: player_save.json contains the entire data hierarchy of player in JSON format
      * @param aPlayer The player object to save.
      */
-    public void save(Player aPlayer) throws PlayerDataException{
+    public void save(Player aPlayer) throws PlayerDataException {
         ObjectMapper mapper = new ObjectMapper();
         try {
             // Writing to a file

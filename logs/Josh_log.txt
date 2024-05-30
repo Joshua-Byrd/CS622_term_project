@@ -1,0 +1,20 @@
+[2024/05/29 14:29:09] Josh has begun their journey.
+[2024/05/29 14:29:13] Josh picked up the shortsword.
+[2024/05/29 14:29:17] Josh wielded the shortsword.
+[2024/05/29 14:29:19] Josh has entered a small stone room
+[2024/05/29 14:29:23] Josh picked up the iron armor.
+[2024/05/29 14:29:35] Josh put on the iron armor.
+[2024/05/29 14:29:38] Josh has encountered a Goblin.
+[2024/05/29 14:29:55] Josh had defeated a Goblin.
+[2024/05/29 14:29:55] Josh has entered a vast courtyard
+[2024/05/29 14:30:02] Josh has entered a small stone room
+[2024/05/29 14:30:05] Josh has saved their game.
+[2024/05/29 14:30:08] Josh quit the game.
+[2024/05/29 14:30:13] Josh has begun their journey.
+[2024/05/29 14:30:17] Josh has entered a vast courtyard
+[2024/05/29 14:30:23] Josh opened the small chest.
+[2024/05/29 14:30:29] Joshtook the dagger from the small chest.
+[2024/05/29 14:30:34] Josh has encountered a Goblin.
+[2024/05/29 14:30:40] Josh had defeated a Goblin.
+[2024/05/29 14:30:40] Josh has entered a small stone room
+[2024/05/29 14:30:45] Josh quit the game.

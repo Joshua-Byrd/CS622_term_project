@@ -84,6 +84,7 @@ public class Monster extends Entity implements Combatant, Serializable {
         this.health -= aDamage;
         if (health <= 0) {
             isAlive = false;
+//            facadeUtil.sendMessage("The " + this.getName() + " is defeated.");
         }
     }
 

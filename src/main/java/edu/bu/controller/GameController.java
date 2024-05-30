@@ -157,16 +157,16 @@ public class GameController {
     }
 
     /**
-     * INTENT: To process and handle the command input by the player.
+     * INTENT: To process and handle the aCommand input by the player.
      * EXAMPLE: The player enters 'go east' and handleGoCommand is called with the parameter 'east'.
-     * PRECONDITION: The command string should not be null.
-     * POSTCONDITION: The command is processed and the correct handler method called.
+     * PRECONDITION: The aCommand string should not be null.
+     * POSTCONDITION: The aCommand is processed and the correct handler method called.
      *
-     * @param command The command string input by the user.
+     * @param aCommand The aCommand string input by the user.
      */
-    public void processCommand(String command) {
-        //input is split into the command itself (i.e. 'go') and the target of the command (i.e. 'east')
-        String[] parsedCommand = parseCommand(command);
+    public void processCommand(String aCommand) {
+        //input is split into the aCommand itself (i.e. 'go') and the target of the aCommand (i.e. 'east')
+        String[] parsedCommand = parseCommand(aCommand);
         String action = parsedCommand[0];
         String target = parsedCommand.length > 1 ? parsedCommand[1] : "";
 
@@ -211,37 +211,37 @@ public class GameController {
                 handlePrintCommand();
                 break;
             default:
-                view.displayMessage("Unknown command.\n");
+                view.displayMessage("Unknown aCommand.\n");
                 break;
         }
     }
 
     /**
-     * INTENT: To parse the command into an action and target.
-     * PRECONDITION: The command string should not be null.
-     * POSTCONDITION: Return value is a string array where the first element is the command and the
+     * INTENT: To parse the aCommand into an action and target.
+     * PRECONDITION: The aCommand string should not be null.
+     * POSTCONDITION: Return value is a string array where the first element is the aCommand and the
      * second element is the target
      *
-     * @param command The command string input by the user.
+     * @param aCommand The aCommand string input by the user.
      * @return A string array containing the action and target.
      */
-    private String[] parseCommand(String command) {
-        String[] parts = command.split(" ", 2);
+    private String[] parseCommand(String aCommand) {
+        String[] parts = aCommand.split(" ", 2);
         return parts.length == 2 ? parts : new String[]{parts[0], ""};
     }
 
     /**
-     * INTENT: To handle the "go" command, changing the player's current room based on the specified direction.
-     * PRECONDITION: The direction must be a valid direction (north, south, east, west).
-     * POSTCONDITION 1: player.currentRoom == the room in the given direction
-     * POSTCONDITION 2: this.currentRoom == the room in the given direction
-     * POSTCONDITION 3: if the direction is valid, an error message is printed
+     * INTENT: To handle the "go" command, changing the player's current room based on the specified aDirection.
+     * PRECONDITION: The aDirection must be a valid aDirection (north, south, east, west).
+     * POSTCONDITION 1: player.currentRoom == the room in the given aDirection
+     * POSTCONDITION 2: this.currentRoom == the room in the given aDirection
+     * POSTCONDITION 3: if the aDirection is valid, an error message is printed
      *
-     * @param direction The direction in which to move (north, south, east, west).
+     * @param aDirection The aDirection in which to move (north, south, east, west).
      */
-    private void handleGoCommand(String direction) {
+    private void handleGoCommand(String aDirection) {
         Room nextRoom = null;
-        switch (direction.toLowerCase()) {
+        switch (aDirection.toLowerCase()) {
             case "north":
                 nextRoom = currentRoom.getConnection("north");
                 break;
@@ -255,13 +255,14 @@ public class GameController {
                 nextRoom = currentRoom.getConnection("west");
                 break;
             default:
-                view.displayMessage("You can't go in that direction.\n");
+                view.displayMessage("You can't go in that aDirection.\n");
                 return;
         }
         if (nextRoom != null) {
             enterRoom(nextRoom);
+            logger.log(player.getName() + " has entered a " + nextRoom.getName());
         } else {
-            view.displayMessage("You can't go in that direction.\n");
+            view.displayMessage("You can't go in that aDirection.\n");
         }
     }
 
@@ -284,6 +285,7 @@ public class GameController {
                 try {
                     player.getItemFromContainer(containerName, itemName);
                     view.displayMessage("You took the " + itemName + " from the " + containerName + ".\n");
+                    logger.log(player.getName() + " took the " + itemName + " from the " + containerName + ".");
                 } catch (IllegalArgumentException e) {
                     view.displayMessage(e.getMessage() + "\n");
                 }
@@ -294,6 +296,7 @@ public class GameController {
             try {
                 player.pickUpItem(target);
                 view.displayMessage("You picked up the " + target + ".\n");
+                logger.log(player.getName() + " picked up the " +  target + ".");
             } catch (IllegalArgumentException e) {
                 view.displayMessage("There is no " + target + " here.\n");
             }
@@ -311,6 +314,7 @@ public class GameController {
             try {
                 player.pickUpItem(item.getName());
                 view.displayMessage("You picked up the " + item.getName() + ".\n");
+                logger.log(player.getName() + " picked up the " + item.getName() + ".");
             } catch (IllegalArgumentException e) {
                 view.displayMessage("Could not pick up the " + item.getName() + ": " + e.getMessage() + "\n");
             }
@@ -334,6 +338,7 @@ public class GameController {
             } else {
                 container.open();
                 view.displayMessage("You open the " + containerName + ".\n");
+                logger.log(player.getName() + " opened the " + containerName + ".");
             }
             if (container.getItems().getSize() > 0) {
                 view.displayMessage("It contains:\n");
@@ -368,6 +373,7 @@ public class GameController {
         } else {
             container.setOpen(false);
             view.displayMessage("You closed the " + containerName + ".\n");
+            logger.log(player.getName() + " closed the " + containerName + ".");
         }
     }
 
@@ -408,6 +414,7 @@ public class GameController {
         try {
             player.dropItem(itemName);
             view.displayMessage("You dropped the " + itemName + ".\n");
+            logger.log(player.getName() + " dropped the " + itemName + ".");
         } catch (IllegalArgumentException e) {
             view.displayMessage("You aren't carrying a " + itemName + ".\n");
         }
@@ -466,6 +473,7 @@ public class GameController {
     private void handleSaveCommand() {
         try {
             playerSaveService.save(player);
+            logger.log(player.getName() + " has saved their game.");
             view.displayMessage("Character saved!\n");
         } catch (PlayerDataException e) {
             view.displayMessage(e.getMessage() + "\n");
@@ -516,6 +524,7 @@ public class GameController {
             player.setEquippedArmor((Armor) item);
             player.setDefenseRating(((Armor) item).getDefenseRating());
             view.displayMessage("You are now wearing the " + anArmorName + ".\n");
+            logger.log(player.getName() + " put on the " + anArmorName + ".");
         } else {
             view.displayMessage("You don't have any " + anArmorName + " to wear.\n");
         }
@@ -534,6 +543,7 @@ public class GameController {
             player.setEquippedWeapon((Weapon) item);
             player.setAttackRating(((Weapon) item).getAttackRating());
             view.displayMessage("You are now wielding the " + aWeaponName + ".\n");
+            logger.log(player.getName() + " wielded the " + aWeaponName + ".");
         } else {
             view.displayMessage("You don't have any " + aWeaponName + " to wield.\n");
         }
@@ -552,8 +562,9 @@ public class GameController {
         MonsterFactory.trySpawnMonster(room);
         displayFormattedRoomDescription(room);
         if (!room.getMonsters().isEmpty()) {
-            view.displayMessage("Monsters present: " + room.getMonsters().stream().map(Monster::getName).collect(Collectors.joining(", ")) + "\n");
+//            view.displayMessage("Monsters present: " + room.getMonsters().stream().map(Monster::getName).collect(Collectors.joining(", ")) + "\n");
             initiateCombat(room.getMonsters().get(0)); // Simple case: fight the first monster
+
         }
     }
 
@@ -565,32 +576,80 @@ public class GameController {
      * @param monster the monster to be defeated
      */
     private void initiateCombat(Monster monster) {
-        Scanner scanner = new Scanner(System.in); // Remove the try-with-resources block to prevent closing the scanner
+        Scanner scanner = new Scanner(System.in);
+        logger.log(player.getName() + " has encountered a " + monster.getName() + ".");
         while (monster.isAlive() && player.getHealth() > 0) {
             view.displayMessage("You are in combat with " + monster.getName() + ".\nChoose an action: attack, flee\n");
             String action = scanner.nextLine();
             if (action.equalsIgnoreCase("attack")) {
-                player.attack(monster);
-                if (monster.isAlive()) {
-                    monster.attack(player);
-                }
+                handleAttackCommand(monster.getName());
             } else if (action.equalsIgnoreCase("flee")) {
                 view.displayMessage("You fled from the battle.\n");
+                logger.log(player.getName() + " fled from battle.");
                 return;
             } else {
                 view.displayMessage("Invalid action. Choose 'attack' or 'flee'.\n");
             }
         }
-
         if (!monster.isAlive()) {
             view.displayMessage("You have defeated the " + monster.getName() + ".\n");
+            logger.log(player.getName() + " had defeated a " + monster.getName() + ".");
+            player.setMonstersDefeated(player.getMonstersDefeated() + 1);
             currentRoom.removeMonster(monster);
-        } else if (player.getHealth() <= 0) {
+        } else
+            if (player.getHealth() <= 0) {
             view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
+            logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
             System.exit(0);
         }
     }
+      //This is commented out because I'm trying to get this method to work with handleFleeCommand,
+      //but so far it breaks the save/load function.
 
+//    /**
+//     * INTENT: Handles the combat loop, offering players the ability to attack or flee from the battle
+//     * PRECONDITION: monster must not be null
+//     * POSTCONDITION: If player health reaches 0, defeat message is printed and the game is ended; if monster
+//     * health reaches 0, a victory message is printed and the game returns to the main loop
+//     * @param monster the monster to be defeated
+//     */
+//    private void initiateCombat(Monster monster) {
+//        Scanner scanner = new Scanner(System.in);
+//        logger.log(player.getName() + " has encountered a " + monster.getName() + ".");
+//        while (monster.isAlive() && player.getHealth() > 0) {
+//            view.displayMessage("You are in combat with " + monster.getName() + ".\nChoose an action: attack, flee [direction]\n");
+//            String action = scanner.nextLine();
+//            if (action.equalsIgnoreCase("attack")) {
+//                handleAttackCommand(monster.getName());
+//                if (monster.isAlive()) {
+//                    monster.attack(player);
+//                }
+//            } else if (action.toLowerCase().startsWith("flee ")) {
+//                String direction = action.substring(5).trim();
+//                handleFleeCommand(direction);
+//                if (!currentRoom.getMonsters().contains(monster)) {
+//                    view.displayMessage("You fled from the battle.\n");
+//                    logger.log(player.getName() + " fled from battle.");
+//                    return;
+//                }
+//            } else {
+//                view.displayMessage("Invalid action. Choose 'attack' or 'flee [direction]'.\n");
+//            }
+//
+//            // Check if the player is still alive after the monster's attack
+//            if (player.getHealth() <= 0) {
+//                view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
+//                logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
+//                System.exit(0);
+//            }
+//        }
+//        if (!monster.isAlive()) {
+//            view.displayMessage("You have defeated the " + monster.getName() + ".\n");
+//            logger.log(player.getName() + " had defeated a " + monster.getName() + ".");
+//            player.setMonstersDefeated(player.getMonstersDefeated() + 1);
+//            currentRoom.removeMonster(monster);
+//        }
+//    }
 
     /**
      * INTENT: To handle the "attack" command, allowing the player to attack a specified monster.
@@ -602,14 +661,12 @@ public class GameController {
     private void handleAttackCommand(String target) {
         Monster monster = currentRoom.getMonsterByName(target);
         if (monster == null || !monster.isAlive()) {
-            view.displayMessage("There is no " + target + " here.\n");
+            view.displayMessage("There is nothing here.\n");
             return;
         }
         player.attack(monster);
         if (monster.isAlive()) {
             monster.attack(player);
-        } else {
-            view.displayMessage("You have defeated the " + target + ".\n");
         }
     }
 
@@ -674,7 +731,6 @@ public class GameController {
             }
             roomDescription.append(".\n");
         }
-
         // Display monsters in the room
         List<Monster> monsters = room.getMonsters();
         if (!monsters.isEmpty()) {

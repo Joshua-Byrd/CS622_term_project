@@ -3,7 +3,6 @@ package edu.bu.initializer;
 
 import edu.bu.model.entitities.Monster;
 import edu.bu.util.TemplateService;
-import edu.bu.model.entitities.Monster;
 import edu.bu.model.Room;
 import edu.bu.model.items.Armor;
 import edu.bu.model.items.Container;
@@ -17,13 +16,21 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * TemplateInitializer is responsible for creating and saving initial templates of monsters and rooms.
+ * It uses the Facade pattern to interact with other components and ensures that the templates are saved for later use.
+ */
 public class TemplateInitializer {
     private TemplateService<Monster> monsterTemplateService = new TemplateService<>();
     private TemplateService<Room> roomTemplateService = new TemplateService<>();
     private FacadeItems facadeItems = FacadeItems.getTheInstance();
     private FacadeModel facadeModel = FacadeModel.getTheInstance();
 
+    /**
+     * INTENT: To create and save initial templates for monsters and rooms.
+     * PRECONDITION: None.
+     * POSTCONDITION: The templates for monsters and rooms are created and saved to their respective files.
+     */
     public void createAndSaveTemplates() {
         // Define weapons and armors using FacadeItems
         Weapon claw = facadeItems.createWeapon("Claw", "Sharp claws", 2.0, 4, 0.0);

@@ -7,7 +7,7 @@ import edu.bu.model.items.*;
 
 //
 ///**
-// * RoomManager is deprecated, and has been replaced  by TemplateService
+// * RoomManager is deprecated, and has been replaced by TemplateService and TemplateInitializer
 // */
 //public class RoomManager {
 //

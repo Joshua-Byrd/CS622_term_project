@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.bu.controller.GameController;
 import edu.bu.model.items.*;
 import edu.bu.model.Room;
+import edu.bu.model.persistence.FacadePersistence;
+import edu.bu.model.persistence.GameLogger;
 import edu.bu.util.Die;
 import edu.bu.util.FacadeUtil;
 import edu.bu.util.MessageService;
@@ -68,15 +70,13 @@ public class Player extends Entity implements Combatant {
     public void attack(Entity aTarget) {
         if (aTarget instanceof Monster) {
             MessageService.sendMessage("You attack with your " + getEquippedWeapon().getName() + "!\n");
+
             Monster monster = (Monster) aTarget;
 
             if (isHit(monster)) {
                 int damageTaken = new Die(attackRating).rollDie();
                 monster.takeDamage(damageTaken);
                 facadeUtil.sendMessage("You hit for " + damageTaken + " damage!\n");
-                if (!monster.isAlive()) {
-                    facadeUtil.sendMessage("You have defeated the monster!\n");
-                }
             } else {
                 facadeUtil.sendMessage("You miss!\n");
             }

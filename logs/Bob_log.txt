@@ -1,0 +1,2 @@
+[2024/05/30 09:38:35] Bob has begun their journey.
+[2024/05/30 09:38:41] Bob quit the game.

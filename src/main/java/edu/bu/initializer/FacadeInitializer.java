@@ -4,6 +4,7 @@ import edu.bu.initializer.GameInitializer;
 import edu.bu.initializer.TemplateInitializer;
 import edu.bu.model.entitities.Monster;
 import edu.bu.model.Room;
+import edu.bu.util.TemplateService;
 
 import java.util.List;
 
