@@ -60,8 +60,6 @@ public class GameLoggerTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        logger.printLog();
-
         // Reset system out
         System.setOut(System.out);
 

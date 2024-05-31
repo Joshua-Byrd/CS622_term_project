@@ -476,7 +476,8 @@ public class GameController {
             logger.log(player.getName() + " has saved their game.");
             view.displayMessage("Character saved!\n");
         } catch (PlayerDataException e) {
-            view.displayMessage(e.getMessage() + "\n");
+            view.displayMessage("Error saving file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -492,7 +493,8 @@ public class GameController {
             logger.close();
             System.exit(0);
         } catch (PlayerDataException e) {
-            view.displayMessage(e.getMessage() + "\n");
+            view.displayMessage("Error saving file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

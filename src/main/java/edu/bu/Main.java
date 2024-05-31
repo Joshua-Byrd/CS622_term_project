@@ -198,7 +198,7 @@ public class Main {
         System.out.println("*  wield [weapon] - Wield a weapon from your inventory.");
         System.out.println("*  open [container] - Open a container to see its contents.");
         System.out.println("*  close [container] - Close a container.");
-        System.out.println("*  attack [monster] - Attack a specified monster.");
+        System.out.println("*  attack - Attack a specified monster.");
         System.out.println("*  flee [direction] - Flee to an adjacent room.");
         System.out.println("*  save - Save your current game state.");
         System.out.println("*  exit - Save your game and exit.");
