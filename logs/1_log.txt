@@ -1,9 +1,0 @@
-[2024/05/31 08:49:58] 1 has begun their journey.
-[2024/05/31 08:50:05] 1 has encountered a Snake.
-[2024/05/31 08:50:09] 1 fled from battle.
-[2024/05/31 08:50:09] 1 has entered a small stone room
-[2024/05/31 08:50:17] 1 has entered a vast courtyard
-[2024/05/31 08:50:19] 1 has encountered a Snake.
-[2024/05/31 08:50:38] 1 had defeated a Snake.
-[2024/05/31 08:50:38] 1 has entered a small stone room
-[2024/05/31 08:50:52] 1 has entered a vast courtyard

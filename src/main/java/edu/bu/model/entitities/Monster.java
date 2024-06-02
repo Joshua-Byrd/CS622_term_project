@@ -24,7 +24,7 @@ public class Monster extends Entity implements Combatant, Serializable {
     private int attackRating;
     private int defenseRating;
     private boolean isAlive;
-    public Die attackDie;
+    public transient Die attackDie;
     private final FacadeUtil facadeUtil = FacadeUtil.getTheInstance();
 
     // Default constructor required for serialization/deserialization
@@ -84,7 +84,6 @@ public class Monster extends Entity implements Combatant, Serializable {
         this.health -= aDamage;
         if (health <= 0) {
             isAlive = false;
-//            facadeUtil.sendMessage("The " + this.getName() + " is defeated.");
         }
     }
 

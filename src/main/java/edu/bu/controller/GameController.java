@@ -142,6 +142,7 @@ public class GameController {
     public void startGame() {
 
         logger.log(player.getName() + " has begun their journey.");
+        view.printLogo();
         view.printGreeting();
         view.displayMessage("Game running with character: " + player.getName() + "\n");
         displayFormattedRoomDescription(player.getCurrentRoom());
@@ -278,6 +279,7 @@ public class GameController {
         if (target.equalsIgnoreCase("all")) {
             getAllTradeableItems();
         } else if (target.contains(" from ")) {
+            //if "from" is present, we're getting something from a container
             String[] parts = target.split(" from ");
             if (parts.length == 2) {
                 String itemName = parts[0].trim();
