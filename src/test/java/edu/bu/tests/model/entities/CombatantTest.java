@@ -21,19 +21,19 @@ public class CombatantTest {
 
     @Test
     public void testGetHealth() {
-        assertEquals(100, combatant.getHealth());
+        assertEquals(100, combatant.getMaxHealth());
     }
 
     @Test
     public void testSetHealth() {
-        combatant.setHealth(50);
-        assertEquals(50, combatant.getHealth());
+        combatant.setMaxHealth(50);
+        assertEquals(50, combatant.getMaxHealth());
     }
 
     @Test
     public void testTakeDamage() {
         combatant.takeDamage(20);
-        assertEquals(80, combatant.getHealth());
+        assertEquals(80, combatant.getMaxHealth());
     }
 
     @Test

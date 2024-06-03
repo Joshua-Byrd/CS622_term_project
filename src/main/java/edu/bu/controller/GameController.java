@@ -9,110 +9,12 @@ import edu.bu.model.items.*;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
 import edu.bu.music.MusicManager;
-import edu.bu.music.MusicPlayer;
 import edu.bu.util.MessageService;
 import edu.bu.util.MonsterFactory;
 import edu.bu.view.TextView;
 
 import java.util.List;
 import java.util.Scanner;
-//
-///**
-// * GameController manages the interaction between the game's view and model.
-// * It controls the flow of the game, handling user input and updating the view accordingly.
-// */
-//public class GameController {
-//    private final TextView view;
-//    private final Player player;
-//    private final Room currentRoom;
-//    private final PlayerSaveService playerSaveService;
-//    private final GameLogger logger;
-//
-//    public GameController(TextView aView, Player aPlayer, Room aStartingRoom,
-//                          PlayerSaveService aPlayerSaveService,
-//                          GameLogger aLogger) {
-//        this.view = aView;
-//        this.player = aPlayer;
-//        this.currentRoom = aStartingRoom;
-//        this.playerSaveService = aPlayerSaveService;
-//        this.logger = aLogger;
-//        MessageService.registerController(this);
-//    }
-//
-//    /**
-//     * INTENT: To initiate and maintain the game's running state, processing user input until an exit condition is met.
-//     * PRECONDITION: The GameController must be properly initialized with a non-null view, player, and starting room.
-//     * POSTCONDITION: The game ends.
-//     */
-//    public void startGame() {
-//
-//        logger.log(player.getName() + " has begun their journey.");
-//        view.printGreeting();
-//
-//        try (Scanner scanner = new Scanner(System.in)) {
-//            while (true) {
-//                view.displayMessage(currentRoom.getDescription() + "\n");
-//                view.displayMessage("Game running with character: " + player.getName() + "\n");
-//                view.displayMessage("Type 'Exit' to leave the game, 'save' to save your character, or 'print log' to " +
-//                        "view the log file of the current character (No other commands are implemented at this time).\n>");
-//                String command = scanner.nextLine();
-//                processCommand(command);
-//            }
-//        }
-//    }
-//
-//    /**
-//     * INTENT: To handle the logic for different commands that affect the game state.
-//     * EXAMPLE: User enters 'Go east', the command is parsed, and the room to the east is loaded
-//     * PRECONDITION: The command string should not be null.
-//     * POSTCONDITION: Depending on the command, various aspects of the game state may be altered (to be detailed as implementation is developed).
-//     *
-//     * @param command The command string input by the user.
-//     */
-//    void processCommand(String command) {
-//        if ("exit".equalsIgnoreCase(command)) {
-//            try {
-//                playerSaveService.save(player);
-//                logger.log(player.getName() + " quit the game.");
-//                logger.close();
-//                System.exit(0);
-//            } catch (PlayerDataException e) {
-//                view.displayMessage(e.getMessage());
-//                e.printStackTrace();
-//            }
-//        } else if ("save".equalsIgnoreCase(command)) {
-//            try {
-//                playerSaveService.save(player);
-//                view.displayMessage("Character saved!\n");
-//            } catch (PlayerDataException e){
-//                view.displayMessage(e.getMessage());
-//                e.printStackTrace();
-//            }
-//        } else if ("print log".equalsIgnoreCase(command)) {
-//            try {
-//                view.displayMessage("Here are the important moments in your journey:\n");
-//                logger.printLog();
-//            } catch (LoggerException e) {
-//                view.displayMessage(e.getMessage());
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//
-//    /**
-//     * INTENT: To provide a centralized method for sending output messages to the TextView, ensuring all user-facing messages go through one point.
-//     * PRECONDITION: The message string should not be null.
-//     * POSTCONDITION: The message is displayed to the user through the TextView.
-//     *
-//     * @param aMessage The message to be displayed.
-//     */
-//    public void displayMessage(String aMessage) {
-//        view.displayMessage(aMessage);
-//    }
-//}
-
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
 /**
  * Acts as the main controller in the MVC pattern. Provides methods for model and view classes to
@@ -211,6 +113,9 @@ public class GameController {
                 break;
             case "print":
                 handlePrintCommand();
+                break;
+            case "consume":
+                handleConsumeCommand(target);
                 break;
             default:
                 view.displayMessage("Unknown aCommand.\n");
@@ -438,6 +343,8 @@ public class GameController {
             player.getInventory().getAllItems().stream()
                     .map(item -> "- " + item.getName() + ": " + item.getDescription() + "\n")
                     .forEach(view::displayMessage);
+        } else if (target.equalsIgnoreCase("self")) {
+            view.displayMessage(player.toString());
         } else {
             Item item = player.getInventory().findItemByName(target);
             if (item == null) {
@@ -585,7 +492,7 @@ public class GameController {
         MusicManager.playBattleMusic();
         Scanner scanner = new Scanner(System.in);
         logger.log(player.getName() + " has encountered a " + monster.getName() + ".");
-        while (monster.isAlive() && player.getHealth() > 0) {
+        while (monster.isAlive() && player.getCurrentHealth() > 0) {
             view.displayMessage("You are in combat with " + monster.getName() + ".\nChoose an action: attack, flee\n");
             String action = scanner.nextLine();
             if (action.equalsIgnoreCase("attack")) {
@@ -606,7 +513,7 @@ public class GameController {
             currentRoom.removeMonster(monster);
             MusicManager.playAmbientMusic();
         } else
-            if (player.getHealth() <= 0) {
+            if (player.getCurrentHealth() <= 0) {
             view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
             logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
             System.exit(0);
@@ -712,6 +619,22 @@ public class GameController {
             displayFormattedRoomDescription(player.getCurrentRoom());
         } else {
             view.displayMessage("You can't flee in that direction.\n");
+        }
+    }
+
+    /**
+     * INTENT: To handle the "consume" command
+     * PRECONDITION 1: The target item must exist in the Player's inventory
+     * PRECONDITION 2: The target item must be a consumable
+     * POSTCONDITION: The effects of the consumable are implemented.
+     * @param itemName the item to be consumed.
+     */
+    private void handleConsumeCommand(String itemName) {
+        try {
+            player.consumeItem(itemName);
+            view.displayMessage("You consumed the " + itemName + ".\n");
+        } catch (IllegalArgumentException e) {
+            view.displayMessage("You can't use " + itemName + ".\n");
         }
     }
 

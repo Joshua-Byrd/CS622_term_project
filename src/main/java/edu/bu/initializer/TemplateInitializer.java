@@ -2,14 +2,9 @@ package edu.bu.initializer;
 
 
 import edu.bu.model.entitities.Monster;
+import edu.bu.model.items.*;
 import edu.bu.util.TemplateService;
 import edu.bu.model.Room;
-import edu.bu.model.items.Armor;
-import edu.bu.model.items.Container;
-import edu.bu.model.items.Inventory;
-import edu.bu.model.items.Item;
-import edu.bu.model.items.Weapon;
-import edu.bu.model.items.FacadeItems;
 import edu.bu.model.FacadeModel;
 
 import java.io.IOException;
@@ -72,7 +67,11 @@ public class TemplateInitializer {
         // Create another room with its own inventory using FacadeModel
         Inventory<Item> anotherRoomInventory = facadeItems.createInventory(1000);
         anotherRoomInventory.addItem(new Armor("iron armor", "a suit of iron armor", 10.0, 8, 50.0));
-
+        anotherRoomInventory.addItem(new Potion("health potion", "A swirly blue potion", 2, 12, 10,
+                player -> {
+            player.setCurrentHealth((player.getCurrentHealth() + 10 <= player.getMaxHealth() ? player.getCurrentHealth() + 10: player.getMaxHealth()));}
+        )
+        );
         Room smallStoneRoom = facadeModel.createRoom("small stone room", "The walls are moss-covered and slick with " +
                 "moisture. To the west is the door you came through. You can see no other openings.", anotherRoomInventory);
 

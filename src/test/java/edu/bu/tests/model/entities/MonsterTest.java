@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MonsterTest {
@@ -61,18 +59,18 @@ public class MonsterTest {
     @Test
     public void testTakeDamage() {
         monster.takeDamage(5);
-        assertEquals(5, monster.getHealth());
+        assertEquals(5, monster.getMaxHealth());
         assertTrue(monster.isAlive());
 
         monster.takeDamage(5);
-        assertEquals(0, monster.getHealth());
+        assertEquals(0, monster.getMaxHealth());
         assertFalse(monster.isAlive());
     }
 
     @Test
     public void testGettersAndSetters() {
-        monster.setHealth(20);
-        assertEquals(20, monster.getHealth());
+        monster.setMaxHealth(20);
+        assertEquals(20, monster.getMaxHealth());
 
         monster.setEquippedWeapon(mockWeapon);
         assertEquals(mockWeapon, monster.getEquippedWeapon());

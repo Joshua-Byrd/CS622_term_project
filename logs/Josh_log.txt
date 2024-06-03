@@ -18,3 +18,20 @@
 [2024/06/03 06:14:45] Josh had defeated a Snake.
 [2024/06/03 06:14:45] Josh has entered a small stone room
 [2024/06/03 06:14:48] Josh quit the game.
+[2024/06/03 08:15:18] Josh has begun their journey.
+[2024/06/03 08:15:32] Josh picked up the shortsword.
+[2024/06/03 08:15:37] Josh wielded the shortsword.
+[2024/06/03 08:15:47] Josh has encountered a Goblin.
+[2024/06/03 08:15:52] Josh fled from battle.
+[2024/06/03 08:15:52] Josh has entered a small stone room
+[2024/06/03 08:15:55] Josh picked up the iron armor.
+[2024/06/03 08:15:59] Josh put on the iron armor.
+[2024/06/03 08:18:51] Josh has begun their journey.
+[2024/06/03 08:19:05] Josh picked up the shortsword.
+[2024/06/03 08:19:08] Josh wielded the shortsword.
+[2024/06/03 08:19:13] Josh has entered a small stone room
+[2024/06/03 08:19:16] Josh picked up the iron armor.
+[2024/06/03 08:19:21] Josh put on the iron armor.
+[2024/06/03 08:21:06] Josh quit the game.
+[2024/06/03 09:06:10] Josh has begun their journey.
+[2024/06/03 09:06:12] Josh quit the game.

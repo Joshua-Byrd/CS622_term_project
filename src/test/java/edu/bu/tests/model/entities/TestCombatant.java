@@ -26,12 +26,12 @@ public class TestCombatant implements Combatant {
     }
 
     @Override
-    public int getHealth() {
+    public int getMaxHealth() {
         return health;
     }
 
     @Override
-    public void setHealth(int aHealth) {
+    public void setMaxHealth(int aHealth) {
         this.health = aHealth;
     }
 

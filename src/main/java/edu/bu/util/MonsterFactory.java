@@ -40,7 +40,7 @@ public class MonsterFactory {
 
         if (random.nextDouble() < SPAWN_PROBABILITY && !monsterTemplates.isEmpty()) {
             Monster template = monsterTemplates.get(random.nextInt(monsterTemplates.size()));
-            Monster monster = new Monster(template.getName(), template.getDescription(), template.getHealth(),
+            Monster monster = new Monster(template.getName(), template.getDescription(), template.getMaxHealth(),
                     template.getEquippedWeapon(), template.getEquippedArmor());
             aRoom.addMonster(monster);
         }

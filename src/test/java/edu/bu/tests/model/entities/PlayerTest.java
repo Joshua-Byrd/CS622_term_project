@@ -7,9 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -58,13 +55,13 @@ public class PlayerTest {
     @Test
     public void testTakeDamage() {
         player.takeDamage(5);
-        assertEquals(5, player.getHealth());
+        assertEquals(5, player.getMaxHealth());
     }
 
     @Test
     public void testGettersAndSetters() {
-        player.setHealth(20);
-        assertEquals(20, player.getHealth());
+        player.setMaxHealth(20);
+        assertEquals(20, player.getMaxHealth());
 
         player.setCurrentRoom(mockRoom);
         assertEquals(mockRoom, player.getCurrentRoom());

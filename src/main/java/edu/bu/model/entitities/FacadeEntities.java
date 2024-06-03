@@ -6,8 +6,6 @@ import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Item;
 import edu.bu.model.items.Weapon;
 
-import java.util.ArrayList;
-
 /**
  * Facade for the entities package, providing a singleton access point to the entities functionalities.
  */
@@ -42,11 +40,11 @@ public class FacadeEntities {
     }
 
     public int getPlayerHealth(Player player) {
-        return player.getHealth();
+        return player.getMaxHealth();
     }
 
     public void setPlayerHealth(Player player, int health) {
-        player.setHealth(health);
+        player.setMaxHealth(health);
     }
 
     public Room getPlayerCurrentRoom(Player player) {
@@ -131,11 +129,11 @@ public class FacadeEntities {
     }
 
     public int getMonsterHealth(Monster monster) {
-        return monster.getHealth();
+        return monster.getMaxHealth();
     }
 
     public void setMonsterHealth(Monster monster, int health) {
-        monster.setHealth(health);
+        monster.setMaxHealth(health);
     }
 
     public Weapon getMonsterEquippedWeapon(Monster monster) {

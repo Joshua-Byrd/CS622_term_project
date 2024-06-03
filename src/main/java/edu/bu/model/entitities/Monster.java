@@ -89,11 +89,11 @@ public class Monster extends Entity implements Combatant, Serializable {
 
     // Getter and Setter methods
     @Override
-    public int getHealth() {
+    public int getMaxHealth() {
         return health;
     }
 
-    public void setHealth(int aHealth) {
+    public void setMaxHealth(int aHealth) {
         this.health = aHealth;
     }
 

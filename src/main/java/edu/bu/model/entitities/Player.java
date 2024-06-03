@@ -3,23 +3,18 @@ package edu.bu.model.entitities;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.bu.controller.GameController;
 import edu.bu.model.items.*;
 import edu.bu.model.Room;
-import edu.bu.model.persistence.FacadePersistence;
-import edu.bu.model.persistence.GameLogger;
 import edu.bu.util.Die;
 import edu.bu.util.FacadeUtil;
 import edu.bu.util.MessageService;
-import java.util.ArrayList;
-
-import java.util.ArrayList;
 
 /**
  * Represents the player character
  */
 public class Player extends Entity implements Combatant {
-    private int health;
+    private int maxHealth;
+    private int currentHealth;
     private Room currentRoom;
     private Weapon equippedWeapon;
     private Armor equippedArmor;
@@ -47,7 +42,8 @@ public class Player extends Entity implements Combatant {
                   @JsonProperty("roomsVisited") int someRooms,
                   @JsonProperty("monstersDefeated") int someMonsters) {
         super(aName, aDescription, anInventory);
-        this.health = aHealth;
+        this.maxHealth = aHealth;
+        this.currentHealth = aHealth;
         this.currentRoom = aCurrentRoom;
         this.equippedWeapon = aWeapon;
         this.equippedArmor = aArmor;
@@ -92,7 +88,7 @@ public class Player extends Entity implements Combatant {
      */
     @Override
     public void takeDamage(int aDamage) {
-        this.health -= aDamage;
+        this.currentHealth -= aDamage;
     }
 
     /**
@@ -201,14 +197,31 @@ public class Player extends Entity implements Combatant {
         return null;
     }
 
-    //Getter and Setter methods
-    @Override
-    public int getHealth() {
-        return health;
+    /**
+     * INTENT: To consume the given item.
+     * PRECONDITION 1: Item must exist in the player's inventory
+     * PRECONDITION 2: Item must implement the Consumeable interface
+     * POSTCONDITION: If item != null, the effects of the item are implemented; else, an error is display
+     * @param itemName the item to be consumed
+     */
+    public void consumeItem(String itemName) {
+        Item item = getInventory().findItemByName(itemName);
+        if (item instanceof Consumable) {
+            ((Consumable) item).consume(this);
+            getInventory().removeItem(item); // Remove the item after use
+        } else {
+            System.out.println("You can't consume that!");
+        }
     }
 
-    public void setHealth(int aHealth) {
-        this.health = aHealth;
+    //Getter and Setter methods
+    @Override
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int aHealth) {
+        this.maxHealth = aHealth;
     }
 
     public Room getCurrentRoom() {
@@ -280,6 +293,14 @@ public class Player extends Entity implements Combatant {
         this.monstersDefeated = monstersDefeated;
     }
 
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
+
+    public void setCurrentHealth(int currentHealth) {
+        this.currentHealth = currentHealth;
+    }
+
     @Override
     public Inventory<Item> getInventory() {
         return (Inventory<Item>) super.getInventory();
@@ -288,6 +309,24 @@ public class Player extends Entity implements Combatant {
     @Override
     public void setInventory(Inventory<Item> inventory) {
         super.setInventory(inventory);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Player: ").append(getName()).append("\n");
+        sb.append("Description: ").append(getDescription()).append("\n");
+        sb.append("Maximum Health: ").append(getMaxHealth()).append("\n");
+        sb.append("Current Health: ").append(getCurrentHealth()).append("\n");
+        sb.append("Equipped Weapon: ").append(equippedWeapon != null ? equippedWeapon.getName() : "None").append("\n");
+        sb.append("Equipped Armor: ").append(equippedArmor != null ? equippedArmor.getName() : "None").append("\n");
+        sb.append("Attack Rating: ").append(getAttackRating()).append("\n");
+        sb.append("Defense Rating: ").append(getDefenseRating()).append("\n");
+        sb.append("Gold Held: ").append(getGoldHeld()).append("\n");
+        sb.append("Rooms Visited: ").append(getRoomsVisited()).append("\n");
+        sb.append("Monsters Defeated: ").append(getMonstersDefeated()).append("\n");
+
+        return sb.toString();
     }
 }
 

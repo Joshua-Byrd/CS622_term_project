@@ -1,0 +1,13 @@
+[2024/06/03 09:09:29] jsoh has begun their journey.
+[2024/06/03 09:09:31] jsoh has entered a small stone room
+[2024/06/03 09:09:35] jsoh picked up the health potion.
+[2024/06/03 09:09:38] jsoh quit the game.
+[2024/06/03 09:09:42] jsoh has begun their journey.
+[2024/06/03 09:09:55] jsoh has encountered a Snake.
+[2024/06/03 09:10:05] jsoh had defeated a Snake.
+[2024/06/03 09:10:05] jsoh has entered a vast courtyard
+[2024/06/03 09:10:09] jsoh has encountered a Goblin.
+[2024/06/03 09:10:19] jsoh fled from battle.
+[2024/06/03 09:10:19] jsoh has entered a small stone room
+[2024/06/03 09:10:20] jsoh has entered a vast courtyard
+[2024/06/03 09:10:47] jsoh quit the game.

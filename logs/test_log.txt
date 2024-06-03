@@ -60,3 +60,27 @@
 [2024/06/03 07:51:36] test had defeated a Goblin.
 [2024/06/03 07:51:36] test has entered a small stone room
 [2024/06/03 07:51:49] test quit the game.
+[2024/06/03 08:48:20] test has begun their journey.
+[2024/06/03 08:48:22] test quit the game.
+[2024/06/03 08:51:31] test has begun their journey.
+[2024/06/03 08:51:35] test quit the game.
+[2024/06/03 09:06:50] test has begun their journey.
+[2024/06/03 09:06:54] test has encountered a Goblin.
+[2024/06/03 09:07:03] test fled from battle.
+[2024/06/03 09:07:03] test has entered a small stone room
+[2024/06/03 09:07:07] test picked up the health potion.
+[2024/06/03 09:07:10] test has encountered a Snake.
+[2024/06/03 09:07:20] test had defeated a Snake.
+[2024/06/03 09:07:20] test has entered a vast courtyard
+[2024/06/03 09:07:24] test quit the game.
+[2024/06/03 09:12:52] test has begun their journey.
+[2024/06/03 09:12:54] test has entered a small stone room
+[2024/06/03 09:12:59] test has entered a vast courtyard
+[2024/06/03 09:13:01] test has entered a small stone room
+[2024/06/03 09:13:03] test has entered a vast courtyard
+[2024/06/03 09:13:05] test has encountered a Goblin.
+[2024/06/03 09:13:18] test has been defeated by a Goblin.
+[2024/06/03 09:14:07] test has begun their journey.
+[2024/06/03 09:14:09] test has entered a small stone room
+[2024/06/03 09:14:13] test picked up the health potion.
+[2024/06/03 09:14:49] test quit the game.

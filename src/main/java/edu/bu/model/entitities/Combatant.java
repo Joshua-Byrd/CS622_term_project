@@ -53,8 +53,8 @@ public interface Combatant {
 
 
     //Getter and Setter Methods
-    int getHealth();
-    void setHealth(int aHealth);
+    int getMaxHealth();
+    void setMaxHealth(int aHealth);
     Weapon getEquippedWeapon();
     void setEquippedWeapon(Weapon anEquippedWeapon);
     Armor getEquippedArmor();

@@ -67,7 +67,7 @@ public class MonsterFactoryTest {
             assertTrue(monsterTemplates.stream().anyMatch(template ->
                     template.getName().equals(spawnedMonster.getName())
                             && template.getDescription().equals(spawnedMonster.getDescription())
-                            && template.getHealth() == spawnedMonster.getHealth()
+                            && template.getMaxHealth() == spawnedMonster.getMaxHealth()
                             && template.getEquippedWeapon().equals(spawnedMonster.getEquippedWeapon())
                             && template.getEquippedArmor().equals(spawnedMonster.getEquippedArmor())
             ), "The spawned monster should match one of the templates.");

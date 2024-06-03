@@ -9,7 +9,8 @@ import java.io.Serializable;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = Weapon.class, name = "weapon"),
         @JsonSubTypes.Type(value = Armor.class, name = "armor"),
-        @JsonSubTypes.Type(value = Container.class, name = "container")
+        @JsonSubTypes.Type(value = Container.class, name = "container"),
+        @JsonSubTypes.Type(value = Potion.class, name = "potion")
 })
 /**
  * Abstract class representing a general item within the game.

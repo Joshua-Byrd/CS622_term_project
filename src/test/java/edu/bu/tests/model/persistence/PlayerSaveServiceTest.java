@@ -17,7 +17,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -79,7 +78,7 @@ public class PlayerSaveServiceTest {
         assertNotNull(loadedPlayer, "Loaded player should not be null.");
         assertEquals(testPlayer.getName(), loadedPlayer.getName(), "Player name should match.");
         assertEquals(testPlayer.getDescription(), loadedPlayer.getDescription(), "Player description should match.");
-        assertEquals(testPlayer.getHealth(), loadedPlayer.getHealth(), "Player health should match.");
+        assertEquals(testPlayer.getMaxHealth(), loadedPlayer.getMaxHealth(), "Player health should match.");
     }
 
     @Test
@@ -93,7 +92,7 @@ public class PlayerSaveServiceTest {
         assertNotNull(loadedPlayer, "Loaded player should not be null.");
         assertEquals(testPlayer.getName(), loadedPlayer.getName(), "Player name should match.");
         assertEquals(testPlayer.getDescription(), loadedPlayer.getDescription(), "Player description should match.");
-        assertEquals(testPlayer.getHealth(), loadedPlayer.getHealth(), "Player health should match.");
+        assertEquals(testPlayer.getMaxHealth(), loadedPlayer.getMaxHealth(), "Player health should match.");
     }
 
     @Test
