@@ -14,6 +14,7 @@ import edu.bu.model.items.*;
 import edu.bu.model.persistence.FacadePersistence;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
+import edu.bu.music.MusicManager;
 import edu.bu.util.MonsterFactory;
 import edu.bu.view.FacadeView;
 import edu.bu.view.TextView;
@@ -49,10 +50,18 @@ public class Main {
         FacadeEntities facadeEntities = FacadeEntities.getTheInstance();
         FacadeController facadeController = FacadeController.getTheInstance();
 
+        // Initialize music manager
+        MusicManager.init();
+
+        // Start playing ambient music
+        MusicManager.playLogoMusic();
+
         Scanner scanner = new Scanner(System.in);
         GameLogger logger = null;
         Player player = null;
 
+        //Display main log and menu
+        view.printLogo();
         displayMainMenu(view, playerSaveService, facadeModel, facadeItems, facadeEntities, facadeController, rooms, scanner, logger, player);
     }
 

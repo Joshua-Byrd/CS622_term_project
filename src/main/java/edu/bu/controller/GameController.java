@@ -8,6 +8,8 @@ import edu.bu.model.Room;
 import edu.bu.model.items.*;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
+import edu.bu.music.MusicManager;
+import edu.bu.music.MusicPlayer;
 import edu.bu.util.MessageService;
 import edu.bu.util.MonsterFactory;
 import edu.bu.view.TextView;
@@ -140,9 +142,8 @@ public class GameController {
      * POSTCONDITION: The game ends.
      */
     public void startGame() {
-
+        MusicManager.playAmbientMusic();
         logger.log(player.getName() + " has begun their journey.");
-        view.printLogo();
         view.printGreeting();
         view.displayMessage("Game running with character: " + player.getName() + "\n");
         displayFormattedRoomDescription(player.getCurrentRoom());
@@ -580,6 +581,8 @@ public class GameController {
      * @param monster the monster to be defeated
      */
     private void initiateCombat(Monster monster) {
+        // Play battle music
+        MusicManager.playBattleMusic();
         Scanner scanner = new Scanner(System.in);
         logger.log(player.getName() + " has encountered a " + monster.getName() + ".");
         while (monster.isAlive() && player.getHealth() > 0) {
@@ -590,6 +593,7 @@ public class GameController {
             } else if (action.equalsIgnoreCase("flee")) {
                 view.displayMessage("You fled from the battle.\n");
                 logger.log(player.getName() + " fled from battle.");
+                MusicManager.playAmbientMusic();
                 return;
             } else {
                 view.displayMessage("Invalid action. Choose 'attack' or 'flee'.\n");
@@ -600,6 +604,7 @@ public class GameController {
             logger.log(player.getName() + " had defeated a " + monster.getName() + ".");
             player.setMonstersDefeated(player.getMonstersDefeated() + 1);
             currentRoom.removeMonster(monster);
+            MusicManager.playAmbientMusic();
         } else
             if (player.getHealth() <= 0) {
             view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");

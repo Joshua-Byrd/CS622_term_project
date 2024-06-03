@@ -1,20 +1,20 @@
-[2024/05/31 09:55:21] Josh has begun their journey.
-[2024/05/31 09:55:30] Josh picked up the shortsword.
-[2024/05/31 09:55:36] Josh wielded the shortsword.
-[2024/05/31 09:55:42] Josh opened the small chest.
-[2024/05/31 09:55:46] Josh took the dagger from the small chest.
-[2024/05/31 09:55:50] Josh has encountered a Goblin.
-[2024/05/31 09:56:11] Josh had defeated a Goblin.
-[2024/05/31 09:56:11] Josh has entered a small stone room
-[2024/05/31 09:56:18] Josh has entered a vast courtyard
-[2024/05/31 09:56:22] Josh has entered a small stone room
-[2024/05/31 09:56:28] Josh has entered a vast courtyard
-[2024/05/31 09:56:32] Josh has entered a small stone room
-[2024/05/31 09:56:35] Josh has encountered a Goblin.
-[2024/05/31 09:56:39] Josh fled from battle.
-[2024/05/31 09:56:39] Josh has entered a vast courtyard
-[2024/05/31 09:56:43] Josh has encountered a Goblin.
-[2024/05/31 09:57:07] Josh had defeated a Goblin.
-[2024/05/31 09:57:07] Josh has entered a small stone room
-[2024/06/02 10:10:29] Josh has begun their journey.
-[2024/06/02 10:10:44] Josh quit the game.
+[2024/06/03 06:12:19] Josh has begun their journey.
+[2024/06/03 06:12:26] Josh picked up the shortsword.
+[2024/06/03 06:12:37] Josh wielded the shortsword.
+[2024/06/03 06:12:39] Josh has entered a small stone room
+[2024/06/03 06:12:43] Josh picked up the iron armor.
+[2024/06/03 06:13:40] Josh has begun their journey.
+[2024/06/03 06:13:49] Josh picked up the shortsword.
+[2024/06/03 06:13:53] Josh wielded the shortsword.
+[2024/06/03 06:13:55] Josh has entered a small stone room
+[2024/06/03 06:13:58] Josh has encountered a Goblin.
+[2024/06/03 06:14:18] Josh had defeated a Goblin.
+[2024/06/03 06:14:18] Josh has entered a vast courtyard
+[2024/06/03 06:14:32] Josh has encountered a Snake.
+[2024/06/03 06:14:35] Josh fled from battle.
+[2024/06/03 06:14:35] Josh has entered a small stone room
+[2024/06/03 06:14:39] Josh has entered a vast courtyard
+[2024/06/03 06:14:42] Josh has encountered a Snake.
+[2024/06/03 06:14:45] Josh had defeated a Snake.
+[2024/06/03 06:14:45] Josh has entered a small stone room
+[2024/06/03 06:14:48] Josh quit the game.

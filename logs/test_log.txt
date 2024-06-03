@@ -26,3 +26,37 @@
 [2024/05/31 10:04:49] test has entered a small stone room
 [2024/05/31 10:04:51] test has encountered a Goblin.
 [2024/05/31 10:04:55] test has been defeated by a Goblin.
+[2024/06/03 06:42:19] test has begun their journey.
+[2024/06/03 06:42:23] test has entered a small stone room
+[2024/06/03 06:42:26] test picked up the iron armor.
+[2024/06/03 06:42:34] test put on the iron armor.
+[2024/06/03 06:42:47] test has encountered a Snake.
+[2024/06/03 06:43:02] test had defeated a Snake.
+[2024/06/03 06:43:02] test has entered a vast courtyard
+[2024/06/03 06:43:14] test picked up the shortsword.
+[2024/06/03 06:43:41] test quit the game.
+[2024/06/03 06:45:37] test has begun their journey.
+[2024/06/03 06:46:18] test has entered a small stone room
+[2024/06/03 06:46:20] test has entered a vast courtyard
+[2024/06/03 06:46:22] test has entered a small stone room
+[2024/06/03 06:46:24] test has entered a vast courtyard
+[2024/06/03 06:46:27] test has entered a small stone room
+[2024/06/03 06:46:29] test has entered a vast courtyard
+[2024/06/03 06:46:31] test has entered a small stone room
+[2024/06/03 06:46:33] test has entered a vast courtyard
+[2024/06/03 06:46:35] test has entered a small stone room
+[2024/06/03 06:46:42] test quit the game.
+[2024/06/03 07:14:43] test has begun their journey.
+[2024/06/03 07:14:52] test has entered a small stone room
+[2024/06/03 07:14:55] test has entered a vast courtyard
+[2024/06/03 07:14:57] test has encountered a Goblin.
+[2024/06/03 07:15:16] test had defeated a Goblin.
+[2024/06/03 07:15:16] test has entered a small stone room
+[2024/06/03 07:15:23] test quit the game.
+[2024/06/03 07:51:15] test has begun their journey.
+[2024/06/03 07:51:24] test picked up the shortsword.
+[2024/06/03 07:51:28] test wielded the shortsword.
+[2024/06/03 07:51:30] test has encountered a Goblin.
+[2024/06/03 07:51:36] test had defeated a Goblin.
+[2024/06/03 07:51:36] test has entered a small stone room
+[2024/06/03 07:51:49] test quit the game.

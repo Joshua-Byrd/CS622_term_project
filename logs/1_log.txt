@@ -1,0 +1,9 @@
+[2024/06/03 04:44:27] 1 has begun their journey.
+[2024/06/03 04:45:04] 1 picked up the shortsword.
+[2024/06/03 04:45:06] 1 has encountered a Goblin.
+[2024/06/03 04:45:13] 1 fled from battle.
+[2024/06/03 04:45:13] 1 has entered a small stone room
+[2024/06/03 04:45:15] 1 has entered a vast courtyard
+[2024/06/03 04:45:18] 1 quit the game.
+[2024/06/03 04:45:24] 1 has begun their journey.
+[2024/06/03 04:45:30] 1 quit the game.
