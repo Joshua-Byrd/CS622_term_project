@@ -12,10 +12,8 @@ import java.io.Serializable;
 import java.util.function.Consumer;
 
 @JsonTypeName("potion")
-public class Potion extends Item implements Consumable, Tradeable, Serializable {
+public abstract class Potion extends Item implements Consumable, Tradeable, Serializable {
     private double price;
-    private int effectRating;
-    private transient Consumer<Player> effect; // transient because lambdas are not serializable
 
     // No-argument constructor for Jackson
     public Potion() {
@@ -33,43 +31,22 @@ public class Potion extends Item implements Consumable, Tradeable, Serializable 
             @JsonProperty("effect") Consumer<Player> effect) {
         super(name, description, weight);
         this.price = price;
-        this.effectRating = effectRating;
-        this.effect = effect;
     }
 
-    @Override
-    public void consume(Player player) {
-        if (effect != null) {
-            effect.accept(player);
-            System.out.println(player.getName() + " consumed " + getName() + ".");
-        }
+    public Potion(String name, String description, double weight, double price) {
+        super(name, description, weight);
+        this.price = price;
     }
 
-    // Getter and Setter methods for effectRating
-    public int getEffectRating() {
-        return effectRating;
-    }
-
-    public void setEffectRating(int effectRating) {
-        this.effectRating = effectRating;
-    }
-
-    @Override
     public double getPrice() {
         return price;
     }
 
-    @Override
     public void setPrice(double price) {
         this.price = price;
     }
 
-    public Consumer<Player> getEffect() {
-        return effect;
-    }
-
-    public void setEffect(Consumer<Player> effect) {
-        this.effect = effect;
-    }
+    @Override
+    public abstract void consume(Player player);
 }
 

@@ -115,7 +115,7 @@ public class Main {
                     player = FacadeEntities.getTheInstance().createPlayer(
                             playerName,
                             "A brave adventurer",
-                            20,
+                            50,
                             startingRoom,
                             startingWeapon,
                             startingArmor,
@@ -153,7 +153,7 @@ public class Main {
                         player = FacadeEntities.getTheInstance().createPlayer(
                                 playerName,
                                 "A brave adventurer",
-                                10,
+                                50,
                                 startingRoom,
                                 startingWeapon,
                                 startingArmor,

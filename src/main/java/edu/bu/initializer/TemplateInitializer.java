@@ -67,11 +67,8 @@ public class TemplateInitializer {
         // Create another room with its own inventory using FacadeModel
         Inventory<Item> anotherRoomInventory = facadeItems.createInventory(1000);
         anotherRoomInventory.addItem(new Armor("iron armor", "a suit of iron armor", 10.0, 8, 50.0));
-        anotherRoomInventory.addItem(new Potion("health potion", "A swirly blue potion", 2, 12, 10,
-                player -> {
-            player.setCurrentHealth((player.getCurrentHealth() + 10 <= player.getMaxHealth() ? player.getCurrentHealth() + 10: player.getMaxHealth()));}
-        )
-        );
+        anotherRoomInventory.addItem(new HealthPotion("health potion", "A swirly blue potion", 2, 12, 10));
+
         Room smallStoneRoom = facadeModel.createRoom("small stone room", "The walls are moss-covered and slick with " +
                 "moisture. To the west is the door you came through. You can see no other openings.", anotherRoomInventory);
 

@@ -35,3 +35,9 @@
 [2024/06/03 08:21:06] Josh quit the game.
 [2024/06/03 09:06:10] Josh has begun their journey.
 [2024/06/03 09:06:12] Josh quit the game.
+[2024/06/03 11:37:23] Josh has begun their journey.
+[2024/06/03 11:37:28] Josh has encountered a Goblin.
+[2024/06/03 11:37:38] Josh had defeated a Goblin.
+[2024/06/03 11:37:38] Josh has entered a small stone room
+[2024/06/03 11:37:51] Josh picked up the health potion.
+[2024/06/03 11:38:44] Josh quit the game.

@@ -632,7 +632,6 @@ public class GameController {
     private void handleConsumeCommand(String itemName) {
         try {
             player.consumeItem(itemName);
-            view.displayMessage("You consumed the " + itemName + ".\n");
         } catch (IllegalArgumentException e) {
             view.displayMessage("You can't use " + itemName + ".\n");
         }

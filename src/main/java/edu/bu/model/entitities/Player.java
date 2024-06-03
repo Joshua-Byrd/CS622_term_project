@@ -210,7 +210,7 @@ public class Player extends Entity implements Combatant {
             ((Consumable) item).consume(this);
             getInventory().removeItem(item); // Remove the item after use
         } else {
-            System.out.println("You can't consume that!");
+            System.out.println("You can't consume that.");
         }
     }
 

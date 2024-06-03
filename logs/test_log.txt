@@ -84,3 +84,79 @@
 [2024/06/03 09:14:09] test has entered a small stone room
 [2024/06/03 09:14:13] test picked up the health potion.
 [2024/06/03 09:14:49] test quit the game.
+[2024/06/03 10:33:26] test has begun their journey.
+[2024/06/03 10:33:29] test has encountered a Snake.
+[2024/06/03 10:33:55] test had defeated a Snake.
+[2024/06/03 10:33:55] test has entered a small stone room
+[2024/06/03 10:34:45] test picked up the health potion.
+[2024/06/03 10:35:12] test quit the game.
+[2024/06/03 10:42:08] test has begun their journey.
+[2024/06/03 10:42:12] test has entered a small stone room
+[2024/06/03 10:42:17] test picked up the health potion.
+[2024/06/03 10:42:20] test has entered a vast courtyard
+[2024/06/03 10:42:24] test picked up the shortsword.
+[2024/06/03 10:42:28] test wielded the shortsword.
+[2024/06/03 10:42:30] test has encountered a Snake.
+[2024/06/03 10:42:33] test had defeated a Snake.
+[2024/06/03 10:42:33] test has entered a small stone room
+[2024/06/03 10:42:44] test has encountered a Snake.
+[2024/06/03 10:42:49] test had defeated a Snake.
+[2024/06/03 10:42:49] test has entered a vast courtyard
+[2024/06/03 10:43:51] test quit the game.
+[2024/06/03 10:55:26] test has begun their journey.
+[2024/06/03 10:55:30] test has encountered a Snake.
+[2024/06/03 10:55:36] test had defeated a Snake.
+[2024/06/03 10:55:36] test has entered a small stone room
+[2024/06/03 10:55:50] test picked up the health potion.
+[2024/06/03 10:55:52] test has entered a vast courtyard
+[2024/06/03 10:55:54] test has entered a small stone room
+[2024/06/03 10:55:58] test has entered a vast courtyard
+[2024/06/03 10:56:19] test has entered a small stone room
+[2024/06/03 10:56:21] test has entered a vast courtyard
+[2024/06/03 10:56:25] test has entered a small stone room
+[2024/06/03 10:56:27] test has encountered a Goblin.
+[2024/06/03 10:56:36] test has been defeated by a Goblin.
+[2024/06/03 10:57:04] test has begun their journey.
+[2024/06/03 10:57:08] test picked up the shortsword.
+[2024/06/03 10:57:12] test wielded the shortsword.
+[2024/06/03 10:57:17] test has encountered a Snake.
+[2024/06/03 10:57:24] test had defeated a Snake.
+[2024/06/03 10:57:24] test has entered a small stone room
+[2024/06/03 10:57:33] test picked up the health potion.
+[2024/06/03 10:57:56] test quit the game.
+[2024/06/03 10:58:27] test has begun their journey.
+[2024/06/03 10:58:30] test picked up the shortsword.
+[2024/06/03 10:58:33] test wielded the shortsword.
+[2024/06/03 10:58:54] test has encountered a Goblin.
+[2024/06/03 10:59:05] test has been defeated by a Goblin.
+[2024/06/03 10:59:24] test has begun their journey.
+[2024/06/03 10:59:30] test picked up the shortsword.
+[2024/06/03 10:59:36] test wielded the shortsword.
+[2024/06/03 10:59:38] test has entered a small stone room
+[2024/06/03 10:59:42] test picked up the health potion.
+[2024/06/03 10:59:44] test has entered a vast courtyard
+[2024/06/03 10:59:49] test has entered a small stone room
+[2024/06/03 10:59:52] test has encountered a Snake.
+[2024/06/03 11:00:16] test had defeated a Snake.
+[2024/06/03 11:00:16] test has entered a vast courtyard
+[2024/06/03 11:00:23] test has entered a small stone room
+[2024/06/03 11:00:25] test has encountered a Snake.
+[2024/06/03 11:00:27] test has been defeated by a Snake.
+[2024/06/03 11:00:42] test has begun their journey.
+[2024/06/03 11:00:46] test has entered a small stone room
+[2024/06/03 11:00:50] test picked up the health potion.
+[2024/06/03 11:00:52] test has encountered a Snake.
+[2024/06/03 11:00:58] test had defeated a Snake.
+[2024/06/03 11:00:58] test has entered a vast courtyard
+[2024/06/03 11:35:24] test has begun their journey.
+[2024/06/03 11:35:29] test has encountered a Snake.
+[2024/06/03 11:35:42] test had defeated a Snake.
+[2024/06/03 11:35:42] test has entered a small stone room
+[2024/06/03 11:35:57] test picked up the health potion.
+[2024/06/03 11:37:07] test quit the game.
+[2024/06/03 11:38:55] test has begun their journey.
+[2024/06/03 11:38:57] test has encountered a Goblin.
+[2024/06/03 11:39:08] test had defeated a Goblin.
+[2024/06/03 11:39:08] test has entered a small stone room
+[2024/06/03 11:39:26] test picked up the health potion.
+[2024/06/03 11:40:28] test quit the game.
