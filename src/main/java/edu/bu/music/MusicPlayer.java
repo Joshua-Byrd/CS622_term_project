@@ -17,10 +17,10 @@ public class MusicPlayer {
      * PRECONDITION: The filePath must be a valid path to a MIDI file.
      * POSTCONDITION: A MusicPlayer instance is created with the specified file path.
      *
-     * @param filePath The path to the MIDI file to be played.
+     * @param aFilePath The path to the MIDI file to be played.
      */
-    public MusicPlayer(String filePath) {
-        this.filePath = filePath;
+    public MusicPlayer(String aFilePath) {
+        this.filePath = aFilePath;
     }
 
     /**
