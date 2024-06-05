@@ -16,6 +16,7 @@ import edu.bu.view.TextView;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Acts as the main controller in the MVC pattern. Provides methods for model and view classes to
@@ -383,14 +384,24 @@ public class GameController {
      * POSTCONDITION: The player's state is saved to a file.
      */
     private void handleSaveCommand() {
-        try {
-            playerSaveService.save(player);
-            logger.log(player.getName() + " has saved their game.");
-            view.displayMessage("Character saved!\n");
-        } catch (PlayerDataException e) {
-            view.displayMessage("Error saving file: " + e.getMessage());
-            e.printStackTrace();
-        }
+        saveGameAsync(player).join();
+    }
+
+    /**
+     * INTENT: To save the game asynchronously, ensuring that the process completes
+     * PRECONDITION: Player must not be null
+     * POSTCONDITION: The player's state is saved to a JSON file
+     * @param player the player to save
+     */
+    public CompletableFuture<Void> saveGameAsync(Player player) {
+        return CompletableFuture.runAsync(() -> {
+            try {
+                playerSaveService.save(player);
+                view.displayMessage("Character saved!\n");
+            } catch (PlayerDataException e) {
+                view.displayMessage(e.getMessage() + "\n");
+            }
+        });
     }
 
     /**
@@ -399,15 +410,10 @@ public class GameController {
      * POSTCONDITION: The player's state is saved, and the game exits.
      */
     private void handleExitCommand() {
-        try {
-            playerSaveService.save(player);
-            logger.log(player.getName() + " quit the game.");
-            logger.close();
-            System.exit(0);
-        } catch (PlayerDataException e) {
-            view.displayMessage("Error saving file: " + e.getMessage());
-            e.printStackTrace();
-        }
+        saveGameAsync(player).join();
+        logger.log(player.getName() + " quit the game.");
+        logger.close();
+        System.exit(0);
     }
 
     /**
