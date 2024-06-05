@@ -384,17 +384,18 @@ public class GameController {
      * POSTCONDITION: The player's state is saved to a file.
      */
     private void handleSaveCommand() {
-        saveGameAsync(player).join();
+        saveGameAsync(player);
     }
 
     /**
-     * INTENT: To save the game asynchronously, ensuring that the process completes
-     * PRECONDITION: Player must not be null
-     * POSTCONDITION: The player's state is saved to a JSON file
-     * @param player the player to save
+     * INTENT: To save the player's state asynchronously.
+     * PRECONDITION: The player object must not be null.
+     * POSTCONDITION: The player's state is saved to a file asynchronously, allowing the game to continue running.
+     *
+     * @param player The player whose state is to be saved.
      */
-    public CompletableFuture<Void> saveGameAsync(Player player) {
-        return CompletableFuture.runAsync(() -> {
+    public void saveGameAsync(Player player) {
+        CompletableFuture.runAsync(() -> {
             try {
                 playerSaveService.save(player);
                 view.displayMessage("Character saved!\n");
@@ -410,10 +411,14 @@ public class GameController {
      * POSTCONDITION: The player's state is saved, and the game exits.
      */
     private void handleExitCommand() {
-        saveGameAsync(player).join();
-        logger.log(player.getName() + " quit the game.");
-        logger.close();
-        System.exit(0);
+        try {
+            playerSaveService.save(player);
+            logger.log(player.getName() + " quit the game.");
+            logger.close();
+            System.exit(0);
+        } catch(PlayerDataException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

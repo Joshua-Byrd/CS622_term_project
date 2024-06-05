@@ -4,3 +4,11 @@
 [2024/06/05 06:05:32] josh picked up the iron armor.
 [2024/06/05 06:05:32] josh picked up the health potion.
 [2024/06/05 06:05:37] josh quit the game.
+[2024/06/05 06:33:07] josh has begun their journey.
+[2024/06/05 06:33:13] josh picked up the shortsword.
+[2024/06/05 06:33:17] josh wielded the shortsword.
+[2024/06/05 06:33:21] josh has encountered a Goblin.
+[2024/06/05 06:33:26] josh had defeated a Goblin.
+[2024/06/05 06:33:26] josh has entered a small stone room
+[2024/06/05 06:33:33] josh quit the game.
+[2024/06/05 06:33:45] josh has begun their journey.
