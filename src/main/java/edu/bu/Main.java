@@ -14,6 +14,7 @@ import edu.bu.model.items.*;
 import edu.bu.model.persistence.FacadePersistence;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
+import edu.bu.music.FacadeMusic;
 import edu.bu.music.MusicManager;
 import edu.bu.util.MonsterFactory;
 import edu.bu.view.FacadeView;
@@ -49,12 +50,11 @@ public class Main {
         FacadeItems facadeItems = FacadeItems.getTheInstance();
         FacadeEntities facadeEntities = FacadeEntities.getTheInstance();
         FacadeController facadeController = FacadeController.getTheInstance();
+        FacadeMusic facadeMusic = FacadeMusic.getTheInstance();
 
-        // Initialize music manager
-        MusicManager.init();
 
-        // Start playing ambient music
-        MusicManager.playLogoMusic();
+        // Start playing the title theme
+        facadeMusic.playLogoMusic();
 
         Scanner scanner = new Scanner(System.in);
         GameLogger logger = null;
@@ -202,13 +202,14 @@ public class Main {
         System.out.println("*  get [item] from [container] - Retrieve an item from an open container.");
         System.out.println("*  get all - Retrieves all items that can fit in your inventory.");
         System.out.println("*  drop [item] - Remove an item from your inventory and leave it in the current room.");
-        System.out.println("*  examine [target] - Examine a room, your inventory, or a specific item.");
+        System.out.println("*  examine [room | item | inventory | self]");
         System.out.println("*  wear [armor] - Wear a piece of armor from your inventory.");
         System.out.println("*  wield [weapon] - Wield a weapon from your inventory.");
         System.out.println("*  open [container] - Open a container to see its contents.");
         System.out.println("*  close [container] - Close a container.");
-        System.out.println("*  attack - Attack a specified monster.");
-        System.out.println("*  flee [direction] - Flee to an adjacent room.");
+        System.out.println("*  attack - attack the monster you're currently battling.");
+        System.out.println("*  flee - disengage from combat.");
+        System.out.println("*  consume [item] - consume an item such as a potion.");
         System.out.println("*  save - Save your current game state.");
         System.out.println("*  exit - Save your game and exit.");
         System.out.println("*  print - Print your game log.");

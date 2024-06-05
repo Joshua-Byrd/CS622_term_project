@@ -8,6 +8,7 @@ import edu.bu.model.Room;
 import edu.bu.model.items.*;
 import edu.bu.model.persistence.GameLogger;
 import edu.bu.model.persistence.PlayerSaveService;
+import edu.bu.music.FacadeMusic;
 import edu.bu.music.MusicManager;
 import edu.bu.util.MessageService;
 import edu.bu.util.MonsterFactory;
@@ -26,6 +27,7 @@ public class GameController {
     private Room currentRoom;
     private final PlayerSaveService playerSaveService;
     private final GameLogger logger;
+    private final FacadeMusic facadeMusic = FacadeMusic.getTheInstance();
 
     public GameController(TextView aView, Player aPlayer, Room aStartingRoom,
                           PlayerSaveService aPlayerSaveService,
@@ -44,7 +46,7 @@ public class GameController {
      * POSTCONDITION: The game ends.
      */
     public void startGame() {
-        MusicManager.playAmbientMusic();
+        facadeMusic.playAmbientMusic();
         logger.log(player.getName() + " has begun their journey.");
         view.printGreeting();
         view.displayMessage("Game running with character: " + player.getName() + "\n");
@@ -489,7 +491,7 @@ public class GameController {
      */
     private void initiateCombat(Monster monster) {
         // Play battle music
-        MusicManager.playBattleMusic();
+        facadeMusic.playBattleMusic();
         Scanner scanner = new Scanner(System.in);
         logger.log(player.getName() + " has encountered a " + monster.getName() + ".");
         while (monster.isAlive() && player.getCurrentHealth() > 0) {
@@ -511,7 +513,7 @@ public class GameController {
             logger.log(player.getName() + " had defeated a " + monster.getName() + ".");
             player.setMonstersDefeated(player.getMonstersDefeated() + 1);
             currentRoom.removeMonster(monster);
-            MusicManager.playAmbientMusic();
+            facadeMusic.playAmbientMusic();
         } else
             if (player.getCurrentHealth() <= 0) {
             view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
