@@ -487,7 +487,6 @@ public class GameController {
         MonsterFactory.trySpawnMonster(room);
         displayFormattedRoomDescription(room);
         if (!room.getMonsters().isEmpty()) {
-//            view.displayMessage("Monsters present: " + room.getMonsters().stream().map(Monster::getName).collect(Collectors.joining(", ")) + "\n");
             initiateCombat(room.getMonsters().get(0)); // Simple case: fight the first monster
 
         }

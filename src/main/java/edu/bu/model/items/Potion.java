@@ -36,14 +36,6 @@ public abstract class Potion extends Item implements Consumable, Tradeable, Seri
         this.price = aPrice;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double aPrice) {
-        this.price = aPrice;
-    }
-
     /**
      * Defines what occurs when the player drinks the potion
      * PRECONDITION: aPlayer must not be null
@@ -52,5 +44,16 @@ public abstract class Potion extends Item implements Consumable, Tradeable, Seri
      */
     @Override
     public void consume(Player aPlayer){};
+
+    //getter and setter methods
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double aPrice) {
+        this.price = aPrice;
+    }
+
+
 }
 

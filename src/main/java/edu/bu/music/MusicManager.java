@@ -8,6 +8,8 @@ import java.util.concurrent.Executors;
  * their own threads, as well as stopping and switching music tracks
  */
 public class MusicManager {
+    //single-thread executor because we're only running a single music file at a time
+    //so it's essentially just a single background task
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
     public static MusicPlayer ambientPlayer;
     public static MusicPlayer battlePlayer;
