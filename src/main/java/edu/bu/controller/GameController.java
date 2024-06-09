@@ -185,7 +185,17 @@ public class GameController {
      * @param target The target of the get command, which can be an item or an item from a container (e.g., "sword from chest").
      */
     private void handleGetCommand(String target) {
-        if (target.equalsIgnoreCase("all")) {
+        if (target.equalsIgnoreCase("gold")) {
+            double goldAmount = currentRoom.getGold();
+            if (goldAmount > 0) {
+                player.addGold(goldAmount);
+                currentRoom.setGold(0);
+                view.displayMessage("You picked up " + goldAmount + " gold.\n");
+                logger.log(player.getName() + " picked up " + goldAmount + " gold.");
+            } else {
+                view.displayMessage("There is no gold here.\n");
+            }
+        } else if (target.equalsIgnoreCase("all")) {
             getAllTradeableItems();
         } else if (target.contains(" from ")) {
             //if "from" is present, we're getting something from a container
@@ -263,7 +273,6 @@ public class GameController {
             view.displayMessage("There is no " + containerName + " to open.\n");
         }
     }
-
     /**
      * INTENT: To handle the "close" command, closing the specified container if it is open.
      * PRECONDITION: The container must be present in the current room's inventory and must be open.
@@ -673,6 +682,9 @@ public class GameController {
                 }
             }
             roomDescription.append(".\n");
+        }
+        if (room.getGold() > 0) {
+            roomDescription.append("There is also " + room.getGold() + " gold here\n");
         }
         // Display monsters in the room
         List<Monster> monsters = room.getMonsters();

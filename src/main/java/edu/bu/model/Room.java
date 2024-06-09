@@ -42,6 +42,7 @@ public class Room implements Serializable {
 
     //List of monsters currently in the room
     private List<Monster> monsters = new ArrayList<>();
+    private double gold;
 
     // Default constructor required by Jackson
     public Room() {
@@ -49,17 +50,19 @@ public class Room implements Serializable {
         this.description = "";
         this.items = new Inventory<>(1000);
         this.connections = new HashMap<>();
-
+        this.gold = 0.0;
     }
 
     @JsonCreator
     public Room(@JsonProperty("name") String aName,
                 @JsonProperty("description") String aDescription,
-                @JsonProperty("items") Inventory<Item> someItems) {
+                @JsonProperty("items") Inventory<Item> someItems,
+                @JsonProperty("gold") double aGold) {
         this.name = aName;
         this.description = aDescription;
         this.items = someItems;
         this.connections = new HashMap<>();
+        this.gold = aGold;
     }
 
     /**
@@ -124,7 +127,21 @@ public class Room implements Serializable {
         monsters.remove(monster);
     }
 
+    public double getGold() { return gold; }
 
+    public void setGold(double gold) { this.gold = gold; }
+
+    public void addGold(double amount) {
+        if (amount > 0) {
+            this.gold += amount;
+        }
+    }
+
+    public void removeGold(double amount) {
+        if (amount > 0 && this.gold >= amount) {
+            this.gold -= amount;
+        }
+    }
 
     @JsonProperty("connections")
     public Map<String,Room> getConnections() {

@@ -3,6 +3,7 @@ package edu.bu.music;
 import javax.sound.midi.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * A class to handle the playback of MIDI music files. This class provides methods to play, stop,
@@ -29,10 +30,13 @@ public class MusicPlayer {
      * POSTCONDITION: The MIDI file is played in a loop.
      */
     public void play() {
-        try {
-            File midiFile = new File(filePath);
+        try (InputStream midiStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
+            if (midiStream == null) {
+                throw new IOException("MIDI file not found: " + filePath);
+            }
+
             sequencer = MidiSystem.getSequencer();
-            sequencer.setSequence(MidiSystem.getSequence(midiFile));
+            sequencer.setSequence(MidiSystem.getSequence(midiStream));
             sequencer.open();
 
             // Loop the music

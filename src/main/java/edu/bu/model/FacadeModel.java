@@ -54,8 +54,8 @@ public class FacadeModel {
      * @param items       The items in the room.
      * @return A new instance of Room.
      */
-    public Room createRoom(String name, String description, Inventory<Item> items) {
-        return new Room(name, description, items);
+    public Room createRoom(String name, String description, Inventory<Item> items, double gold) {
+        return new Room(name, description, items, gold);
     }
 
     // Getter and Setter methods for Room properties

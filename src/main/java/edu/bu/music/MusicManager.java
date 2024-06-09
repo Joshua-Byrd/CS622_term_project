@@ -21,9 +21,9 @@ public class MusicManager {
      * POSTCONDITION: The music players are initialized and ready to play the respective music tracks.
      */
     public static void init() {
-        ambientPlayer = new MusicPlayer("src/main/resources/music/main_theme.mid");
-        battlePlayer = new MusicPlayer("src/main/resources/music/battle_theme.mid");
-        logoPlayer = new MusicPlayer("src/main/resources/music/logo_theme.mid");
+        ambientPlayer = new MusicPlayer("music/main_theme.mid");
+        battlePlayer = new MusicPlayer("music/battle_theme.mid");
+        logoPlayer = new MusicPlayer("music/logo_theme.mid");
     }
 
     /**

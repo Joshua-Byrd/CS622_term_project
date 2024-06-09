@@ -214,6 +214,31 @@ public class Player extends Entity implements Combatant {
         }
     }
 
+    /**
+     * INTENT: To add the given amount of gold to the player
+     * PRECONDITION: amount must not be null
+     * POSTCONDITION: this.goldHeal += amount
+     * @param amount the amount to be added
+     */
+    public void addGold(double amount) {
+        if (amount > 0) {
+            this.goldHeld += amount;
+        }
+    }
+
+    /**
+     * INTENT: To remove the given amount of gold from the player
+     * PRECONDITION: amount must not be null
+     * POSTCONDITION: this.goldHeal -= amount
+     * @param amount the amount to be removed
+     */
+    public void removeGold(double amount) {
+        if (amount > 0 && this.goldHeld >= amount) {
+            this.goldHeld -= amount;
+            System.out.println("You spent " + amount + " gold.");
+        }
+    }
+
     //Getter and Setter methods
     @Override
     public int getMaxHealth() {
