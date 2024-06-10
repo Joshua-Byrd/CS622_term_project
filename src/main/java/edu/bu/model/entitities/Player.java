@@ -13,6 +13,7 @@ import edu.bu.util.MessageService;
  * Represents the player character
  */
 public class Player extends Entity implements Combatant {
+    private int id;
     private int maxHealth;
     private int currentHealth;
     private Room currentRoom;
@@ -23,6 +24,7 @@ public class Player extends Entity implements Combatant {
     private double goldHeld;
     private int roomsVisited;
     private int monstersDefeated;
+    private int actionsTaken;
     private final FacadeUtil facadeUtil = FacadeUtil.getTheInstance();
 
     // Default constructor required by Jackson
@@ -31,7 +33,8 @@ public class Player extends Entity implements Combatant {
     }
 
     @JsonCreator
-    public Player(@JsonProperty("name") String aName,
+    public Player(@JsonProperty("id") int anId,
+                  @JsonProperty("name") String aName,
                   @JsonProperty("description") String aDescription,
                   @JsonProperty("health") int aHealth,
                   @JsonProperty("currentRoom") Room aCurrentRoom,
@@ -42,6 +45,7 @@ public class Player extends Entity implements Combatant {
                   @JsonProperty("roomsVisited") int someRooms,
                   @JsonProperty("monstersDefeated") int someMonsters) {
         super(aName, aDescription, anInventory);
+        this.id = anId;
         this.maxHealth = aHealth;
         this.currentHealth = aHealth;
         this.currentRoom = aCurrentRoom;
@@ -52,6 +56,7 @@ public class Player extends Entity implements Combatant {
         this.goldHeld = someGold;
         this.roomsVisited = someRooms;
         this.monstersDefeated = someMonsters;
+        this.actionsTaken = 0;
     }
 
     /**
@@ -325,6 +330,16 @@ public class Player extends Entity implements Combatant {
     public void setCurrentHealth(int currentHealth) {
         this.currentHealth = currentHealth;
     }
+
+    public int getActionsTaken() { return actionsTaken; }
+
+    public void setActionsTaken(int actionsTaken) { this.actionsTaken = actionsTaken; }
+
+    public void incrementActionsTaken() { this.actionsTaken++; }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     @Override
     public Inventory<Item> getInventory() {

@@ -1,5 +1,6 @@
 package edu.bu.controller;
 
+import edu.bu.database.DatabaseManager;
 import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.entitities.Monster;
@@ -14,6 +15,8 @@ import edu.bu.util.MessageService;
 import edu.bu.util.MonsterFactory;
 import edu.bu.view.TextView;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
@@ -28,17 +31,28 @@ public class GameController {
     private Room currentRoom;
     private final PlayerSaveService playerSaveService;
     private final GameLogger logger;
+    private final DatabaseManager databaseManager;
     private final FacadeMusic facadeMusic = FacadeMusic.getTheInstance();
+    private Instant sessionStartTime;
+    private Instant sessionEndTime;
 
     public GameController(TextView aView, Player aPlayer, Room aStartingRoom,
                           PlayerSaveService aPlayerSaveService,
-                          GameLogger aLogger) {
+                          GameLogger aLogger,
+                          DatabaseManager aDatabaseManager) {
         this.view = aView;
         this.player = aPlayer;
         this.currentRoom = aStartingRoom;
         this.playerSaveService = aPlayerSaveService;
+        this.databaseManager = aDatabaseManager;
         this.logger = aLogger;
         MessageService.registerController(this);
+        this.sessionStartTime = Instant.now();
+        // Save new player to the database if player id is not set
+        if (player.getId() == 0) {
+            int playerId = databaseManager.savePlayer(player);
+            player.setId(playerId);
+        }
     }
 
     /**
@@ -79,36 +93,47 @@ public class GameController {
 
         switch (action.toLowerCase()) {
             case "go":
+                player.incrementActionsTaken();
                 handleGoCommand(target);
                 break;
             case "get":
+                player.incrementActionsTaken();
                 handleGetCommand(target);
                 break;
             case "drop":
+                player.incrementActionsTaken();
                 handleDropCommand(target);
                 break;
             case "examine":
+                player.incrementActionsTaken();
                 handleExamineCommand(target);
                 break;
             case "wear":
+                player.incrementActionsTaken();
                 handleWearCommand(target);
                 break;
             case "wield":
+                player.incrementActionsTaken();
                 handleWieldCommand(target);
                 break;
             case "open":
+                player.incrementActionsTaken();
                 handleOpenCommand(target);
                 break;
             case "close":
+                player.incrementActionsTaken();
                 handleCloseCommand(target);
                 break;
             case "attack":
+                player.incrementActionsTaken();
                 handleAttackCommand(target);
                 break;
             case "flee":
+                player.incrementActionsTaken();
                 handleFleeCommand(target);
                 break;
             case "save":
+                player.incrementActionsTaken();
                 handleSaveCommand();
                 break;
             case "exit":
@@ -118,6 +143,7 @@ public class GameController {
                 handlePrintCommand();
                 break;
             case "consume":
+                player.incrementActionsTaken();
                 handleConsumeCommand(target);
                 break;
             default:
@@ -422,6 +448,9 @@ public class GameController {
     private void handleExitCommand() {
         try {
             playerSaveService.save(player);
+            sessionEndTime = Instant.now();
+            saveSessionStatistics();
+            view.displayMessage("Thanks for playing!\n");
             logger.log(player.getName() + " quit the game.");
             logger.close();
             System.exit(0);
@@ -430,6 +459,24 @@ public class GameController {
         }
     }
 
+    /**
+     * INTENT: To save the player's session statistics to the database.
+     * PRECONDITION: sessionStartTime and sessionEndTime must be set.
+     * POSTCONDITION: The session statistics are saved to the database.
+     */
+    private void saveSessionStatistics() {
+        Timestamp startTime = Timestamp.from(sessionStartTime);
+        Timestamp endTime = Timestamp.from(sessionEndTime);
+        long duration = endTime.getTime() - startTime.getTime(); // Session duration in milliseconds
+
+        // Assuming 1 action per command, just for simplicity. You might want to track actual actions separately.
+        int actionsTaken = player.getActionsTaken();
+        int monstersDefeated = player.getMonstersDefeated();
+        double goldCollected = player.getGoldHeld();
+
+        databaseManager.saveGameSession(player.getId(), startTime, endTime, actionsTaken, monstersDefeated, goldCollected);
+
+    }
     /**
      * INTENT: To handle the "print" command, displaying the player's log.
      * PRECONDITION: None.

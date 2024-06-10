@@ -33,10 +33,10 @@ public class FacadeEntities {
     }
 
     // Player Methods
-    public Player createPlayer(String name, String description, int health, Room currentRoom,
+    public Player createPlayer(int id, String name, String description, int health, Room currentRoom,
                                Weapon weapon, Armor armor, Inventory<Item> inventory,
                                double goldHeld, int roomsVisited, int monstersDefeated) {
-        return new Player(name, description, health, currentRoom, weapon, armor, inventory, goldHeld, roomsVisited, monstersDefeated);
+        return new Player(id, name, description, health, currentRoom, weapon, armor, inventory, goldHeld, roomsVisited, monstersDefeated);
     }
 
     public int getPlayerHealth(Player player) {

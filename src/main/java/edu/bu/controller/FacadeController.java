@@ -1,5 +1,6 @@
 package edu.bu.controller;
 
+import edu.bu.database.DatabaseManager;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.Room;
 import edu.bu.model.persistence.GameLogger;
@@ -45,8 +46,9 @@ public class FacadeController {
      * @return The initialized GameController instance.
      */
     public GameController createGameController(TextView view, Player player, Room startingRoom,
-                                               PlayerSaveService playerSaveService, GameLogger logger) {
-        this.gameController = new GameController(view, player, startingRoom, playerSaveService, logger);
+                                               PlayerSaveService playerSaveService, GameLogger logger,
+                                               DatabaseManager databaseManager) {
+        this.gameController = new GameController(view, player, startingRoom, playerSaveService, logger, databaseManager);
         return gameController;
     }
 

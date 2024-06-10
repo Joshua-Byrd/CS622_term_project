@@ -1,0 +1,3 @@
+[2024/06/10 06:06:01] Steve has begun their journey.
+[2024/06/10 06:06:09] Steve picked up 10.0 gold.
+[2024/06/10 06:06:12] Steve quit the game.
