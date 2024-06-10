@@ -198,7 +198,7 @@ public class GameController {
             enterRoom(nextRoom);
             logger.log(player.getName() + " has entered a " + nextRoom.getName());
         } else {
-            view.displayMessage("You can't go in that aDirection.\n");
+            view.displayMessage("You can't go in that direction.\n");
         }
     }
 
@@ -582,9 +582,11 @@ public class GameController {
             facadeMusic.playAmbientMusic();
         } else
             if (player.getCurrentHealth() <= 0) {
-            view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
-            logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
-            System.exit(0);
+                //save the player's final stats
+                handlePlayerDeath(monster);
+                view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
+                logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
+                System.exit(0);
         }
     }
       //This is commented out because I'm trying to get this method to work with handleFleeCommand,
@@ -703,6 +705,13 @@ public class GameController {
         } catch (IllegalArgumentException e) {
             view.displayMessage("You can't use " + itemName + ".\n");
         }
+    }
+
+    private void handlePlayerDeath(Monster monster) {
+        view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
+        logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
+        databaseManager.saveFinalStats(player, monster.getName());
+        System.exit(0);
     }
 
     /**

@@ -91,15 +91,18 @@ public class Main {
                                         FacadeController facadeController, List<Room> rooms, Scanner scanner,
                                         GameLogger logger, Player player, DatabaseManager databaseManager) {
         while (true) {
+            System.out.println("Main Menu");
             System.out.println("1. New Game");
             System.out.println("2. Continue");
             System.out.println("3. Instructions");
             System.out.println("4. Top Players");
+            System.out.println("5. Character History");
             System.out.println("5. Exit");
             System.out.print("Please choose an option: ");
             String input = scanner.nextLine();
             int choice = 1;
-            if (!"1".equals(input) && !"2".equals(input) && !"3".equals(input) && !"4".equals(input) && !"5".equals(input)) {
+            if (!"1".equals(input) && !"2".equals(input) && !"3".equals(input) && !"4".equals(input)
+                    && !"5".equals(input) && !"6".equals(input)) {
                 System.out.println("That's not a valid option. Please select an option from the menu.");
             } else {
                 choice = Integer.parseInt(input);
@@ -126,7 +129,7 @@ public class Main {
                             0,
                             playerName,
                             "A brave adventurer",
-                            50,
+                            25,
                             startingRoom,
                             startingWeapon,
                             startingArmor,
@@ -165,7 +168,7 @@ public class Main {
                                 0,
                                 playerName,
                                 "A brave adventurer",
-                                50,
+                                25,
                                 startingRoom,
                                 startingWeapon,
                                 startingArmor,
@@ -180,11 +183,14 @@ public class Main {
                     break;
                 case 3:
                     displayInstructions();
-                    continue; // Continue the loop to show the menu again
+                    continue;
                 case 4:
                     displayTopPlayers(databaseManager, scanner);
-                    continue; // Continue the loop to show the menu again
+                    continue;
                 case 5:
+                    displayCharacterHistory(databaseManager);
+                    continue;
+                case 6:
                     System.out.println("Exiting the game. Goodbye!");
                     System.exit(0);
                     break;
@@ -231,6 +237,15 @@ public class Main {
             default:
                 System.out.println("Invalid option.");
         }
+    }
+
+    private static void displayCharacterHistory(DatabaseManager databaseManager) {
+        List<String> playerDeathDetails = databaseManager.getPlayerDeathDetails();
+        System.out.println("\nCharacter History:");
+        for (String details : playerDeathDetails) {
+            System.out.println(details);
+        }
+        System.out.println("\n");
     }
 
     /**

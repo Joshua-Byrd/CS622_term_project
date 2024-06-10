@@ -6,6 +6,8 @@ import java.util.List;
 
 import edu.bu.model.entitities.Player;
 import edu.bu.model.entitities.PlayerStats;
+import edu.bu.model.items.Inventory;
+import edu.bu.model.items.Item;
 
 public class DatabaseManager {
     private static final String DATABASE_URL = "jdbc:sqlite:game_database.db";
@@ -40,8 +42,27 @@ public class DatabaseManager {
                     + "FOREIGN KEY(player_id) REFERENCES players(id)"
                     + ");";
 
+            String createFinalStatsTable = "CREATE TABLE IF NOT EXISTS FinalStats (" +
+                    "final_stats_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "player_name TEXT," +
+                    "description TEXT," +
+                    "max_health INTEGER," +
+                    "current_health INTEGER," +
+                    "current_room TEXT," +
+                    "killed_by_monster TEXT," +
+                    "equipped_weapon TEXT," +
+                    "equipped_armor TEXT," +
+                    "attack_rating INTEGER," +
+                    "defense_rating INTEGER," +
+                    "gold_held REAL," +
+                    "rooms_visited INTEGER," +
+                    "monsters_defeated INTEGER," +
+                    "inventory TEXT" +
+                    ");";
+
             statement.execute(createPlayersTable);
             statement.execute(createGameSessionsTable);
+            statement.execute(createFinalStatsTable);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -144,5 +165,61 @@ public class DatabaseManager {
         }
         return players;
     }
+
+    public void saveFinalStats(Player player, String killedByMonster) {
+        String sql = "INSERT INTO FinalStats (player_name, description, max_health, current_health, current_room, " +
+                "killed_by_monster, equipped_weapon, equipped_armor, attack_rating, defense_rating, gold_held, " +
+                "rooms_visited, monsters_defeated, inventory) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection connection = DriverManager.getConnection(DATABASE_URL);
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            pstmt.setString(1, player.getName());
+            pstmt.setString(2, player.getDescription());
+            pstmt.setInt(3, player.getMaxHealth());
+            pstmt.setInt(4, player.getCurrentHealth());
+            pstmt.setString(5, player.getCurrentRoom().getName());
+            pstmt.setString(6, killedByMonster);
+            pstmt.setString(7, player.getEquippedWeapon() != null ? player.getEquippedWeapon().getName() : "None");
+            pstmt.setString(8, player.getEquippedArmor() != null ? player.getEquippedArmor().getName() : "None");
+            pstmt.setInt(9, player.getAttackRating());
+            pstmt.setInt(10, player.getDefenseRating());
+            pstmt.setDouble(11, player.getGoldHeld());
+            pstmt.setInt(12, player.getRoomsVisited());
+            pstmt.setInt(13, player.getMonstersDefeated());
+            pstmt.setString(14, serializeInventory(player.getInventory())); // Serialize inventory to a string or JSON
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private String serializeInventory(Inventory<Item> inventory) {
+        return inventory.getAllItems().toString();
+    }
+
+    public List<String> getPlayerDeathDetails() {
+        String sql = "SELECT * FROM FinalStats";
+        List<String> result = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String details = rs.getString("player_name") + " was killed in " + rs.getString("current_room") + " by a " +
+                        rs.getString("killed_by_monster") + ". They had " + rs.getDouble("gold_held") + " gold. They were wearing " +
+                        rs.getString("equipped_armor") + " and wielding " + rs.getString("equipped_weapon") + ". " +
+                        "They visited " + rs.getInt("rooms_visited") + " rooms and defeated " + rs.getInt("monsters_defeated") + " monsters.";
+                result.add(details);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+
+
 
 }

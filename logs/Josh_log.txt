@@ -1,30 +1,58 @@
-[2024/06/10 05:35:25] Josh has begun their journey.
-[2024/06/10 05:35:32] Josh picked up 10.0 gold.
-[2024/06/10 05:35:37] Josh picked up the shortsword.
-[2024/06/10 05:35:45] Josh wielded the shortsword.
-[2024/06/10 05:35:54] Josh quit the game.
-[2024/06/10 05:37:22] Josh has begun their journey.
-[2024/06/10 05:37:29] Josh has entered a small stone room
-[2024/06/10 05:37:37] Josh picked up 25.0 gold.
-[2024/06/10 05:37:39] Josh picked up the iron armor.
-[2024/06/10 05:37:39] Josh picked up the health potion.
-[2024/06/10 05:37:46] Josh put on the iron armor.
-[2024/06/10 05:37:48] Josh quit the game.
-[2024/06/10 06:00:11] Josh has begun their journey.
-[2024/06/10 06:00:16] Josh has encountered a Goblin.
-[2024/06/10 06:00:26] Josh had defeated a Goblin.
-[2024/06/10 06:00:26] Josh has entered a large cave
-[2024/06/10 06:00:39] Josh picked up 3.0 gold.
-[2024/06/10 06:00:42] Josh picked up the spear.
-[2024/06/10 06:00:46] Josh wielded the spear.
-[2024/06/10 06:00:58] Josh has entered a dark tunnel
-[2024/06/10 06:01:04] Josh picked up the chainmail.
-[2024/06/10 06:01:04] Josh picked up the medium health potion.
-[2024/06/10 06:01:09] Josh put on the chainmail.
-[2024/06/10 06:01:22] Josh has encountered a Harpy.
-[2024/06/10 06:01:48] Josh had defeated a Harpy.
-[2024/06/10 06:01:48] Josh has entered a carved grotto
-[2024/06/10 06:01:58] Josh picked up the enchanted bow.
-[2024/06/10 06:01:58] Josh picked up the large health potion.
-[2024/06/10 06:02:01] Josh picked up 50.0 gold.
-[2024/06/10 06:02:07] Josh quit the game.
+[2024/06/10 08:39:11] Josh has begun their journey.
+[2024/06/10 08:39:17] Josh picked up 10.0 gold.
+[2024/06/10 08:39:20] Josh picked up the shortsword.
+[2024/06/10 08:39:25] Josh wielded the shortsword.
+[2024/06/10 08:39:28] Josh has encountered a Ogre.
+[2024/06/10 08:39:41] Josh had defeated a Ogre.
+[2024/06/10 08:39:41] Josh has entered a small stone room
+[2024/06/10 08:39:51] Josh has entered a large cave
+[2024/06/10 08:39:55] Josh picked up 3.0 gold.
+[2024/06/10 08:40:03] Josh picked up the spear.
+[2024/06/10 08:40:06] Josh wielded the spear.
+[2024/06/10 08:40:20] Josh has entered a dark tunnel
+[2024/06/10 08:40:29] Josh picked up the chainmail.
+[2024/06/10 08:40:29] Josh picked up the medium health potion.
+[2024/06/10 08:40:35] Josh put on the chainmail.
+[2024/06/10 08:40:43] Josh has entered a carved grotto
+[2024/06/10 08:40:47] Josh picked up 50.0 gold.
+[2024/06/10 08:40:55] Josh picked up the enchanted bow.
+[2024/06/10 08:41:00] Josh has entered a dark tunnel
+[2024/06/10 08:41:05] Josh has entered a carved grotto
+[2024/06/10 08:41:08] Josh has entered a dark tunnel
+[2024/06/10 08:41:10] Josh has entered a carved grotto
+[2024/06/10 08:41:13] Josh has entered a dark tunnel
+[2024/06/10 08:41:15] Josh has entered a carved grotto
+[2024/06/10 08:41:20] Josh has entered a dark tunnel
+[2024/06/10 08:41:24] Josh has entered a large cave
+[2024/06/10 08:41:42] Josh has entered a dark tunnel
+[2024/06/10 08:41:49] Josh has entered a large cave
+[2024/06/10 08:41:57] Josh has entered a small stone room
+[2024/06/10 08:42:25] Josh has encountered a Snake.
+[2024/06/10 08:42:37] Josh had defeated a Snake.
+[2024/06/10 08:42:37] Josh has entered a vast courtyard
+[2024/06/10 08:42:41] Josh has entered a small stone room
+[2024/06/10 08:42:44] Josh has entered a vast courtyard
+[2024/06/10 08:42:46] Josh has entered a small stone room
+[2024/06/10 08:42:48] Josh has entered a vast courtyard
+[2024/06/10 08:42:51] Josh has entered a small stone room
+[2024/06/10 08:42:54] Josh has entered a vast courtyard
+[2024/06/10 08:42:56] Josh has encountered a Snake.
+[2024/06/10 08:43:04] Josh had defeated a Snake.
+[2024/06/10 08:43:04] Josh has entered a small stone room
+[2024/06/10 08:43:29] Josh has entered a vast courtyard
+[2024/06/10 08:43:33] Josh has encountered a Giant Scorpion.
+[2024/06/10 08:43:53] Josh had defeated a Giant Scorpion.
+[2024/06/10 08:43:53] Josh has entered a small stone room
+[2024/06/10 08:44:11] Josh picked up 25.0 gold.
+[2024/06/10 08:44:33] Josh has entered a vast courtyard
+[2024/06/10 08:45:03] Josh has encountered a Goblin.
+[2024/06/10 08:45:06] Josh had defeated a Goblin.
+[2024/06/10 08:45:06] Josh has entered a small stone room
+[2024/06/10 08:45:21] Josh has entered a large cave
+[2024/06/10 08:45:48] Josh has encountered a Snake.
+[2024/06/10 08:45:50] Josh had defeated a Snake.
+[2024/06/10 08:45:50] Josh has entered a dark tunnel
+[2024/06/10 08:46:00] Josh has entered a carved grotto
+[2024/06/10 08:46:05] Josh has entered a dark tunnel
+[2024/06/10 08:46:07] Josh has encountered a Giant Scorpion.
+[2024/06/10 08:46:11] Josh has been defeated by a Giant Scorpion.
