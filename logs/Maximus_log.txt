@@ -1,0 +1,27 @@
+[2024/06/12 05:07:39] Maximus has begun their journey.
+[2024/06/12 05:07:45] Maximus picked up the shortsword.
+[2024/06/12 05:07:52] Maximus wielded the shortsword.
+[2024/06/12 05:07:58] Maximus picked up 10.0 gold.
+[2024/06/12 05:08:05] Maximus has entered a small stone room
+[2024/06/12 05:08:14] Maximus picked up 25.0 gold.
+[2024/06/12 05:08:22] Maximus quit the game.
+[2024/06/12 05:08:35] Maximus has begun their journey.
+[2024/06/12 05:08:39] Maximus picked up the iron armor.
+[2024/06/12 05:08:39] Maximus picked up the health potion.
+[2024/06/12 05:08:46] Maximus put on the iron armor.
+[2024/06/12 05:08:57] Maximus has encountered a Harpy.
+[2024/06/12 05:09:12] Maximus had defeated a Harpy.
+[2024/06/12 05:09:12] Maximus has entered a large cave
+[2024/06/12 05:09:35] Maximus picked up the spear.
+[2024/06/12 05:09:41] Maximus wielded the spear.
+[2024/06/12 05:09:47] Maximus picked up 3.0 gold.
+[2024/06/12 05:10:08] Maximus quit the game.
+[2024/06/12 05:10:15] Maximus has begun their journey.
+[2024/06/12 05:10:21] Maximus has encountered a Giant Scorpion.
+[2024/06/12 05:10:49] Maximus had defeated a Giant Scorpion.
+[2024/06/12 05:10:49] Maximus has entered a dark tunnel
+[2024/06/12 05:11:04] Maximus picked up the chainmail.
+[2024/06/12 05:11:04] Maximus picked up the medium health potion.
+[2024/06/12 05:11:10] Maximus put on the chainmail.
+[2024/06/12 05:11:20] Maximus has encountered a Giant Scorpion.
+[2024/06/12 05:11:50] Maximus has been defeated by a Giant Scorpion.

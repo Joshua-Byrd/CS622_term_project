@@ -2,6 +2,7 @@ package edu.bu;
 
 import edu.bu.controller.FacadeController;
 import edu.bu.controller.GameController;
+import edu.bu.database.FacadeDatabase;
 import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
 import edu.bu.initializer.FacadeInitializer;
@@ -41,9 +42,7 @@ public class Main {
         List<Room> rooms = FacadeInitializer.getTheInstance().loadRooms();
         List<Monster> monsters = FacadeInitializer.getTheInstance().loadMonsters();
 
-        //Initialize database
-        DatabaseManager databaseManager = new DatabaseManager();
-        databaseManager.initializeDatabase();
+
 
         // Initialize the MonsterFactory with the loaded monster templates
         MonsterFactory.initialize(monsters);
@@ -56,6 +55,8 @@ public class Main {
         FacadeEntities facadeEntities = FacadeEntities.getTheInstance();
         FacadeController facadeController = FacadeController.getTheInstance();
         FacadeMusic facadeMusic = FacadeMusic.getTheInstance();
+        FacadeDatabase facadeDatabase = FacadeDatabase.getTheInstance();
+
 
 
         // Start playing the title theme
@@ -68,7 +69,7 @@ public class Main {
         //Display main log and menu
         view.printLogo();
         displayMainMenu(view, playerSaveService, facadeModel, facadeItems, facadeEntities,
-                facadeController, rooms, scanner, logger, player, databaseManager);
+                facadeController, rooms, scanner, logger, player, facadeDatabase);
     }
 
     /**
@@ -89,7 +90,7 @@ public class Main {
     private static void displayMainMenu(TextView view, PlayerSaveService playerSaveService,
                                         FacadeModel facadeModel, FacadeItems facadeItems, FacadeEntities facadeEntities,
                                         FacadeController facadeController, List<Room> rooms, Scanner scanner,
-                                        GameLogger logger, Player player, DatabaseManager databaseManager) {
+                                        GameLogger logger, Player player, FacadeDatabase facadeDatabase) {
         while (true) {
             System.out.println("Main Menu");
             System.out.println("1. New Game");
@@ -97,13 +98,14 @@ public class Main {
             System.out.println("3. Instructions");
             System.out.println("4. Top Players");
             System.out.println("5. Character History");
-            System.out.println("5. Exit");
+            System.out.println("6. Exit");
             System.out.print("Please choose an option: ");
             String input = scanner.nextLine();
             int choice = 1;
             if (!"1".equals(input) && !"2".equals(input) && !"3".equals(input) && !"4".equals(input)
                     && !"5".equals(input) && !"6".equals(input)) {
                 System.out.println("That's not a valid option. Please select an option from the menu.");
+                continue;
             } else {
                 choice = Integer.parseInt(input);
             }
@@ -129,7 +131,7 @@ public class Main {
                             0,
                             playerName,
                             "A brave adventurer",
-                            25,
+                            30,
                             startingRoom,
                             startingWeapon,
                             startingArmor,
@@ -145,6 +147,7 @@ public class Main {
                     try {
                         player = playerSaveService.load();
                         view.displayMessage("Character " + player.getName() + " loaded.\n");
+                        player.resetSessionStats();
                     } catch (PlayerDataException e) {
                         System.out.println("Error loading save file: " + e.getMessage());
                         e.printStackTrace();
@@ -168,7 +171,7 @@ public class Main {
                                 0,
                                 playerName,
                                 "A brave adventurer",
-                                25,
+                                30,
                                 startingRoom,
                                 startingWeapon,
                                 startingArmor,
@@ -185,10 +188,10 @@ public class Main {
                     displayInstructions();
                     continue;
                 case 4:
-                    displayTopPlayers(databaseManager, scanner);
+                    displayTopPlayers(facadeDatabase, scanner);
                     continue;
                 case 5:
-                    displayCharacterHistory(databaseManager);
+                    displayCharacterHistory(facadeDatabase);
                     continue;
                 case 6:
                     System.out.println("Exiting the game. Goodbye!");
@@ -203,12 +206,12 @@ public class Main {
             }
 
             GameController gameController = facadeController.createGameController(view, player,
-                    player.getCurrentRoom(), playerSaveService, logger, databaseManager);
+                    player.getCurrentRoom(), playerSaveService, logger, facadeDatabase);
             gameController.startGame();
         }
     }
 
-    private static void displayTopPlayers(DatabaseManager databaseManager, Scanner scanner) {
+    private static void displayTopPlayers(FacadeDatabase facadeDatabase, Scanner scanner) {
         System.out.println("1. Wealthiest Players");
         System.out.println("2. Most Dangerous Players");
         System.out.print("Please choose an option: ");
@@ -217,7 +220,7 @@ public class Main {
 
         switch (choice) {
             case 1:
-                List<PlayerStats> wealthiestPlayers = databaseManager.getTopPlayersByGold();
+                List<PlayerStats> wealthiestPlayers = facadeDatabase.getTopPlayersByGold();
                 System.out.println("\n");
                 System.out.println("Wealthiest Players:");
                 for (PlayerStats stats : wealthiestPlayers) {
@@ -226,7 +229,7 @@ public class Main {
                 System.out.println("\n");
                 break;
             case 2:
-                List<PlayerStats> mostDangerousPlayers = databaseManager.getTopPlayersByMonstersKilled();
+                List<PlayerStats> mostDangerousPlayers = facadeDatabase.getTopPlayersByMonstersKilled();
                 System.out.println("\n");
                 System.out.println("Most Dangerous Players:");
                 for (PlayerStats stats : mostDangerousPlayers) {
@@ -239,11 +242,11 @@ public class Main {
         }
     }
 
-    private static void displayCharacterHistory(DatabaseManager databaseManager) {
-        List<String> playerDeathDetails = databaseManager.getPlayerDeathDetails();
+    private static void displayCharacterHistory(FacadeDatabase facadeDatabase) {
+        List<String> playerDeathDetails = facadeDatabase.getPlayerDeathDetails();
         System.out.println("\nCharacter History:");
         for (String details : playerDeathDetails) {
-            System.out.println(details);
+            System.out.println("-- * " + details + " *\n");
         }
         System.out.println("\n");
     }

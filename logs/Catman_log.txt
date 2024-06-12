@@ -1,0 +1,6 @@
+[2024/06/11 04:26:07] Catman has begun their journey.
+[2024/06/11 04:26:25] Catman picked up 10.0 gold.
+[2024/06/11 04:29:08] Catman quit the game.
+[2024/06/11 09:36:51] Catman has begun their journey.
+[2024/06/11 09:36:54] Catman has encountered a Ogre.
+[2024/06/11 09:37:00] Catman has been defeated by a Ogre.

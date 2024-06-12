@@ -39,11 +39,11 @@ public class PlayerSaveServiceTest {
         playerSaveService = new PlayerSaveService();
 
         // Set up a test player
-        testPlayer = new Player(
+        testPlayer = new Player(0,
                 "TestPlayer",
                 "A brave adventurer",
                 10,
-                new Room("Starting Room", "You are standing in the test room.", new Inventory<Item>(50)),
+                new Room("Starting Room", "You are standing in the test room.", new Inventory<Item>(50), 0),
                 new Weapon("dagger", "A small dagger", 1.2, 4, 25.0),
                 new Armor("Leather armor", "a cuirass made of leather", 4.5, 4, 25.0),
                 new Inventory<Item>(50),
@@ -108,7 +108,7 @@ public class PlayerSaveServiceTest {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            Player player = new Player("Test", "Test Description", 10, new Room(), new Weapon(), new Armor(), new Inventory<>(50), 0.0, 1, 0);
+            Player player = new Player(0, "Test", "Test Description", 10, new Room(), new Weapon(), new Armor(), new Inventory<>(50), 0.0, 1, 0);
 
             // Serialize to JSON
             String json = mapper.writeValueAsString(player);

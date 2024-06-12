@@ -28,7 +28,7 @@ public class PlayerTest {
         when(mockWeapon.getAttackRating()).thenReturn(20);
         when(mockArmor.getDefenseRating()).thenReturn(5);
 
-        player = new Player(
+        player = new Player(0,
                 "TestPlayer",
                 "A brave adventurer",
                 10,
@@ -55,7 +55,7 @@ public class PlayerTest {
     @Test
     public void testTakeDamage() {
         player.takeDamage(5);
-        assertEquals(5, player.getMaxHealth());
+        assertEquals(5, player.getCurrentHealth());
     }
 
     @Test

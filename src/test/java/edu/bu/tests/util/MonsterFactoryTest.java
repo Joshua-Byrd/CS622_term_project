@@ -44,7 +44,7 @@ public class MonsterFactoryTest {
         MonsterFactory.initialize(monsterTemplates);
 
         // Create a test room
-        testRoom = new Room("test room", "A room for testing purposes", new Inventory<>(1000));
+        testRoom = new Room("test room", "A room for testing purposes", new Inventory<>(1000), 0);
     }
 
     @Test

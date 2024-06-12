@@ -1,0 +1,12 @@
+[2024/06/10 10:20:58] Eowyn has begun their journey.
+[2024/06/10 10:21:02] Eowyn picked up the shortsword.
+[2024/06/10 10:21:04] Eowyn picked up 10.0 gold.
+[2024/06/10 10:21:07] Eowyn wielded the shortsword.
+[2024/06/10 10:21:09] Eowyn has encountered a Giant Scorpion.
+[2024/06/10 10:21:23] Eowyn has been defeated by a Giant Scorpion.
+[2024/06/11 09:33:15] Eowyn has begun their journey.
+[2024/06/11 09:33:19] Eowyn picked up 10.0 gold.
+[2024/06/11 09:33:21] Eowyn has entered a small stone room
+[2024/06/11 09:33:23] Eowyn picked up 25.0 gold.
+[2024/06/11 09:33:25] Eowyn has encountered a Goblin.
+[2024/06/11 09:33:39] Eowyn has been defeated by a Goblin.

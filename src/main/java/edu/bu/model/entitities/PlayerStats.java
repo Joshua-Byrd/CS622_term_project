@@ -1,5 +1,9 @@
 package edu.bu.model.entitities;
 
+/**
+ * PlayerStats represents the statistics of a player, including the total gold collected
+ * and the total number of monsters killed.
+ */
 public class PlayerStats {
     private String playerName;
     private double totalGold;
@@ -11,6 +15,7 @@ public class PlayerStats {
         this.totalMonstersKilled = totalMonstersKilled;
     }
 
+    //Getters
     public String getPlayerName() {
         return playerName;
     }

@@ -1,0 +1,80 @@
+[2024/06/10 10:16:29] Susannah has begun their journey.
+[2024/06/10 10:16:32] Susannah picked up 10.0 gold.
+[2024/06/10 10:16:35] Susannah picked up the shortsword.
+[2024/06/10 10:16:39] Susannah wielded the shortsword.
+[2024/06/10 10:16:41] Susannah has entered a small stone room
+[2024/06/10 10:16:44] Susannah picked up the iron armor.
+[2024/06/10 10:16:49] Susannah put on the iron armor.
+[2024/06/10 10:16:51] Susannah picked up 25.0 gold.
+[2024/06/10 10:16:56] Susannah picked up the health potion.
+[2024/06/10 10:16:59] Susannah has entered a large cave
+[2024/06/10 10:17:10] Susannah picked up the spear.
+[2024/06/10 10:17:12] Susannah wielded the spear.
+[2024/06/10 10:17:24] Susannah has entered a dark tunnel
+[2024/06/10 10:17:40] Susannah has encountered a Ogre.
+[2024/06/10 10:18:06] Susannah had defeated a Ogre.
+[2024/06/10 10:18:06] Susannah has entered a carved grotto
+[2024/06/10 10:18:08] Susannah quit the game.
+[2024/06/10 10:18:13] Susannah has begun their journey.
+[2024/06/10 10:18:33] Susannah has encountered a Goblin.
+[2024/06/10 10:18:40] Susannah had defeated a Goblin.
+[2024/06/10 10:18:40] Susannah has entered a dark tunnel
+[2024/06/10 10:18:49] Susannah has entered a large cave
+[2024/06/10 10:18:57] Susannah has entered a small stone room
+[2024/06/10 10:19:00] Susannah has entered a vast courtyard
+[2024/06/10 10:19:03] Susannah has entered a small stone room
+[2024/06/10 10:19:05] Susannah quit the game.
+[2024/06/10 10:19:13] Susannah has begun their journey.
+[2024/06/10 10:19:38] Susannah has encountered a Ogre.
+[2024/06/10 10:19:48] Susannah has been defeated by a Ogre.
+[2024/06/11 09:22:18] Susannah has begun their journey.
+[2024/06/11 09:22:25] Susannah picked up 10.0 gold.
+[2024/06/11 09:22:32] Susannah picked up the shortsword.
+[2024/06/11 09:22:35] Susannah wielded the shortsword.
+[2024/06/11 09:22:37] Susannah has entered a small stone room
+[2024/06/11 09:22:40] Susannah picked up the iron armor.
+[2024/06/11 09:22:40] Susannah picked up the health potion.
+[2024/06/11 09:22:42] Susannah picked up 25.0 gold.
+[2024/06/11 09:22:49] Susannah put on the iron armor.
+[2024/06/11 09:22:51] Susannah quit the game.
+[2024/06/11 09:22:57] Susannah has begun their journey.
+[2024/06/11 09:23:16] Susannah has entered a large cave
+[2024/06/11 09:23:21] Susannah picked up the spear.
+[2024/06/11 09:23:30] Susannah has entered a dark tunnel
+[2024/06/11 09:23:36] Susannah picked up the chainmail.
+[2024/06/11 09:23:38] Susannah put on the chainmail.
+[2024/06/11 09:23:44] Susannah has encountered a Snake.
+[2024/06/11 09:23:46] Susannah had defeated a Snake.
+[2024/06/11 09:23:46] Susannah has entered a carved grotto
+[2024/06/11 09:23:52] Susannah picked up the enchanted bow.
+[2024/06/11 09:23:59] Susannah wielded the enchanted bow.
+[2024/06/11 09:24:09] Susannah has encountered a Goblin.
+[2024/06/11 09:24:11] Susannah had defeated a Goblin.
+[2024/06/11 09:24:11] Susannah has entered a dark tunnel
+[2024/06/11 09:24:15] Susannah has entered a carved grotto
+[2024/06/11 09:24:18] Susannah has encountered a Snake.
+[2024/06/11 09:24:23] Susannah had defeated a Snake.
+[2024/06/11 09:24:23] Susannah has entered a dark tunnel
+[2024/06/11 09:24:28] Susannah has entered a carved grotto
+[2024/06/11 09:24:38] Susannah has encountered a Snake.
+[2024/06/11 09:24:42] Susannah had defeated a Snake.
+[2024/06/11 09:24:42] Susannah has entered a dark tunnel
+[2024/06/11 09:24:45] Susannah has encountered a Giant Scorpion.
+[2024/06/11 09:24:48] Susannah had defeated a Giant Scorpion.
+[2024/06/11 09:24:48] Susannah has entered a carved grotto
+[2024/06/11 09:24:52] Susannah has encountered a Snake.
+[2024/06/11 09:24:55] Susannah had defeated a Snake.
+[2024/06/11 09:24:55] Susannah has entered a dark tunnel
+[2024/06/11 09:24:58] Susannah has entered a carved grotto
+[2024/06/11 09:25:01] Susannah has entered a dark tunnel
+[2024/06/11 09:25:05] Susannah has entered a large cave
+[2024/06/11 09:25:10] Susannah picked up 3.0 gold.
+[2024/06/11 09:25:14] Susannah has encountered a Goblin.
+[2024/06/11 09:25:16] Susannah had defeated a Goblin.
+[2024/06/11 09:25:16] Susannah has entered a dark tunnel
+[2024/06/11 09:25:19] Susannah has encountered a Giant Scorpion.
+[2024/06/11 09:25:24] Susannah has been defeated by a Giant Scorpion.
+[2024/06/12 08:45:37] Susannah has begun their journey.
+[2024/06/12 08:45:41] Susannah picked up the shortsword.
+[2024/06/12 08:45:44] Susannah picked up 10.0 gold.
+[2024/06/12 08:45:46] Susannah quit the game.

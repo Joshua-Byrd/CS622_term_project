@@ -1,0 +1,61 @@
+[2024/06/10 10:21:40] Brutus has begun their journey.
+[2024/06/10 10:21:43] Brutus picked up the shortsword.
+[2024/06/10 10:21:44] Brutus picked up 10.0 gold.
+[2024/06/10 10:21:49] Brutus has encountered a Snake.
+[2024/06/10 10:21:56] Brutus had defeated a Snake.
+[2024/06/10 10:21:56] Brutus has entered a small stone room
+[2024/06/10 10:22:01] Brutus wielded the shortsword.
+[2024/06/10 10:22:04] Brutus picked up the iron armor.
+[2024/06/10 10:22:04] Brutus picked up the health potion.
+[2024/06/10 10:22:08] Brutus put on the iron armor.
+[2024/06/10 10:22:11] Brutus has encountered a Snake.
+[2024/06/10 10:22:32] Brutus had defeated a Snake.
+[2024/06/10 10:22:32] Brutus has entered a vast courtyard
+[2024/06/10 10:22:39] Brutus quit the game.
+[2024/06/11 09:28:07] Brutus has begun their journey.
+[2024/06/11 09:28:10] Brutus picked up the shortsword.
+[2024/06/11 09:28:12] Brutus picked up 10.0 gold.
+[2024/06/11 09:28:13] Brutus has entered a small stone room
+[2024/06/11 09:28:18] Brutus picked up the iron armor.
+[2024/06/11 09:28:18] Brutus picked up the health potion.
+[2024/06/11 09:29:30] Brutus has entered a large cave
+[2024/06/11 09:29:33] Brutus picked up the spear.
+[2024/06/11 09:29:36] Brutus wielded the spear.
+[2024/06/11 09:29:40] Brutus has encountered a Harpy.
+[2024/06/11 09:29:47] Brutus had defeated a Harpy.
+[2024/06/11 09:29:47] Brutus has entered a dark tunnel
+[2024/06/11 09:30:05] Brutus has entered a carved grotto
+[2024/06/11 09:30:10] Brutus quit the game.
+[2024/06/11 09:30:17] Brutus has begun their journey.
+[2024/06/11 09:30:21] Brutus has encountered a Goblin.
+[2024/06/11 09:30:23] Brutus had defeated a Goblin.
+[2024/06/11 09:30:24] Brutus has entered a dark tunnel
+[2024/06/11 09:30:30] Brutus has entered a large cave
+[2024/06/11 09:30:32] Brutus has encountered a Harpy.
+[2024/06/11 09:30:37] Brutus had defeated a Harpy.
+[2024/06/11 09:30:37] Brutus has entered a dark tunnel
+[2024/06/11 09:30:45] Brutus has encountered a Snake.
+[2024/06/11 09:30:55] Brutus had defeated a Snake.
+[2024/06/11 09:30:55] Brutus has entered a carved grotto
+[2024/06/11 09:30:58] Brutus quit the game.
+[2024/06/11 09:31:04] Brutus has begun their journey.
+[2024/06/11 09:31:10] Brutus has entered a dark tunnel
+[2024/06/11 09:31:16] Brutus picked up the chainmail.
+[2024/06/11 09:31:36] Brutus has entered a carved grotto
+[2024/06/11 09:31:38] Brutus has entered a dark tunnel
+[2024/06/11 09:31:40] Brutus has encountered a Giant Spider.
+[2024/06/11 09:31:49] Brutus had defeated a Giant Spider.
+[2024/06/11 09:31:49] Brutus has entered a large cave
+[2024/06/11 09:31:54] Brutus has entered a small stone room
+[2024/06/11 09:32:03] Brutus has entered a vast courtyard
+[2024/06/11 09:32:10] Brutus has entered a small stone room
+[2024/06/11 09:32:13] Brutus has encountered a Snake.
+[2024/06/11 09:32:15] Brutus had defeated a Snake.
+[2024/06/11 09:32:15] Brutus has entered a large cave
+[2024/06/11 09:32:21] Brutus has entered a small stone room
+[2024/06/11 09:32:24] Brutus has entered a vast courtyard
+[2024/06/11 09:32:40] Brutus has encountered a Snake.
+[2024/06/11 09:32:42] Brutus had defeated a Snake.
+[2024/06/11 09:32:42] Brutus has entered a small stone room
+[2024/06/11 09:32:46] Brutus has encountered a Harpy.
+[2024/06/11 09:32:55] Brutus has been defeated by a Harpy.

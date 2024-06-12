@@ -81,7 +81,7 @@ public class TemplateInitializer {
         Room courtyard = facadeModel.createRoom("vast courtyard",
                 "To the west you see the winding road that" +
                         " led you here. To the north and south, impenetrable forest stretches into the distance.\n" +
-                        "To the east lies the entrance to the labyrinth known as the Desolate Depths.",
+                        "To the east you see a stone archway, the entrance to the Desolate Depths.",
                 startingRoomInventory,
                 10);
 
@@ -94,7 +94,7 @@ public class TemplateInitializer {
 
         Room smallStoneRoom = facadeModel.createRoom("small stone room",
                 "The walls are moss-covered and slick with " +
-                "moisture. To the west is a stone archway, and to the north you see a large wooden door.",
+                "moisture.\nTo the west is a stone archway, and to the north you see a large wooden door.",
                 smallStoneRoomInventory, 25);
 
         //Create large cave room ---------------------------------------------------------------------------------------
@@ -104,8 +104,8 @@ public class TemplateInitializer {
                 5.0, 8, 15.0));
         Room largeCaveRoom = facadeModel.createRoom("large cave",
                 "The entranceway opens up into an enormous cavern, dimly lit by oil sconces set into the walls" +
-                        ". The ceiling towers above you, disappearing into the darkness. to the south is a large" +
-                        "wooden door, and to the west is dark tunnel.", largeCaveRoomInventory, 3);
+                        ". The ceiling towers above you, disappearing into the darkness.\n" +
+                        "To the south is a large wooden door, and to the west is dark tunnel.", largeCaveRoomInventory, 3);
 
         // Create hidden grotto room -----------------------------------------------------------------------------------
         Inventory<Item> hiddenGrottoInventory = facadeItems.createInventory(1000);
@@ -116,7 +116,8 @@ public class TemplateInitializer {
 
         Room hiddenGrotto = facadeModel.createRoom("carved grotto",
                 "In this mysterious grotto, carvings of grotesque faces line the walls. It is illuminated by" +
-                        " a glowing pool of water in the center of the cave. It feels otherworldly here.",
+                        " a glowing pool of water in the center of the cave. It feels otherworldly here.\n" +
+                        "To the south is a dark tunnel.",
                 hiddenGrottoInventory, 50);
 
         // Create dark tunnel room -------------------------------------------------------------------------------------
@@ -127,8 +128,8 @@ public class TemplateInitializer {
                 "A medium bottle filled with a shimmering blue liquid", 2, 18, 15));
 
         Room darkTunnel = facadeModel.createRoom("dark tunnel",
-                "The corridor curves ahead to the north, and to the east you see the opening to a large" +
-                        "cave. The air is cold and you can hear the faint sound of dripping water.",
+                "The air is cold and you can hear the faint sound of dripping water.\nThe corridor curves ahead to the north, and to the east you see the opening to a large" +
+                        "cave.",
                 darkTunnelInventory, 0);
 
         //Create connections between rooms------------------------------------------------------------------------------

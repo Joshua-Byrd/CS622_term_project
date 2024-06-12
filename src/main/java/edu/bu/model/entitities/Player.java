@@ -27,6 +27,12 @@ public class Player extends Entity implements Combatant {
     private int actionsTaken;
     private final FacadeUtil facadeUtil = FacadeUtil.getTheInstance();
 
+    // Session-specific tracking
+    private double sessionGoldCollected;
+    private int sessionMonstersDefeated;
+    private int sessionActionsTaken;
+    private int sessionRoomsVisited;
+
     // Default constructor required by Jackson
     public Player() {
         super("", "", new Inventory<>(50));
@@ -228,6 +234,7 @@ public class Player extends Entity implements Combatant {
     public void addGold(double amount) {
         if (amount > 0) {
             this.goldHeld += amount;
+            this.sessionGoldCollected += amount;
         }
     }
 
@@ -242,6 +249,18 @@ public class Player extends Entity implements Combatant {
             this.goldHeld -= amount;
             System.out.println("You spent " + amount + " gold.");
         }
+    }
+
+    /**
+     * INTENT: To resent the session specific variables.  For use when loading a previously saved character.
+     * PRECONDITION: None
+     * POSTCONDITION: All session-specific variables == 0
+     */
+    public void resetSessionStats() {
+        this.sessionGoldCollected = 0;
+        this.sessionMonstersDefeated = 0;
+        this.sessionActionsTaken = 0;
+        this.sessionRoomsVisited = 0;
     }
 
     //Getter and Setter methods
@@ -315,12 +334,22 @@ public class Player extends Entity implements Combatant {
         this.roomsVisited = roomsVisited;
     }
 
+    public void incrementRoomsVisited() {
+        this.roomsVisited++;
+        this.sessionRoomsVisited++;
+    }
+
     public int getMonstersDefeated() {
         return monstersDefeated;
     }
 
     public void setMonstersDefeated(int monstersDefeated) {
         this.monstersDefeated = monstersDefeated;
+    }
+
+    public void incrementMonstersDefeated() {
+        this.monstersDefeated++;
+        this.sessionMonstersDefeated++;
     }
 
     public int getCurrentHealth() {
@@ -335,11 +364,46 @@ public class Player extends Entity implements Combatant {
 
     public void setActionsTaken(int actionsTaken) { this.actionsTaken = actionsTaken; }
 
-    public void incrementActionsTaken() { this.actionsTaken++; }
+    public void incrementActionsTaken() {
+        this.actionsTaken++;
+        this.sessionActionsTaken++;
+    }
 
     public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }
+
+    public double getSessionGoldCollected() {
+        return sessionGoldCollected;
+    }
+
+    public void setSessionGoldCollected(double sessionGoldCollected) {
+        this.sessionGoldCollected = sessionGoldCollected;
+    }
+
+    public int getSessionMonstersDefeated() {
+        return sessionMonstersDefeated;
+    }
+
+    public void setSessionMonstersDefeated(int sessionMonstersDefeated) {
+        this.sessionMonstersDefeated = sessionMonstersDefeated;
+    }
+
+    public int getSessionActionsTaken() {
+        return sessionActionsTaken;
+    }
+
+    public void setSessionActionsTaken(int sessionActionsTaken) {
+        this.sessionActionsTaken = sessionActionsTaken;
+    }
+
+    public int getSessionRoomsVisited() {
+        return sessionRoomsVisited;
+    }
+
+    public void setSessionRoomsVisited(int sessionRoomsVisited) {
+        this.sessionRoomsVisited = sessionRoomsVisited;
+    }
 
     @Override
     public Inventory<Item> getInventory() {

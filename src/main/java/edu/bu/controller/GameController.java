@@ -1,6 +1,7 @@
 package edu.bu.controller;
 
 import edu.bu.database.DatabaseManager;
+import edu.bu.database.FacadeDatabase;
 import edu.bu.exceptions.LoggerException;
 import edu.bu.exceptions.PlayerDataException;
 import edu.bu.model.entitities.Monster;
@@ -17,6 +18,7 @@ import edu.bu.view.TextView;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
@@ -31,26 +33,31 @@ public class GameController {
     private Room currentRoom;
     private final PlayerSaveService playerSaveService;
     private final GameLogger logger;
-    private final DatabaseManager databaseManager;
+    private final FacadeDatabase facadeDatabase;
     private final FacadeMusic facadeMusic = FacadeMusic.getTheInstance();
-    private Instant sessionStartTime;
-    private Instant sessionEndTime;
+    private LocalDateTime sessionStartTime;
+    private LocalDateTime sessionEndTime;
 
     public GameController(TextView aView, Player aPlayer, Room aStartingRoom,
                           PlayerSaveService aPlayerSaveService,
                           GameLogger aLogger,
-                          DatabaseManager aDatabaseManager) {
+                          FacadeDatabase facadeDatabase) {
         this.view = aView;
         this.player = aPlayer;
         this.currentRoom = aStartingRoom;
         this.playerSaveService = aPlayerSaveService;
-        this.databaseManager = aDatabaseManager;
+        this.facadeDatabase = facadeDatabase;
         this.logger = aLogger;
         MessageService.registerController(this);
-        this.sessionStartTime = Instant.now();
-        // Save new player to the database if player id is not set
+        this.sessionStartTime = LocalDateTime.now();
+        // Save new player to the database and character file if player id is not set
         if (player.getId() == 0) {
-            int playerId = databaseManager.savePlayer(player);
+            try {
+                playerSaveService.save(player);
+            } catch (PlayerDataException e) {
+                System.out.println(e);
+            }
+            int playerId = facadeDatabase.savePlayer(player);
             player.setId(playerId);
         }
     }
@@ -147,7 +154,7 @@ public class GameController {
                 handleConsumeCommand(target);
                 break;
             default:
-                view.displayMessage("Unknown aCommand.\n");
+                view.displayMessage("Unknown command.\n");
                 break;
         }
     }
@@ -448,7 +455,7 @@ public class GameController {
     private void handleExitCommand() {
         try {
             playerSaveService.save(player);
-            sessionEndTime = Instant.now();
+            sessionEndTime = LocalDateTime.now();
             saveSessionStatistics();
             view.displayMessage("Thanks for playing!\n");
             logger.log(player.getName() + " quit the game.");
@@ -465,16 +472,12 @@ public class GameController {
      * POSTCONDITION: The session statistics are saved to the database.
      */
     private void saveSessionStatistics() {
-        Timestamp startTime = Timestamp.from(sessionStartTime);
-        Timestamp endTime = Timestamp.from(sessionEndTime);
-        long duration = endTime.getTime() - startTime.getTime(); // Session duration in milliseconds
 
-        // Assuming 1 action per command, just for simplicity. You might want to track actual actions separately.
-        int actionsTaken = player.getActionsTaken();
-        int monstersDefeated = player.getMonstersDefeated();
-        double goldCollected = player.getGoldHeld();
+        int actionsTaken = player.getSessionActionsTaken();
+        int monstersDefeated = player.getSessionMonstersDefeated();
+        double goldCollected = player.getSessionGoldCollected();
 
-        databaseManager.saveGameSession(player.getId(), startTime, endTime, actionsTaken, monstersDefeated, goldCollected);
+        facadeDatabase.saveGameSession(player.getId(), sessionStartTime, sessionEndTime, actionsTaken, monstersDefeated, goldCollected);
 
     }
     /**
@@ -538,13 +541,13 @@ public class GameController {
      * @param room
      */
     private void enterRoom(Room room) {
+        player.incrementRoomsVisited();
         this.currentRoom = room;
         player.setCurrentRoom(room);
         MonsterFactory.trySpawnMonster(room);
         displayFormattedRoomDescription(room);
         if (!room.getMonsters().isEmpty()) {
             initiateCombat(room.getMonsters().get(0)); // Simple case: fight the first monster
-
         }
     }
 
@@ -577,16 +580,15 @@ public class GameController {
         if (!monster.isAlive()) {
             view.displayMessage("You have defeated the " + monster.getName() + ".\n");
             logger.log(player.getName() + " had defeated a " + monster.getName() + ".");
-            player.setMonstersDefeated(player.getMonstersDefeated() + 1);
+            player.incrementMonstersDefeated();
             currentRoom.removeMonster(monster);
             facadeMusic.playAmbientMusic();
         } else
             if (player.getCurrentHealth() <= 0) {
+                sessionEndTime = LocalDateTime.now();
+                saveSessionStatistics();
                 //save the player's final stats
                 handlePlayerDeath(monster);
-                view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
-                logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
-                System.exit(0);
         }
     }
       //This is commented out because I'm trying to get this method to work with handleFleeCommand,
@@ -710,7 +712,7 @@ public class GameController {
     private void handlePlayerDeath(Monster monster) {
         view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
         logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
-        databaseManager.saveFinalStats(player, monster.getName());
+        facadeDatabase.saveFinalStats(player, monster.getName());
         System.exit(0);
     }
 

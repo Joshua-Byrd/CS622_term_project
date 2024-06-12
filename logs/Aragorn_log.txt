@@ -1,0 +1,39 @@
+[2024/06/10 10:10:46] Aragorn has begun their journey.
+[2024/06/10 10:10:49] Aragorn picked up the shortsword.
+[2024/06/10 10:10:51] Aragorn picked up 10.0 gold.
+[2024/06/10 10:10:53] Aragorn has entered a small stone room
+[2024/06/10 10:10:58] Aragorn wielded the shortsword.
+[2024/06/10 10:11:01] Aragorn picked up the iron armor.
+[2024/06/10 10:11:01] Aragorn picked up the health potion.
+[2024/06/10 10:11:04] Aragorn picked up 25.0 gold.
+[2024/06/10 10:11:10] Aragorn put on the iron armor.
+[2024/06/10 10:11:13] Aragorn has encountered a Giant Spider.
+[2024/06/10 10:11:36] Aragorn had defeated a Giant Spider.
+[2024/06/10 10:11:36] Aragorn has entered a large cave
+[2024/06/10 10:12:02] Aragorn has entered a dark tunnel
+[2024/06/10 10:12:06] Aragorn picked up the chainmail.
+[2024/06/10 10:12:06] Aragorn picked up the medium health potion.
+[2024/06/10 10:12:09] Aragorn put on the chainmail.
+[2024/06/10 10:12:11] Aragorn quit the game.
+[2024/06/10 10:12:23] Aragorn has begun their journey.
+[2024/06/10 10:12:28] Aragorn has encountered a Harpy.
+[2024/06/10 10:12:43] Aragorn had defeated a Harpy.
+[2024/06/10 10:12:43] Aragorn has entered a carved grotto
+[2024/06/10 10:12:51] Aragorn picked up the enchanted bow.
+[2024/06/10 10:12:51] Aragorn picked up the large health potion.
+[2024/06/10 10:12:53] Aragorn picked up 50.0 gold.
+[2024/06/10 10:12:59] Aragorn wielded the enchanted bow.
+[2024/06/10 10:13:17] Aragorn quit the game.
+[2024/06/10 10:13:22] Aragorn has begun their journey.
+[2024/06/10 10:13:25] Aragorn has entered a dark tunnel
+[2024/06/10 10:13:30] Aragorn has encountered a Goblin.
+[2024/06/10 10:13:38] Aragorn had defeated a Goblin.
+[2024/06/10 10:13:38] Aragorn has entered a large cave
+[2024/06/10 10:13:51] Aragorn picked up the spear.
+[2024/06/10 10:13:53] Aragorn picked up 3.0 gold.
+[2024/06/10 10:13:57] Aragorn has entered a dark tunnel
+[2024/06/10 10:14:03] Aragorn has encountered a Ogre.
+[2024/06/10 10:14:11] Aragorn had defeated a Ogre.
+[2024/06/10 10:14:11] Aragorn has entered a carved grotto
+[2024/06/10 10:14:30] Aragorn has encountered a Harpy.
+[2024/06/10 10:14:32] Aragorn has been defeated by a Harpy.

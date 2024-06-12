@@ -1,0 +1,23 @@
+[2024/06/10 10:20:08] Fundilius has begun their journey.
+[2024/06/10 10:20:13] Fundilius picked up 10.0 gold.
+[2024/06/10 10:20:18] Fundilius has encountered a Giant Scorpion.
+[2024/06/10 10:20:39] Fundilius has been defeated by a Giant Scorpion.
+[2024/06/11 09:34:43] Fundilius has begun their journey.
+[2024/06/11 09:34:46] Fundilius picked up 10.0 gold.
+[2024/06/11 09:34:49] Fundilius picked up the shortsword.
+[2024/06/11 09:34:54] Fundilius wielded the shortsword.
+[2024/06/11 09:34:56] Fundilius has encountered a Giant Scorpion.
+[2024/06/11 09:35:04] Fundilius had defeated a Giant Scorpion.
+[2024/06/11 09:35:04] Fundilius has entered a small stone room
+[2024/06/11 09:35:08] Fundilius has entered a large cave
+[2024/06/11 09:35:12] Fundilius picked up the spear.
+[2024/06/11 09:35:14] Fundilius wielded the spear.
+[2024/06/11 09:35:20] Fundilius has entered a dark tunnel
+[2024/06/11 09:35:27] Fundilius has entered a carved grotto
+[2024/06/11 09:35:32] Fundilius picked up the enchanted bow.
+[2024/06/11 09:35:36] Fundilius has entered a dark tunnel
+[2024/06/11 09:35:41] Fundilius has encountered a Giant Scorpion.
+[2024/06/11 09:35:53] Fundilius had defeated a Giant Scorpion.
+[2024/06/11 09:35:53] Fundilius has entered a large cave
+[2024/06/11 09:36:35] Fundilius has encountered a Giant Scorpion.
+[2024/06/11 09:36:38] Fundilius has been defeated by a Giant Scorpion.

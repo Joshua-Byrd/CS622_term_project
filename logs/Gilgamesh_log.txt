@@ -1,0 +1,127 @@
+[2024/06/10 09:16:42] Gilgamesh has begun their journey.
+[2024/06/10 09:16:47] Gilgamesh picked up 10.0 gold.
+[2024/06/10 09:16:49] Gilgamesh has entered a small stone room
+[2024/06/10 09:16:51] Gilgamesh picked up 25.0 gold.
+[2024/06/10 09:16:56] Gilgamesh picked up the iron armor.
+[2024/06/10 09:16:56] Gilgamesh picked up the health potion.
+[2024/06/10 09:17:00] Gilgamesh put on the iron armor.
+[2024/06/10 09:17:25] Gilgamesh has entered a large cave
+[2024/06/10 09:20:06] Gilgamesh has encountered a Snake.
+[2024/06/10 09:20:10] Gilgamesh had defeated a Snake.
+[2024/06/10 09:20:10] Gilgamesh has entered a dark tunnel
+[2024/06/10 09:20:35] Gilgamesh has entered a carved grotto
+[2024/06/10 09:20:42] Gilgamesh picked up 50.0 gold.
+[2024/06/10 09:20:49] Gilgamesh picked up the enchanted bow.
+[2024/06/10 09:20:55] Gilgamesh wielded the enchanted bow.
+[2024/06/10 09:20:58] Gilgamesh has entered a dark tunnel
+[2024/06/10 09:21:02] Gilgamesh has encountered a Snake.
+[2024/06/10 09:21:07] Gilgamesh had defeated a Snake.
+[2024/06/10 09:21:07] Gilgamesh has entered a carved grotto
+[2024/06/10 09:21:14] Gilgamesh has entered a dark tunnel
+[2024/06/10 09:21:23] Gilgamesh has entered a large cave
+[2024/06/10 09:21:26] Gilgamesh has encountered a Harpy.
+[2024/06/10 09:21:31] Gilgamesh had defeated a Harpy.
+[2024/06/10 09:21:31] Gilgamesh has entered a dark tunnel
+[2024/06/10 09:21:39] Gilgamesh has encountered a Giant Spider.
+[2024/06/10 09:21:42] Gilgamesh had defeated a Giant Spider.
+[2024/06/10 09:21:42] Gilgamesh has entered a large cave
+[2024/06/10 09:22:06] Gilgamesh has entered a small stone room
+[2024/06/10 09:22:11] Gilgamesh has encountered a Ogre.
+[2024/06/10 09:22:24] Gilgamesh had defeated a Ogre.
+[2024/06/10 09:22:24] Gilgamesh has entered a large cave
+[2024/06/10 09:22:28] Gilgamesh has encountered a Giant Scorpion.
+[2024/06/10 09:22:34] Gilgamesh had defeated a Giant Scorpion.
+[2024/06/10 09:22:34] Gilgamesh has entered a dark tunnel
+[2024/06/10 09:22:36] Gilgamesh has encountered a Snake.
+[2024/06/10 09:22:38] Gilgamesh had defeated a Snake.
+[2024/06/10 09:22:38] Gilgamesh has entered a large cave
+[2024/06/10 09:22:41] Gilgamesh has encountered a Goblin.
+[2024/06/10 09:22:44] Gilgamesh has been defeated by a Goblin.
+[2024/06/10 09:52:15] Gilgamesh has begun their journey.
+[2024/06/10 09:52:19] Gilgamesh picked up the shortsword.
+[2024/06/10 09:52:22] Gilgamesh wielded the shortsword.
+[2024/06/10 09:52:24] Gilgamesh picked up 10.0 gold.
+[2024/06/10 09:52:26] Gilgamesh has entered a small stone room
+[2024/06/10 09:52:29] Gilgamesh picked up the iron armor.
+[2024/06/10 09:52:29] Gilgamesh picked up the health potion.
+[2024/06/10 09:52:31] Gilgamesh put on the iron armor.
+[2024/06/10 09:52:36] Gilgamesh picked up 25.0 gold.
+[2024/06/10 09:52:38] Gilgamesh has encountered a Goblin.
+[2024/06/10 09:52:58] Gilgamesh had defeated a Goblin.
+[2024/06/10 09:52:58] Gilgamesh has entered a large cave
+[2024/06/10 09:53:04] Gilgamesh quit the game.
+[2024/06/10 09:53:11] Gilgamesh has begun their journey.
+[2024/06/10 09:53:17] Gilgamesh picked up the spear.
+[2024/06/10 09:56:33] Gilgamesh wielded the spear.
+[2024/06/10 09:56:35] Gilgamesh picked up 3.0 gold.
+[2024/06/10 09:56:45] Gilgamesh has entered a dark tunnel
+[2024/06/10 09:56:59] Gilgamesh picked up the chainmail.
+[2024/06/10 09:57:11] Gilgamesh picked up the medium health potion.
+[2024/06/10 09:57:17] Gilgamesh has encountered a Giant Scorpion.
+[2024/06/10 09:57:28] Gilgamesh had defeated a Giant Scorpion.
+[2024/06/10 09:57:28] Gilgamesh has entered a carved grotto
+[2024/06/10 09:57:36] Gilgamesh picked up 50.0 gold.
+[2024/06/10 09:57:40] Gilgamesh has entered a dark tunnel
+[2024/06/10 09:57:42] Gilgamesh has encountered a Giant Spider.
+[2024/06/10 09:57:45] Gilgamesh had defeated a Giant Spider.
+[2024/06/10 09:57:45] Gilgamesh has entered a carved grotto
+[2024/06/10 09:57:52] Gilgamesh has entered a dark tunnel
+[2024/06/10 09:57:56] Gilgamesh has entered a carved grotto
+[2024/06/10 09:59:01] Gilgamesh has encountered a Goblin.
+[2024/06/10 09:59:12] Gilgamesh had defeated a Goblin.
+[2024/06/10 09:59:12] Gilgamesh has entered a dark tunnel
+[2024/06/10 09:59:15] Gilgamesh quit the game.
+[2024/06/10 09:59:19] Gilgamesh has begun their journey.
+[2024/06/10 09:59:24] Gilgamesh has encountered a Giant Spider.
+[2024/06/10 10:06:46] Gilgamesh has begun their journey.
+[2024/06/10 10:06:50] Gilgamesh picked up 10.0 gold.
+[2024/06/10 10:06:51] Gilgamesh has encountered a Giant Spider.
+[2024/06/10 10:07:08] Gilgamesh has been defeated by a Giant Spider.
+[2024/06/11 09:26:12] Gilgamesh has begun their journey.
+[2024/06/11 09:26:15] Gilgamesh picked up 10.0 gold.
+[2024/06/11 09:26:17] Gilgamesh has entered a small stone room
+[2024/06/11 09:26:23] Gilgamesh picked up 25.0 gold.
+[2024/06/11 09:26:28] Gilgamesh picked up the iron armor.
+[2024/06/11 09:26:30] Gilgamesh put on the iron armor.
+[2024/06/11 09:26:32] Gilgamesh has entered a large cave
+[2024/06/11 09:26:35] Gilgamesh picked up 3.0 gold.
+[2024/06/11 09:26:38] Gilgamesh has encountered a Snake.
+[2024/06/11 09:26:45] Gilgamesh had defeated a Snake.
+[2024/06/11 09:26:45] Gilgamesh has entered a dark tunnel
+[2024/06/11 09:26:49] Gilgamesh has entered a carved grotto
+[2024/06/11 09:26:55] Gilgamesh picked up 50.0 gold.
+[2024/06/11 09:26:59] Gilgamesh has entered a dark tunnel
+[2024/06/11 09:27:05] Gilgamesh has entered a carved grotto
+[2024/06/11 09:27:08] Gilgamesh has encountered a Harpy.
+[2024/06/11 09:27:31] Gilgamesh had defeated a Harpy.
+[2024/06/11 09:27:31] Gilgamesh has entered a dark tunnel
+[2024/06/11 09:27:35] Gilgamesh has encountered a Giant Spider.
+[2024/06/11 09:27:53] Gilgamesh has been defeated by a Giant Spider.
+[2024/06/12 08:18:58] Gilgamesh has begun their journey.
+[2024/06/12 08:19:03] Gilgamesh picked up the shortsword.
+[2024/06/12 08:19:09] Gilgamesh wielded the shortsword.
+[2024/06/12 08:19:11] Gilgamesh has encountered a Harpy.
+[2024/06/12 08:19:45] Gilgamesh had defeated a Harpy.
+[2024/06/12 08:19:45] Gilgamesh has entered a small stone room
+[2024/06/12 08:19:53] Gilgamesh picked up the iron armor.
+[2024/06/12 08:19:53] Gilgamesh picked up the health potion.
+[2024/06/12 08:19:55] Gilgamesh picked up 25.0 gold.
+[2024/06/12 08:23:14] Gilgamesh quit the game.
+[2024/06/12 08:23:23] Gilgamesh has begun their journey.
+[2024/06/12 08:23:29] Gilgamesh has entered a large cave
+[2024/06/12 08:23:32] Gilgamesh picked up the spear.
+[2024/06/12 08:23:33] Gilgamesh picked up 3.0 gold.
+[2024/06/12 08:23:37] Gilgamesh wielded the spear.
+[2024/06/12 08:24:04] Gilgamesh has encountered a Snake.
+[2024/06/12 08:24:06] Gilgamesh had defeated a Snake.
+[2024/06/12 08:24:06] Gilgamesh has entered a dark tunnel
+[2024/06/12 08:24:12] Gilgamesh picked up the chainmail.
+[2024/06/12 08:24:12] Gilgamesh picked up the medium health potion.
+[2024/06/12 08:24:30] Gilgamesh put on the chainmail.
+[2024/06/12 08:24:32] Gilgamesh has entered a carved grotto
+[2024/06/12 08:24:35] Gilgamesh picked up the enchanted bow.
+[2024/06/12 08:24:35] Gilgamesh picked up the large health potion.
+[2024/06/12 08:24:37] Gilgamesh picked up 50.0 gold.
+[2024/06/12 08:24:39] Gilgamesh has entered a dark tunnel
+[2024/06/12 08:24:44] Gilgamesh has encountered a Ogre.
+[2024/06/12 08:27:03] Gilgamesh has been defeated by a Ogre.

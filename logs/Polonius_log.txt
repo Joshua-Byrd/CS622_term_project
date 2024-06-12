@@ -1,0 +1,8 @@
+[2024/06/12 05:03:54] Polonius has begun their journey.
+[2024/06/12 05:04:01] Polonius picked up 10.0 gold.
+[2024/06/12 05:04:20] Polonius picked up the shortsword.
+[2024/06/12 05:04:29] Polonius wielded the shortsword.
+[2024/06/12 05:04:37] Polonius quit the game.
+[2024/06/12 05:05:04] Polonius has begun their journey.
+[2024/06/12 05:05:09] Polonius has encountered a Snake.
+[2024/06/12 05:05:18] Polonius has been defeated by a Snake.

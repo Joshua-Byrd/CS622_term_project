@@ -1,0 +1,22 @@
+[2024/06/10 10:14:51] Lucius has begun their journey.
+[2024/06/10 10:14:54] Lucius picked up 10.0 gold.
+[2024/06/10 10:14:56] Lucius has entered a small stone room
+[2024/06/10 10:15:00] Lucius picked up the iron armor.
+[2024/06/10 10:15:03] Lucius put on the iron armor.
+[2024/06/10 10:15:05] Lucius picked up 25.0 gold.
+[2024/06/10 10:15:10] Lucius has encountered a Ogre.
+[2024/06/10 10:15:36] Lucius fled from battle.
+[2024/06/10 10:15:36] Lucius has entered a large cave
+[2024/06/10 10:15:49] Lucius has encountered a Goblin.
+[2024/06/10 10:15:54] Lucius has been defeated by a Goblin.
+[2024/06/11 09:33:52] Lucius has begun their journey.
+[2024/06/11 09:33:56] Lucius picked up the shortsword.
+[2024/06/11 09:33:58] Lucius picked up 10.0 gold.
+[2024/06/11 09:34:00] Lucius has entered a small stone room
+[2024/06/11 09:34:03] Lucius quit the game.
+[2024/06/11 09:34:07] Lucius has begun their journey.
+[2024/06/11 09:34:12] Lucius picked up 25.0 gold.
+[2024/06/11 09:34:14] Lucius has entered a large cave
+[2024/06/11 09:34:16] Lucius picked up 3.0 gold.
+[2024/06/11 09:34:19] Lucius has encountered a Ogre.
+[2024/06/11 09:34:26] Lucius has been defeated by a Ogre.
