@@ -1,0 +1,7 @@
+[2024/06/13 16:25:47] Eluveitie has begun their journey.
+[2024/06/13 16:25:50] Eluveitie has entered a small stone room
+[2024/06/13 16:25:53] Eluveitie has encountered a Harpy.
+[2024/06/13 16:25:56] Eluveitie has been defeated by a Harpy.
+[2024/06/13 16:26:28] Elsbeth has begun their journey.
+[2024/06/13 16:26:43] Elsbeth has encountered a Harpy.
+[2024/06/13 16:26:47] Elsbeth has been defeated by a Harpy.

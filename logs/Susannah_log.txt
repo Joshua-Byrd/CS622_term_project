@@ -78,3 +78,17 @@
 [2024/06/12 08:45:41] Susannah picked up the shortsword.
 [2024/06/12 08:45:44] Susannah picked up 10.0 gold.
 [2024/06/12 08:45:46] Susannah quit the game.
+[2024/06/12 09:02:42] Susannah has begun their journey.
+[2024/06/12 09:02:47] Susannah has entered a small stone room
+[2024/06/12 09:02:50] Susannah picked up the iron armor.
+[2024/06/12 09:02:50] Susannah picked up the health potion.
+[2024/06/12 09:02:52] Susannah picked up 25.0 gold.
+[2024/06/12 09:02:57] Susannah put on the iron armor.
+[2024/06/12 09:03:08] Susannah has encountered a Giant Spider.
+[2024/06/12 09:03:21] Susannah had defeated a Giant Spider.
+[2024/06/12 09:03:21] Susannah has entered a large cave
+[2024/06/12 09:03:41] Susannah has entered a dark tunnel
+[2024/06/12 09:03:45] Susannah picked up the chainmail.
+[2024/06/12 09:03:45] Susannah picked up the medium health potion.
+[2024/06/12 09:03:48] Susannah has encountered a Ogre.
+[2024/06/12 09:04:01] Susannah has been defeated by a Ogre.

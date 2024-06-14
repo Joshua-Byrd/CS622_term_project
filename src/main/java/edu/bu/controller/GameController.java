@@ -1,5 +1,6 @@
 package edu.bu.controller;
 
+import edu.bu.Main;
 import edu.bu.database.DatabaseManager;
 import edu.bu.database.FacadeDatabase;
 import edu.bu.exceptions.LoggerException;
@@ -71,13 +72,13 @@ public class GameController {
         facadeMusic.playAmbientMusic();
         logger.log(player.getName() + " has begun their journey.");
         view.printGreeting();
-        view.displayMessage("Game running with character: " + player.getName() + "\n");
+        view.displayMessage("\nWelcome, " + player.getName() + ".\n\n");
         displayFormattedRoomDescription(player.getCurrentRoom());
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {
 
-                view.displayMessage("Enter a command: ");
+                view.displayMessage("Enter a command ('help' to view the full list) : ");
                 String command = scanner.nextLine();
                 processCommand(command);
             }
@@ -152,6 +153,9 @@ public class GameController {
             case "consume":
                 player.incrementActionsTaken();
                 handleConsumeCommand(target);
+                break;
+            case "help":
+                view.displayInstructions();
                 break;
             default:
                 view.displayMessage("Unknown command.\n");
@@ -591,53 +595,6 @@ public class GameController {
                 handlePlayerDeath(monster);
         }
     }
-      //This is commented out because I'm trying to get this method to work with handleFleeCommand,
-      //but so far it breaks the save/load function.
-
-//    /**
-//     * INTENT: Handles the combat loop, offering players the ability to attack or flee from the battle
-//     * PRECONDITION: monster must not be null
-//     * POSTCONDITION: If player health reaches 0, defeat message is printed and the game is ended; if monster
-//     * health reaches 0, a victory message is printed and the game returns to the main loop
-//     * @param monster the monster to be defeated
-//     */
-//    private void initiateCombat(Monster monster) {
-//        Scanner scanner = new Scanner(System.in);
-//        logger.log(player.getName() + " has encountered a " + monster.getName() + ".");
-//        while (monster.isAlive() && player.getHealth() > 0) {
-//            view.displayMessage("You are in combat with " + monster.getName() + ".\nChoose an action: attack, flee [direction]\n");
-//            String action = scanner.nextLine();
-//            if (action.equalsIgnoreCase("attack")) {
-//                handleAttackCommand(monster.getName());
-//                if (monster.isAlive()) {
-//                    monster.attack(player);
-//                }
-//            } else if (action.toLowerCase().startsWith("flee ")) {
-//                String direction = action.substring(5).trim();
-//                handleFleeCommand(direction);
-//                if (!currentRoom.getMonsters().contains(monster)) {
-//                    view.displayMessage("You fled from the battle.\n");
-//                    logger.log(player.getName() + " fled from battle.");
-//                    return;
-//                }
-//            } else {
-//                view.displayMessage("Invalid action. Choose 'attack' or 'flee [direction]'.\n");
-//            }
-//
-//            // Check if the player is still alive after the monster's attack
-//            if (player.getHealth() <= 0) {
-//                view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
-//                logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
-//                System.exit(0);
-//            }
-//        }
-//        if (!monster.isAlive()) {
-//            view.displayMessage("You have defeated the " + monster.getName() + ".\n");
-//            logger.log(player.getName() + " had defeated a " + monster.getName() + ".");
-//            player.setMonstersDefeated(player.getMonstersDefeated() + 1);
-//            currentRoom.removeMonster(monster);
-//        }
-//    }
 
     /**
      * INTENT: To handle the "attack" command, allowing the player to attack a specified monster.
@@ -709,11 +666,21 @@ public class GameController {
         }
     }
 
+    /**
+     * INTENT: To handle all necessary operations when a player is killed, including displaying feedback
+     * message, logging the death, and saving the final stats to the database.
+     * PRECONDITION 1: The database must exist and be accessible.
+     * PRECONDITION 2: The logger must be initialized.
+     * POSTCONDITION: The player's death is logged, the final stats are saved the FinalStats table
+     * in the database, and the program restarts.
+     * @param monster the monster that killed the player.
+     */
     private void handlePlayerDeath(Monster monster) {
-        view.displayMessage("You have been defeated by the " + monster.getName() + ".\nGame Over.\n");
+        view.displayMessage("You have been defeated by the " + monster.getName() + ".\n\nTry again.\nIf you dare...\n\n");
         logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
         facadeDatabase.saveFinalStats(player, monster.getName());
-        System.exit(0);
+        //go back to the main menu upon death
+        Main.main(new String[0]);
     }
 
     /**

@@ -59,3 +59,38 @@
 [2024/06/11 09:32:42] Brutus has entered a small stone room
 [2024/06/11 09:32:46] Brutus has encountered a Harpy.
 [2024/06/11 09:32:55] Brutus has been defeated by a Harpy.
+[2024/06/12 09:07:04] Brutus has begun their journey.
+[2024/06/12 09:07:08] Brutus picked up the shortsword.
+[2024/06/12 09:07:10] Brutus picked up 10.0 gold.
+[2024/06/12 09:07:11] Brutus has entered a small stone room
+[2024/06/12 09:07:14] Brutus wielded the shortsword.
+[2024/06/12 09:07:17] Brutus picked up the iron armor.
+[2024/06/12 09:07:17] Brutus picked up the health potion.
+[2024/06/12 09:07:20] Brutus put on the iron armor.
+[2024/06/12 09:07:26] Brutus picked up 25.0 gold.
+[2024/06/12 09:07:28] Brutus has entered a large cave
+[2024/06/12 09:07:31] Brutus picked up the spear.
+[2024/06/12 09:07:33] Brutus wielded the spear.
+[2024/06/12 09:07:36] Brutus picked up 3.0 gold.
+[2024/06/12 09:07:48] Brutus has entered a dark tunnel
+[2024/06/12 09:07:53] Brutus picked up the chainmail.
+[2024/06/12 09:07:53] Brutus picked up the medium health potion.
+[2024/06/12 09:07:56] Brutus put on the chainmail.
+[2024/06/12 09:08:03] Brutus has entered a carved grotto
+[2024/06/12 09:08:09] Brutus picked up the enchanted bow.
+[2024/06/12 09:08:12] Brutus picked up the large health potion.
+[2024/06/12 09:08:14] Brutus picked up 50.0 gold.
+[2024/06/12 09:08:27] Brutus has encountered a Giant Spider.
+[2024/06/12 09:08:32] Brutus had defeated a Giant Spider.
+[2024/06/12 09:08:32] Brutus has entered a dark tunnel
+[2024/06/12 09:08:36] Brutus quit the game.
+[2024/06/12 09:08:53] Brutus has begun their journey.
+[2024/06/12 09:14:32] Brutus has entered a carved grotto
+[2024/06/12 09:14:35] Brutus has entered a dark tunnel
+[2024/06/12 09:14:38] Brutus has entered a carved grotto
+[2024/06/12 09:14:40] Brutus has entered a dark tunnel
+[2024/06/12 09:14:42] Brutus has encountered a Harpy.
+[2024/06/12 09:14:51] Brutus had defeated a Harpy.
+[2024/06/12 09:14:51] Brutus has entered a large cave
+[2024/06/12 09:14:56] Brutus has encountered a Ogre.
+[2024/06/12 09:15:02] Brutus has been defeated by a Ogre.

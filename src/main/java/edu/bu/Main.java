@@ -42,8 +42,6 @@ public class Main {
         List<Room> rooms = FacadeInitializer.getTheInstance().loadRooms();
         List<Monster> monsters = FacadeInitializer.getTheInstance().loadMonsters();
 
-
-
         // Initialize the MonsterFactory with the loaded monster templates
         MonsterFactory.initialize(monsters);
 
@@ -56,8 +54,6 @@ public class Main {
         FacadeController facadeController = FacadeController.getTheInstance();
         FacadeMusic facadeMusic = FacadeMusic.getTheInstance();
         FacadeDatabase facadeDatabase = FacadeDatabase.getTheInstance();
-
-
 
         // Start playing the title theme
         facadeMusic.playLogoMusic();
@@ -131,7 +127,7 @@ public class Main {
                             0,
                             playerName,
                             "A brave adventurer",
-                            30,
+                            3,
                             startingRoom,
                             startingWeapon,
                             startingArmor,
@@ -146,7 +142,7 @@ public class Main {
                 case 2:
                     try {
                         player = playerSaveService.load();
-                        view.displayMessage("Character " + player.getName() + " loaded.\n");
+//                        view.displayMessage("Character " + player.getName() + " loaded.\n");
                         player.resetSessionStats();
                     } catch (PlayerDataException e) {
                         System.out.println("Error loading save file: " + e.getMessage());
@@ -185,7 +181,7 @@ public class Main {
                     }
                     break;
                 case 3:
-                    displayInstructions();
+                    view.displayInstructions();
                     continue;
                 case 4:
                     displayTopPlayers(facadeDatabase, scanner);
@@ -211,6 +207,14 @@ public class Main {
         }
     }
 
+    /**
+     * INTENT: To print a submenu and display the top five players either (including the current player)
+     * either by gold accumulated or monsters defeated.
+     * PRECONDITION: The database must exist and be accessible.
+     * POSTCONDITION: The top five players (based on the player's choice) are printed to the screen.
+     * @param facadeDatabase
+     * @param scanner
+     */
     private static void displayTopPlayers(FacadeDatabase facadeDatabase, Scanner scanner) {
         System.out.println("1. Wealthiest Players");
         System.out.println("2. Most Dangerous Players");
@@ -242,6 +246,12 @@ public class Main {
         }
     }
 
+    /**
+     * INTENT: To display the statistics of past characters.
+     * PRECONDITION: The database must exist and be accessible
+     * POSTCONDITION: The full list of past chracters and their statistics is printed to the screen.
+     * @param facadeDatabase
+     */
     private static void displayCharacterHistory(FacadeDatabase facadeDatabase) {
         List<String> playerDeathDetails = facadeDatabase.getPlayerDeathDetails();
         System.out.println("\nCharacter History:");
@@ -249,35 +259,6 @@ public class Main {
             System.out.println("-- * " + details + " *\n");
         }
         System.out.println("\n");
-    }
-
-    /**
-     * INTENT: To display game instructions to the player.
-     * PRECONDITION: None.
-     * POSTCONDITION: The game instructions are displayed to the console.
-     */
-    private static void displayInstructions() {
-        System.out.println("\n\nDesolate Depths is a text adventure game where you take on the role of a brave explorer\n" +
-                "questing after the legendary Luminescent Orb. At each location, you will be given a description\n" +
-                "of your surroundings and any items present, and you will interact with the game through typed commands\n" +
-                "The list of available commands appears below. Good luck!\n\n");
-        System.out.println("*  go [direction] - Move in the specified direction (north, south, east, west).");
-        System.out.println("*  get [item | gold] - Pick up the specified item or gold from the current room and add it to your inventory.");
-        System.out.println("*  get [item] from [container] - Retrieve an item from an open container.");
-        System.out.println("*  get all - Retrieves all items that can fit in your inventory.");
-        System.out.println("*  drop [item] - Remove an item from your inventory and leave it in the current room.");
-        System.out.println("*  examine [room | item | inventory | self]");
-        System.out.println("*  wear [armor] - Wear a piece of armor from your inventory.");
-        System.out.println("*  wield [weapon] - Wield a weapon from your inventory.");
-        System.out.println("*  open [container] - Open a container to see its contents.");
-        System.out.println("*  close [container] - Close a container.");
-        System.out.println("*  attack - attack the monster you're currently battling.");
-        System.out.println("*  flee - disengage from combat.");
-        System.out.println("*  consume [item] - consume an item such as a potion.");
-        System.out.println("*  save - Save your current game state.");
-        System.out.println("*  exit - Save your game and exit.");
-        System.out.println("*  print - Print your game log.");
-        System.out.println("\nType your commands in the format shown above to interact with the game world.\n\n");
     }
 }
 

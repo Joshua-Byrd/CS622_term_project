@@ -21,3 +21,50 @@
 [2024/06/11 09:35:53] Fundilius has entered a large cave
 [2024/06/11 09:36:35] Fundilius has encountered a Giant Scorpion.
 [2024/06/11 09:36:38] Fundilius has been defeated by a Giant Scorpion.
+[2024/06/12 09:20:47] Fundilius has begun their journey.
+[2024/06/12 09:20:51] Fundilius picked up the shortsword.
+[2024/06/12 09:20:54] Fundilius picked up 10.0 gold.
+[2024/06/12 09:20:56] Fundilius has encountered a Snake.
+[2024/06/12 09:21:01] Fundilius had defeated a Snake.
+[2024/06/12 09:21:01] Fundilius has entered a small stone room
+[2024/06/12 09:21:04] Fundilius picked up the iron armor.
+[2024/06/12 09:21:04] Fundilius picked up the health potion.
+[2024/06/12 09:21:07] Fundilius has entered a large cave
+[2024/06/12 09:21:10] Fundilius picked up the spear.
+[2024/06/12 09:21:12] Fundilius picked up 3.0 gold.
+[2024/06/12 09:21:17] Fundilius has encountered a Harpy.
+[2024/06/12 09:21:23] Fundilius has been defeated by a Harpy.
+[2024/06/12 09:27:00] Fundilius has begun their journey.
+[2024/06/12 09:52:22] Fundilius picked up the shortsword.
+[2024/06/12 09:52:24] Fundilius picked up 10.0 gold.
+[2024/06/12 09:52:26] Fundilius has entered a small stone room
+[2024/06/12 09:52:28] Fundilius picked up the iron armor.
+[2024/06/12 09:52:28] Fundilius picked up the health potion.
+[2024/06/12 09:52:29] Fundilius picked up 25.0 gold.
+[2024/06/12 09:52:39] Fundilius quit the game.
+[2024/06/12 09:52:52] Fundilius has begun their journey.
+[2024/06/12 09:52:57] Fundilius has encountered a Harpy.
+[2024/06/12 09:53:14] Fundilius had defeated a Harpy.
+[2024/06/12 09:53:14] Fundilius has entered a large cave
+[2024/06/12 09:53:40] Fundilius picked up the spear.
+[2024/06/12 09:53:42] Fundilius picked up 3.0 gold.
+[2024/06/12 09:53:47] Fundilius wielded the spear.
+[2024/06/12 10:01:09] Fundilius quit the game.
+[2024/06/12 10:01:15] Fundilius has begun their journey.
+[2024/06/12 10:09:02] Fundilius has encountered a Harpy.
+[2024/06/12 10:09:09] Fundilius had defeated a Harpy.
+[2024/06/12 10:09:09] Fundilius has entered a dark tunnel
+[2024/06/12 10:09:12] Fundilius picked up the chainmail.
+[2024/06/12 10:09:12] Fundilius picked up the medium health potion.
+[2024/06/12 10:14:53] Fundilius has encountered a Giant Scorpion.
+[2024/06/12 10:15:00] Fundilius has been defeated by a Giant Scorpion.
+[2024/06/13 16:02:59] Fundilius has begun their journey.
+[2024/06/13 16:03:43] Fundilius quit the game.
+[2024/06/13 16:05:02] Fundilius has begun their journey.
+[2024/06/13 16:05:31] Fundilius quit the game.
+[2024/06/13 16:08:22] Fundilius has begun their journey.
+[2024/06/13 16:09:10] Fundilius has entered a dark tunnel
+[2024/06/13 16:09:14] Fundilius picked up the chainmail.
+[2024/06/13 16:09:14] Fundilius picked up the medium health potion.
+[2024/06/13 16:09:18] Fundilius put on the chainmail.
+[2024/06/13 16:10:22] Fundilius quit the game.

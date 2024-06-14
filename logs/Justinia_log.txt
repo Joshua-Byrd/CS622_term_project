@@ -1,0 +1,27 @@
+[2024/06/13 16:21:25] Justinia has begun their journey.
+[2024/06/13 16:21:31] Justinia picked up the shortsword.
+[2024/06/13 16:21:33] Justinia has encountered a Snake.
+[2024/06/13 16:21:36] Justinia had defeated a Snake.
+[2024/06/13 16:21:36] Justinia has entered a small stone room
+[2024/06/13 16:21:40] Justinia picked up the iron armor.
+[2024/06/13 16:21:40] Justinia picked up the health potion.
+[2024/06/13 16:21:43] Justinia has entered a large cave
+[2024/06/13 16:21:46] Justinia picked up 3.0 gold.
+[2024/06/13 16:21:49] Justinia has entered a dark tunnel
+[2024/06/13 16:21:52] Justinia picked up the chainmail.
+[2024/06/13 16:21:52] Justinia picked up the medium health potion.
+[2024/06/13 16:21:56] Justinia put on the chainmail.
+[2024/06/13 16:22:16] Justinia has encountered a Goblin.
+[2024/06/13 16:22:25] Justinia had defeated a Goblin.
+[2024/06/13 16:22:25] Justinia has entered a carved grotto
+[2024/06/13 16:22:28] Justinia has entered a dark tunnel
+[2024/06/13 16:22:30] Justinia has encountered a Giant Spider.
+[2024/06/13 16:22:33] Justinia has been defeated by a Giant Spider.
+[2024/06/13 16:22:58] Justinia has begun their journey.
+[2024/06/13 16:23:02] Justinia quit the game.
+[2024/06/13 16:23:54] Justinia has begun their journey.
+[2024/06/13 16:23:57] Justinia has encountered a Snake.
+[2024/06/13 16:24:04] Justinia had defeated a Snake.
+[2024/06/13 16:24:04] Justinia has entered a small stone room
+[2024/06/13 16:24:07] Justinia has encountered a Goblin.
+[2024/06/13 16:24:19] Justinia has been defeated by a Goblin.

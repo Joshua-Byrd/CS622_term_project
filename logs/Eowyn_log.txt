@@ -10,3 +10,24 @@
 [2024/06/11 09:33:23] Eowyn picked up 25.0 gold.
 [2024/06/11 09:33:25] Eowyn has encountered a Goblin.
 [2024/06/11 09:33:39] Eowyn has been defeated by a Goblin.
+[2024/06/12 09:04:43] Eowyn has begun their journey.
+[2024/06/12 09:04:49] Eowyn picked up the shortsword.
+[2024/06/12 09:04:52] Eowyn wielded the shortsword.
+[2024/06/12 09:05:36] Eowyn picked up 10.0 gold.
+[2024/06/12 09:05:38] Eowyn has encountered a Harpy.
+[2024/06/12 09:05:46] Eowyn had defeated a Harpy.
+[2024/06/12 09:05:46] Eowyn has entered a small stone room
+[2024/06/12 09:05:50] Eowyn picked up the iron armor.
+[2024/06/12 09:05:50] Eowyn picked up the health potion.
+[2024/06/12 09:05:52] Eowyn put on the iron armor.
+[2024/06/12 09:05:59] Eowyn picked up 25.0 gold.
+[2024/06/12 09:06:01] Eowyn has entered a vast courtyard
+[2024/06/12 09:06:05] Eowyn has entered a small stone room
+[2024/06/12 09:06:07] Eowyn has encountered a Harpy.
+[2024/06/12 09:06:17] Eowyn had defeated a Harpy.
+[2024/06/12 09:06:17] Eowyn has entered a large cave
+[2024/06/12 09:06:28] Eowyn picked up the spear.
+[2024/06/12 09:06:30] Eowyn wielded the spear.
+[2024/06/12 09:06:33] Eowyn picked up 3.0 gold.
+[2024/06/12 09:06:46] Eowyn has encountered a Giant Scorpion.
+[2024/06/12 09:06:53] Eowyn has been defeated by a Giant Scorpion.

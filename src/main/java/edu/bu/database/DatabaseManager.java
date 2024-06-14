@@ -95,8 +95,10 @@ public class DatabaseManager {
      * @param monstersDefeated The number of monsters defeated during the session.
      * @param goldCollected The amount of gold collected during the session.
      */
-    public void saveGameSession(int playerId, LocalDateTime startTime, LocalDateTime endTime, int actionsTaken, int monstersDefeated, double goldCollected) {
-        String insertSessionSQL = "INSERT INTO game_sessions(player_id, start_time, end_time, actions_taken, monsters_defeated, gold_collected) VALUES(?,?,?,?,?,?)";
+    public void saveGameSession(int playerId, LocalDateTime startTime, LocalDateTime endTime, int actionsTaken,
+                                int monstersDefeated, double goldCollected) {
+        String insertSessionSQL = "INSERT INTO game_sessions(player_id, start_time, end_time, actions_taken, " +
+                "monsters_defeated, gold_collected) VALUES(?,?,?,?,?,?)";
 
         String startTimeFormatted = formatLocalDateTime(startTime);
         String endTimeFormatted = formatLocalDateTime(endTime);
@@ -118,6 +120,13 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * INTENT: Returns a formatted String of a LocalDateTime object
+     * PRECONDITION: dateTime must not be null
+     * POSTCONDITION: return value == the formatted string
+     * @param dateTime the LocalDateTime object to format
+     * @return
+     */
     private String formatLocalDateTime(LocalDateTime dateTime) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return dateTime.format(formatter);
@@ -160,7 +169,6 @@ public class DatabaseManager {
                     return playerId;
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -273,32 +281,6 @@ public class DatabaseManager {
         return inventory.getAllItems().toString();
     }
 
-//    /**
-//     * INTENT: Accesses the FinalStats table in the database, and returns all rows as strings suitable for printing
-//     * PRECONDITION: The database must exist and be valid.
-//     * POSTCONDITION: Return value == a list of all rows in the FinalStats table in printable string form.
-//     *
-//     */
-//    public List<String> getPlayerDeathDetails() {
-//        String sql = "SELECT * FROM FinalStats";
-//        List<String> result = new ArrayList<>();
-//
-//        try (Connection conn = DriverManager.getConnection(DATABASE_URL);
-//             Statement stmt = conn.createStatement();
-//             ResultSet rs = stmt.executeQuery(sql)) {
-//
-//            while (rs.next()) {
-//                String details = rs.getString("player_name") + " was killed in " + rs.getString("current_room") + " by a " +
-//                        rs.getString("killed_by_monster") + ". They had " + rs.getDouble("gold_held") + " gold. They were wearing " +
-//                        rs.getString("equipped_armor") + " and wielding a " + rs.getString("equipped_weapon") + ".\n" +
-//                        "     They visited " + rs.getInt("rooms_visited") + " rooms and defeated " + rs.getInt("monsters_defeated") + " monsters.";
-//                result.add(details);
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return result;
-//    }
     /**
      * INTENT: Accesses the FinalStats table in the database, and returns all rows as strings suitable for printing
      * PRECONDITION: The database must exist and be valid.
@@ -311,20 +293,21 @@ public class DatabaseManager {
 
         try (Connection conn = DriverManager.getConnection(DATABASE_URL);
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             ResultSet resultSet = stmt.executeQuery(sql)) {
 
-            while (rs.next()) {
-                String playerName = rs.getString("player_name");
-                String details = playerName + " was killed in " + rs.getString("current_room") + " by a " +
-                        rs.getString("killed_by_monster") + ". They had " + rs.getDouble("gold_held") + " gold. They were wearing " +
-                        rs.getString("equipped_armor") + " and wielding a " + rs.getString("equipped_weapon") + ".\n" +
-                        "     They visited " + rs.getInt("rooms_visited") + " rooms and defeated " + rs.getInt("monsters_defeated") + " monsters.";
+            while (resultSet.next()) {
+                String playerName = resultSet.getString("player_name");
+                String details = playerName + " was killed in " + resultSet.getString("current_room") + " by a " +
+                        resultSet.getString("killed_by_monster") + ". They had " + resultSet.getDouble("gold_held") +
+                        " gold. They were wearing " + resultSet.getString("equipped_armor") + " and wielding a " +
+                        resultSet.getString("equipped_weapon") + ".\n" + "     They visited " + resultSet.getInt("rooms_visited") +
+                        " rooms and defeated " + resultSet.getInt("monsters_defeated") + " monsters.";
 
                 double avgSessionLength = getAverageSessionLength(playerName);
-//                int avgHours = (int) (avgSessionLength / 60);
-//                int avgMinutes = (int) (avgSessionLength % 60);
-//                String avgSessionLengthFormatted = String.format(" Average session length: %d hours and %d minutes", avgHours, avgMinutes);
-                details += String.format(" Average session length: %.2f minutes", avgSessionLength);
+                int avgHours = (int) (avgSessionLength / 60);
+                int avgMinutes = (int) (avgSessionLength % 60);
+                String avgSessionLengthFormatted = String.format(" Average session length: %d hours and %d minutes", avgHours, avgMinutes);
+                details += avgSessionLengthFormatted;
 
                 result.add(details);
             }

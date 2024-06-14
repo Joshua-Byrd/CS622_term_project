@@ -1,0 +1,7 @@
+[2024/06/13 16:28:00] Burghan has begun their journey.
+[2024/06/13 16:28:25] Burghan quit the game.
+[2024/06/13 16:30:22] Burghan has begun their journey.
+[2024/06/13 16:30:28] Burghan has entered a small stone room
+[2024/06/13 16:30:31] Burghan has entered a large cave
+[2024/06/13 16:30:34] Burghan has encountered a Giant Scorpion.
+[2024/06/13 16:30:42] Burghan has been defeated by a Giant Scorpion.
