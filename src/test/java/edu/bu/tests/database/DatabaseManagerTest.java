@@ -7,17 +7,22 @@ import edu.bu.model.entitities.PlayerStats;
 import edu.bu.model.items.Armor;
 import edu.bu.model.items.Inventory;
 import edu.bu.model.items.Weapon;
-import org.junit.jupiter.api.*;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class DatabaseManagerTest {
 
     private static DatabaseManager databaseManager;
     Weapon weapon = new Weapon("test_weapon", "a weapon for testing", 0,0,0);
     Armor armor = new Armor("test_armor", "an armor for testing", 0, 0, 0);
+
     @BeforeAll
     static void setup() {
         databaseManager = new DatabaseManager();
@@ -74,8 +79,8 @@ class DatabaseManagerTest {
         Player player = new Player(0, "TestPlayer", "A brave adventurer", 100, null, weapon, armor, null, 0.0, 0, 0);
         int playerId = databaseManager.savePlayer(player);
 
-        Timestamp startTime = new Timestamp(System.currentTimeMillis());
-        Timestamp endTime = new Timestamp(System.currentTimeMillis() + 1000);
+        LocalDateTime startTime = LocalDateTime.now();
+        LocalDateTime endTime = startTime.plusSeconds(1000);
         databaseManager.saveGameSession(playerId, startTime, endTime, 10, 5, 50.0);
 
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:game_database.db");
@@ -95,8 +100,8 @@ class DatabaseManagerTest {
         int player1Id = databaseManager.savePlayer(player1);
         int player2Id = databaseManager.savePlayer(player2);
 
-        Timestamp startTime = new Timestamp(System.currentTimeMillis());
-        Timestamp endTime = new Timestamp(System.currentTimeMillis() + 1000);
+        LocalDateTime startTime = LocalDateTime.now();
+        LocalDateTime endTime = startTime.plusSeconds(1000);
         databaseManager.saveGameSession(player1Id, startTime, endTime, 10, 5, 100.0);
         databaseManager.saveGameSession(player2Id, startTime, endTime, 10, 5, 200.0);
 
@@ -114,8 +119,8 @@ class DatabaseManagerTest {
         int player1Id = databaseManager.savePlayer(player1);
         int player2Id = databaseManager.savePlayer(player2);
 
-        Timestamp startTime = new Timestamp(System.currentTimeMillis());
-        Timestamp endTime = new Timestamp(System.currentTimeMillis() + 1000);
+        LocalDateTime startTime = LocalDateTime.now();
+        LocalDateTime endTime = startTime.plusSeconds(1000);
         databaseManager.saveGameSession(player1Id, startTime, endTime, 10, 10, 100.0);
         databaseManager.saveGameSession(player2Id, startTime, endTime, 10, 20, 200.0);
 
@@ -157,7 +162,7 @@ class DatabaseManagerTest {
         List<String> deathDetails = databaseManager.getPlayerDeathDetails();
         assertFalse(deathDetails.isEmpty(), "Death details should not be empty");
 
-        String expectedDetails = "TestPlayer was killed in TestRoom by a Goblin. They had 0.0 gold. They were wearing Shield and wielding a Sword.\n     5They visited 0 rooms and defeated 0 monsters.";
+        String expectedDetails = "TestPlayer was killed in TestRoom by a Goblin. They had 0.0 gold. They were wearing Shield and wielding a Sword.\n     They visited 0 rooms and defeated 0 monsters. Average session length: 0 hours and 0 minutes";
         assertTrue(deathDetails.contains(expectedDetails), "Death details should contain the expected string");
     }
 }

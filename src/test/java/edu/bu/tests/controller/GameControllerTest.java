@@ -2,6 +2,7 @@ package edu.bu.tests.controller;
 
 import edu.bu.controller.GameController;
 import edu.bu.database.DatabaseManager;
+import edu.bu.database.FacadeDatabase;
 import edu.bu.model.Room;
 import edu.bu.model.entitities.Player;
 import edu.bu.model.persistence.GameLogger;
@@ -18,7 +19,7 @@ public class GameControllerTest {
     private Room roomMock;
     private PlayerSaveService pssMock;
     private GameLogger logMock;
-    private DatabaseManager dbMock;
+    private FacadeDatabase dbMock;
 
     @BeforeEach
     void setUp() {
@@ -27,6 +28,7 @@ public class GameControllerTest {
         roomMock = Mockito.mock(Room.class);
         pssMock = Mockito.mock(PlayerSaveService.class);
         logMock = Mockito.mock(GameLogger.class);
+        dbMock = FacadeDatabase.getTheInstance();
         gameController = new GameController(viewMock, playerMock, roomMock, pssMock, logMock, dbMock);
     }
 

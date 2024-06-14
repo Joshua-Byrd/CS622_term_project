@@ -1,0 +1,30 @@
+[2024/06/14 05:27:31] Halvebard has begun their journey.
+[2024/06/14 05:27:47] Halvebard picked up 10.0 gold.
+[2024/06/14 05:27:49] Halvebard picked up the shortsword.
+[2024/06/14 05:27:52] Halvebard wielded the shortsword.
+[2024/06/14 05:27:53] Halvebard has entered a small stone room
+[2024/06/14 05:27:56] Halvebard picked up the iron armor.
+[2024/06/14 05:27:56] Halvebard picked up the health potion.
+[2024/06/14 05:27:58] Halvebard picked up 25.0 gold.
+[2024/06/14 05:28:01] Halvebard put on the iron armor.
+[2024/06/14 05:28:18] Halvebard has entered a large cave
+[2024/06/14 05:28:34] Halvebard picked up 3.0 gold.
+[2024/06/14 05:28:35] Halvebard picked up the spear.
+[2024/06/14 05:28:37] Halvebard wielded the spear.
+[2024/06/14 05:28:43] Halvebard has entered a dark tunnel
+[2024/06/14 05:28:47] Halvebard picked up the chainmail.
+[2024/06/14 05:28:47] Halvebard picked up the medium health potion.
+[2024/06/14 05:28:50] Halvebard put on the chainmail.
+[2024/06/14 05:28:54] Halvebard has encountered a Goblin.
+[2024/06/14 05:29:06] Halvebard had defeated a Goblin.
+[2024/06/14 05:29:06] Halvebard has entered a carved grotto
+[2024/06/14 05:29:40] Halvebard quit the game.
+[2024/06/14 05:39:03] Halvebard has begun their journey.
+[2024/06/14 05:39:14] Halvebard picked up the enchanted bow.
+[2024/06/14 05:39:14] Halvebard picked up the large health potion.
+[2024/06/14 05:39:16] Halvebard picked up 50.0 gold.
+[2024/06/14 05:39:37] Halvebard quit the game.
+[2024/06/14 05:46:20] Halvebard has begun their journey.
+[2024/06/14 05:47:23] Halvebard quit the game.
+[2024/06/14 05:47:31] Halvebard has begun their journey.
+[2024/06/14 05:48:06] Halvebard quit the game.

@@ -127,7 +127,7 @@ public class Main {
                             0,
                             playerName,
                             "A brave adventurer",
-                            3,
+                            30,
                             startingRoom,
                             startingWeapon,
                             startingArmor,

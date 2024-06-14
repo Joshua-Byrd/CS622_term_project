@@ -1,0 +1,28 @@
+[2024/06/14 05:48:17] Albus has begun their journey.
+[2024/06/14 05:48:19] Albus picked up the shortsword.
+[2024/06/14 05:48:21] Albus has entered a small stone room
+[2024/06/14 05:48:27] Albus has entered a large cave
+[2024/06/14 05:48:29] Albus has entered a dark tunnel
+[2024/06/14 05:48:45] Albus picked up the chainmail.
+[2024/06/14 05:48:45] Albus picked up the medium health potion.
+[2024/06/14 05:48:53] Albus put on the chainmail.
+[2024/06/14 05:48:55] Albus has encountered a Lich.
+[2024/06/14 05:49:05] Albus fled from battle.
+[2024/06/14 05:49:05] Albus has entered a carved grotto
+[2024/06/14 05:49:06] Albus has encountered a Vampire.
+[2024/06/14 05:50:00] Albus fled from battle.
+[2024/06/14 05:50:00] Albus has entered a cavern made of crystal
+[2024/06/14 05:50:04] Albus has encountered a Giant Scorpion.
+[2024/06/14 05:50:14] Albus fled from battle.
+[2024/06/14 05:50:14] Albus has entered a ancient library
+[2024/06/14 05:50:16] Albus has encountered a Vampire.
+[2024/06/14 05:50:19] Albus fled from battle.
+[2024/06/14 05:50:19] Albus has entered a cavern made of crystal
+[2024/06/14 05:50:22] Albus has encountered a Giant Scorpion.
+[2024/06/14 05:50:50] Albus fled from battle.
+[2024/06/14 05:50:50] Albus has entered a wide cave
+[2024/06/14 05:50:52] Albus has encountered a Troll.
+[2024/06/14 05:51:04] Albus fled from battle.
+[2024/06/14 05:51:04] Albus has entered a deserted forge
+[2024/06/14 05:51:07] Albus has entered a smooth-walled chamber
+[2024/06/14 05:51:15] Albus quit the game.
