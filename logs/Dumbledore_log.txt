@@ -1,0 +1,81 @@
+[2024/06/14 09:26:20] Dumbledore has begun their journey.
+[2024/06/14 09:26:30] Dumbledore picked up the shortsword.
+[2024/06/14 09:26:34] Dumbledore opened the small chest.
+[2024/06/14 09:26:38] Dumbledore took the dagger from the small chest.
+[2024/06/14 09:26:40] Dumbledore picked up 10.0 gold.
+[2024/06/14 09:26:45] Dumbledore has entered a small stone room
+[2024/06/14 09:26:51] Dumbledore picked up 25.0 gold.
+[2024/06/14 09:26:57] Dumbledore wielded the shortsword.
+[2024/06/14 09:27:00] Dumbledore has entered a large cave
+[2024/06/14 09:27:03] Dumbledore picked up the spear.
+[2024/06/14 09:27:06] Dumbledore wielded the spear.
+[2024/06/14 09:27:08] Dumbledore picked up 3.0 gold.
+[2024/06/14 09:27:12] Dumbledore has encountered a Vampire.
+[2024/06/14 09:27:38] Dumbledore had defeated a Vampire.
+[2024/06/14 09:27:38] Dumbledore has entered a dark tunnel
+[2024/06/14 09:27:54] Dumbledore picked up the chainmail.
+[2024/06/14 09:27:54] Dumbledore picked up the medium health potion.
+[2024/06/14 09:27:59] Dumbledore put on the chainmail.
+[2024/06/14 09:28:25] Dumbledore has encountered a Basilisk.
+[2024/06/14 09:28:44] Dumbledore has been defeated by a Basilisk.
+[2024/06/14 09:29:38] Golgothan has begun their journey.
+[2024/06/14 09:29:42] Golgothan has entered a small stone room
+[2024/06/14 09:30:02] Golgothan picked up the iron armor.
+[2024/06/14 09:30:02] Golgothan picked up the health potion.
+[2024/06/14 09:30:06] Golgothan has entered a large cave
+[2024/06/14 09:30:10] Golgothan picked up the spear.
+[2024/06/14 09:30:25] Golgothan wielded the spear.
+[2024/06/14 09:30:34] Golgothan has entered a dark tunnel
+[2024/06/14 09:30:37] Golgothan picked up the chainmail.
+[2024/06/14 09:30:37] Golgothan picked up the medium health potion.
+[2024/06/14 09:30:47] Golgothan has entered a carved grotto
+[2024/06/14 09:30:50] Golgothan picked up the enchanted bow.
+[2024/06/14 09:30:50] Golgothan picked up the large health potion.
+[2024/06/14 09:30:54] Golgothan picked up 50.0 gold.
+[2024/06/14 09:30:58] Golgothan has entered a cavern made of crystal
+[2024/06/14 09:31:13] Golgothan picked up the crystal shard.
+[2024/06/14 09:31:19] Golgothan picked up 5.0 gold.
+[2024/06/14 09:31:22] Golgothan has encountered a Troll.
+[2024/06/14 09:32:09] Golgothan had defeated a Troll.
+[2024/06/14 09:32:09] Golgothan has entered a ancient library
+[2024/06/14 09:32:36] Golgothan picked up 17.0 gold.
+[2024/06/14 09:32:38] Golgothan has entered a cavern made of crystal
+[2024/06/14 09:33:06] Golgothan has entered a wide cave
+[2024/06/14 09:33:11] Golgothan picked up the golden fish.
+[2024/06/14 09:33:16] Golgothan has entered a deserted forge
+[2024/06/14 09:33:22] Golgothan picked up the smithing hammer.
+[2024/06/14 09:33:26] Golgothan picked up the plate mail.
+[2024/06/14 09:33:34] Golgothan put on the plate mail.
+[2024/06/14 09:33:35] Golgothan picked up 18.0 gold.
+[2024/06/14 09:33:37] Golgothan has encountered a Vampire.
+[2024/06/14 09:33:45] Golgothan had defeated a Vampire.
+[2024/06/14 09:33:45] Golgothan has entered a smooth-walled chamber
+[2024/06/14 09:35:01] Golgothan picked up 2.0 gold.
+[2024/06/14 09:35:03] Golgothan has entered a deserted forge
+[2024/06/14 09:35:08] Golgothan has encountered a Lich.
+[2024/06/14 09:35:14] Golgothan has been defeated by a Lich.
+[2024/06/14 09:36:27] lauren has begun their journey.
+[2024/06/14 09:37:36] lauren has encountered a Giant Scorpion.
+[2024/06/14 09:38:04] lauren fled from battle.
+[2024/06/14 09:38:04] lauren has entered a small stone room
+[2024/06/14 09:38:23] lauren has entered a large cave
+[2024/06/14 09:38:40] lauren picked up the spear.
+[2024/06/14 09:38:47] lauren picked up 3.0 gold.
+[2024/06/14 09:38:59] lauren has encountered a Giant Scorpion.
+[2024/06/14 09:39:03] lauren has been defeated by a Giant Scorpion.
+[2024/06/14 09:39:18] lauren has begun their journey.
+[2024/06/14 09:39:23] lauren picked up 10.0 gold.
+[2024/06/14 09:39:42] lauren picked up the shortsword.
+[2024/06/14 09:39:53] lauren has entered a small stone room
+[2024/06/14 09:40:02] lauren picked up the iron armor.
+[2024/06/14 09:40:02] lauren picked up the health potion.
+[2024/06/14 09:40:05] lauren picked up 25.0 gold.
+[2024/06/14 09:40:09] lauren has entered a vast courtyard
+[2024/06/14 09:40:27] lauren has entered a small stone room
+[2024/06/14 09:40:32] lauren has entered a large cave
+[2024/06/14 09:40:38] lauren picked up the spear.
+[2024/06/14 09:40:40] lauren picked up 3.0 gold.
+[2024/06/14 09:40:47] lauren has entered a dark tunnel
+[2024/06/14 09:41:03] lauren has entered a large cave
+[2024/06/14 09:41:12] lauren has encountered a Wraith.
+[2024/06/14 09:41:56] lauren has been defeated by a Wraith.

@@ -1,0 +1,16 @@
+[2024/06/14 09:47:42] Gunderson has begun their journey.
+[2024/06/14 09:48:09] Gunderson has entered a small stone room
+[2024/06/14 09:48:13] Gunderson has entered a large cave
+[2024/06/14 09:48:15] Gunderson has encountered a Troll.
+[2024/06/14 09:48:26] Gunderson fled from battle.
+[2024/06/14 09:48:26] Gunderson has entered a dark tunnel
+[2024/06/14 09:48:30] Gunderson has encountered a Troll.
+[2024/06/14 09:48:36] Gunderson fled from battle.
+[2024/06/14 09:48:36] Gunderson has entered a large cave
+[2024/06/14 09:48:42] Gunderson has encountered a Goblin.
+[2024/06/14 09:49:01] Gunderson had defeated a Goblin.
+[2024/06/14 09:49:01] Gunderson has entered a small stone room
+[2024/06/14 09:49:04] Gunderson picked up the iron armor.
+[2024/06/14 09:49:04] Gunderson picked up the health potion.
+[2024/06/14 09:49:15] Gunderson has encountered a Troll.
+[2024/06/14 09:49:53] Gunderson has been defeated by a Troll.

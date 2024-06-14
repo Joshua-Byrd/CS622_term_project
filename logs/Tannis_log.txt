@@ -1,0 +1,32 @@
+[2024/06/14 08:48:23] Tannis has begun their journey.
+[2024/06/14 08:48:26] Tannis picked up the shortsword.
+[2024/06/14 08:48:30] Tannis picked up 10.0 gold.
+[2024/06/14 08:48:38] Tannis has encountered a Goblin.
+[2024/06/14 08:49:09] Tannis has been defeated by a Goblin.
+[2024/06/14 08:49:23] Finneus has begun their journey.
+[2024/06/14 08:49:27] Finneus picked up the shortsword.
+[2024/06/14 08:49:30] Finneus wielded the shortsword.
+[2024/06/14 08:49:33] Finneus picked up 10.0 gold.
+[2024/06/14 08:49:36] Finneus has entered a small stone room
+[2024/06/14 08:49:39] Finneus picked up the iron armor.
+[2024/06/14 08:49:39] Finneus picked up the health potion.
+[2024/06/14 08:49:43] Finneus picked up 25.0 gold.
+[2024/06/14 08:49:50] Finneus put on the iron armor.
+[2024/06/14 08:49:53] Finneus has entered a large cave
+[2024/06/14 08:50:11] Finneus picked up the spear.
+[2024/06/14 08:50:13] Finneus picked up 3.0 gold.
+[2024/06/14 08:50:15] Finneus wielded the spear.
+[2024/06/14 08:50:43] Finneus has encountered a Giant Spider.
+[2024/06/14 08:50:59] Finneus had defeated a Giant Spider.
+[2024/06/14 08:50:59] Finneus has entered a dark tunnel
+[2024/06/14 08:51:03] Finneus picked up the chainmail.
+[2024/06/14 08:51:03] Finneus picked up the medium health potion.
+[2024/06/14 08:51:09] Finneus put on the chainmail.
+[2024/06/14 08:51:19] Finneus has encountered a Ogre.
+[2024/06/14 08:51:55] Finneus had defeated a Ogre.
+[2024/06/14 08:51:55] Finneus has entered a carved grotto
+[2024/06/14 08:52:13] Finneus picked up the enchanted bow.
+[2024/06/14 08:52:13] Finneus picked up the large health potion.
+[2024/06/14 08:52:15] Finneus picked up 50.0 gold.
+[2024/06/14 08:52:36] Finneus has entered a cavern made of crystal
+[2024/06/14 08:55:44] Finneus quit the game.

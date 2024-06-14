@@ -1,0 +1,29 @@
+[2024/06/14 08:55:51] Finneus has begun their journey.
+[2024/06/14 08:56:20] Finneus picked up the crystal shard.
+[2024/06/14 08:56:22] Finneus picked up 5.0 gold.
+[2024/06/14 08:56:27] Finneus wielded the crystal shard.
+[2024/06/14 08:56:30] Finneus has encountered a Snake.
+[2024/06/14 08:56:56] Finneus had defeated a Snake.
+[2024/06/14 08:56:56] Finneus has entered a ancient library
+[2024/06/14 09:00:25] Finneus quit the game.
+[2024/06/14 09:03:05] Finneus has begun their journey.
+[2024/06/14 09:03:37] Finneus picked up 17.0 gold.
+[2024/06/14 09:03:39] Finneus has entered a cavern made of crystal
+[2024/06/14 09:04:04] Finneus has entered a wide cave
+[2024/06/14 09:04:25] Finneus picked up the fish.
+[2024/06/14 09:04:51] Finneus opened the waterlogged chest.
+[2024/06/14 09:05:05] Finneus has entered a deserted forge
+[2024/06/14 09:05:13] Finneus picked up the Blacksmith Hammer.
+[2024/06/14 09:05:44] Finneus dropped the shortsword.
+[2024/06/14 09:06:32] Finneus picked up the shortsword.
+[2024/06/14 09:06:48] Finneus has entered a smooth-walled chamber
+[2024/06/14 09:07:04] Finneus picked up the echo stone.
+[2024/06/14 09:07:22] Finneus picked up 2.0 gold.
+[2024/06/14 09:08:06] Finneus dropped the dagger.
+[2024/06/14 09:08:09] Finneus dropped the leather armor.
+[2024/06/14 09:08:41] Finneus dropped the spear.
+[2024/06/14 09:08:48] Finneus dropped the chainmail.
+[2024/06/14 09:08:54] Finneus dropped the crystal shard.
+[2024/06/14 09:09:08] Finneus picked up the whispering cloak.
+[2024/06/14 09:09:21] Finneus has encountered a Vampire.
+[2024/06/14 09:09:30] Finneus has been defeated by a Vampire.

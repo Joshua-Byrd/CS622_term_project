@@ -556,11 +556,10 @@ public class GameController {
     }
 
     /**
-     * INTENT: Handles the combat loop, offering players the ability to attack or flee from the battle
-     * PRECONDITION: monster must not be null
-     * POSTCONDITION: If player health reaches 0, defeat message is printed and the game is ended; if monster
-     * health reaches 0, a victory message is printed and the game returns to the main loop
-     * @param monster the monster to be defeated
+     * INTENT: Handles the combat loop, offering players the ability to attack, flee, consume a potion, or check their inventory.
+     * PRECONDITION: monster must not be null.
+     * POSTCONDITION: If player health reaches 0, defeat message is printed and the game is ended; if monster health reaches 0, a victory message is printed and the game returns to the main loop.
+     * @param monster the monster to be defeated.
      */
     private void initiateCombat(Monster monster) {
         // Play battle music
@@ -568,17 +567,37 @@ public class GameController {
         Scanner scanner = new Scanner(System.in);
         logger.log(player.getName() + " has encountered a " + monster.getName() + ".");
         while (monster.isAlive() && player.getCurrentHealth() > 0) {
-            view.displayMessage("You are in combat with " + monster.getName() + ".\nChoose an action: attack, flee\n");
+            view.displayMessage("You are in combat with " + monster.getName() + ".\nChoose an action: attack, flee, consume [item], inventory\n");
             String action = scanner.nextLine();
-            if (action.equalsIgnoreCase("attack")) {
-                handleAttackCommand(monster.getName());
-            } else if (action.equalsIgnoreCase("flee")) {
-                view.displayMessage("You fled from the battle.\n");
-                logger.log(player.getName() + " fled from battle.");
-                MusicManager.playAmbientMusic();
-                return;
-            } else {
-                view.displayMessage("Invalid action. Choose 'attack' or 'flee'.\n");
+            String[] parsedAction = action.split(" ", 2);
+            String command = parsedAction[0];
+            String target = parsedAction.length > 1 ? parsedAction[1] : "";
+
+            switch (command.toLowerCase()) {
+                case "attack":
+                    handleAttackCommand(monster.getName());
+                    break;
+                case "flee":
+                    view.displayMessage("You fled from the battle.\n");
+                    logger.log(player.getName() + " fled from battle.");
+                    facadeMusic.playAmbientMusic();
+                    return;
+                case "consume":
+                    if (!target.isEmpty()) {
+                        handleConsumeCommand(target);
+                    } else {
+                        view.displayMessage("Specify an item to consume.\n");
+                    }
+                    break;
+                case "inventory":
+                    handleExamineCommand("inventory");
+                    break;
+                default:
+                    view.displayMessage("Invalid action. Choose 'attack', 'flee', 'consume [item]', or 'inventory'.\n");
+                    break;
+            }
+            if (monster.isAlive() && player.getCurrentHealth() > 0) {
+                monster.attack(player);
             }
         }
         if (!monster.isAlive()) {
@@ -587,14 +606,14 @@ public class GameController {
             player.incrementMonstersDefeated();
             currentRoom.removeMonster(monster);
             facadeMusic.playAmbientMusic();
-        } else
-            if (player.getCurrentHealth() <= 0) {
-                sessionEndTime = LocalDateTime.now();
-                saveSessionStatistics();
-                //save the player's final stats
-                handlePlayerDeath(monster);
+        } else if (player.getCurrentHealth() <= 0) {
+            sessionEndTime = LocalDateTime.now();
+            saveSessionStatistics();
+            //save the player's final stats
+            handlePlayerDeath(monster);
         }
     }
+
 
     /**
      * INTENT: To handle the "attack" command, allowing the player to attack a specified monster.
@@ -610,9 +629,9 @@ public class GameController {
             return;
         }
         player.attack(monster);
-        if (monster.isAlive()) {
-            monster.attack(player);
-        }
+//        if (monster.isAlive()) {
+//            monster.attack(player);
+//        }
     }
 
 
@@ -693,7 +712,7 @@ public class GameController {
      */
     public void displayFormattedRoomDescription(Room room) {
         StringBuilder roomDescription = new StringBuilder();
-        roomDescription.append("You are standing in a ").append(room.getName()).append(".\n")
+        roomDescription.append("\nYou are standing in a ").append(room.getName()).append(".\n")
                 .append(room.getDescription()).append("\n");
 
         Inventory<Item> roomInventory = room.getItems();
@@ -709,7 +728,7 @@ public class GameController {
             roomDescription.append(".\n");
         }
         if (room.getGold() > 0) {
-            roomDescription.append("There is also " + room.getGold() + " gold here\n");
+            roomDescription.append("There is also " + room.getGold() + " gold here\n\n");
         }
         // Display monsters in the room
         List<Monster> monsters = room.getMonsters();

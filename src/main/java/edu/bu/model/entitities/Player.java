@@ -133,11 +133,11 @@ public class Player extends Entity implements Combatant {
         Item item = currentRoom.getItems().findItemByName(itemName);
 
         if (item == null) {
-            throw new IllegalArgumentException("Item not found in the room's inventory.");
+            throw new IllegalArgumentException("There is no ." + itemName + " here.");
         }
 
         if (!this.getInventory().canAddItem(item)) {
-            throw new IllegalArgumentException("Cannot carry this item. Exceeds carrying capacity.");
+            throw new IllegalArgumentException("You cannot carry this item. It is too heavy.");
         }
 
         currentRoom.getItems().removeItem(item);
@@ -156,7 +156,7 @@ public class Player extends Entity implements Combatant {
         Item item = this.getInventory().findItemByName(itemName);
 
         if (item == null) {
-            throw new IllegalArgumentException("Item not found in the player's inventory.");
+            throw new IllegalArgumentException("You do not have a " + itemName + ".");
         }
 
         this.getInventory().removeItem(item);

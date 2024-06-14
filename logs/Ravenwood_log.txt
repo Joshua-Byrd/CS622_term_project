@@ -1,0 +1,3 @@
+[2024/06/14 09:58:34] Ravenwood has begun their journey.
+[2024/06/14 09:58:46] Ravenwood has encountered a Ogre.
+[2024/06/14 09:58:53] Ravenwood has been defeated by a Ogre.

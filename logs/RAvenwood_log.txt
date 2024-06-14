@@ -1,0 +1,23 @@
+[2024/06/14 09:54:12] RAvenwood has begun their journey.
+[2024/06/14 09:54:15] RAvenwood picked up the shortsword.
+[2024/06/14 09:54:19] RAvenwood wielded the shortsword.
+[2024/06/14 09:54:22] RAvenwood picked up 10.0 gold.
+[2024/06/14 09:54:23] RAvenwood has entered a small stone room
+[2024/06/14 09:54:29] RAvenwood picked up the iron armor.
+[2024/06/14 09:54:29] RAvenwood picked up the health potion.
+[2024/06/14 09:54:31] RAvenwood picked up 25.0 gold.
+[2024/06/14 09:54:35] RAvenwood put on the iron armor.
+[2024/06/14 09:55:05] RAvenwood has entered a large cave
+[2024/06/14 09:55:11] RAvenwood picked up the spear.
+[2024/06/14 09:55:13] RAvenwood picked up 3.0 gold.
+[2024/06/14 09:55:15] RAvenwood wielded the spear.
+[2024/06/14 09:55:54] RAvenwood has encountered a Giant Scorpion.
+[2024/06/14 09:56:01] RAvenwood has been defeated by a Giant Scorpion.
+[2024/06/14 09:56:36] Ravenwood has begun their journey.
+[2024/06/14 09:56:41] Ravenwood has entered a small stone room
+[2024/06/14 09:56:45] Ravenwood picked up the iron armor.
+[2024/06/14 09:56:45] Ravenwood picked up the health potion.
+[2024/06/14 09:56:48] Ravenwood has encountered a Giant Scorpion.
+[2024/06/14 09:58:21] Ravenwood fled from battle.
+[2024/06/14 09:58:21] Ravenwood has entered a large cave
+[2024/06/14 09:58:23] Ravenwood quit the game.
