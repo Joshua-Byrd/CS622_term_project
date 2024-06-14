@@ -234,6 +234,13 @@ public class GameController {
             }
         } else if (target.equalsIgnoreCase("all")) {
             getAllTradeableItems();
+            double goldAmount = currentRoom.getGold();
+            if (goldAmount > 0) {
+                player.addGold(goldAmount);
+                currentRoom.setGold(0);
+                view.displayMessage("You picked up " + goldAmount + " gold.\n");
+                logger.log(player.getName() + " picked up " + goldAmount + " gold.");
+            }
         } else if (target.contains(" from ")) {
             //if "from" is present, we're getting something from a container
             String[] parts = target.split(" from ");

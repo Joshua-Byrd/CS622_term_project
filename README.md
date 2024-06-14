@@ -3,14 +3,17 @@
 ## Running the Game
 Class *Main* contains the main method and acts as the entry point from which to run the game.
 
-## Current State - 6/13/24
-At this time, there are four rooms to explore. Each contains various items, weapons, armor, and gold to get and
+## Current State - 6/14/24
+At this time, there are nine rooms to explore. Each contains various items, weapons, armor, and gold to get and
 interact with.  
 
-Each time the player enters a room, there is a chance that a monster will spawn. If this happens, the player will 
-automatically enter into combat with the monster. The player can then attack using the *'attack'* command or disengage
-from combat using the *'flee'* command. There are currently six monsters that the player may encounter with various
-levels of difficulty.
+There are currently ten monsters, and each time the player enters a room, there is a chance that one will spawn. At 
+this time, it is completely random, so the player may face an easily defeatable snake or an extremely difficult lich. 
+In future iterations, I plan to add levels to the monsters and spawn them based on the level (i.e. a lower level monster will spawn
+more frequently than a higher level). If a monster is encountered, the player automatically enter into combat. The player 
+can then attack using the *'attack'* command, disengage from combat using the *'flee'* command, *'examine'* their inventory,
+or *'consume'* an item. Note that these latter two actions effectively form the player's "turn" and the monster will continue 
+to attack. 
 
 As mentioned, in the latest iteration gold has been implemented and can be picked up with the *'get gold'*
 command. Note that gold is implemented separately from items, so the command *'get all'* will not retrieve any gold present.
@@ -32,7 +35,13 @@ At this time, the following command are functional:
 *  close [container] - Close a container.
 *  attack - attack the monster you're currently battling.
 *  flee - disengage from combat.
+*  inventory - used during combat, this will display your inventory.
 *  consume [item] - consume an item such as a potion.
 *  save - Save your current game state.
 *  exit - Save your game and exit.
 *  print - Print your game log.
+
+## Known bugs
+When a player attempts to pick up an item that will not fit into their inventory due to weight, a message saying the
+item does not exist is displayed (instead of a message saying it is too heavy). I haven't yet traced this out, but it's
+on my to-do list. 

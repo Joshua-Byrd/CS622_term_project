@@ -1,0 +1,39 @@
+[2024/06/14 10:28:15] Doodle Bop has begun their journey.
+[2024/06/14 10:28:44] Doodle Bop opened the small chest.
+[2024/06/14 10:30:04] Doodle Bop picked up the shortsword.
+[2024/06/14 10:30:14] Doodle Bop picked up 10.0 gold.
+[2024/06/14 10:30:39] Doodle Bop wielded the shortsword.
+[2024/06/14 10:31:07] Doodle Bop has entered a small stone room
+[2024/06/14 10:31:20] Doodle Bop picked up the iron armor.
+[2024/06/14 10:31:20] Doodle Bop picked up the health potion.
+[2024/06/14 10:31:56] Doodle Bop put on the iron armor.
+[2024/06/14 10:32:09] Doodle Bop has encountered a Vampire.
+[2024/06/14 10:33:11] Doodle Bop had defeated a Vampire.
+[2024/06/14 10:33:11] Doodle Bop has entered a large cave
+[2024/06/14 10:33:59] Doodle Bop has entered a small stone room
+[2024/06/14 10:34:11] Doodle Bop picked up 25.0 gold.
+[2024/06/14 10:34:23] Doodle Bop has entered a large cave
+[2024/06/14 10:34:31] Doodle Bop picked up 3.0 gold.
+[2024/06/14 10:34:44] Doodle Bop picked up the spear.
+[2024/06/14 10:34:58] Doodle Bop wielded the spear.
+[2024/06/14 10:35:07] Doodle Bop has entered a dark tunnel
+[2024/06/14 10:35:17] Doodle Bop picked up the chainmail.
+[2024/06/14 10:35:17] Doodle Bop picked up the medium health potion.
+[2024/06/14 10:35:25] Doodle Bop put on the chainmail.
+[2024/06/14 10:35:35] Doodle Bop has entered a carved grotto
+[2024/06/14 10:35:58] Doodle Bop picked up the enchanted bow.
+[2024/06/14 10:35:58] Doodle Bop picked up the large health potion.
+[2024/06/14 10:36:18] Doodle Bop has encountered a Lich.
+[2024/06/14 10:37:54] Doodle Bop had defeated a Lich.
+[2024/06/14 10:37:54] Doodle Bop has entered a cavern made of crystal
+[2024/06/14 10:38:17] Doodle Bop has encountered a Giant Scorpion.
+[2024/06/14 10:38:34] Doodle Bop had defeated a Giant Scorpion.
+[2024/06/14 10:38:34] Doodle Bop has entered a wide cave
+[2024/06/14 10:38:40] Doodle Bop picked up the golden fish.
+[2024/06/14 10:38:59] Doodle Bop has entered a deserted forge
+[2024/06/14 10:39:06] Doodle Bop picked up the smithing hammer.
+[2024/06/14 10:39:26] Doodle Bop has encountered a Goblin.
+[2024/06/14 10:39:53] Doodle Bop had defeated a Goblin.
+[2024/06/14 10:39:53] Doodle Bop has entered a smooth-walled chamber
+[2024/06/14 10:40:08] Doodle Bop has encountered a Troll.
+[2024/06/14 10:40:41] Doodle Bop has been defeated by a Troll.

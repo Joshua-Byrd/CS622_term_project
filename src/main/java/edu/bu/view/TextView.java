@@ -79,7 +79,8 @@ public class TextView {
         System.out.println("*  close [container] - Close a container.");
         System.out.println("*  attack - Attack the monster you're currently battling.");
         System.out.println("*  flee - Disengage from combat.");
-        System.out.println("*  consume [item] - Consume an item such as a potion.");
+        System.out.println("*  inventory - used during combat, this will display your inventory.");
+        System.out.println("*  consume [item] - Consume an item such as a potion. (now available during combat)");
         System.out.println("*  help - View the full list of commands.");
         System.out.println("*  save - Save your current game state.");
         System.out.println("*  exit - Save your game and exit.");

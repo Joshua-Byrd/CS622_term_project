@@ -1,0 +1,8 @@
+[2024/06/14 10:43:45] Goofus has begun their journey.
+[2024/06/14 10:43:48] Goofus picked up the shortsword.
+[2024/06/14 10:43:48] Goofus picked up 10.0 gold.
+[2024/06/14 10:43:55] Goofus has entered a small stone room
+[2024/06/14 10:43:57] Goofus picked up the iron armor.
+[2024/06/14 10:43:57] Goofus picked up the health potion.
+[2024/06/14 10:43:57] Goofus picked up 25.0 gold.
+[2024/06/14 10:44:32] Goofus quit the game.

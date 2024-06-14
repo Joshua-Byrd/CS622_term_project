@@ -1,0 +1,5 @@
+[2024/06/14 10:46:02] Barnabus has begun their journey.
+[2024/06/14 10:46:05] Barnabus picked up the shortsword.
+[2024/06/14 10:46:05] Barnabus picked up 10.0 gold.
+[2024/06/14 10:46:24] Barnabus has begun their journey.
+[2024/06/14 10:46:32] Barnabus quit the game.
