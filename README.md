@@ -1,4 +1,15 @@
 # Desolate Depths: A Dungeon-Crawling Adventure
+Desolate Depths is a text-based adventure game in the style of Zork and Curses. Per the genre norm, the player is 
+presented with a description of their current location and can enter commands such as 'go north', 'get shortsword', or
+'consume health potion' to interact with the environment.  Additionally, the game generates random encounters with monsters 
+that the player is able to engage in combat with, possibly earning gold or items.
+
+During gameplay, the player can enter 'save' to save their character's state (it is also saved when exiting), and the 
+character can be loaded if the play quits or is defeated.  During each session and upon death, the player's stats are
+saved to an SQLite database, and the top players and character history can be viewed from the main menu.
+
+## Tech stack
+Desolate Depths is written fully in Java and utilizes an SQLite database.
 
 ## Running the Game
 Class *Main* contains the main method and acts as the entry point from which to run the game.
