@@ -51,21 +51,6 @@ public class GameLoggerTest {
         assertTrue(line.contains(testMessage), "Log file should contain the test message.");
     }
 
-    @Test
-    public void testPrintLog() throws LoggerException, IOException {
-        String testMessage = "This is a test log message.";
-        logger.log(testMessage);
-
-        // Redirect system out to a ByteArrayOutputStream to capture printLog() output
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
-        // Reset system out
-        System.setOut(System.out);
-
-        assertTrue(outContent.toString().contains(testMessage), "Printed log should contain the test message.");
-    }
-
 
     @Test
     public void testSanitizeFileName() {

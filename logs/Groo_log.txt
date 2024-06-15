@@ -1,0 +1,25 @@
+[2024/06/15 05:59:24] Groo has begun their journey.
+[2024/06/15 05:59:28] Groo picked up the shortsword.
+[2024/06/15 05:59:28] Groo picked up 10.0 gold.
+[2024/06/15 05:59:30] Groo has entered a small stone room
+[2024/06/15 05:59:36] Groo wielded the shortsword.
+[2024/06/15 05:59:39] Groo quit the game.
+[2024/06/15 05:59:48] Groo has begun their journey.
+[2024/06/15 05:59:54] Groo picked up the iron armor.
+[2024/06/15 05:59:54] Groo picked up the health potion.
+[2024/06/15 05:59:54] Groo picked up 25.0 gold.
+[2024/06/15 05:59:58] Groo has entered a large cave
+[2024/06/15 06:00:02] Groo picked up the spear.
+[2024/06/15 06:00:02] Groo picked up 3.0 gold.
+[2024/06/15 06:00:10] Groo has encountered a Snake.
+[2024/06/15 06:00:15] Groo had defeated a Snake.
+[2024/06/15 06:00:15] Groo has entered a dark tunnel
+[2024/06/15 06:00:18] Groo quit the game.
+[2024/06/15 06:01:45] Groo has begun their journey.
+[2024/06/15 06:01:51] Groo has encountered a Giant Scorpion.
+[2024/06/15 06:01:54] Groo has been defeated by a Giant Scorpion.
+[2024/06/15 06:01:54] Player save file deleted due to permadeath.
+[2024/06/15 06:02:07] Stephano has begun their journey.
+[2024/06/15 06:02:12] Stephano picked up the shortsword.
+[2024/06/15 06:02:12] Stephano picked up 10.0 gold.
+[2024/06/15 06:02:14] Stephano quit the game.

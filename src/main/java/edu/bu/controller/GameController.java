@@ -17,6 +17,7 @@ import edu.bu.util.MessageService;
 import edu.bu.util.MonsterFactory;
 import edu.bu.view.TextView;
 
+import java.io.File;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -69,6 +70,7 @@ public class GameController {
      * POSTCONDITION: The game ends.
      */
     public void startGame() {
+        player.resetSessionStats();
         facadeMusic.playAmbientMusic();
         logger.log(player.getName() + " has begun their journey.");
         view.printGreeting();
@@ -636,9 +638,6 @@ public class GameController {
             return;
         }
         player.attack(monster);
-//        if (monster.isAlive()) {
-//            monster.attack(player);
-//        }
     }
 
 
@@ -705,10 +704,31 @@ public class GameController {
         view.displayMessage("You have been defeated by the " + monster.getName() + ".\n\nTry again.\nIf you dare...\n\n");
         logger.log(player.getName() + " has been defeated by a " + monster.getName() + ".");
         facadeDatabase.saveFinalStats(player, monster.getName());
+
+        // Delete the player_save.json file to implement permadeath
+        deletePlayerSaveFile();
+
         //go back to the main menu upon death
         Main.main(new String[0]);
     }
 
+    /**
+     * INTENT: To delete the player_save.json file to implement permadeath.
+     * PRECONDITION: The file must exist.
+     * POSTCONDITION: The file is deleted if it exists, otherwise an error message is logged.
+     */
+    private void deletePlayerSaveFile() {
+        File file = new File("player_save.json");
+        if (file.exists()) {
+            if (file.delete()) {
+                logger.log("Player save file deleted due to permadeath.");
+            } else {
+                logger.log("Failed to delete player save file.");
+            }
+        } else {
+            logger.log("Player save file does not exist.");
+        }
+    }
     /**
      * INTENT: Display the room name, description, and inventory contents in a formatted way.
      * PRECONDITION: room cannot be null.

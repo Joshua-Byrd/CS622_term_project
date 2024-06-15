@@ -96,14 +96,6 @@ public class PlayerSaveServiceTest {
     }
 
     @Test
-    public void testLoadNoFile() {
-        assertThrows(PlayerDataException.class, () -> {
-            playerSaveService.load();
-        }, "Loading without a save file should throw PlayerDataException.");
-    }
-
-
-    @Test
     public void testSerializationDeserialization() {
         ObjectMapper mapper = new ObjectMapper();
 

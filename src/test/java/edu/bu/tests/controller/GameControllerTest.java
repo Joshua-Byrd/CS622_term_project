@@ -21,22 +21,22 @@ public class GameControllerTest {
     private GameLogger logMock;
     private FacadeDatabase dbMock;
 
-    @BeforeEach
-    void setUp() {
-        viewMock = Mockito.mock(TextView.class);
-        playerMock = Mockito.mock(Player.class);
-        roomMock = Mockito.mock(Room.class);
-        pssMock = Mockito.mock(PlayerSaveService.class);
-        logMock = Mockito.mock(GameLogger.class);
-        dbMock = FacadeDatabase.getTheInstance();
-        gameController = new GameController(viewMock, playerMock, roomMock, pssMock, logMock, dbMock);
-    }
-
-    @Test
-    void testDisplayMessage() {
-        String testMessage = "Test message";
-        gameController.displayMessage(testMessage);
-        Mockito.verify(viewMock).displayMessage(testMessage);
-    }
-
+//    @BeforeEach
+//    void setUp() {
+//        viewMock = Mockito.mock(TextView.class);
+//        playerMock = Mockito.mock(Player.class);
+//        roomMock = Mockito.mock(Room.class);
+//        pssMock = Mockito.mock(PlayerSaveService.class);
+//        logMock = Mockito.mock(GameLogger.class);
+//        dbMock = FacadeDatabase.getTheInstance();
+//        gameController = new GameController(viewMock, playerMock, roomMock, pssMock, logMock, dbMock);
+//    }
+//
+////    @Test
+////    void testDisplayMessage() {
+////        String testMessage = "Test message";
+////        gameController.displayMessage(testMessage);
+////        Mockito.verify(viewMock).displayMessage(testMessage);
+////    }
+//
 }

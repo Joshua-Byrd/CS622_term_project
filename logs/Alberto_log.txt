@@ -1,0 +1,32 @@
+[2024/06/15 04:32:13] Alberto has begun their journey.
+[2024/06/15 04:32:17] Alberto quit the game.
+[2024/06/15 04:36:42] Alberto has begun their journey.
+[2024/06/15 04:36:46] Alberto picked up the shortsword.
+[2024/06/15 04:36:46] Alberto picked up 10.0 gold.
+[2024/06/15 04:36:50] Alberto wielded the shortsword.
+[2024/06/15 04:36:52] Alberto has encountered a Giant Spider.
+[2024/06/15 04:37:00] Alberto had defeated a Giant Spider.
+[2024/06/15 04:37:00] Alberto has entered a small stone room
+[2024/06/15 04:37:05] Alberto picked up the iron armor.
+[2024/06/15 04:37:05] Alberto picked up the health potion.
+[2024/06/15 04:37:05] Alberto picked up 25.0 gold.
+[2024/06/15 04:37:09] Alberto put on the iron armor.
+[2024/06/15 04:37:12] Alberto has encountered a Vampire.
+[2024/06/15 04:37:32] Alberto had defeated a Vampire.
+[2024/06/15 04:37:32] Alberto has entered a large cave
+[2024/06/15 04:37:40] Alberto picked up the spear.
+[2024/06/15 04:37:40] Alberto picked up 3.0 gold.
+[2024/06/15 04:37:44] Alberto wielded the spear.
+[2024/06/15 04:37:51] Alberto has encountered a Harpy.
+[2024/06/15 04:38:06] Alberto had defeated a Harpy.
+[2024/06/15 04:38:06] Alberto has entered a dark tunnel
+[2024/06/15 04:38:11] Alberto picked up the chainmail.
+[2024/06/15 04:38:11] Alberto picked up the medium health potion.
+[2024/06/15 04:38:15] Alberto put on the chainmail.
+[2024/06/15 04:38:20] Alberto has entered a carved grotto
+[2024/06/15 04:38:27] Alberto picked up the enchanted bow.
+[2024/06/15 04:38:27] Alberto picked up the large health potion.
+[2024/06/15 04:38:27] Alberto picked up 50.0 gold.
+[2024/06/15 04:38:32] Alberto has encountered a Lich.
+[2024/06/15 04:38:44] Alberto has been defeated by a Lich.
+[2024/06/15 04:38:44] Player save file deleted due to permadeath.

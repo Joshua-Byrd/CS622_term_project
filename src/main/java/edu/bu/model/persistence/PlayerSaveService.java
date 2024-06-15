@@ -7,6 +7,7 @@ import edu.bu.model.entitities.Player;
 import edu.bu.util.FacadeUtil;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -43,6 +44,9 @@ public class PlayerSaveService {
         try {
             // Reading from a file
             return mapper.readValue(new File(SAVE_FILE_PATH), new TypeReference<Player>() {});
+        } catch (FileNotFoundException e) {
+            System.out.println("No save found!");
+            return null;
         } catch (IOException e) {
             //exception handled in main
             e.printStackTrace();

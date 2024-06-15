@@ -1,0 +1,10 @@
+[2024/06/15 05:37:15] Abernathy has begun their journey.
+[2024/06/15 05:37:31] Abernathy picked up the shortsword.
+[2024/06/15 05:37:31] Abernathy picked up 10.0 gold.
+[2024/06/15 05:37:33] Abernathy quit the game.
+[2024/06/15 05:37:39] Abernathy has begun their journey.
+[2024/06/15 05:37:42] Abernathy has entered a small stone room
+[2024/06/15 05:37:45] Abernathy picked up the iron armor.
+[2024/06/15 05:37:45] Abernathy picked up the health potion.
+[2024/06/15 05:37:45] Abernathy picked up 25.0 gold.
+[2024/06/15 05:37:47] Abernathy quit the game.

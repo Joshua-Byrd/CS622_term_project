@@ -1,0 +1,6 @@
+[2024/06/15 04:41:18] Conroy has begun their journey.
+[2024/06/15 04:41:22] Conroy picked up the shortsword.
+[2024/06/15 04:41:22] Conroy picked up 10.0 gold.
+[2024/06/15 04:41:23] Conroy has encountered a Lich.
+[2024/06/15 04:41:27] Conroy has been defeated by a Lich.
+[2024/06/15 04:41:27] Player save file deleted due to permadeath.

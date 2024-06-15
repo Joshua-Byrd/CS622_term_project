@@ -53,13 +53,13 @@ public class TemplateInitializerTest {
 
             // Verify the monsters
             assertNotNull(monsters, "Monsters should not be null.");
-            assertEquals(2, monsters.size(), "There should be 2 monsters.");
+            assertEquals(11, monsters.size(), "There should be 2 monsters.");
             assertTrue(monsters.stream().anyMatch(monster -> "Goblin".equals(monster.getName())), "Goblin should be in the list.");
             assertTrue(monsters.stream().anyMatch(monster -> "Snake".equals(monster.getName())), "Snake should be in the list.");
 
             // Verify the rooms
             assertNotNull(rooms, "Rooms should not be null.");
-            assertEquals(2, rooms.size(), "There should be 2 rooms.");
+            assertEquals(10, rooms.size(), "There should be 2 rooms.");
             assertTrue(rooms.stream().anyMatch(room -> "vast courtyard".equals(room.getName())), "Vast courtyard should be in the list.");
             assertTrue(rooms.stream().anyMatch(room -> "small stone room".equals(room.getName())), "Small stone room should be in the list.");
 

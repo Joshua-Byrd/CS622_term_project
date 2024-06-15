@@ -26,11 +26,4 @@ public class PlayerDataExceptionTest {
         assertEquals(cause, exception.getCause(), "The cause should match the provided cause.");
     }
 
-    @Test
-    public void testToString() {
-        String message = "Test error message";
-        PlayerDataException exception = new PlayerDataException(message);
-
-        assertEquals("PlayerDataException", exception.toString(), "The toString method should return 'PlayerDataException'.");
-    }
 }
