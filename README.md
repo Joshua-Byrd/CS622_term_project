@@ -4,9 +4,10 @@ presented with a description of their current location and can enter commands su
 'consume health potion' to interact with the environment.  Additionally, the game generates random encounters with monsters 
 that the player is able to engage in combat with, possibly earning gold or items.
 
-During gameplay, the player can enter 'save' to save their character's state (it is also saved when exiting), and the 
-character can be loaded if the play quits or is defeated.  During each session and upon death, the player's stats are
-saved to an SQLite database, and the top players and character history can be viewed from the main menu.
+Death in Desolate Depths is permanent. However, during gameplay, the player can enter 'save' to save their character's 
+state, and it is also saved when exiting, so as long as the character is alive, gameplay can be resumed upon restart.  
+During each session and upon death, the player's stats are saved to an SQLite database, and the top players and character 
+history can be viewed from the main menu.
 
 ## Tech stack
 Desolate Depths is written fully in Java and utilizes an SQLite database.
@@ -21,15 +22,13 @@ interact with.
 There are currently ten monsters, and each time the player enters a room, there is a chance that one will spawn. At 
 this time, it is completely random, so the player may face an easily defeatable snake or an extremely difficult lich. 
 In future iterations, I plan to add levels to the monsters and spawn them based on the level (i.e. a lower level monster will spawn
-more frequently than a higher level). If a monster is encountered, the player automatically enter into combat. The player 
+more frequently than a higher level). If a monster is encountered, the player will automatically enter into combat. They 
 can then attack using the *'attack'* command, disengage from combat using the *'flee'* command, *'examine'* their inventory,
 or *'consume'* an item. Note that these latter two actions effectively form the player's "turn" and the monster will continue 
-to attack. 
+to attack them. 
 
-As mentioned, in the latest iteration gold has been implemented and can be picked up with the *'get gold'*
-command. Note that gold is implemented separately from items, so the command *'get all'* will not retrieve any gold present.
-There are new options in the main menu as well. You can now view the top players (including the current
-player) by gold obtained and by monsters killed, and you can view all past characters and their achievements.
+As mentioned, in the latest iteration, gold has been implemented and can be picked up with the *'get gold'*
+command. The *'get all'* command will retrieve all items that can be picked and the gold, too.
 
 ## Current Commands
 At this time, the following command are functional:
