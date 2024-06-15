@@ -83,194 +83,73 @@ public class Main {
      * @param logger the GameLogger instance
      * @param player the Player instance
      */
-//    private static void displayMainMenu(TextView view, PlayerSaveService playerSaveService,
-//                                        FacadeModel facadeModel, FacadeItems facadeItems, FacadeEntities facadeEntities,
-//                                        FacadeController facadeController, List<Room> rooms, Scanner scanner,
-//                                        GameLogger logger, Player player, FacadeDatabase facadeDatabase) {
-//        while (true) {
-//            System.out.println("Main Menu");
-//            System.out.println("1. New Game");
-//            System.out.println("2. Continue");
-//            System.out.println("3. Instructions");
-//            System.out.println("4. Top Players");
-//            System.out.println("5. Character History");
-//            System.out.println("6. Exit");
-//            System.out.print("Please choose an option: ");
-//            String input = scanner.nextLine();
-//            int choice = 1;
-//            if (!"1".equals(input) && !"2".equals(input) && !"3".equals(input) && !"4".equals(input)
-//                    && !"5".equals(input) && !"6".equals(input)) {
-//                System.out.println("That's not a valid option. Please select an option from the menu.");
-//                continue;
-//            } else {
-//                choice = Integer.parseInt(input);
-//            }
-//
-//            switch (choice) {
-//                case 1:
-//                    System.out.print("Enter your name: ");
-//                    String playerName = scanner.nextLine();
-//                    Weapon startingWeapon = facadeItems.createWeapon(
-//                            "dagger",
-//                            "A small dagger",
-//                            1.2,
-//                            4,
-//                            15.0);
-//                    Armor startingArmor = facadeItems.createArmor(
-//                            "leather armor",
-//                            "a cuirass made of leather",
-//                            4.5,
-//                            4,
-//                            20.0);
-//                    Room startingRoom = rooms.get(0); // Use the first room as the starting room
-//                    player = FacadeEntities.getTheInstance().createPlayer(
-//                            0,
-//                            playerName,
-//                            "A brave adventurer",
-//                            5,
-//                            startingRoom,
-//                            startingWeapon,
-//                            startingArmor,
-//                            facadeItems.createInventory(50),
-//                            0.0,
-//                            1,
-//                            0
-//                    );
-//                    player.addItemToInventory(startingWeapon);
-//                    player.addItemToInventory(startingArmor);
-//                    break;
-//                case 2:
-//                    try {
-//                        player = playerSaveService.load();
-//                    } catch (Exception e) {
-//                        System.out.println("No save file found!");
-////                        e.printStackTrace();
-//                        System.out.println("Starting a new game...");
-//                        System.out.print("Enter your name: ");
-//                        playerName = scanner.nextLine();
-//                        startingWeapon = facadeItems.createWeapon(
-//                                "dagger",
-//                                "A small dagger",
-//                                1.2,
-//                                4,
-//                                15.0);
-//                        startingArmor = facadeItems.createArmor(
-//                                "leather armor",
-//                                "a cuirass made of leather",
-//                                4.5,
-//                                4,
-//                                20.0);
-//                        startingRoom = rooms.get(0); // Use the first room as the starting room
-//                        player = FacadeEntities.getTheInstance().createPlayer(
-//                                0,
-//                                playerName,
-//                                "A brave adventurer",
-//                                30,
-//                                startingRoom,
-//                                startingWeapon,
-//                                startingArmor,
-//                                facadeItems.createInventory(50),
-//                                0.0,
-//                                1,
-//                                0
-//                        );
-//                        player.addItemToInventory(startingWeapon);
-//                        player.addItemToInventory(startingArmor);
-//                    }
-//                    break;
-//                case 3:
-//                    view.displayInstructions();
-//                    continue;
-//                case 4:
-//                    displayTopPlayers(facadeDatabase, scanner);
-//                    continue;
-//                case 5:
-//                    displayCharacterHistory(facadeDatabase);
-//                    continue;
-//                case 6:
-//                    System.out.println("Exiting the game. Goodbye!");
-//                    System.exit(0);
-//                    break;
-//            }
-//
-//            try {
-//                logger = FacadePersistence.getTheInstance().createGameLogger(player.getName());
-//            } catch (LoggerException e) {
-//                view.displayMessage("Error instantiating logger: " + e.getMessage());
-//            }
-//
-//            GameController gameController = facadeController.createGameController(view, player,
-//                    player.getCurrentRoom(), playerSaveService, logger, facadeDatabase);
-//            gameController.startGame();
-//        }
-//    }
-private static void displayMainMenu(TextView view, PlayerSaveService playerSaveService,
-                                    FacadeModel facadeModel, FacadeItems facadeItems, FacadeEntities facadeEntities,
-                                    FacadeController facadeController, List<Room> rooms, Scanner scanner,
-                                    GameLogger logger, Player player, FacadeDatabase facadeDatabase) {
-    while (true) {
-        System.out.println("Main Menu");
-        System.out.println("1. New Game");
-        System.out.println("2. Continue");
-        System.out.println("3. Instructions");
-        System.out.println("4. Top Players");
-        System.out.println("5. Character History");
-        System.out.println("6. Exit");
-        System.out.print("Please choose an option: ");
-        String input = scanner.nextLine();
-        int choice = 1;
-        if (!"1".equals(input) && !"2".equals(input) && !"3".equals(input) && !"4".equals(input)
-                && !"5".equals(input) && !"6".equals(input)) {
-            System.out.println("That's not a valid option. Please select an option from the menu.");
-            continue;
-        } else {
-            choice = Integer.parseInt(input);
-        }
-
-        switch (choice) {
-            case 1:
-                player = createNewCharacter(scanner, facadeItems, rooms, facadeEntities);
-                break;
-            case 2:
-                try {
-                    player = playerSaveService.load();
-                    if (player == null) {
-                        System.out.println("Starting a new game...");
-                        player = createNewCharacter(scanner, facadeItems, rooms, facadeEntities);
-                    }
-                } catch (PlayerDataException e) {
-                    System.out.println("Error loading character: " + e.getMessage());
-                    createNewCharacter(scanner, facadeItems, rooms, facadeEntities);
-                }
-                break;
-            case 3:
-                view.displayInstructions();
+    private static void displayMainMenu(TextView view, PlayerSaveService playerSaveService,
+                                        FacadeModel facadeModel, FacadeItems facadeItems, FacadeEntities facadeEntities,
+                                        FacadeController facadeController, List<Room> rooms, Scanner scanner,
+                                        GameLogger logger, Player player, FacadeDatabase facadeDatabase) {
+        while (true) {
+            System.out.println("Main Menu");
+            System.out.println("1. New Game");
+            System.out.println("2. Continue");
+            System.out.println("3. Instructions");
+            System.out.println("4. Top Players");
+            System.out.println("5. Character History");
+            System.out.println("6. Exit");
+            System.out.print("Please choose an option: ");
+            String input = scanner.nextLine();
+            int choice = 1;
+            if (!"1".equals(input) && !"2".equals(input) && !"3".equals(input) && !"4".equals(input)
+                    && !"5".equals(input) && !"6".equals(input)) {
+                System.out.println("That's not a valid option. Please select an option from the menu.");
                 continue;
-            case 4:
-                displayTopPlayers(facadeDatabase, scanner);
-                continue;
-            case 5:
-                displayCharacterHistory(facadeDatabase);
-                continue;
-            case 6:
-                System.out.println("Exiting the game. Goodbye!");
-                System.exit(0);
-                break;
-        }
-
-        if (player != null) {
-            try {
-                logger = FacadePersistence.getTheInstance().createGameLogger(player.getName());
-            } catch (LoggerException e) {
-                view.displayMessage("Error instantiating logger: " + e.getMessage());
+            } else {
+                choice = Integer.parseInt(input);
             }
 
-            GameController gameController = facadeController.createGameController(view, player,
-                    player.getCurrentRoom(), playerSaveService, logger, facadeDatabase);
-            gameController.startGame();
+            switch (choice) {
+                case 1:
+                    player = createNewCharacter(scanner, facadeItems, rooms, facadeEntities);
+                    break;
+                case 2:
+                    try {
+                        player = playerSaveService.load();
+                        if (player == null) {
+                            System.out.println("Starting a new game...");
+                            player = createNewCharacter(scanner, facadeItems, rooms, facadeEntities);
+                        }
+                    } catch (PlayerDataException e) {
+                        System.out.println("Error loading character: " + e.getMessage());
+                        createNewCharacter(scanner, facadeItems, rooms, facadeEntities);
+                    }
+                    break;
+                case 3:
+                    view.displayInstructions();
+                    continue;
+                case 4:
+                    displayTopPlayers(facadeDatabase, scanner);
+                    continue;
+                case 5:
+                    displayCharacterHistory(facadeDatabase);
+                    continue;
+                case 6:
+                    System.out.println("Exiting the game. Goodbye!");
+                    System.exit(0);
+                    break;
+            }
+
+            if (player != null) {
+                try {
+                    logger = FacadePersistence.getTheInstance().createGameLogger(player.getName());
+                } catch (LoggerException e) {
+                    view.displayMessage("Error instantiating logger: " + e.getMessage());
+                }
+
+                GameController gameController = facadeController.createGameController(view, player,
+                        player.getCurrentRoom(), playerSaveService, logger, facadeDatabase);
+                gameController.startGame();
+            }
         }
     }
-}
 
     private static Player createNewCharacter(Scanner scanner, FacadeItems facadeItems, List<Room> rooms, FacadeEntities facadeEntities) {
         System.out.print("Enter your name: ");
@@ -292,7 +171,7 @@ private static void displayMainMenu(TextView view, PlayerSaveService playerSaveS
                 0,
                 playerName,
                 "A brave adventurer",
-                5,
+                30,
                 startingRoom,
                 startingWeapon,
                 startingArmor,
