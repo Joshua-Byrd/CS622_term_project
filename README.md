@@ -13,7 +13,16 @@ history can be viewed from the main menu.
 Desolate Depths is written fully in Java and utilizes an SQLite database.
 
 ## Running the Game
-Class *Main* contains the main method and acts as the entry point from which to run the game.
+The game can be run in one of two ways:
+1. Clone the repository - follow [Github's](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) 
+instructions for cloning a repository. Open the *Main* class in your favorite IDE and run the main method.
+2. Download the .jar file - from the /src directory, download DesolateDepths.jar into a dedicated directory (you'll want it to
+ be in its own directory as it will create the template files when ran for the first time). In a terminal, navigate to your chosen directory and type:
+ ```
+    java -jar DesolateDepths.jar
+ ```
+**Note that you must have Java installed on your system to execute jar files.**
+
 
 ## Current State - 6/14/24
 At this time, there are nine rooms to explore. Each contains various items, weapons, armor, and gold to get and
